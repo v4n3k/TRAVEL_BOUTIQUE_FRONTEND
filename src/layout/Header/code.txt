@@ -1,0 +1,420 @@
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import { IconBurgerMenu } from '../../icons/IconBurgerMenu';
+import { IconLogo } from '../../icons/IconLogo';
+import { IconSearch } from '../../icons/IconSearch';
+import { RouteName } from '../../types';
+import styles from './Header.module.css';
+
+export const Header = () => {
+	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+	const [isInputOpen, setIsInputOpen] = useState(false);
+
+	const ref = useRef(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
+	const phoneRef = useRef(null);
+
+	const handleClick = () => {
+		setIsBurgerMenuOpen(prev => !prev);
+	};
+
+	const handleClose = () => {
+		setIsBurgerMenuOpen(false);
+	};
+
+	const toggleInput = () => {
+		setIsInputOpen(prev => !prev);
+	};
+
+	useEffect(() => {
+		if (isInputOpen) {
+			inputRef.current?.focus();
+		}
+	}, [isInputOpen]);
+
+	return (
+		<header className={styles.header}>
+			<div className={styles.iconBurgerMenu}>
+				<button onClick={handleClick}>
+					<IconBurgerMenu />
+				</button>
+			</div>
+
+			<CSSTransition
+				nodeRef={ref}
+				in={isBurgerMenuOpen}
+				timeout={3000}
+				classNames={{
+					enter: styles.burgerMenuEnter,
+					enterActive: styles.burgerMenuEnterActive,
+					exit: styles.burgerMenuExit,
+					exitActive: styles.burgerMenuExitActive,
+				}}
+				unmountOnExit
+				mountOnEnter
+			>
+				<div className={styles.burgerMenu} ref={ref}>
+					<IconLogo />
+					<nav>
+						<ul>
+							<li>
+								<Link to={RouteName.HOME} onClick={handleClose}>
+									главная
+								</Link>
+							</li>
+							<li>
+								<Link to={RouteName.EXCURSIONS} onClick={handleClose}>
+									экскурсии
+								</Link>
+							</li>
+							<li>
+								<Link to={RouteName.ABOUT} onClick={handleClose}>
+									о нас
+								</Link>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</CSSTransition>
+
+			<div className={styles.logo}>
+				<Link to={RouteName.HOME}>
+					<IconLogo />
+				</Link>
+			</div>
+			<div className={styles.navigation}>
+				<nav>
+					<ul>
+						<li>
+							<Link to={RouteName.HOME}>главная</Link>
+						</li>
+						<li>
+							<Link to={RouteName.EXCURSIONS}>экскурсии</Link>
+						</li>
+						<li>
+							<Link to={RouteName.ABOUT}>о нас</Link>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div className={styles.search}>
+				<IconSearch />
+				<input type='search' placeholder='Город, экскурсия...' />
+			</div>
+
+			<CSSTransition
+				nodeRef={phoneRef}
+				in={!isInputOpen}
+				timeout={0}
+				classNames={{
+					enter: styles.phoneEnter,
+					enterActive: styles.phoneEnterActive,
+					exit: styles.phoneExit,
+					exitActive: styles.phoneExitActive,
+				}}
+				unmountOnExit
+				mountOnEnter
+			>
+				<div ref={phoneRef} className={styles.phone}>
+					<p>+ 7 988 999 46 53</p>
+				</div>
+			</CSSTransition>
+
+			<div className={styles.hideableSearch}>
+				<button onClick={toggleInput}>
+					<IconSearch />
+				</button>
+
+				<CSSTransition
+					nodeRef={inputRef}
+					in={isInputOpen}
+					timeout={200}
+					classNames={{
+						enter: styles.inputEnter,
+						enterActive: styles.inputEnterActive,
+						exit: styles.inputExit,
+						exitActive: styles.inputExitActive,
+					}}
+					unmountOnExit
+					mountOnEnter
+				>
+					<input
+						ref={inputRef}
+						className={styles.input}
+						type='search'
+						placeholder='Город, экскурсия...'
+					/>
+				</CSSTransition>
+			</div>
+		</header>
+	);
+};
+
+
+.header {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	max-width: calc(var(--max-width) - 112px);
+	width: 100%;
+	padding: 12px 32px;
+	margin: 78px auto 64px;
+	border-radius: 40px;
+	background-color: var(--white);
+}
+
+.iconBurgerMenu {
+	display: none;
+	height: 56px;
+}
+
+.iconBurgerMenu button {
+	background-color: transparent;
+	border: none;
+	height: 56px;
+}
+
+.burgerMenu {
+	position: absolute;
+	top: 96px;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 28px;
+	border-radius: 24px;
+	background-color: var(--white);
+	z-index: 10;
+}
+
+.burgerMenuEnter {
+	transform: translateY(-50%);
+	opacity: 0;
+	visibility: hidden;
+}
+
+.burgerMenuEnterActive {
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+		visibility 0.3s ease-in-out;
+}
+
+.burgerMenuExit {
+	transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+}
+
+.burgerMenuExitActive {
+	transform: translateY(-50%);
+	opacity: 0;
+	visibility: hidden;
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+		visibility 0.3s ease-in-out;
+}
+
+.burgerMenu svg {
+	margin-bottom: 12px;
+}
+
+.burgerMenu nav ul {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	font-size: 22px;
+	line-height: 30px;
+	font-weight: 400;
+}
+
+.logo {
+	display: block;
+	line-height: 1;
+	height: 60px;
+}
+
+.navigation nav ul {
+	display: flex;
+	gap: 40px;
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 400;
+	color: var(--dark-grey);
+}
+
+.search,
+.hideableSearch {
+	display: flex;
+	gap: 10px;
+	padding: 14px 16px;
+	border-radius: 40px;
+	background-color: var(--light-blue);
+}
+
+.hideableSearch {
+	display: none;
+	gap: 0;
+	padding: 10px;
+	width: auto;
+	overflow: hidden;
+}
+
+.search input,
+.hideableSearch input {
+	border: none;
+	padding: 0 4px;
+	background-color: inherit;
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 400;
+	color: var(--blue);
+	width: 254px;
+	outline: none;
+}
+
+.inputEnter {
+	opacity: 1;
+	width: 254px;
+}
+
+.inputEnterActive {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+	width: 0;
+}
+
+.inputExit {
+	opacity: 0;
+	width: 0;
+}
+
+.inputExitActive {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	width: 0;
+}
+
+.phone p {
+	font-size: 24px;
+	line-height: 33px;
+	font-weight: 400;
+	color: var(--blue);
+	text-wrap: nowrap;
+}
+
+.phoneEnter {
+	opacity: 1;
+}
+
+.phoneEnterActive {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.phoneExit {
+	opacity: 0;
+}
+
+.phoneExitActive {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.hideableSearch button {
+	background-color: transparent;
+	border: none;
+	height: 28px;
+}
+
+@media (max-width: 1px) {
+	.burgerMenu {
+		display: none;
+		appearance: none;
+	}
+}
+
+@media (max-width: 1440px) {
+	.header {
+		max-width: calc(100% - 272px);
+		margin-bottom: 32px;
+		margin-top: 64px;
+	}
+}
+
+@media (max-width: 1280px) {
+	.header {
+		max-width: calc(100% - 112px);
+	}
+}
+
+@media (max-width: 1110px) {
+	.logo,
+	.navigation {
+		display: none;
+	}
+
+	.iconBurgerMenu {
+		display: block;
+	}
+
+	.search input {
+		width: 354px;
+	}
+}
+
+@media (max-width: 910px) {
+	.search input {
+		width: 254px;
+	}
+}
+
+@media (max-width: 800px) {
+	.header {
+		margin-top: 56px;
+		margin-bottom: 48px;
+	}
+
+	.search input {
+		width: 208px;
+	}
+}
+
+@media (max-width: 740px) {
+	.search {
+		display: none;
+	}
+
+	.hideableSearch {
+		display: flex;
+		width: auto;
+	}
+
+	.hideableSearch input {
+		width: auto;
+	}
+}
+
+@media (max-width: 510px) {
+	.header {
+		padding: 8px 8px 8px 12px;
+		margin-top: 36px;
+		margin-bottom: 36px;
+		max-width: calc(100% - 40px);
+	}
+}
+
+@media (max-width: 440px) {
+	.iconBurgerMenu {
+		height: 48px;
+	}
+}
+
+@media (max-width: 400px) {
+	.phone p {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}

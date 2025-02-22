@@ -1,0 +1,17 @@
+.homePage {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.title {
+	font-size: 68px;
+	line-height: 93px;
+	font-weight: 600;
+}
+
+.title span {
+	font-weight: 300;
+	font-style: italic;
+	margin-left: 20px;
+}
