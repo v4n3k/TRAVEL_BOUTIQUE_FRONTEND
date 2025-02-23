@@ -1,0 +1,12 @@
+.tagsList {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 12px;
+	column-gap: 20px;
+}
+
+@media (max-width: 1480px) {
+	.tagsList {
+		column-gap: 16px;
+	}
+}

@@ -5,13 +5,276 @@
 }
 
 .title {
-	font-size: 68px;
-	line-height: 93px;
+	font-size: 72px;
+	line-height: 98px;
 	font-weight: 600;
+	margin-bottom: 24px;
 }
 
 .title span {
 	font-weight: 300;
 	font-style: italic;
 	margin-left: 20px;
+}
+
+.schoolExcursions {
+	display: flex;
+	gap: 32px;
+}
+
+.imagesContainer {
+	display: flex;
+	gap: 32px;
+	min-width: 700px;
+}
+
+.kremlinImageOnSmallScreen {
+	display: none;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	overflow-x: hidden;
+}
+
+.rowContainer {
+	display: flex;
+	gap: 32px;
+}
+
+.helpInChoosing {
+	display: flex;
+	flex-direction: column;
+	padding: 32px;
+	border-radius: 40px;
+	background-color: var(--blue-300);
+}
+
+.titleContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.helpInChoosing .titleContainer h2 {
+	font-size: 24px;
+	line-height: 33px;
+	font-weight: 700;
+	color: var(--black-700);
+	text-wrap: nowrap;
+}
+
+.helpInChoosing p {
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 400;
+}
+
+.cities {
+	display: flex;
+	max-width: 405px;
+	width: 100%;
+	padding: 32px;
+	border-radius: 40px;
+	background-color: var(--grey-300);
+}
+
+@media (max-width: 1480px) {
+	.title {
+		font-size: 68px;
+		line-height: 93px;
+		margin-bottom: 12px;
+	}
+
+	.imagesContainer {
+		min-width: 482px;
+		width: 482px;
+		height: 420px;
+	}
+
+	.mainImage {
+		object-position: right top;
+	}
+
+	.kremlinImage {
+		width: 139px;
+	}
+
+	.purpleHouseImage {
+		height: 188px;
+		width: 100%;
+	}
+
+	.helpInChoosing .titleContainer {
+		margin-bottom: 16px;
+	}
+
+	.helpInChoosing .titleContainer h2 {
+		font-size: 20px;
+		line-height: 27px;
+	}
+
+	.helpInChoosing p {
+		font-size: 16px;
+		line-height: 22px;
+	}
+
+	.cities {
+		max-width: 346px;
+		min-width: 346px;
+		padding: 27px 28px 26px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.purpleHouseImage {
+		min-width: 100px;
+	}
+}
+
+@media (max-width: 1370px) {
+	.imagesContainer,
+	.mainImage {
+		min-width: 440px;
+		width: 440px;
+		height: auto;
+	}
+}
+
+@media (max-width: 1370px) {
+	.kremlinImage {
+		min-width: 120px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.schoolExcursions {
+		flex-direction: column;
+	}
+
+	.kremlinImage {
+		display: none;
+	}
+
+	.kremlinImageOnSmallScreen {
+		display: flex;
+	}
+
+	.cities {
+		order: 6;
+		min-width: 270px;
+		width: 270px;
+	}
+
+	.imagesContainer {
+		width: auto;
+	}
+
+	.mainImage {
+		width: 738px;
+	}
+
+	.purpleHouseImage {
+		height: 300px;
+	}
+}
+
+@media (max-width: 840px) {
+	.title {
+		font-size: 64px;
+		line-height: 87px;
+		margin-bottom: 28px;
+	}
+}
+
+@media (max-width: 800px) {
+	.title {
+		font-size: 58px;
+		line-height: 76px;
+		margin-bottom: 24px;
+	}
+
+	.cities {
+		min-width: 346px;
+	}
+
+	.purpleHouseImage {
+		height: 188px;
+	}
+
+	.kremlinImageOnSmallScreen {
+		width: 200px;
+	}
+
+	.mainImage {
+		min-width: 300px;
+	}
+
+	.helpInChoosing .titleContainer h2 {
+		font-size: 28px;
+		line-height: 38px;
+	}
+
+	.helpInChoosing p {
+		font-size: 19px;
+		line-height: 26px;
+	}
+}
+
+@media (max-width: 720px) {
+	.title {
+		font-size: 50px;
+		line-height: 66px;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 630px) {
+	.title {
+		font-size: 42px;
+		line-height: 56px;
+		margin-bottom: 18px;
+	}
+
+	.imagesContainer {
+		gap: 24px;
+	}
+
+	.schoolExcursions,
+	.schoolExcursions .container {
+		gap: 16px;
+	}
+
+	.kremlinImageOnSmallScreen {
+		display: none;
+	}
+
+	.rowContainer {
+		flex-direction: column;
+		gap: 16px;
+	}
+}
+
+@media (max-width: 550px) {
+	.title {
+		font-size: 38px;
+		line-height: 50px;
+		margin-bottom: 16px;
+	}
+}
+
+@media (max-width: 440px) {
+	.title {
+		font-size: 32px;
+		line-height: 44px;
+		margin-bottom: 12px;
+	}
+
+	.title span {
+		margin-left: 10px;
+	}
 }

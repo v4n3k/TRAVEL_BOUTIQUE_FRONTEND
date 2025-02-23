@@ -72,7 +72,7 @@ body {
 	min-width: 100vw;
 	min-height: 100vh;
 	height: 100%;
-	background-color: var(--light-grey);
+	background-color: var(--grey-100);
 	font-family: 'Open Sans', sans-serif;
 }
 

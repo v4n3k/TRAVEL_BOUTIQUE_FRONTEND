@@ -9,8 +9,8 @@
 
 .navigation {
 	padding: 14px;
-	background-color: var(--white);
-	color: var(--blue);
+	background-color: var(--white-50);
+	color: var(--blue-500);
 }
 
 .navigation nav ul {
@@ -26,8 +26,8 @@
 
 .info {
 	display: flex;
-	background-color: var(--blue);
-	color: var(--white);
+	background-color: var(--blue-500);
+	color: var(--white-50);
 	width: 100%;
 	padding: 48px;
 }
@@ -56,7 +56,7 @@
 	font-size: 22px;
 	line-height: 30px;
 	font-weight: 400;
-	color: var(--grey);
+	color: var(--grey-300);
 }
 
 .bankDetails .inner {
