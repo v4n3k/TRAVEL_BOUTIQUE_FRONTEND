@@ -11,6 +11,11 @@ export const Header = () => {
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 	const [isInputOpen, setIsInputOpen] = useState(false);
 
+	const [shouldMountPhone, setShouldMountPhone] = useState(
+		window.innerWidth <= 740
+	);
+	const [shouldMountSearch, setShouldMountSearch] = useState(false);
+
 	const burgerMenuRef = useRef(null);
 	const hideableSearchRef = useRef(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
@@ -34,22 +39,29 @@ export const Header = () => {
 		}
 	}, [isInputOpen]);
 
-	const [shouldMountPhone, setShouldMountPhone] = useState(false);
 	useEffect(() => {
 		let timeoutId = null as any;
 
-		if (!isInputOpen) {
-			timeoutId = setTimeout(() => {
-				setShouldMountPhone(true);
-			}, 300);
-		} else {
-			setShouldMountPhone(false);
-		}
+		const handleResize = () => {
+			if (!isInputOpen && window.innerWidth <= 740) {
+				timeoutId = setTimeout(() => {
+					setShouldMountPhone(true);
+				}, 300);
+			} else {
+				setShouldMountPhone(false);
+			}
+		};
 
-		return () => clearTimeout(timeoutId);
+		handleResize();
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+			clearTimeout(timeoutId);
+		};
 	}, [isInputOpen]);
 
-	const [shouldMountSearch, setShouldMountSearch] = useState(false);
 	useEffect(() => {
 		let timeoutId = null as any;
 
@@ -100,7 +112,6 @@ export const Header = () => {
 								</Link>
 							</li>
 							<li>
-								{' '}
 								<Link to={RouteName.ABOUT} onClick={handleClose}>
 									о нас
 								</Link>
@@ -148,10 +159,14 @@ export const Header = () => {
 				unmountOnExit
 				mountOnEnter
 			>
-				<div ref={phoneRef} className={styles.phone}>
+				<div ref={phoneRef} className={styles.phoneOnSmallScreen}>
 					<p>+ 7 988 999 46 53</p>
 				</div>
 			</CSSTransition>
+
+			<div className={styles.phone}>
+				<p>+ 7 988 999 46 53</p>
+			</div>
 
 			<CSSTransition
 				nodeRef={hideableSearchRef}

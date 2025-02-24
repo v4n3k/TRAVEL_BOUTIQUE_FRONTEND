@@ -1,24 +1,50 @@
-import { useEffect, useState } from 'react';
+import { SVGProps, useEffect, useState } from 'react';
 
-export const IconArrowTopRight = () => {
-	const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1480);
+export const IconArrowTopRight = ({ ...props }: SVGProps<SVGSVGElement>) => {
+	const [isMediumScreen, setIsMediumScreen] = useState(
+		window.innerWidth <= 1480
+	);
+	const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 560);
 
 	useEffect(() => {
-		const mediaQuery = window.matchMedia('(max-width: 1480px)');
+		const mediumMediaQuery = window.matchMedia('(max-width: 1480px)');
+		const smallMediaQuery = window.matchMedia('(max-width: 560px)');
 
-		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+		const handleMediumMediaQueryChange = (event: MediaQueryListEvent) => {
+			setIsMediumScreen(event.matches);
+		};
+
+		const handleSmallMediaQueryChange = (event: MediaQueryListEvent) => {
 			setIsSmallScreen(event.matches);
 		};
 
-		mediaQuery.addEventListener('change', handleMediaQueryChange);
+		mediumMediaQuery.addEventListener('change', handleMediumMediaQueryChange);
+		smallMediaQuery.addEventListener('change', handleSmallMediaQueryChange);
 
 		return () => {
-			mediaQuery.removeEventListener('change', handleMediaQueryChange);
+			mediumMediaQuery.removeEventListener(
+				'change',
+				handleMediumMediaQueryChange
+			);
+			smallMediaQuery.removeEventListener(
+				'change',
+				handleSmallMediaQueryChange
+			);
 		};
 	}, []);
 
-	const width = isSmallScreen ? 31 : 40;
-	const height = isSmallScreen ? 32 : 41;
+	let width, height;
+
+	if (isSmallScreen) {
+		width = 40;
+		height = 41;
+	} else if (isMediumScreen) {
+		width = 31;
+		height = 32;
+	} else {
+		width = 40;
+		height = 41;
+	}
 
 	return (
 		<svg
@@ -28,6 +54,7 @@ export const IconArrowTopRight = () => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			style={{ display: 'block' }}
+			{...props}
 		>
 			<circle cx='20' cy='20.5' r='20' fill='#F5F5F5' />
 			<path

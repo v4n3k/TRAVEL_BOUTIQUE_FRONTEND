@@ -173,7 +173,8 @@
 	transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
-.phone p {
+.phone p,
+.phoneOnSmallScreen p {
 	font-size: 24px;
 	line-height: 33px;
 	font-weight: 400;
@@ -283,6 +284,10 @@
 	.iconBurgerMenu {
 		height: 48px;
 	}
+
+	.phone {
+		display: none;
+	}
 }
 
 @media (max-width: 510px) {
@@ -299,7 +304,7 @@
 		gap: 10px;
 	}
 
-	.phone p {
+	.phoneOnSmallScreen p {
 		font-size: 20px;
 		line-height: 27px;
 	}

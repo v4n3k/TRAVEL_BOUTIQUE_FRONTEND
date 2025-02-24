@@ -28,7 +28,7 @@
 	min-width: 700px;
 }
 
-.kremlinImageOnSmallScreen {
+.kremlinImageOnMediumScreen {
 	display: none;
 }
 
@@ -45,6 +45,7 @@
 }
 
 .helpInChoosing {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	padding: 32px;
@@ -83,6 +84,16 @@
 	background-color: var(--grey-300);
 }
 
+.bottomImagesContainer {
+	display: flex;
+	gap: 16px;
+}
+
+.kremlinImageOnSmallScreen {
+	display: none;
+	height: 216px;
+}
+
 @media (max-width: 1480px) {
 	.title {
 		font-size: 68px;
@@ -106,7 +117,7 @@
 
 	.purpleHouseImage {
 		height: 188px;
-		width: 100%;
+		width: 300px;
 	}
 
 	.helpInChoosing .titleContainer {
@@ -160,7 +171,7 @@
 		display: none;
 	}
 
-	.kremlinImageOnSmallScreen {
+	.kremlinImageOnMediumScreen {
 		display: flex;
 	}
 
@@ -178,8 +189,13 @@
 		width: 738px;
 	}
 
+	.bottomImagesContainer {
+		width: 100%;
+	}
+
 	.purpleHouseImage {
 		height: 300px;
+		width: 100%;
 	}
 }
 
@@ -206,7 +222,7 @@
 		height: 188px;
 	}
 
-	.kremlinImageOnSmallScreen {
+	.kremlinImageOnMediumScreen {
 		width: 200px;
 	}
 
@@ -249,21 +265,53 @@
 		gap: 16px;
 	}
 
-	.kremlinImageOnSmallScreen {
+	.kremlinImageOnMediumScreen {
 		display: none;
+	}
+
+	.kremlinImageOnSmallScreen {
+		display: block;
+	}
+
+	.purpleHouseImage {
+		height: 216px;
 	}
 
 	.rowContainer {
 		flex-direction: column;
 		gap: 16px;
 	}
+
+	.cities {
+		width: 100%;
+		max-width: 100%;
+		row-gap: 16px;
+	}
 }
 
-@media (max-width: 550px) {
+@media (max-width: 560px) {
 	.title {
 		font-size: 38px;
 		line-height: 50px;
 		margin-bottom: 16px;
+	}
+
+	.titleContainer .icon {
+		position: absolute;
+		top: -4px;
+		right: -4px;
+		border-radius: 50px;
+	}
+
+	.imagesContainer,
+	.mainImage {
+		min-width: 230px;
+		width: 100%;
+	}
+
+	.cities {
+		min-width: 240px;
+		padding: 20px;
 	}
 }
 
@@ -276,5 +324,15 @@
 
 	.title span {
 		margin-left: 10px;
+	}
+
+	.helpInChoosing .titleContainer h2 {
+		font-size: 20px;
+		line-height: 27px;
+	}
+
+	.helpInChoosing p {
+		font-size: 14px;
+		line-height: 19px;
 	}
 }
