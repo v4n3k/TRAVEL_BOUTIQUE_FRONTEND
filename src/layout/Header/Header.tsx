@@ -40,7 +40,7 @@ export const Header = () => {
 	}, [isInputOpen]);
 
 	useEffect(() => {
-		let timeoutId = null as any;
+		let timeoutId: NodeJS.Timeout | null = null;
 
 		const handleResize = () => {
 			if (!isInputOpen && window.innerWidth <= 740) {
@@ -57,13 +57,15 @@ export const Header = () => {
 		window.addEventListener('resize', handleResize);
 
 		return () => {
-			window.removeEventListener('resize', handleResize);
-			clearTimeout(timeoutId);
+			if (timeoutId !== null) {
+				window.removeEventListener('resize', handleResize);
+				clearTimeout(timeoutId);
+			}
 		};
 	}, [isInputOpen]);
 
 	useEffect(() => {
-		let timeoutId = null as any;
+		let timeoutId: NodeJS.Timeout | null = null;
 
 		if (isInputOpen) {
 			timeoutId = setTimeout(() => {
@@ -73,7 +75,11 @@ export const Header = () => {
 			setShouldMountSearch(false);
 		}
 
-		return () => clearTimeout(timeoutId);
+		return () => {
+			if (timeoutId !== null) {
+				clearTimeout(timeoutId);
+			}
+		};
 	}, [isInputOpen]);
 
 	return (

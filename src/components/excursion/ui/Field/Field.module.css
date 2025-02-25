@@ -1,0 +1,22 @@
+.field {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: fit-content;
+	padding: 6px 16px;
+	border: 1px solid var(--grey-500);
+	border-radius: 16px;
+	color: var(--black-700);
+}
+
+.key {
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 400;
+}
+
+.value {
+	font-size: 22px;
+	line-height: 30px;
+	font-weight: 700;
+}

@@ -1,0 +1,44 @@
+.textInput {
+	width: 100%;
+	padding: 12px 20px;
+	border-radius: 12px;
+	border: none;
+	background-color: var(--white-100);
+	color: var(--black-900);
+	font-size: 24px;
+	line-height: 33px;
+	font-weight: 400;
+}
+
+.textInput::placeholder {
+	color: var(--grey-500);
+}
+
+@media (max-width: 800px) {
+	.textInput {
+		font-size: 28px;
+		line-height: 38px;
+	}
+}
+
+@media (max-width: 650px) {
+	.textInput {
+		font-size: 22px;
+		line-height: 30px;
+	}
+}
+
+@media (max-width: 500px) {
+	.textInput {
+		font-size: 18px;
+		line-height: 25px;
+	}
+}
+
+@media (max-width: 400px) {
+	.textInput {
+		padding: 10px 20px;
+		font-size: 16px;
+		line-height: 22px;
+	}
+}

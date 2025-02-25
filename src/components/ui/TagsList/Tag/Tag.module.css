@@ -1,24 +1,32 @@
 .tag {
 	padding: 6px 16px;
 	border-radius: 12px;
-	font-size: 22px;
-	line-height: 30px;
 	font-weight: 400;
 	color: var(--black-700);
-	background-color: var(--grey-100);
+	background-color: var(--white-100);
 	width: fit-content;
 	text-wrap: nowrap;
 }
 
+.m {
+	font-size: 22px;
+	line-height: 30px;
+}
+
+.s {
+	font-size: 16px;
+	line-height: 25px;
+}
+
 @media (max-width: 1480px) {
-	.tag {
+	.m {
 		font-size: 18px;
 		line-height: 25px;
 	}
 }
 
 @media (max-width: 630px) {
-	.tag {
+	.m {
 		padding: 8px 16px;
 		border-radius: 16px;
 	}

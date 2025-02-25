@@ -1,0 +1,81 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	height: 100%;
+}
+
+.formAndCareerGuidanceExcursions {
+	display: flex;
+	gap: 32px;
+}
+
+.careerGuidanceExcursions {
+	display: flex;
+	flex-direction: column;
+	max-width: 668px;
+	width: 100%;
+	padding: 32px;
+	border-radius: 40px;
+	background-color: var(--blue-300);
+}
+
+.titleContainer {
+	display: flex;
+	justify-content: space-between;
+
+	gap: 10px;
+	margin-bottom: 16px;
+}
+
+.titleContainer h2 {
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 700;
+	height: 100%;
+}
+
+.img {
+	height: 194px;
+}
+
+@media (max-width: 1480px) {
+	.careerGuidanceExcursions {
+		max-width: 442px;
+	}
+
+	.img {
+		height: 165px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.formAndCareerGuidanceExcursions {
+		flex-direction: column;
+	}
+
+	.careerGuidanceExcursions {
+		max-width: 100%;
+	}
+
+	.img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 560px) {
+	.careerGuidanceExcursions,
+	.img {
+		border-radius: 20px;
+	}
+
+	.formAndCareerGuidanceExcursions,
+	.container {
+		gap: 40px;
+	}
+
+	.icon {
+		display: none !important;
+	}
+}

@@ -1,0 +1,40 @@
+.excursionCard {
+	display: flex;
+	flex-shrink: 0;
+	gap: 32px;
+}
+
+.textInfo {
+	display: flex;
+	flex-direction: column;
+	max-width: 550px;
+	width: 100%;
+}
+
+.title {
+	font-size: 31px;
+	line-height: 41px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.fieldsList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.price {
+	width: fit-content;
+	padding: 6px 20px;
+	border-radius: 12px;
+	background-color: var(--blue-300);
+}
+
+.price span {
+	font-size: 40px;
+	line-height: 54px;
+	font-weight: 400;
+	color: var(--black-900);
+}

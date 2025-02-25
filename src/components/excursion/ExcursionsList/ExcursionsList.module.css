@@ -1,0 +1,6 @@
+.excursionsList {
+	display: flex;
+	gap: 64px;
+	overflow-x: auto;
+	margin-bottom: 92px;
+}
