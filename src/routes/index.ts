@@ -1,5 +1,6 @@
 import {
 	AboutPage,
+	AdminCreateNewExcursionPage,
 	AdminPage,
 	ExcursionsPage,
 	HomePage,
@@ -16,4 +17,8 @@ export const publicRoutes: Route[] = [
 
 export const privateRoutes: Route[] = [
 	{ path: RouteName.ADMIN, Component: AdminPage },
+	{
+		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
+		Component: AdminCreateNewExcursionPage,
+	},
 ];

@@ -1,0 +1,38 @@
+.imageUploader {
+	display: flex;
+	width: 378px;
+	height: 420px;
+	cursor: pointer;
+}
+
+.input {
+	display: none;
+}
+
+.imagePreview {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 378px;
+	height: 420px;
+	object-fit: cover;
+	border-radius: 12px;
+	margin-bottom: 12px;
+}
+
+.upload {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 378px;
+	height: 420px;
+	border-radius: 26px;
+	border: none;
+	background-color: var(--grey-700);
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.upload:hover {
+	opacity: 0.9;
+}

@@ -1,0 +1,20 @@
+.textArea {
+	padding: 16px;
+	border: 0.2px solid var(--blue-500);
+	border-radius: 6px;
+	min-height: 56px;
+	resize: none;
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: 400;
+	color: var(--black-900);
+	background-color: var(--grey-600);
+}
+
+.textArea::-webkit-scrollbar {
+	appearance: none;
+}
+
+.textArea::placeholder {
+	color: var(--black-alpha);
+}

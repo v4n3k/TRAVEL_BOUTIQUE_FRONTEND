@@ -1,0 +1,23 @@
+.labeledInput {
+	display: flex;
+	gap: 8px;
+	width: 100%;
+}
+
+.row {
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.label {
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 600;
+	color: var(--blue-500);
+	text-wrap: nowrap;
+}

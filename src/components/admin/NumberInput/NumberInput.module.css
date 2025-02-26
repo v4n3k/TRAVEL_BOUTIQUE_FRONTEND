@@ -1,0 +1,20 @@
+.numberInput {
+	min-width: 37px;
+	max-width: 100px;
+	padding: 4px 12px;
+	border-radius: 12px;
+	border: 0.2px solid var(--blue-500);
+	font-size: 22px;
+	line-height: 30px;
+	font-weight: 400;
+}
+
+.numberInput::placeholder {
+	color: var(--black-900);
+}
+
+.numberInput::-webkit-outer-spin-button,
+.numberInput::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}

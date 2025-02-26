@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from 'react';
-import { TagEntity } from '../entities';
+import { ImageEntity, TagEntity } from '../entities';
 
 export interface Children {
 	children: ReactNode;
@@ -50,3 +50,22 @@ export interface TagsListProps {
 	tags: TagEntity[];
 	size?: 's' | 'm';
 }
+
+export interface ImageUploaderProps extends ComponentProps<'label'> {
+	onImageUpload: (image: ImageEntity, imagePreview: string | null) => void;
+	selectedImage: ImageEntity;
+}
+
+export interface LabeledInputProps extends ComponentProps<'div'> {
+	label: string;
+	renderInput: () => ReactNode;
+	direction?: 'row' | 'column';
+}
+
+export interface InputWrapperProps extends React.ComponentProps<'div'> {}
+
+export interface NumberInputProps extends ComponentProps<'input'> {
+	setValue: (value: any) => void;
+}
+
+export interface TextAreaProps extends ComponentProps<'textarea'> {}
