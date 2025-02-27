@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TextAreaProps } from '../../../types';
 import styles from './TextArea.module.css';
 
@@ -16,7 +16,20 @@ export const TextArea = ({
 
 	const adjustHeight = () => {
 		if (textAreaRef.current) {
+			textAreaRef.current.style.height = 'auto';
 			textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+
+			if (!textAreaRef.current.value) {
+				const minHeight = parseInt(
+					window.getComputedStyle(textAreaRef.current).minHeight
+				);
+
+				if (textAreaRef.current.scrollHeight < minHeight) {
+					textAreaRef.current.style.height = `${minHeight}px`;
+				} else {
+					textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+				}
+			}
 		}
 	};
 

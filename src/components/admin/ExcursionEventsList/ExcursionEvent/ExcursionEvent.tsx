@@ -1,15 +1,25 @@
 import { TextArea } from '../../';
-import { useExcursionEventsStore } from '../../../../stores/useExcursionEventsSrore';
+import { useAdminStore } from '../../../../stores/useAdminSrore';
 import { ExcursionEventEntity } from '../../../../types';
 import { Button, TextInput } from '../../../ui';
 import styles from './ExcursionEvent.module.css';
 
-export const ExcursionEvent = ({ ...data }: ExcursionEventEntity) => {
-	const { id, time, name } = data;
+export const ExcursionEvent = ({ id, time, name }: ExcursionEventEntity) => {
+	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
-	const setExcursionEvents = useExcursionEventsStore(
-		state => state.setExcursionEvents
-	);
+	const setExcursionEvents = (
+		updater:
+			| ExcursionEventEntity[]
+			| ((
+					prevExcursionEvents: ExcursionEventEntity[]
+			  ) => ExcursionEventEntity[])
+	) => {
+		setNewExcursion(prev => ({
+			...prev,
+			excursionEvents:
+				typeof updater === 'function' ? updater(prev.excursionEvents) : updater,
+		}));
+	};
 
 	const handleClick = () => {
 		setExcursionEvents(prev => prev.filter(event => event.id !== id));
@@ -44,12 +54,19 @@ export const ExcursionEvent = ({ ...data }: ExcursionEventEntity) => {
 				placeholder='00:00'
 			/>
 			<TextArea
-				className={styles.nameTextArea}
+				id={styles.nameTextArea}
 				value={name}
 				onChange={handleNameChange}
 				placeholder='Событие'
 			/>
-			<Button onClick={handleClick}>-</Button>
+			<Button
+				className={styles.deleteButton}
+				backgroundColor='red-300'
+				color='white-50'
+				onClick={handleClick}
+			>
+				-
+			</Button>
 		</li>
 	);
 };

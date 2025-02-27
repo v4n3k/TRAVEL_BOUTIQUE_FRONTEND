@@ -1,10 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { IconTelegram } from '../../icons/IconTelegram';
 import { IconWhatsApp } from '../../icons/IconWhatsApp';
+import { useAuthStore } from '../../stores/useAuthStore';
 import { RouteName } from '../../types';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
+	const isAuth = useAuthStore(state => state.isAuth);
+
+	const { pathname } = useLocation();
+
+	const isAdminPage = pathname.includes('admin');
+
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.container}>
@@ -12,15 +19,37 @@ export const Footer = () => {
 					<div className={styles.topContainer}>
 						<nav>
 							<ul>
-								<li>
-									<Link to={RouteName.HOME}>главная</Link>
-								</li>
-								<li>
-									<Link to={RouteName.EXCURSIONS}>экскурсии</Link>
-								</li>
-								<li>
-									<Link to={RouteName.ABOUT}>о нас</Link>
-								</li>
+								{isAuth && isAdminPage ? (
+									<>
+										<li>
+											<Link to={RouteName.HOME}>категории</Link>
+										</li>
+										<li>
+											<Link to={RouteName.EXCURSIONS}>блог</Link>
+										</li>
+										<li>
+											<Link to={RouteName.ABOUT}>о нас</Link>
+										</li>
+										<li>
+											<Link to={RouteName.ABOUT}>информация</Link>
+										</li>
+										<li>
+											<Link to={RouteName.ABOUT}>услуги</Link>
+										</li>
+									</>
+								) : (
+									<>
+										<li>
+											<Link to={RouteName.HOME}>главная</Link>
+										</li>
+										<li>
+											<Link to={RouteName.EXCURSIONS}>экскурсии</Link>
+										</li>
+										<li>
+											<Link to={RouteName.ABOUT}>о нас</Link>
+										</li>
+									</>
+								)}
 							</ul>
 						</nav>
 					</div>

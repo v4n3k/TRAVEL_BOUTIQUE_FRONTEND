@@ -1,15 +1,15 @@
-import { useExcursionEventsStore } from '../../../stores/useExcursionEventsSrore';
+import { useAdminStore } from '../../../stores/useAdminSrore';
 import { ExcursionEvent } from './ExcursionEvent/ExcursionEvent';
 import styles from './ExcursionEventsList.module.css';
 
 export const ExcursionEventsList = () => {
-	const excursionEvents = useExcursionEventsStore(
-		state => state.excursionEvents
-	);
+	const newExcursion = useAdminStore(state => state.newExcursion);
+
+	const { excursionEvents } = newExcursion;
 
 	return (
 		<ul className={styles.excursionEventsList}>
-			{excursionEvents.map(event => (
+			{excursionEvents?.map(event => (
 				<ExcursionEvent key={event.id} {...event} />
 			))}
 		</ul>

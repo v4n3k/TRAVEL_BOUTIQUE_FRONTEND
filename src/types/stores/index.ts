@@ -1,15 +1,15 @@
-import { ExcursionEventEntity } from '../entities';
+import { ExcursionEntity } from '../entities';
 
 export interface UseAuthStore {
 	isAuth: boolean;
 	setIsAuth: (isAuth: boolean) => void;
 }
 
-export interface ExcursionEventsStore {
-	excursionEvents: ExcursionEventEntity[];
-	setExcursionEvents: (
+export interface UseAdminStore {
+	newExcursion: ExcursionEntity;
+	setNewExcursion: (
 		updater:
-			| ExcursionEventEntity[]
-			| ((prevEvents: ExcursionEventEntity[]) => ExcursionEventEntity[])
+			| ExcursionEntity
+			| ((prevExcursion: ExcursionEntity) => ExcursionEntity)
 	) => void;
 }

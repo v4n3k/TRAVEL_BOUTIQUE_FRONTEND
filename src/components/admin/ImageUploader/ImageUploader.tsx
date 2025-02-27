@@ -11,7 +11,7 @@ export const ImageUploader = ({
 	const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 	const [inputId] = useState(
 		`image-upload-${Math.random().toString(36).substring(2, 9)}`
-	); // Unique ID
+	);
 
 	const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0] || null;
@@ -54,13 +54,13 @@ export const ImageUploader = ({
 				onChange={handleImageChange}
 				id={inputId}
 			/>
-			{previewUrl ? (
+			{previewUrl && (
 				<img className={styles.imagePreview} src={previewUrl} alt='Preview' />
-			) : (
-				<div className={styles.upload}>
-					<IconImage />
-				</div>
 			)}
+
+			<div className={styles.upload}>
+				<IconImage />
+			</div>
 		</label>
 	);
 };

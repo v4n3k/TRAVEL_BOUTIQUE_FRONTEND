@@ -3,16 +3,14 @@ import { ExcursionImage } from '../../ui/ExcursionImage/ExcursionImage';
 import { Field } from '../../ui/Field/Field';
 import styles from './ExcursionCard.module.css';
 
-export const ExcursionCard = ({ ...data }: ExcursionCardProps) => {
-	const {
-		title,
-		imgSrc,
-		city,
-		accompanistsAmount,
-		personsAmount,
-		price,
-	} = data;
-
+export const ExcursionCard = ({
+	title,
+	imgSrc,
+	city,
+	accompanistsAmount,
+	personsAmount,
+	price,
+}: ExcursionCardProps) => {
 	return (
 		<li className={styles.excursionCard}>
 			<ExcursionImage src={imgSrc} />

@@ -13,7 +13,11 @@ export const FeedbackForm = () => {
 					<TextInput placeholder='Имя' />
 					<TextInput placeholder='+7 (900) 000 00 00' />
 				</div>
-				<Button className={styles.button} cornerIcon={<IconArrowTopRight />}>
+				<Button
+					className={styles.button}
+					color='black-900'
+					cornerIcon={<IconArrowTopRight />}
+				>
 					Отправить
 				</Button>
 			</Form>

@@ -1,9 +1,38 @@
 .excursionEvent {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	gap: 12px;
 }
 
 .timeInput {
-	width: 100px;
+	width: 54px;
+	padding: 4px 6px;
+	border-radius: 6px;
+	background-color: #d9d9d9;
+	color: var(--black-900);
+	font-size: 16px;
+	line-height: 22px;
+	font-weight: 600;
+}
+
+.timeInput::placeholder {
+	color: var(--grey-700);
+}
+
+#nameTextArea {
+	width: 100%;
+	padding: 8px;
+	min-height: 38px;
+	height: 38px;
+	font-size: 16px;
+	line-height: 22px;
+}
+
+.deleteButton {
+	border-radius: 6px;
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 600;
+	padding: 0 16px 3px;
 }

@@ -1,0 +1,43 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100dvh;
+	width: 100vw;
+	padding-bottom: 10vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 10;
+	overscroll-behavior: contain;
+}
+
+.modalEnter {
+	opacity: 0;
+}
+
+.modalEnterActive {
+	opacity: 1;
+	transition: opacity 300ms ease-in-out;
+}
+
+.modalExit {
+	opacity: 1;
+}
+
+.modalExitActive {
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+}
+
+.content {
+	padding: 52px;
+	border-radius: 40px;
+	background-color: var(--white-50);
+	max-width: 90%;
+	max-height: 90%;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-width: none;
+}

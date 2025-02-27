@@ -1,27 +1,56 @@
-import { useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import {
 	ExcursionEventsList,
 	ImageUploader,
 	LabeledInput,
+	Modal,
 	NumberInput,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
 import { Button, TextInput } from '../../components/ui';
-import { useExcursionEventsStore } from '../../stores/useExcursionEventsSrore';
+import { useAdminStore } from '../../stores/useAdminSrore';
 import { ImageEntity } from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
 export const AdminCreateNewExcursionPage = () => {
-	const setExcursionEvents = useExcursionEventsStore(
-		state => state.setExcursionEvents
-	);
+	const newExcursion = useAdminStore(state => state.newExcursion);
+	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
+
+	const {
+		title,
+		personsAmount,
+		accompanistsAmount,
+		info,
+		price,
+	} = newExcursion;
+
+	const handleNewExcursionChange = (
+		key: string,
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		setNewExcursion(prev => ({
+			...prev,
+			[key]: e.target.value,
+		}));
+	};
 
 	const [selectedImage, setSelectedImage] = useState<ImageEntity>(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const [value, setValue] = useState('');
+	const handleInfoChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		handleNewExcursionChange('info', e);
+	};
 
-	const handleValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		setValue(e.target.value);
+	const handleAccompanistsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('accompanists', e);
+	};
+
+	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('persons', e);
+	};
+
+	const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('price', e);
 	};
 
 	const handleImageUpload = (image: ImageEntity) => {
@@ -29,15 +58,30 @@ export const AdminCreateNewExcursionPage = () => {
 	};
 
 	const handleAddEvent = () => {
-		setExcursionEvents(prev => [
+		setNewExcursion(prev => ({
 			...prev,
-			{
-				id: new Date().getTime(),
-				time: '00:00',
-				name: '',
-			},
-		]);
+			excursionEvents: [
+				...prev.excursionEvents,
+				{ id: Date.now(), time: '00:00', name: '' },
+			],
+		}));
 	};
+
+	const handleModalClose = () => {
+		setIsModalOpen(false);
+	};
+
+	const handleModalOpen = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleDeleteExcursion = () => {
+		setIsModalOpen(false);
+	};
+
+	useEffect(() => {
+		console.log(newExcursion);
+	}, [newExcursion]);
 
 	return (
 		<div className={styles.AdminCreateNewExcursionPage}>
@@ -47,22 +91,41 @@ export const AdminCreateNewExcursionPage = () => {
 						selectedImage={selectedImage}
 						onImageUpload={image => handleImageUpload(image)}
 					/>
-					<Button>Удалить экскурсию</Button>
+					<Button
+						className={styles.triggerModalButton}
+						backgroundColor='red-300'
+						color='white-100'
+						onClick={handleModalOpen}
+					>
+						Удалить экскурсию
+					</Button>
 				</div>
 				<div className={styles.mainInfoContainer}>
 					<TextInput
 						className={styles.titleInput}
+						value={title}
+						onChange={e => handleNewExcursionChange('title', e)}
 						placeholder='Название экскурсии'
 					/>
 
 					<InputWrapper className={styles.amountsWrapper}>
 						<LabeledInput
 							label='Количество сопровождающих'
-							renderInput={() => <NumberInput />}
+							renderInput={() => (
+								<NumberInput
+									value={accompanistsAmount}
+									onChange={handleAccompanistsAmountChange}
+								/>
+							)}
 						/>
 						<LabeledInput
 							label='Количество человек в группе'
-							renderInput={() => <NumberInput />}
+							renderInput={() => (
+								<NumberInput
+									value={personsAmount}
+									onChange={handlePersonsAmountChange}
+								/>
+							)}
 						/>
 					</InputWrapper>
 
@@ -71,8 +134,8 @@ export const AdminCreateNewExcursionPage = () => {
 							label='В стоимость входит'
 							renderInput={() => (
 								<TextArea
-									value={value}
-									onChange={e => handleValueChange(e)}
+									value={info}
+									onChange={handleInfoChange}
 									placeholder='Информация'
 								/>
 							)}
@@ -83,16 +146,42 @@ export const AdminCreateNewExcursionPage = () => {
 					<div className={styles.eventsContainer}>
 						<ExcursionEventsList />
 
-						<Button className={styles.addButton} onClick={handleAddEvent}>
-							Добавить +
+						<Button
+							className={styles.addButton}
+							onClick={handleAddEvent}
+							backgroundColor='white-50'
+							color='blue-500'
+							withBorder
+						>
+							Добавить<span>+</span>
 						</Button>
 					</div>
 				</div>
 				<div className={styles.priceContainer}>
-					<NumberInput />
+					<NumberInput
+						value={price}
+						onChange={handlePriceChange}
+						minWidth={50}
+						maxWidth={140}
+						fontSize={32}
+						paddingsBlock={32}
+					/>
 					<label>₽</label>
 				</div>
 			</section>
+
+			<Modal isOpen={isModalOpen} onClose={handleModalClose}>
+				<div className={styles.modalContainer}>
+					<h2>Удаление карточки экскурсии</h2>
+					<Button
+						backgroundColor='red-300'
+						color='white-100'
+						onClick={handleDeleteExcursion}
+					>
+						Удалить
+					</Button>
+				</div>
+			</Modal>
 		</div>
 	);
 };

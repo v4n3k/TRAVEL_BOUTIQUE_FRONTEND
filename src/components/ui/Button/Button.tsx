@@ -2,7 +2,13 @@ import React, { useRef } from 'react';
 import { ButtonProps } from '../../../types';
 import styles from './Button.module.css';
 
-export const Button = ({ className, ...props }: ButtonProps) => {
+export const Button = ({
+	className,
+	backgroundColor = 'blue-300',
+	color = 'white-50',
+	withBorder = false,
+	...props
+}: ButtonProps) => {
 	const { children, leftIcon, rightIcon, cornerIcon } = props;
 	const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -38,6 +44,11 @@ export const Button = ({ className, ...props }: ButtonProps) => {
 		<div className={styles.buttonWrapper}>
 			<button
 				className={[styles.button, className].join(' ')}
+				style={{
+					backgroundColor: `var(--${backgroundColor})`,
+					color: `var(--${color})`,
+					border: withBorder ? '0.2px solid var(--blue-500)' : 'none',
+				}}
 				ref={buttonRef}
 				onMouseDown={handleMouseDown}
 				{...props}

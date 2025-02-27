@@ -20,6 +20,15 @@ export interface IconButtonProps extends ComponentProps<'button'> {
 }
 
 export interface ButtonProps extends ComponentProps<'button'> {
+	backgroundColor?:
+		| 'white-50'
+		| 'white-100'
+		| 'blue-300'
+		| 'blue-500'
+		| 'red-300';
+	color?: 'white-50' | 'white-100' | 'blue-500' | 'black-900' | 'black-700';
+	withBorder?: boolean;
+
 	leftIcon?: ReactNode;
 	rightIcon?: ReactNode;
 	cornerIcon?: ReactNode;
@@ -65,7 +74,17 @@ export interface LabeledInputProps extends ComponentProps<'div'> {
 export interface InputWrapperProps extends React.ComponentProps<'div'> {}
 
 export interface NumberInputProps extends ComponentProps<'input'> {
-	setValue: (value: any) => void;
+	minWidth?: number;
+	maxWidth?: number;
+	fontSize?: number;
+	paddingsBlock?: number;
 }
 
 export interface TextAreaProps extends ComponentProps<'textarea'> {}
+
+export interface NumberInputProps extends ComponentProps<'input'> {}
+
+export interface ModalProps extends ComponentProps<'div'> {
+	isOpen: boolean;
+	onClose: () => void;
+}

@@ -3,6 +3,7 @@
 	border: 0.2px solid var(--blue-500);
 	border-radius: 6px;
 	min-height: 56px;
+	max-height: 300px;
 	resize: none;
 	font-size: 18px;
 	line-height: 24px;
@@ -16,5 +17,5 @@
 }
 
 .textArea::placeholder {
-	color: var(--black-alpha);
+	color: var(--black-900-99);
 }
