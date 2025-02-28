@@ -1,4 +1,5 @@
-import { InputWrapperProps } from '../../../types';
+import { InputWrapperProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './InputWrapper.module.css';
 
 export const InputWrapper = ({
@@ -7,7 +8,7 @@ export const InputWrapper = ({
 	...props
 }: InputWrapperProps) => {
 	return (
-		<div className={[styles.inputWrapper, className].join(' ')} {...props}>
+		<div className={cn(styles.inputWrapper, className)} {...props}>
 			{children}
 		</div>
 	);

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { TextAreaProps } from '../../../types';
+import { TextAreaProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './TextArea.module.css';
 
 export const TextArea = ({
@@ -40,8 +41,9 @@ export const TextArea = ({
 
 	return (
 		<textarea
-			className={[styles.textArea, className].join(' ')}
+			className={cn(styles.textArea, className)}
 			ref={textAreaRef}
+			value={value}
 			onChange={handleChange}
 			rows={1}
 			{...props}

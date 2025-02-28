@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from 'react';
-import { ImageEntity, TagEntity } from '../entities';
+import { BreadcrumbEntity, ImageEntity, TagEntity } from '../entities';
 
 export interface Children {
 	children: ReactNode;
@@ -8,6 +8,8 @@ export interface Children {
 export interface LayoutProps extends Children {}
 
 export interface MainProps extends Children {}
+
+export interface PageProps extends ComponentProps<'div'> {}
 
 export interface ImageProps extends ComponentProps<'img'> {}
 
@@ -87,4 +89,8 @@ export interface NumberInputProps extends ComponentProps<'input'> {}
 export interface ModalProps extends ComponentProps<'div'> {
 	isOpen: boolean;
 	onClose: () => void;
+}
+
+export interface BreadcrumbsProps {
+	crumbs: BreadcrumbEntity[];
 }

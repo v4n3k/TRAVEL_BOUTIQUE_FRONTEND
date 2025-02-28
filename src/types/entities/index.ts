@@ -15,9 +15,23 @@ export interface ExcursionEntity {
 	id: number;
 	imgSrc: string;
 	title: string;
-	personsAmount: number | '';
-	accompanistsAmount: number | '';
+	personsAmount: number;
+	accompanistsAmount: number;
 	info: string;
 	excursionEvents: ExcursionEventEntity[];
-	price: number | '';
+	price: number;
+}
+
+export interface ExcursionBase extends Omit<ExcursionEntity, 'id'> {}
+
+export interface ExcursionWithImage extends Omit<ExcursionEntity, 'imgSrc'> {
+	uploadedImage: ImageEntity;
+}
+
+export interface ExcursionBaseWithImage
+	extends Omit<ExcursionWithImage, 'id'> {}
+
+export interface BreadcrumbEntity {
+	id: number;
+	label: string;
 }

@@ -1,4 +1,5 @@
 import { TextInputProps } from '../../../types';
+import { cn } from '../../../utils/cn';
 import styles from './TextInput.module.css';
 
 export const TextInput = ({
@@ -7,10 +8,6 @@ export const TextInput = ({
 	...props
 }: TextInputProps) => {
 	return (
-		<input
-			className={[styles.textInput, className].join(' ')}
-			type={type}
-			{...props}
-		/>
+		<input className={cn(styles.textInput, className)} type={type} {...props} />
 	);
 };

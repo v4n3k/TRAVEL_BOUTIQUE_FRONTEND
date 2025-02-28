@@ -1,0 +1,23 @@
+.breadcrumbs {
+	display: flex;
+	flex-direction: row;
+	gap: 16px;
+	list-style: none;
+}
+
+.crumb {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 600;
+	color: var(--grey-900);
+}
+
+.divider {
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	background-color: var(--blue-500);
+}

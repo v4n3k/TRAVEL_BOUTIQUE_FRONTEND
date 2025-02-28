@@ -3,14 +3,14 @@ import {
 	SchoolExcursions,
 } from '../../blocks/home';
 import { ExcursionsList } from '../../components/excursion';
-import styles from './HomePage.module.css';
+import { Page } from '../../components/ui';
 
 export const HomePage = () => {
 	return (
-		<div className={styles.homePage}>
+		<Page>
 			<SchoolExcursions />
 			<ExcursionsList />
 			<FormAndCareerGuidanceExcursions />
-		</div>
+		</Page>
 	);
 };

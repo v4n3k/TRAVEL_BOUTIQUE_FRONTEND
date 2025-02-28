@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { ModalProps } from '../../../types';
+import { ModalProps } from '../../../../types';
 import styles from './Modal.module.css';
 
 export const Modal = ({ isOpen, onClose, children }: ModalProps) => {

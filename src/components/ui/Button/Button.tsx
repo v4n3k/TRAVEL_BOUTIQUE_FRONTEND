@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { ButtonProps } from '../../../types';
 import styles from './Button.module.css';
+import { cn } from '../../../utils/cn';
 
 export const Button = ({
 	className,
@@ -43,7 +44,7 @@ export const Button = ({
 	return (
 		<div className={styles.buttonWrapper}>
 			<button
-				className={[styles.button, className].join(' ')}
+				className={cn(styles.button, className)}
 				style={{
 					backgroundColor: `var(--${backgroundColor})`,
 					color: `var(--${color})`,

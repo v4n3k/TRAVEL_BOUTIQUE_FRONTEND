@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	ExcursionEventsList,
 	ImageUploader,
@@ -7,25 +8,40 @@ import {
 	NumberInput,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
-import { Button, TextInput } from '../../components/ui';
+import { Breadcrumbs } from '../../components/admin/ui/Breadcrumbs/BreadCrumbs';
+import { Button, IconButton, Page, TextInput } from '../../components/ui';
+import { IconArrowLeft } from '../../icons/IconArrowLeft';
 import { useAdminStore } from '../../stores/useAdminSrore';
-import { ImageEntity } from '../../types';
+import {
+	ExcursionBaseWithImage,
+	ExcursionWithImage,
+	ImageEntity,
+} from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
 export const AdminCreateNewExcursionPage = () => {
 	const newExcursion = useAdminStore(state => state.newExcursion);
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const navigate = useNavigate();
+
 	const {
+		uploadedImage,
 		title,
-		personsAmount,
 		accompanistsAmount,
+		personsAmount,
 		info,
 		price,
 	} = newExcursion;
 
+	const handleGoBack = () => {
+		navigate(-1);
+	};
+
 	const handleNewExcursionChange = (
-		key: string,
+		key: keyof ExcursionBaseWithImage,
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
 		setNewExcursion(prev => ({
@@ -34,27 +50,31 @@ export const AdminCreateNewExcursionPage = () => {
 		}));
 	};
 
-	const [selectedImage, setSelectedImage] = useState<ImageEntity>(null);
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const handleImageChange = (image: ImageEntity) => {
+		setNewExcursion(prev => ({
+			...prev,
+			uploadedImage: image,
+		}));
+	};
+
+	const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('title', e);
+	};
+
+	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('personsAmount', e);
+	};
+
+	const handleAccompanistsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+		handleNewExcursionChange('accompanistsAmount', e);
+	};
 
 	const handleInfoChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		handleNewExcursionChange('info', e);
 	};
 
-	const handleAccompanistsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('accompanists', e);
-	};
-
-	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('persons', e);
-	};
-
 	const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
 		handleNewExcursionChange('price', e);
-	};
-
-	const handleImageUpload = (image: ImageEntity) => {
-		setSelectedImage(image);
 	};
 
 	const handleAddEvent = () => {
@@ -67,15 +87,25 @@ export const AdminCreateNewExcursionPage = () => {
 		}));
 	};
 
-	const handleModalClose = () => {
-		setIsModalOpen(false);
-	};
-
 	const handleModalOpen = () => {
 		setIsModalOpen(true);
 	};
 
+	const handleModalClose = () => {
+		setIsModalOpen(false);
+	};
+
 	const handleDeleteExcursion = () => {
+		setNewExcursion({
+			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
+			title: '',
+			personsAmount: 0,
+			accompanistsAmount: 0,
+			info: '',
+			price: 0,
+			uploadedImage: null,
+		} as ExcursionWithImage);
+
 		setIsModalOpen(false);
 	};
 
@@ -84,12 +114,23 @@ export const AdminCreateNewExcursionPage = () => {
 	}, [newExcursion]);
 
 	return (
-		<div className={styles.AdminCreateNewExcursionPage}>
+		<Page>
+			<div className={styles.breadcrumbsWrapper}>
+				<IconButton Icon={<IconArrowLeft />} onClick={handleGoBack} />
+
+				<Breadcrumbs
+					crumbs={[
+						{ id: 1, label: 'Админ-панель' },
+						{ id: 2, label: 'Экскурсии Тюмени' },
+						{ id: 3, label: 'Создание нового мероприятия' },
+					]}
+				/>
+			</div>
 			<section className={styles.createContainer}>
 				<div className={styles.imageUploaderAndButton}>
 					<ImageUploader
-						selectedImage={selectedImage}
-						onImageUpload={image => handleImageUpload(image)}
+						selectedImage={uploadedImage}
+						onImageUpload={handleImageChange}
 					/>
 					<Button
 						className={styles.triggerModalButton}
@@ -104,7 +145,7 @@ export const AdminCreateNewExcursionPage = () => {
 					<TextInput
 						className={styles.titleInput}
 						value={title}
-						onChange={e => handleNewExcursionChange('title', e)}
+						onChange={handleTitleChange}
 						placeholder='Название экскурсии'
 					/>
 
@@ -113,7 +154,7 @@ export const AdminCreateNewExcursionPage = () => {
 							label='Количество сопровождающих'
 							renderInput={() => (
 								<NumberInput
-									value={accompanistsAmount}
+									value={accompanistsAmount || ''}
 									onChange={handleAccompanistsAmountChange}
 								/>
 							)}
@@ -122,7 +163,7 @@ export const AdminCreateNewExcursionPage = () => {
 							label='Количество человек в группе'
 							renderInput={() => (
 								<NumberInput
-									value={personsAmount}
+									value={personsAmount || ''}
 									onChange={handlePersonsAmountChange}
 								/>
 							)}
@@ -159,7 +200,8 @@ export const AdminCreateNewExcursionPage = () => {
 				</div>
 				<div className={styles.priceContainer}>
 					<NumberInput
-						value={price}
+						className={styles.priceInput}
+						value={price || ''}
 						onChange={handlePriceChange}
 						minWidth={50}
 						maxWidth={140}
@@ -182,6 +224,6 @@ export const AdminCreateNewExcursionPage = () => {
 					</Button>
 				</div>
 			</Modal>
-		</div>
+		</Page>
 	);
 };

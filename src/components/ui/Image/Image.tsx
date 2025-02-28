@@ -1,4 +1,5 @@
 import { ImageProps } from '../../../types';
+import { cn } from '../../../utils/cn';
 import styles from './Image.module.css';
 
 export const Image = ({
@@ -10,7 +11,7 @@ export const Image = ({
 }: ImageProps) => {
 	return (
 		<img
-			className={[styles.image, className].join(' ')}
+			className={cn(styles.image, className)}
 			src={src}
 			alt={alt}
 			loading={loading}

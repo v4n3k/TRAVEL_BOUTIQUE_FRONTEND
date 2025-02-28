@@ -1,4 +1,4 @@
-import { ExcursionEntity } from '../entities';
+import { ExcursionWithImage } from '../entities';
 
 export interface UseAuthStore {
 	isAuth: boolean;
@@ -6,10 +6,10 @@ export interface UseAuthStore {
 }
 
 export interface UseAdminStore {
-	newExcursion: ExcursionEntity;
+	newExcursion: ExcursionWithImage;
 	setNewExcursion: (
 		updater:
-			| ExcursionEntity
-			| ((prevExcursion: ExcursionEntity) => ExcursionEntity)
+			| ExcursionWithImage
+			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
 	) => void;
 }

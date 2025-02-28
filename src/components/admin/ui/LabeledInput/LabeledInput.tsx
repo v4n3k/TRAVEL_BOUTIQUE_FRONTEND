@@ -1,4 +1,5 @@
-import { LabeledInputProps } from '../../../types';
+import { LabeledInputProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './LabeledInput.module.css';
 
 export const LabeledInput = ({
@@ -7,7 +8,7 @@ export const LabeledInput = ({
 	direction = 'row',
 }: LabeledInputProps) => {
 	return (
-		<div className={[styles.labeledInput, styles[direction]].join(' ')}>
+		<div className={cn(styles.labeledInput, styles[direction])}>
 			<label className={styles.label}>{label}:</label>
 			{renderInput()}
 		</div>

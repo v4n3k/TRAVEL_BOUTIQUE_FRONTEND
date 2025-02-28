@@ -1,4 +1,5 @@
 import { ExcursionImageProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import { Image } from '../../../ui';
 import styles from './ExcursionImage.module.css';
 
@@ -9,7 +10,7 @@ export const ExcursionImage = ({
 }: ExcursionImageProps) => {
 	return (
 		<Image
-			className={[styles.excursionImage, className].join(' ')}
+			className={cn(styles.excursionImage, className)}
 			src={src}
 			alt='excursion image'
 			{...props}
