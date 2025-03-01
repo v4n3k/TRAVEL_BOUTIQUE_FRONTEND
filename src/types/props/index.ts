@@ -1,5 +1,10 @@
 import { ComponentProps, ReactNode } from 'react';
-import { BreadcrumbEntity, ImageEntity, TagEntity } from '../entities';
+import {
+	BreadcrumbEntity,
+	ExcursionEntity,
+	ImageEntity,
+	TagEntity,
+} from '../entities';
 
 export interface Children {
 	children: ReactNode;
@@ -47,15 +52,17 @@ export interface FieldProps {
 	fieldValue: string | number;
 }
 
-export interface ExcursionCardProps {
-	id: number;
-	title: string;
-	imgSrc: string;
-	city: string;
-	accompanistsAmount: number;
-	personsAmount: number;
-	price: number;
-}
+export interface ExcursionCardProps
+	extends Pick<
+		ExcursionEntity,
+		| 'id'
+		| 'name'
+		| 'imgSrc'
+		| 'city'
+		| 'accompanistsAmount'
+		| 'personsAmount'
+		| 'price'
+	> {}
 
 export interface TagsListProps {
 	tags: TagEntity[];

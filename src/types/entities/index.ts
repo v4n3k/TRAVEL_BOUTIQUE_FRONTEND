@@ -14,10 +14,11 @@ export interface ExcursionEventEntity {
 export interface ExcursionEntity {
 	id: number;
 	imgSrc: string;
-	title: string;
+	name: string;
 	personsAmount: number;
 	accompanistsAmount: number;
 	info: string;
+	city: string;
 	excursionEvents: ExcursionEventEntity[];
 	price: number;
 }

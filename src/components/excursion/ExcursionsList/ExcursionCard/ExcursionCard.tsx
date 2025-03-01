@@ -4,7 +4,7 @@ import { Field } from '../../ui/Field/Field';
 import styles from './ExcursionCard.module.css';
 
 export const ExcursionCard = ({
-	title,
+	name,
 	imgSrc,
 	city,
 	accompanistsAmount,
@@ -16,7 +16,7 @@ export const ExcursionCard = ({
 			<ExcursionImage src={imgSrc} />
 
 			<div className={styles.textInfo}>
-				<h2 className={styles.title}>{title}</h2>
+				<h2 className={styles.title}>{name}</h2>
 				<ul className={styles.fieldsList}>
 					<Field fieldKey='Город' fieldValue={city} />
 					<Field

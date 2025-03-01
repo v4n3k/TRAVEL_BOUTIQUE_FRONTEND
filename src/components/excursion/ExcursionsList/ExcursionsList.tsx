@@ -1,11 +1,14 @@
+import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import mainImg from '../../../../assets/images/Frame 168@2x.png';
+import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionCard } from './ExcursionCard/ExcursionCard';
 import styles from './ExcursionsList.module.css';
 
 const mockExcursions = [
 	{
 		id: 1,
-		title: 'Обзорная экскурсия по Санкт-Петербургу',
+		name: 'Обзорная экскурсия по Санкт-Петербургу',
 		imgSrc: mainImg,
 		city: 'Санкт-Петербург',
 		accompanistsAmount: 2,
@@ -14,7 +17,7 @@ const mockExcursions = [
 	},
 	{
 		id: 2,
-		title: 'Казань: тысячелетняя история',
+		name: 'Казань: тысячелетняя история',
 		imgSrc: mainImg,
 		city: 'Казань',
 		accompanistsAmount: 1,
@@ -23,7 +26,7 @@ const mockExcursions = [
 	},
 	{
 		id: 3,
-		title: 'Золотое кольцо России: Суздаль',
+		name: 'Золотое кольцо России: Суздаль',
 		imgSrc: mainImg,
 		city: 'Суздаль',
 		accompanistsAmount: 3,
@@ -32,7 +35,7 @@ const mockExcursions = [
 	},
 	{
 		id: 4,
-		title: 'Сочи: Олимпийский парк и Красная Поляна',
+		name: 'Сочи: Олимпийский парк и Красная Поляна',
 		imgSrc: mainImg,
 		city: 'Сочи',
 		accompanistsAmount: 2,
@@ -41,7 +44,7 @@ const mockExcursions = [
 	},
 	{
 		id: 5,
-		title: 'Москва: Кремль и Красная площадь',
+		name: 'Москва: Кремль и Красная площадь',
 		imgSrc: mainImg,
 		city: 'Москва',
 		accompanistsAmount: 2,
@@ -51,9 +54,18 @@ const mockExcursions = [
 ];
 
 export const ExcursionsList = () => {
+	const { data: excursions, isLoading, isError, error } = useQuery({
+		queryKey: ['excursions'],
+		queryFn: () => excursionApi.getAll(),
+	});
+
+	useEffect(() => {
+		console.log(excursions, isLoading, isError, error);
+	}, []);
+
 	return (
 		<ul className={styles.excursionsList}>
-			{mockExcursions.map(excursion => (
+			{mockExcursions?.map(excursion => (
 				<ExcursionCard key={excursion.id} {...excursion} />
 			))}
 		</ul>

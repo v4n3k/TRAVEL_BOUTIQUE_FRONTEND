@@ -29,7 +29,7 @@ export const AdminCreateNewExcursionPage = () => {
 
 	const {
 		uploadedImage,
-		title,
+		name,
 		accompanistsAmount,
 		personsAmount,
 		info,
@@ -58,7 +58,7 @@ export const AdminCreateNewExcursionPage = () => {
 	};
 
 	const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('title', e);
+		handleNewExcursionChange('name', e);
 	};
 
 	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +98,7 @@ export const AdminCreateNewExcursionPage = () => {
 	const handleDeleteExcursion = () => {
 		setNewExcursion({
 			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
-			title: '',
+			name: '',
 			personsAmount: 0,
 			accompanistsAmount: 0,
 			info: '',
@@ -144,7 +144,7 @@ export const AdminCreateNewExcursionPage = () => {
 				<div className={styles.mainInfoContainer}>
 					<TextInput
 						className={styles.titleInput}
-						value={title}
+						value={name}
 						onChange={handleTitleChange}
 						placeholder='Название экскурсии'
 					/>
