@@ -14,10 +14,9 @@ export const handleApiResponse = async <T>(
 			throw new Error(message);
 		}
 
-		const data = (await response.data) as T;
-		return data;
-	} catch (err) {
-		console.error(err);
-		throw err;
+		return response.data;
+	} catch (error) {
+		console.error(error);
+		throw error;
 	}
 };

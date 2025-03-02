@@ -1,5 +1,7 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { excursionApi } from '../../api/excursion/excursionApi';
 import {
 	ExcursionEventsList,
 	ImageUploader,
@@ -25,7 +27,19 @@ export const AdminCreateNewExcursionPage = () => {
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const navigate = useNavigate();
+	const mutation = useMutation({
+		mutationFn: (formData: FormData) => excursionApi.create(formData),
+
+		onSuccess: () => {
+			handleDeleteExcursion();
+		},
+
+		onError: (error: unknown) => {
+			console.error('Error creating new Excursion: ', error);
+		},
+	});
+
+	const { isError } = mutation;
 
 	const {
 		uploadedImage,
@@ -34,7 +48,25 @@ export const AdminCreateNewExcursionPage = () => {
 		personsAmount,
 		info,
 		price,
+		excursionEvents,
 	} = newExcursion;
+
+	const navigate = useNavigate();
+
+	const handleCreateExcursion = () => {
+		const formData = new FormData();
+
+		formData.append('name', name);
+		formData.append('personsAmount', String(personsAmount));
+		formData.append('accompanistsAmount', String(accompanistsAmount));
+		formData.append('info', info);
+		formData.append('price', String(price));
+		formData.append('uploadedImage', uploadedImage as File);
+		formData.append('city', 'Тюмень');
+		formData.append('excursionEvents', JSON.stringify(excursionEvents));
+
+		mutation.mutate(formData);
+	};
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -87,14 +119,6 @@ export const AdminCreateNewExcursionPage = () => {
 		}));
 	};
 
-	const handleModalOpen = () => {
-		setIsModalOpen(true);
-	};
-
-	const handleModalClose = () => {
-		setIsModalOpen(false);
-	};
-
 	const handleDeleteExcursion = () => {
 		setNewExcursion({
 			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
@@ -109,15 +133,18 @@ export const AdminCreateNewExcursionPage = () => {
 		setIsModalOpen(false);
 	};
 
-	useEffect(() => {
-		console.log(newExcursion);
-	}, [newExcursion]);
+	const handleModalOpen = () => {
+		setIsModalOpen(true);
+	};
+
+	const handleModalClose = () => {
+		setIsModalOpen(false);
+	};
 
 	return (
 		<Page>
 			<div className={styles.breadcrumbsWrapper}>
 				<IconButton Icon={<IconArrowLeft />} onClick={handleGoBack} />
-
 				<Breadcrumbs
 					crumbs={[
 						{ id: 1, label: 'Админ-панель' },
@@ -140,6 +167,7 @@ export const AdminCreateNewExcursionPage = () => {
 					>
 						Удалить экскурсию
 					</Button>
+					<Button onClick={handleCreateExcursion}>Создать</Button>
 				</div>
 				<div className={styles.mainInfoContainer}>
 					<TextInput
@@ -224,6 +252,8 @@ export const AdminCreateNewExcursionPage = () => {
 					</Button>
 				</div>
 			</Modal>
+
+			{isError && <p>error!</p>}
 		</Page>
 	);
 };

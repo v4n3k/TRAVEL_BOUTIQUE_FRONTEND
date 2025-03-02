@@ -61,11 +61,16 @@ export const ExcursionsList = () => {
 
 	useEffect(() => {
 		console.log(excursions, isLoading, isError, error);
-	}, []);
+	}, [excursions, isLoading, isError, error]);
+
+	const mergedExcursions = [
+		...mockExcursions,
+		...(Array.isArray(excursions) ? excursions : []),
+	];
 
 	return (
 		<ul className={styles.excursionsList}>
-			{mockExcursions?.map(excursion => (
+			{mergedExcursions?.map(excursion => (
 				<ExcursionCard key={excursion.id} {...excursion} />
 			))}
 		</ul>

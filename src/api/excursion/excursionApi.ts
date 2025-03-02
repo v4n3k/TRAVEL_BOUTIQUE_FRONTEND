@@ -10,9 +10,13 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
-	async create(data) {
-		handleApiResponse<void>(
-			api.post('/excursion', data),
+	async create(newExcursion) {
+		return handleApiResponse<ExcursionEntity>(
+			api.post('/excursion', newExcursion, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}),
 			'Failed to create excursion'
 		);
 	},
