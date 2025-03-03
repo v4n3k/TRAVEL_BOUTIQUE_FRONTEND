@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface TagEntity {
 	id: number;
 	name: string;
@@ -35,4 +37,10 @@ export interface ExcursionBaseWithImage
 export interface BreadcrumbEntity {
 	id: number;
 	label: string;
+}
+
+export interface AdvantageEntity {
+	id: number;
+	text: string;
+	Icon: ReactNode;
 }

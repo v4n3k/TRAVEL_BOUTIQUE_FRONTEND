@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import img from '../../../../assets/images/Rectangle 33.png';
-import { FeedbackForm } from '../../../components/FeedbackForm/FeedbackForm';
 import { Image, TagsList } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
 import { TagEntity } from '../../../types';
+import { FeedbackForm } from './FeedbackForm/FeedbackForm';
 import styles from './FormAndCareerGuidanceExcursions.module.css';
 
 const citiesOnLargeScreen: TagEntity[] = [

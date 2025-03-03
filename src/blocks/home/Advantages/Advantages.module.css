@@ -1,0 +1,36 @@
+.advantages {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 92px;
+}
+
+.titleContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 80px;
+	margin-bottom: 48px;
+}
+
+.titleContainer h2 {
+	font-size: 72px;
+	line-height: 98px;
+	font-weight: 600;
+}
+
+.titleContainer p {
+	font-size: 28px;
+	line-height: 38px;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.titleContainer p span {
+	color: var(--blue-500);
+}
+
+.advantagesList {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	gap: 64px;
+}

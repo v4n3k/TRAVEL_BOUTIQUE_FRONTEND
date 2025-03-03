@@ -1,0 +1,51 @@
+.childrenAmount {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.description {
+	font-size: 32px;
+	line-height: 42px;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.description span {
+	margin-left: 300px;
+}
+
+.amountContainer {
+	padding: 6px 16px;
+	border-radius: 16px;
+	background-color: var(--blue-300);
+}
+
+.amount {
+	font-size: 88px;
+	line-height: 120px;
+	font-weight: 400;
+	font-style: italic;
+	color: var(--white-50);
+}
+
+.amount span:nth-child(1) {
+	font-style: normal;
+}
+
+.amount span:nth-child(2) {
+	font-style: normal;
+	font-weight: 500;
+}
+
+.amount span:nth-child(3) {
+	font-weight: 400;
+}
+
+.amount span:nth-child(4) {
+	font-weight: 300;
+}
+
+.amount span:nth-child(5) {
+	font-weight: 700;
+}

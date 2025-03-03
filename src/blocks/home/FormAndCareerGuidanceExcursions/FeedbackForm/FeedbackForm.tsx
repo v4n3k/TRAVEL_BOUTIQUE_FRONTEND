@@ -1,5 +1,5 @@
-import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
-import { Button, Form, TextInput } from '../ui';
+import { Button, Form, TextInput } from '../../../../components/ui';
+import { IconArrowTopRight } from '../../../../icons/IconArrowTopRight';
 import styles from './FeedbackForm.module.css';
 
 export const FeedbackForm = () => {
