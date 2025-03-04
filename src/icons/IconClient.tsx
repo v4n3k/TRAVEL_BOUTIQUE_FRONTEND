@@ -7,6 +7,7 @@ export const IconClient = () => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
+			style={{ width: '100%', height: '100%' }}
 		>
 			<rect x='0.5' width='56' height='56' fill='url(#pattern0_738_918)' />
 			<defs>

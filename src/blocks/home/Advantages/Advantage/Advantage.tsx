@@ -7,7 +7,7 @@ export const Advantage = ({ ...advantage }: AdvantageEntity) => {
 	return (
 		<li className={styles.advantage}>
 			<div className={styles.container}>
-				<div>{Icon}</div>
+				<div className={styles.iconWrapper}>{Icon}</div>
 				<span className={styles.text}>{text}</span>
 			</div>
 		</li>

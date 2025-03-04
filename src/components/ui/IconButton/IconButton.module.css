@@ -3,4 +3,9 @@
 	border: none;
 	border-radius: 50px;
 	height: 100%;
+	transition: 0.2s ease-in-out;
+}
+
+.iconButton:hover {
+	opacity: 0.8;
 }

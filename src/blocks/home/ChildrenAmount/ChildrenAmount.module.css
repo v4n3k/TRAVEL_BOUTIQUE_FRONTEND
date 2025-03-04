@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 32px;
 }
 
 .description {
@@ -48,4 +49,48 @@
 
 .amount span:nth-child(5) {
 	font-weight: 700;
+}
+
+@media (max-width: 1110px) {
+	.childrenAmount {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 800px) {
+	.description span {
+		margin-left: 150px;
+	}
+}
+
+@media (max-width: 650px) {
+	.description {
+		text-align: center;
+	}
+
+	.description span {
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 580px) {
+	.amount {
+		font-size: 70px;
+		line-height: 88px;
+	}
+}
+
+@media (max-width: 550px) {
+	.description {
+		font-size: 24px;
+		line-height: 33px;
+		font-weight: 400;
+	}
+}
+
+@media (max-width: 460px) {
+	.amount {
+		font-size: 56px;
+		line-height: 76px;
+	}
 }

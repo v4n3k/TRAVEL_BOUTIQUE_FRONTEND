@@ -1,4 +1,6 @@
+import { IconArrowTopRight } from '../../../../icons/IconArrowTopRight';
 import { ExcursionCardProps } from '../../../../types';
+import { IconButton } from '../../../ui';
 import { ExcursionImage } from '../../ui/ExcursionImage/ExcursionImage';
 import { Field } from '../../ui/Field/Field';
 import styles from './ExcursionCard.module.css';
@@ -13,7 +15,16 @@ export const ExcursionCard = ({
 }: ExcursionCardProps) => {
 	return (
 		<li className={styles.excursionCard}>
-			<ExcursionImage src={imgSrc} />
+			<div className={styles.imageWrapper}>
+				<ExcursionImage className={styles.excursionImage} src={imgSrc} />
+				<IconButton
+					className={styles.iconButton}
+					Icon={<IconArrowTopRight />}
+				/>
+				<div className={styles.priceOverlay}>
+					<span>{price} ₽</span>
+				</div>
+			</div>
 
 			<div className={styles.textInfo}>
 				<h2 className={styles.title}>{name}</h2>

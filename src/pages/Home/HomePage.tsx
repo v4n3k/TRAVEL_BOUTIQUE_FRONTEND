@@ -7,6 +7,7 @@ import {
 import { ExcursionsList } from '../../components/excursion';
 import { IconButton, Page } from '../../components/ui';
 import { IconPhone } from '../../icons/IconPhone';
+import styles from './HomePage.module.css';
 
 export const HomePage = () => {
 	return (
@@ -14,14 +15,8 @@ export const HomePage = () => {
 			<SchoolExcursions />
 			<ExcursionsList />
 			<FormAndCareerGuidanceExcursions />
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'flex-start',
-					marginBottom: 64,
-				}}
-			>
-				<IconButton Icon={<IconPhone />} />
+			<div className={styles.iconPhoneWrapper}>
+				<IconButton className={styles.iconButton} Icon={<IconPhone />} />
 			</div>
 
 			<Advantages />

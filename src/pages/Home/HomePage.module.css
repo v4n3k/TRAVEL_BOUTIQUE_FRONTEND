@@ -1,0 +1,25 @@
+.iconPhoneWrapper {
+	height: 88px;
+	width: 88px;
+	margin-bottom: 64px;
+}
+
+.iconButton {
+	height: 100%;
+	width: 100%;
+}
+
+@media (max-width: 580px) {
+	.iconPhoneWrapper {
+		height: 70px;
+		width: 70px;
+	}
+}
+
+@media (max-width: 400px) {
+	.iconPhoneWrapper {
+		height: 56px;
+		width: 56px;
+		margin-bottom: 52px;
+	}
+}

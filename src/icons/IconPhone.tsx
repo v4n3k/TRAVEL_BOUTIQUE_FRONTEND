@@ -6,6 +6,7 @@ export const IconPhone = () => {
 			viewBox='0 0 88 88'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
+			style={{ height: '100%', width: '100%' }}
 		>
 			<rect width='88' height='88' rx='44' fill='#BDD4E2' />
 			<path

@@ -3,8 +3,9 @@ import './App.module.css';
 import { AppRouter } from './AppRouter';
 import { Layout } from './layout/Layout';
 
+const queryClient = new QueryClient();
+
 const App = () => {
-	const queryClient = new QueryClient();
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Layout>

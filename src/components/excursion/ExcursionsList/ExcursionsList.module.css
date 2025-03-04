@@ -4,3 +4,27 @@
 	overflow-x: auto;
 	margin-bottom: 92px;
 }
+
+@media (max-width: 1480px) {
+	.excursionsList {
+		margin-bottom: 132px;
+	}
+}
+
+@media (max-width: 900px) {
+	.excursionsList {
+		margin-bottom: 96px;
+	}
+}
+
+@media (max-width: 630px) {
+	.excursionsList {
+		margin-bottom: 52px;
+	}
+}
+
+@media (max-width: 440px) {
+	.excursionsList {
+		margin-bottom: 40px;
+	}
+}

@@ -260,14 +260,14 @@
 }
 
 @media (max-width: 630px) {
+	.schoolExcursions {
+		margin-bottom: 52px;
+	}
+
 	.title {
 		font-size: 42px;
 		line-height: 56px;
 		margin-bottom: 18px;
-	}
-
-	.schoolExcursions {
-		margin-bottom: 40px;
 	}
 
 	.imagesContainer {
@@ -330,6 +330,10 @@
 }
 
 @media (max-width: 440px) {
+	.schoolExcursions {
+		margin-bottom: 40px;
+	}
+
 	.title {
 		font-size: 32px;
 		line-height: 44px;

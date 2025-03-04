@@ -7,6 +7,7 @@ export const IconBrain = () => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
+			style={{ width: '100%', height: '100%' }}
 		>
 			<rect width='56' height='56' fill='url(#pattern0_738_902)' />
 			<defs>

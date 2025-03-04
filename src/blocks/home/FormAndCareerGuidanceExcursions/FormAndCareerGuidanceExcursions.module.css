@@ -44,6 +44,10 @@
 }
 
 @media (max-width: 1480px) {
+	.formAndCareerGuidanceExcursions {
+		margin-bottom: 48px;
+	}
+
 	.careerGuidanceExcursions {
 		max-width: 442px;
 	}
@@ -56,6 +60,7 @@
 @media (max-width: 1100px) {
 	.formAndCareerGuidanceExcursions {
 		flex-direction: column;
+		margin-bottom: 64px;
 	}
 
 	.careerGuidanceExcursions {
@@ -69,6 +74,10 @@
 }
 
 @media (max-width: 560px) {
+	.formAndCareerGuidanceExcursions {
+		margin-bottom: 52px;
+	}
+
 	.careerGuidanceExcursions,
 	.img {
 		border-radius: 20px;
