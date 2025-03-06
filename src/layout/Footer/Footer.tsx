@@ -22,19 +22,19 @@ export const Footer = () => {
 								{isAuth && isAdminPage ? (
 									<>
 										<li>
-											<Link to={RouteName.HOME}>категории</Link>
+											<Link to={RouteName.CATEGORIES}>категории</Link>
 										</li>
 										<li>
-											<Link to={RouteName.EXCURSIONS}>блог</Link>
+											<Link to={RouteName.BLOG}>блог</Link>
 										</li>
 										<li>
 											<Link to={RouteName.ABOUT}>о нас</Link>
 										</li>
 										<li>
-											<Link to={RouteName.ABOUT}>информация</Link>
+											<Link to={RouteName.INFO}>информация</Link>
 										</li>
 										<li>
-											<Link to={RouteName.ABOUT}>услуги</Link>
+											<Link to={RouteName.SERVICE}>услуги</Link>
 										</li>
 									</>
 								) : (

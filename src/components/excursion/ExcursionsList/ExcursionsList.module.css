@@ -1,30 +1,23 @@
 .excursionsList {
 	display: flex;
 	gap: 64px;
+	padding-left: 16px;
+	margin-left: -16px;
 	overflow-x: auto;
-	margin-bottom: 92px;
-}
-
-@media (max-width: 1480px) {
-	.excursionsList {
-		margin-bottom: 132px;
-	}
+	overflow-y: hidden;
 }
 
 @media (max-width: 900px) {
 	.excursionsList {
-		margin-bottom: 96px;
+		padding-top: 16px;
+		margin-top: -16px;
 	}
 }
 
-@media (max-width: 630px) {
+@media (max-width: 760px) {
 	.excursionsList {
-		margin-bottom: 52px;
-	}
-}
-
-@media (max-width: 440px) {
-	.excursionsList {
-		margin-bottom: 40px;
+		padding: 0;
+		margin-top: 0;
+		margin-left: 0;
 	}
 }

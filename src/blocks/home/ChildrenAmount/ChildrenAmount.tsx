@@ -1,8 +1,9 @@
+import { Section } from '../../../components/ui';
 import styles from './ChildrenAmount.module.css';
 
 export const ChildrenAmount = () => {
 	return (
-		<section className={styles.childrenAmount}>
+		<Section className={styles.childrenAmount}>
 			<p className={styles.description}>
 				количество детей, которые
 				<br />
@@ -18,6 +19,6 @@ export const ChildrenAmount = () => {
 					<span>8</span>
 				</span>
 			</div>
-		</section>
+		</Section>
 	);
 };

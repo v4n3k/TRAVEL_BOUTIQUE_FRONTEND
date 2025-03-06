@@ -1,0 +1,83 @@
+.paymentMethod {
+	display: flex;
+	gap: 32px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	max-width: 732px;
+	width: 100%;
+	padding: 32px;
+	border-radius: 40px;
+	background: var(--blue-500);
+}
+
+.titleContainer {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.title {
+	padding: 6px 16px;
+	border-radius: 16px;
+	background-color: var(--white-50);
+	font-size: 28px;
+	line-height: 38px;
+	font-weight: 600;
+}
+
+.imagesContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.methodsList {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.methodsList li {
+	position: relative;
+	padding: 6px 16px 6px 40px;
+	font-size: 24px;
+	line-height: 33px;
+	font-weight: 400;
+	color: var(--white-50);
+}
+
+.methodsList li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 20px;
+	height: 20px;
+	background-color: var(--blue-300);
+}
+
+.imagesContainer {
+	max-height: 412px;
+	width: 100%;
+}
+
+.imgChildren {
+	height: 154px;
+	object-position: 50% 80%;
+}
+
+.imgGrandParents {
+	height: 226px;
+	object-position: 50% 20%;
+}
+
+@media (max-width: 1480px) {
+	.imagesContainer {
+		max-width: 450px;
+	}
+}

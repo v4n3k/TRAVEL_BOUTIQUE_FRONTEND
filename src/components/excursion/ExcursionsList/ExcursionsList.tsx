@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import mainImg from '../../../../assets/images/Frame 168@2x.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionCard } from './ExcursionCard/ExcursionCard';
@@ -54,14 +53,10 @@ const mockExcursions = [
 ];
 
 export const ExcursionsList = () => {
-	const { data: excursions, isLoading, isError, error } = useQuery({
+	const { data: excursions } = useQuery({
 		queryKey: ['excursions'],
 		queryFn: () => excursionApi.getAll(),
 	});
-
-	useEffect(() => {
-		console.log(excursions, isLoading, isError, error);
-	}, [excursions, isLoading, isError, error]);
 
 	const mergedExcursions = [
 		...mockExcursions,

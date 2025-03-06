@@ -44,3 +44,9 @@ export interface AdvantageEntity {
 	text: string;
 	Icon: ReactNode;
 }
+
+export interface ReviewEntity {
+	id: number;
+	author: string;
+	text: string;
+}

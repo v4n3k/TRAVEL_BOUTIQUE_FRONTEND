@@ -1,4 +1,5 @@
 .excursionCard {
+	position: relative;
 	display: flex;
 	flex-shrink: 0;
 	gap: 32px;
@@ -6,7 +7,7 @@
 
 .imageWrapper {
 	position: relative;
-	height: fit-content;
+	overflow: visible;
 }
 
 .iconButton {
@@ -14,6 +15,10 @@
 	height: fit-content;
 	right: 32px;
 	bottom: 32px;
+}
+
+.priceOverlay {
+	display: none;
 }
 
 .textInfo {
@@ -28,13 +33,17 @@
 	line-height: 41px;
 	font-weight: 600;
 	margin-bottom: 20px;
+	text-wrap: wrap;
 }
 
 .fieldsList {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	margin-bottom: 20px;
+}
+
+.price {
+	margin-top: 20px;
 }
 
 .price,
@@ -53,13 +62,13 @@
 	color: var(--black-900);
 }
 
-@media (max-width: 900px) {
-	.excursionImage {
-		height: 293px;
-		min-width: 250px;
-		width: 262px;
+@media (max-width: 990px) {
+	.textInfo {
+		max-width: 450px;
 	}
+}
 
+@media (max-width: 900px) {
 	.price {
 		display: none;
 	}
@@ -69,6 +78,50 @@
 		top: -16px;
 		left: -16px;
 		display: block;
-		z-index: 10000;
+		overflow: visible;
+	}
+}
+
+@media (max-width: 800px) {
+	.excursionCard {
+		gap: 24px;
+	}
+}
+
+@media (max-width: 760px) {
+	.excursionCard {
+		flex-direction: column;
+	}
+
+	.priceOverlay {
+		top: 12px;
+		left: 12px;
+		border-radius: 16px;
+	}
+
+	.priceOverlay span {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.iconButton {
+		top: 12px;
+		right: 12px;
+	}
+
+	.textInfo {
+		max-width: 500px;
+	}
+}
+
+@media (max-width: 620px) {
+	.excursionCard {
+		max-width: 350px;
+	}
+}
+
+@media (max-width: 440px) {
+	.excursionCard {
+		max-width: 335px;
 	}
 }

@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ReactNode, SVGProps } from 'react';
 import {
 	BreadcrumbEntity,
 	ExcursionEntity,
@@ -15,6 +15,8 @@ export interface LayoutProps extends Children {}
 export interface MainProps extends Children {}
 
 export interface PageProps extends ComponentProps<'div'> {}
+
+export interface SectionProps extends ComponentProps<'section'> {}
 
 export interface ImageProps extends ComponentProps<'img'> {}
 
@@ -33,7 +35,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 		| 'blue-300'
 		| 'blue-500'
 		| 'red-300';
-	color?: 'white-50' | 'white-100' | 'blue-500' | 'black-900' | 'black-700';
+	color?: 'white-50' | 'white-100' | 'blue-500' | 'black-700' | 'black-900';
 	withBorder?: boolean;
 
 	leftIcon?: ReactNode;
@@ -101,3 +103,9 @@ export interface ModalProps extends ComponentProps<'div'> {
 export interface BreadcrumbsProps {
 	crumbs: BreadcrumbEntity[];
 }
+
+export interface TitleProps extends ComponentProps<'h2'> {
+	as: 'h1' | 'h2' | 'h3';
+}
+
+export interface IconArrowRightProps extends SVGProps<SVGSVGElement> {}

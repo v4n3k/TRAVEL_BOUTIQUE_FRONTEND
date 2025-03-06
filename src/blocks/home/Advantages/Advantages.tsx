@@ -1,3 +1,4 @@
+import { Section } from '../../../components/ui';
 import { IconBrain } from '../../../icons/IconBrain';
 import { IconClient } from '../../../icons/IconClient';
 import { IconComfort } from '../../../icons/IconComfort';
@@ -43,7 +44,7 @@ const advantages: AdvantageEntity[] = [
 
 export const Advantages = () => {
 	return (
-		<section className={styles.advantages}>
+		<Section className={styles.advantages}>
 			<div className={styles.titleContainer}>
 				<p>
 					Даём возможность родителям присоединиться на экскурсию
@@ -56,6 +57,6 @@ export const Advantages = () => {
 					<Advantage key={advantage.id} {...advantage} />
 				))}
 			</ul>
-		</section>
+		</Section>
 	);
 };

@@ -21,9 +21,10 @@ export const ExcursionCard = ({
 					className={styles.iconButton}
 					Icon={<IconArrowTopRight />}
 				/>
-				<div className={styles.priceOverlay}>
-					<span>{price} ₽</span>
-				</div>
+			</div>
+
+			<div className={styles.priceOverlay}>
+				<span>{price} ₽</span>
 			</div>
 
 			<div className={styles.textInfo}>

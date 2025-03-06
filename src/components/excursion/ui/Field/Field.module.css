@@ -20,3 +20,11 @@
 	line-height: 30px;
 	font-weight: 700;
 }
+
+@media (max-width: 620px) {
+	.key,
+	.value {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}

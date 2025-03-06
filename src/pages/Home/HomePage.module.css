@@ -9,6 +9,12 @@
 	width: 100%;
 }
 
+.chooseButtonWrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 132px;
+}
+
 @media (max-width: 580px) {
 	.iconPhoneWrapper {
 		height: 70px;

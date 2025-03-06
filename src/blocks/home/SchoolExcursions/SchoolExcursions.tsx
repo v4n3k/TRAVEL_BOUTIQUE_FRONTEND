@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import mainImage from '../../../../assets/images/Frame 168@2x.png';
 import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
-import { IconButton, Image, TagsList } from '../../../components/ui';
+import { IconButton, Image, Section, TagsList } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
 import { TagEntity } from '../../../types';
 import styles from './SchoolExcursions.module.css';
@@ -50,12 +50,12 @@ export const SchoolExcursions = () => {
 	const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
 
 	return (
-		<>
+		<Section>
 			<h1 className={styles.title}>
 				Школьные<span>экскурсии</span>
 			</h1>
 
-			<section className={styles.schoolExcursions}>
+			<div className={styles.wrapper}>
 				<div className={styles.imagesContainer}>
 					<Image className={styles.mainImage} src={mainImage} />
 					<Image
@@ -70,7 +70,8 @@ export const SchoolExcursions = () => {
 							<div className={styles.titleContainer}>
 								<h2>Помощь в выборе тура</h2>
 								<IconButton
-									Icon={<IconArrowTopRight className={styles.icon} />}
+									className={styles.icon}
+									Icon={<IconArrowTopRight />}
 								/>
 							</div>
 							<p>
@@ -96,7 +97,7 @@ export const SchoolExcursions = () => {
 						</div>
 					</div>
 				</div>
-			</section>
-		</>
+			</div>
+		</Section>
 	);
 };
