@@ -8,13 +8,16 @@ import {
 	HomePage,
 	InfoPage,
 	ServicePage,
+	ExcursionPage,
 	SignInPage,
 } from '../pages';
 import { Route, RouteName } from '../types/routes';
 
 export const publicRoutes: Route[] = [
 	{ path: RouteName.HOME, Component: HomePage },
+
 	{ path: RouteName.EXCURSIONS, Component: ExcursionsPage },
+	{ path: RouteName.EXCURSION, Component: ExcursionPage },
 	{ path: RouteName.ABOUT, Component: AboutPage },
 	{ path: RouteName.CATEGORIES, Component: CategoriesPage },
 	{ path: RouteName.BLOG, Component: BlogPage },

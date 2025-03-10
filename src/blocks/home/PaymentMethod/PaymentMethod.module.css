@@ -39,6 +39,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	padding-left: 16px;
 }
 
 .methodsList li {
@@ -48,6 +49,7 @@
 	line-height: 33px;
 	font-weight: 400;
 	color: var(--white-50);
+	text-wrap: wrap;
 }
 
 .methodsList li::before {
@@ -77,7 +79,84 @@
 }
 
 @media (max-width: 1480px) {
+	.container {
+		min-width: 686px;
+	}
+
 	.imagesContainer {
 		max-width: 450px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.paymentMethod {
+		flex-direction: column;
+	}
+
+	.container,
+	.imagesContainer {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.container {
+		min-width: auto;
+	}
+
+	.imgChildren,
+	.imgGrandParents {
+		width: 100%;
+	}
+
+	.imgGrandParents {
+		object-position: 50% 30%;
+	}
+}
+
+@media (max-width: 800px) {
+	.iconButton {
+		display: none;
+	}
+
+	.title {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+@media (max-width: 600px) {
+	.container {
+		padding: 28px;
+	}
+
+	.title {
+		font-size: 28px;
+		line-height: 40px;
+	}
+
+	.methodsList li {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 450px) {
+	.container {
+		padding: 20px 24px;
+		border-radius: 20px;
+	}
+
+	.titleContainer {
+		border-radius: 12px;
+	}
+
+	.title {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.methodsList li {
+		font-size: 18px;
+		line-height: 25px;
 	}
 }

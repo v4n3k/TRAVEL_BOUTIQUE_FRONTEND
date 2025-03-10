@@ -32,24 +32,6 @@ const mockExcursions = [
 		personsAmount: 40,
 		price: 1500,
 	},
-	{
-		id: 4,
-		name: 'Сочи: Олимпийский парк и Красная Поляна',
-		imgSrc: mainImg,
-		city: 'Сочи',
-		accompanistsAmount: 2,
-		personsAmount: 35,
-		price: 1350,
-	},
-	{
-		id: 5,
-		name: 'Москва: Кремль и Красная площадь',
-		imgSrc: mainImg,
-		city: 'Москва',
-		accompanistsAmount: 2,
-		personsAmount: 30,
-		price: 1100,
-	},
 ];
 
 export const ExcursionsList = () => {

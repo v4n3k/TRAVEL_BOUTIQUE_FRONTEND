@@ -3,6 +3,12 @@
 	display: flex;
 	flex-shrink: 0;
 	gap: 32px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.excursionCard:hover {
+	opacity: 0.8;
 }
 
 .imageWrapper {

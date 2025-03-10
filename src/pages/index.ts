@@ -3,6 +3,7 @@ export * from './Admin/AdminPage';
 export * from './AdminCreateNewExcursion/AdminCreateNewExcursionPage';
 export * from './Blog/BlogPage';
 export * from './Categories/CategoriesPage';
+export * from './Excursion/ExcursionPage';
 export * from './Excursions/ExcursionsPage';
 export * from './Home/HomePage';
 export * from './Info/InfoPage';

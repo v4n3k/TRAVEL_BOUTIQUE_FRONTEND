@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import {
 	Advantages,
 	ChildrenAmount,
@@ -10,9 +11,16 @@ import { PaymentMethod } from '../../blocks/home/PaymentMethod/PaymentMethod';
 import { Button, IconButton, Page } from '../../components/ui';
 import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
 import { IconPhone } from '../../icons/IconPhone';
+import { RouteName } from '../../types';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate(RouteName.EXCURSIONS);
+	};
+
 	return (
 		<Page>
 			<SchoolExcursions />
@@ -27,8 +35,10 @@ export const HomePage = () => {
 			<Reviews />
 			<div className={styles.chooseButtonWrapper}>
 				<Button
+					className={styles.chooseButton}
 					backgroundColor='blue-500'
 					cornerIcon={<IconArrowTopRight fill='#BDD4E2' />}
+					onClick={handleClick}
 				>
 					Выбрать экскурсию
 				</Button>

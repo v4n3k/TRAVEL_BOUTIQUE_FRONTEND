@@ -10,9 +10,8 @@ import {
 	NumberInput,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
-import { Breadcrumbs } from '../../components/admin/ui/Breadcrumbs/BreadCrumbs';
-import { Button, IconButton, Page, TextInput } from '../../components/ui';
-import { IconArrowLeft } from '../../icons/IconArrowLeft';
+import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
+import { Button, Page, Section, TextInput } from '../../components/ui';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
@@ -143,17 +142,14 @@ export const AdminCreateNewExcursionPage = () => {
 
 	return (
 		<Page>
-			<div className={styles.breadcrumbsWrapper}>
-				<IconButton Icon={<IconArrowLeft />} onClick={handleGoBack} />
-				<Breadcrumbs
-					crumbs={[
-						{ id: 1, label: 'Админ-панель' },
-						{ id: 2, label: 'Экскурсии Тюмени' },
-						{ id: 3, label: 'Создание нового мероприятия' },
-					]}
-				/>
-			</div>
-			<section className={styles.createContainer}>
+			<BreadcrumbsWithNavButton
+				crumbs={[
+					{ id: 1, label: 'Админ-панель' },
+					{ id: 2, label: 'Экскурсии Тюмени' },
+					{ id: 3, label: 'Создание нового мероприятия' },
+				]}
+			/>
+			<Section className={styles.createContainer}>
 				<div className={styles.imageUploaderAndButton}>
 					<ImageUploader
 						selectedImage={uploadedImage}
@@ -238,7 +234,7 @@ export const AdminCreateNewExcursionPage = () => {
 					/>
 					<label>₽</label>
 				</div>
-			</section>
+			</Section>
 
 			<Modal isOpen={isModalOpen} onClose={handleModalClose}>
 				<div className={styles.modalContainer}>

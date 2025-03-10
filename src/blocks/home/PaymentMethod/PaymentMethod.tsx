@@ -16,11 +16,14 @@ export const PaymentMethod = () => {
 			<div className={styles.container}>
 				<div className={styles.titleContainer}>
 					<h2 className={styles.title}>Выберите удобный способ оплаты:</h2>
-					<IconButton Icon={<IconArrowTopRight />} />
+					<IconButton
+						className={styles.iconButton}
+						Icon={<IconArrowTopRight />}
+					/>
 				</div>
 				<ul className={styles.methodsList}>
 					{methods.map(method => (
-						<li>{method}</li>
+						<li key={method}>{method}</li>
 					))}
 				</ul>
 			</div>

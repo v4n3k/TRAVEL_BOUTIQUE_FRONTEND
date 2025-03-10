@@ -1,0 +1,12 @@
+.breadcrumbsWithNavButton {
+	display: flex;
+	gap: 24px;
+	height: 32px;
+	margin-bottom: 32px;
+}
+
+@media (max-width: 1480px) {
+	.breadcrumbsWithNavButton {
+		margin-bottom: 24px;
+	}
+}

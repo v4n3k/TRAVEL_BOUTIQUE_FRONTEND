@@ -1,0 +1,233 @@
+.excursion {
+	display: flex;
+	justify-content: space-between;
+	gap: 52px;
+}
+
+.imageContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+	max-width: 637px;
+	width: 100%;
+}
+
+.imageContainer img {
+	border-radius: 20px;
+}
+
+.priceOnSmallScreen {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: none;
+	font-size: 24px;
+	line-height: 33px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	max-width: 743px;
+	width: 100%;
+}
+
+.title {
+	margin-bottom: 24px;
+	font-size: 36px;
+	line-height: 49px;
+	font-weight: 600;
+}
+
+.priceContainer {
+	display: flex;
+	align-items: center;
+	gap: 48px;
+	margin-bottom: 24px;
+}
+
+.buyButton {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	border-radius: 12px;
+}
+
+.amounts {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.field {
+	border-radius: 12px;
+}
+
+.descriptionContainer {
+	padding: 16px;
+	border-radius: 20px;
+	background-color: var(--white-50);
+}
+
+.descriptionContainer h3 {
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: 600;
+	color: var(--blue-500);
+}
+
+.descriptionContainer p {
+	font-size: 22px;
+	line-height: 29px;
+	font-weight: 400;
+}
+
+.managerButtonOnSmallScreen {
+	display: none;
+}
+
+@media (max-width: 1480px) {
+	.imageContainer {
+		gap: 32px;
+	}
+
+	.imageContainer img {
+		max-width: 541px;
+		width: 100%;
+	}
+
+	.title {
+		font-size: 30px;
+		line-height: 41px;
+	}
+
+	.priceContainer {
+		margin-bottom: 32px;
+	}
+
+	.descriptionContainer h3 {
+		font-size: 20px;
+		line-height: 27px;
+	}
+
+	.descriptionContainer p {
+		font-size: 18px;
+		line-height: 24px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.excursion {
+		flex-direction: column;
+		gap: 0 !important;
+	}
+
+	.imageContainer,
+	.info {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.info {
+		margin-bottom: 48px;
+	}
+
+	.imageContainer {
+		gap: 0;
+		margin-bottom: 16px;
+	}
+
+	.imageContainer img {
+		max-width: 100%;
+	}
+
+	.priceContainer {
+		gap: 24px;
+	}
+
+	.price {
+		justify-content: center;
+		width: 40%;
+	}
+
+	.managerButton {
+		display: none;
+	}
+
+	.managerButtonOnSmallScreen {
+		display: flex;
+	}
+}
+
+@media (max-width: 900px) {
+	.excursion {
+		gap: 36px;
+	}
+
+	.title {
+		margin-bottom: 16px;
+	}
+
+	.priceContainer {
+		gap: 20px;
+	}
+
+	.price {
+		justify-content: center;
+		width: 60%;
+	}
+}
+
+@media (max-width: 680px) {
+	.info {
+		margin-bottom: 40px;
+	}
+
+	.price {
+		width: auto;
+	}
+}
+
+@media (max-width: 500px) {
+	.priceContainer {
+		margin-bottom: 16px;
+	}
+
+	.price {
+		display: none;
+	}
+
+	.priceOnSmallScreen {
+		display: block;
+	}
+
+	.info {
+		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 440px) {
+	.title,
+	.buyButton {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.title {
+		text-wrap: balance;
+		margin-bottom: 8px;
+	}
+
+	.descriptionContainer h3 {
+		font-size: 16px;
+		line-height: 21px;
+	}
+
+	.descriptionContainer p {
+		font-size: 14px;
+		line-height: 19px;
+	}
+}

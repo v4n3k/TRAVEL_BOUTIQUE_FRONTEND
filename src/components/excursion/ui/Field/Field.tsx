@@ -1,11 +1,21 @@
 import { FieldProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './Field.module.css';
 
-export const Field = ({ fieldKey, fieldValue }: FieldProps) => {
+export const Field = ({
+	fieldKey,
+	fieldValue,
+	width = 'fitContent',
+	valueBackground = 'transparent',
+	className,
+	...props
+}: FieldProps) => {
 	return (
-		<li className={styles.field}>
+		<li className={cn(styles.field, className, styles[width])} {...props}>
 			<span className={styles.key}>{fieldKey}:</span>
-			<span className={styles.value}>{fieldValue}</span>
+			<span className={cn(styles.value, styles[valueBackground])}>
+				{fieldValue}
+			</span>
 		</li>
 	);
 };

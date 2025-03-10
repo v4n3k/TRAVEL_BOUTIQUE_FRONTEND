@@ -10,6 +10,10 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
+	async getById(id) {
+		return handleApiResponse<ExcursionEntity>(api.get(`/excursion/${id}`));
+	},
+
 	async create(newExcursion) {
 		return handleApiResponse<ExcursionEntity>(
 			api.post('/excursion', newExcursion, {

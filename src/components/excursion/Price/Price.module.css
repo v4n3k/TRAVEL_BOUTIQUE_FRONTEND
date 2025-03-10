@@ -1,0 +1,17 @@
+.price {
+	display: flex;
+	gap: 8px;
+	padding: 6px 16px;
+	border-radius: 12px;
+	border: 0.8px solid var(--blue-500-40);
+	background-color: var(--white-50);
+	font-size: 32px;
+	line-height: 44px;
+	font-weight: 400;
+	font-style: italic;
+	color: var(--blue-500);
+}
+
+.priceValue {
+	font-weight: 600;
+}

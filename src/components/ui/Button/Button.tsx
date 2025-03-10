@@ -8,6 +8,7 @@ export const Button = ({
 	backgroundColor = 'blue-300',
 	color = 'white-50',
 	withBorder = false,
+	fullWidth = false,
 	children,
 	leftIcon,
 	rightIcon,
@@ -45,7 +46,10 @@ export const Button = ({
 	};
 
 	return (
-		<div className={styles.buttonWrapper}>
+		<div
+			className={styles.buttonWrapper}
+			style={{ width: fullWidth ? '100%' : 'fit-content' }}
+		>
 			<button
 				className={cn(styles.button, className)}
 				style={{

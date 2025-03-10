@@ -1,10 +1,14 @@
 .buttonWrapper {
 	position: relative;
-	display: inline-block;
+	display: flex;
+	flex-direction: row;
 }
 
 .button {
 	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	padding: 8px 36px;
 	border-radius: 20px;
 	border: none;
@@ -15,13 +19,6 @@
 	font-weight: 600;
 	transition: 0.3s ease-in-out;
 	overflow: hidden;
-}
-
-.cornerIcon {
-	position: absolute;
-	top: -12px;
-	right: -5px;
-	z-index: 1;
 }
 
 .button:hover {
@@ -54,4 +51,18 @@
 .rippleAnimate {
 	transform: translate(-50%, -50%) scale(4);
 	opacity: 0;
+}
+
+.cornerIcon {
+	position: absolute;
+	top: -12px;
+	right: -5px;
+	z-index: 1;
+}
+
+.leftIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 16px;
 }

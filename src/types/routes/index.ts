@@ -6,6 +6,7 @@ export interface Route {
 export enum RouteBase {
 	HOME = '/',
 	EXCURSIONS = '/excursions',
+	EXCURSION = '/excursion',
 	ABOUT = '/about',
 	CATEGORIES = '/categories',
 	BLOG = '/blog',
@@ -16,9 +17,12 @@ export enum RouteBase {
 	ADMIN_CREATE_NEW_EXCURSION = '/admin_create_new_excursion',
 }
 
+const idParam = '/:id';
+
 export enum RouteName {
 	HOME = RouteBase.HOME,
 	EXCURSIONS = RouteBase.EXCURSIONS,
+	EXCURSION = RouteBase.EXCURSION + idParam,
 	ABOUT = RouteBase.ABOUT,
 	CATEGORIES = RouteBase.CATEGORIES,
 	BLOG = RouteBase.BLOG,

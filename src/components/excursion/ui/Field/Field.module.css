@@ -1,12 +1,20 @@
 .field {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 14px;
-	width: fit-content;
 	padding: 6px 16px;
 	border: 1px solid var(--grey-500);
 	border-radius: 16px;
 	color: var(--black-700);
+}
+
+.fitContent {
+	width: fit-content;
+}
+
+.fullWidth {
+	width: 100%;
 }
 
 .key {
@@ -16,9 +24,19 @@
 }
 
 .value {
+	padding: 0 9px;
+	border-radius: 8px;
 	font-size: 22px;
 	line-height: 30px;
 	font-weight: 700;
+}
+
+.transparent {
+	background-color: 'transparent';
+}
+
+.white-50 {
+	background-color: var(--white-50);
 }
 
 @media (max-width: 620px) {

@@ -2,6 +2,7 @@ import { ComponentProps, ReactNode, SVGProps } from 'react';
 import {
 	BreadcrumbEntity,
 	ExcursionEntity,
+	ExcursionEventEntity,
 	ImageEntity,
 	TagEntity,
 } from '../entities';
@@ -37,7 +38,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 		| 'red-300';
 	color?: 'white-50' | 'white-100' | 'blue-500' | 'black-700' | 'black-900';
 	withBorder?: boolean;
-
+	fullWidth?: boolean;
 	leftIcon?: ReactNode;
 	rightIcon?: ReactNode;
 	cornerIcon?: ReactNode;
@@ -49,9 +50,11 @@ export interface FormProps extends ComponentProps<'form'> {}
 
 export interface ExcursionImageProps extends ComponentProps<'img'> {}
 
-export interface FieldProps {
+export interface FieldProps extends ComponentProps<'li'> {
 	fieldKey: string;
 	fieldValue: string | number;
+	width?: 'fitContent' | 'fullWidth';
+	valueBackground?: 'transparent' | 'white-50';
 }
 
 export interface ExcursionCardProps
@@ -65,6 +68,20 @@ export interface ExcursionCardProps
 		| 'personsAmount'
 		| 'price'
 	> {}
+
+export interface ExcursionEventsListProps extends ComponentProps<'ul'> {
+	excursionEvents: ExcursionEventEntity[];
+}
+
+export interface ExcursionEventProps {
+	event: ExcursionEventEntity;
+}
+
+export interface PriceProps extends ComponentProps<'div'> {
+	price: number;
+}
+
+export interface ManagerButtonProps extends ButtonProps {}
 
 export interface TagsListProps {
 	tags: TagEntity[];
@@ -100,7 +117,11 @@ export interface ModalProps extends ComponentProps<'div'> {
 	onClose: () => void;
 }
 
-export interface BreadcrumbsProps {
+export interface BreadcrumbsProps extends ComponentProps<'ul'> {
+	crumbs: BreadcrumbEntity[];
+}
+
+export interface BreadcrumbsWithNavButtonProps extends ComponentProps<'div'> {
 	crumbs: BreadcrumbEntity[];
 }
 

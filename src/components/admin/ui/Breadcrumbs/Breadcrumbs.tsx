@@ -1,9 +1,14 @@
 import { BreadcrumbsProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './Breadcrumbs.module.css';
 
-export const Breadcrumbs = ({ crumbs }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({
+	crumbs,
+	className,
+	...props
+}: BreadcrumbsProps) => {
 	return (
-		<ul className={styles.breadcrumbs}>
+		<ul className={cn(styles.breadcrumbs, className)} {...props}>
 			{crumbs.map((crumb, index) => (
 				<li className={styles.crumb} key={crumb.id}>
 					<span>{crumb.label}</span>

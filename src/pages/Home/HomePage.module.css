@@ -15,6 +15,12 @@
 	margin-bottom: 132px;
 }
 
+@media (max-width: 800px) {
+	.chooseButtonWrapper {
+		margin-bottom: 96px;
+	}
+}
+
 @media (max-width: 580px) {
 	.iconPhoneWrapper {
 		height: 70px;
@@ -22,10 +28,27 @@
 	}
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1070px) {
 	.iconPhoneWrapper {
 		height: 56px;
 		width: 56px;
 		margin-bottom: 52px;
+	}
+}
+
+@media (max-width: 580px) {
+	.chooseButtonWrapper {
+		margin-bottom: 64px;
+	}
+}
+
+@media (max-width: 440px) {
+	.chooseButtonWrapper {
+		margin-bottom: 40px;
+	}
+
+	.chooseButton {
+		font-size: 20px;
+		line-height: 27px;
 	}
 }

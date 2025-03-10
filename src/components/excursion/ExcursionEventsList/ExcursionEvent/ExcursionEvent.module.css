@@ -1,0 +1,32 @@
+.excursionEvent {
+	display: flex;
+	gap: 12px;
+}
+
+.time {
+	height: fit-content;
+	padding: 4px 6px;
+	border-radius: 6px;
+	background-color: var(--grey-300);
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 600;
+}
+
+.name {
+	font-size: 16px;
+	line-height: 22px;
+	font-weight: 400;
+}
+
+@media (max-width: 500px) {
+	.excursionEvent {
+		gap: 12px;
+	}
+
+	.time,
+	.name {
+		font-size: 14px;
+		line-height: 19px;
+	}
+}
