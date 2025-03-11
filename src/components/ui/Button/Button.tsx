@@ -5,6 +5,7 @@ import styles from './Button.module.css';
 
 export const Button = ({
 	className,
+	rootClassName,
 	backgroundColor = 'blue-300',
 	color = 'white-50',
 	withBorder = false,
@@ -47,8 +48,10 @@ export const Button = ({
 
 	return (
 		<div
-			className={styles.buttonWrapper}
-			style={{ width: fullWidth ? '100%' : 'fit-content' }}
+			className={cn(styles.buttonWrapper, rootClassName)}
+			style={{
+				width: fullWidth ? '100%' : 'fit-content',
+			}}
 		>
 			<button
 				className={cn(styles.button, className)}

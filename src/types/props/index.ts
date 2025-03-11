@@ -30,6 +30,7 @@ export interface IconButtonProps extends ComponentProps<'button'> {
 }
 
 export interface ButtonProps extends ComponentProps<'button'> {
+	rootClassName?: string;
 	backgroundColor?:
 		| 'white-50'
 		| 'white-100'

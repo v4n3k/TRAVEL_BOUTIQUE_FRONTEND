@@ -1,20 +1,30 @@
 .managerButton {
-	padding: 16px 36px;
+	padding: 16px 51px;
 	border-radius: 12px;
-	border: 1px solid var(--blue-500) !important;
+	border: 0.8px solid var(--blue-500) !important;
 	font-size: 24px;
 	line-height: 33px;
 }
 
 @media (max-width: 1480px) {
 	.managerButton {
-		padding: 13px 36px;
+		padding: 13px 30px;
+		font-size: 22px;
+		line-height: 30px;
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 500px) {
 	.managerButton {
-		font-size: 22px;
-		line-height: 30px;
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 400px) {
+	.managerButton {
+		padding: 12px 16px;
+		font-size: 16px;
+		line-height: 22px;
 	}
 }

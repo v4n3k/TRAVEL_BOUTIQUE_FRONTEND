@@ -98,7 +98,10 @@ export const ExcursionPage = () => {
 					/>
 				</div>
 
-				<ManagerButton className={styles.managerButtonOnSmallScreen} />
+				<ManagerButton
+					className={styles.managerButtonOnSmallScreen}
+					rootClassName={styles.managerButtonRoot}
+				/>
 			</Section>
 		</Page>
 	);

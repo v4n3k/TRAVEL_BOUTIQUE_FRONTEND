@@ -10,6 +10,7 @@
 	flex-direction: column;
 	gap: 36px;
 	max-width: 637px;
+	min-width: 430px;
 	width: 100%;
 }
 
@@ -119,7 +120,7 @@
 	}
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1070px) {
 	.excursion {
 		flex-direction: column;
 		gap: 0 !important;
@@ -182,12 +183,22 @@
 }
 
 @media (max-width: 680px) {
+	.imageContainer {
+		min-width: auto;
+	}
+
 	.info {
 		margin-bottom: 40px;
 	}
 
 	.price {
 		width: auto;
+	}
+}
+
+@media (max-width: 720px) {
+	.managerButtonRoot {
+		margin: 0 auto;
 	}
 }
 

@@ -1,8 +1,24 @@
+import { useEffect, useState } from 'react';
+
 export const IconConnect = () => {
+	const [size, setSize] = useState(window.innerWidth <= 400 ? 24 : 27);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setSize(window.innerWidth <= 400 ? 24 : 27);
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
 	return (
 		<svg
-			width='27'
-			height='27'
+			width={size}
+			height={size}
 			viewBox='0 0 27 27'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'

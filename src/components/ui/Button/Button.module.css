@@ -64,5 +64,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 16px;
+	margin-right: 20px;
+}
+
+@media (max-width: 1480px) {
+	.leftIcon {
+		margin-right: 16px;
+	}
 }
