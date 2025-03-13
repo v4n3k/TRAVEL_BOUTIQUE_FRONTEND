@@ -1,0 +1,35 @@
+.maskedListWrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.maskedListWrapper::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: calc(var(--button-offset) * 2);
+	height: 100%;
+	background: linear-gradient(to left, var(--white-100), #f5f5f500);
+}
+
+.iconButtonRoot {
+	position: absolute;
+	right: var(--button-offset);
+	z-index: 10;
+}
+
+.iconButton {
+	justify-content: center;
+	height: 64px;
+	width: 64px;
+	padding: 0;
+	border-radius: 32px;
+	box-shadow: 0 0 10px 1px rgba(62, 88, 121, 0.18);
+}
+
+.iconButton:hover {
+	opacity: 0.95;
+}

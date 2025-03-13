@@ -43,7 +43,7 @@ export const Reviews = () => {
 			<h2 className={styles.title}>Отзывы</h2>
 			<ul className={styles.reviewsList}>
 				{reviews.map(review => (
-					<Review {...review} />
+					<Review key={review.id} {...review} />
 				))}
 			</ul>
 		</Section>

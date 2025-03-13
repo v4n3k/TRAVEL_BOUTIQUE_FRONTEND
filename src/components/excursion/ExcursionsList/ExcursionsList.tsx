@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { ComponentProps } from 'react';
 import mainImg from '../../../../assets/images/Frame 168@2x.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionCard } from './ExcursionCard/ExcursionCard';
@@ -34,7 +35,9 @@ const mockExcursions = [
 	},
 ];
 
-export const ExcursionsList = () => {
+export interface ExcursionListProps extends ComponentProps<'ul'> {}
+
+export const ExcursionsList = ({ ref }: ExcursionListProps) => {
 	const { data: excursions } = useQuery({
 		queryKey: ['excursions'],
 		queryFn: () => excursionApi.getAll(),
@@ -46,7 +49,7 @@ export const ExcursionsList = () => {
 	];
 
 	return (
-		<ul className={styles.excursionsList}>
+		<ul className={styles.excursionsList} ref={ref}>
 			{mergedExcursions?.map(excursion => (
 				<ExcursionCard key={excursion.id} {...excursion} />
 			))}

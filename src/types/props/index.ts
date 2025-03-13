@@ -25,6 +25,21 @@ export interface TagProps extends ComponentProps<'li'> {
 	size?: 's' | 'm';
 }
 
+export interface FeedbackFormRef {
+	ref: React.RefObject<HTMLDivElement | null>;
+}
+
+export interface FeedbackFormProps extends FeedbackFormRef {}
+
+export interface SchoolExcursionsProps extends FeedbackFormRef {}
+
+export interface FormAndCareerGuidanceExcursionsProps extends FeedbackFormRef {}
+
+export interface ListSliderProps extends ComponentProps<'div'> {
+	buttonOffset?: number;
+	onClick: () => void;
+}
+
 export interface IconButtonProps extends ComponentProps<'button'> {
 	Icon: ReactNode;
 }
@@ -42,7 +57,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 	fullWidth?: boolean;
 	leftIcon?: ReactNode;
 	rightIcon?: ReactNode;
-	cornerIcon?: ReactNode;
+	cornerIcon?: ReactNode | null;
 }
 
 export interface TextInputProps extends ComponentProps<'input'> {}

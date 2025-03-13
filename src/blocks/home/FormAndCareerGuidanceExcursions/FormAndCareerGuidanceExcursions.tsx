@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import img from '../../../../assets/images/Rectangle 33.png';
 import { Image, TagsList } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { TagEntity } from '../../../types';
+import {
+	FormAndCareerGuidanceExcursionsProps,
+	TagEntity,
+} from '../../../types';
 import { FeedbackForm } from './FeedbackForm/FeedbackForm';
 import styles from './FormAndCareerGuidanceExcursions.module.css';
 
@@ -37,7 +40,9 @@ const citiesOnSmallScreen: TagEntity[] = [
 	{ id: 8, name: 'Карелия' },
 ];
 
-export const FormAndCareerGuidanceExcursions = () => {
+export const FormAndCareerGuidanceExcursions = ({
+	ref,
+}: FormAndCareerGuidanceExcursionsProps) => {
 	const [cities, setCities] = useState<TagEntity[]>(citiesOnLargeScreen);
 
 	const handleResize = () => {
@@ -66,7 +71,7 @@ export const FormAndCareerGuidanceExcursions = () => {
 
 	return (
 		<section className={styles.formAndCareerGuidanceExcursions}>
-			<FeedbackForm />
+			<FeedbackForm ref={ref} />
 			<div className={styles.container}>
 				<div className={styles.careerGuidanceExcursions}>
 					<div className={styles.titleContainer}>

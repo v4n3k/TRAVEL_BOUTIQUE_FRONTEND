@@ -6,6 +6,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	max-height: 613px;
 	height: 100%;
 }
 
@@ -40,7 +41,8 @@
 }
 
 .img {
-	height: 194px;
+	height: 362px;
+	object-position: 50% 80%;
 }
 
 @media (max-width: 1480px) {
@@ -50,10 +52,6 @@
 
 	.careerGuidanceExcursions {
 		max-width: 442px;
-	}
-
-	.img {
-		height: 165px;
 	}
 }
 
@@ -65,6 +63,10 @@
 
 	.careerGuidanceExcursions {
 		max-width: 100%;
+	}
+
+	.container {
+		max-height: none;
 	}
 
 	.img {

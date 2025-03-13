@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import {
 	ExcursionEventsList,
@@ -50,8 +49,6 @@ export const AdminCreateNewExcursionPage = () => {
 		excursionEvents,
 	} = newExcursion;
 
-	const navigate = useNavigate();
-
 	const handleCreateExcursion = () => {
 		const formData = new FormData();
 
@@ -65,10 +62,6 @@ export const AdminCreateNewExcursionPage = () => {
 		formData.append('excursionEvents', JSON.stringify(excursionEvents));
 
 		mutation.mutate(formData);
-	};
-
-	const handleGoBack = () => {
-		navigate(-1);
 	};
 
 	const handleNewExcursionChange = (
@@ -213,6 +206,7 @@ export const AdminCreateNewExcursionPage = () => {
 
 						<Button
 							className={styles.addButton}
+							rootClassName={styles.addButtonRoot}
 							onClick={handleAddEvent}
 							backgroundColor='white-50'
 							color='blue-500'

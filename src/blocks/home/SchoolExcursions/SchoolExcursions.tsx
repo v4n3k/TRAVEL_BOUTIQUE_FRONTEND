@@ -4,7 +4,7 @@ import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
 import { IconButton, Image, Section, TagsList } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { TagEntity } from '../../../types';
+import { SchoolExcursionsProps, TagEntity } from '../../../types';
 import styles from './SchoolExcursions.module.css';
 
 const cities: TagEntity[] = [
@@ -30,7 +30,7 @@ const citiesOnSmallScreen: TagEntity[] = [
 	{ id: 10, name: 'Тверь' },
 ];
 
-export const SchoolExcursions = () => {
+export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 	const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 630);
 
 	useEffect(() => {
@@ -48,6 +48,10 @@ export const SchoolExcursions = () => {
 	}, []);
 
 	const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
+
+	const handleClick = () => {
+		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	};
 
 	return (
 		<Section>
@@ -72,6 +76,7 @@ export const SchoolExcursions = () => {
 								<IconButton
 									className={styles.icon}
 									Icon={<IconArrowTopRight />}
+									onClick={handleClick}
 								/>
 							</div>
 							<p>

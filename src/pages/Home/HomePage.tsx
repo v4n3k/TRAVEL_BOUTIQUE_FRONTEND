@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
 	Advantages,
@@ -15,6 +16,22 @@ import { RouteName } from '../../types';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
+	const [isIconVisible, setIsIconVisible] = useState(window.innerWidth >= 560);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsIconVisible(window.innerWidth >= 560);
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, [window.innerWidth]);
+
+	const feedbackFromRef = useRef<HTMLDivElement>(null);
+
 	const navigate = useNavigate();
 
 	const handleClick = () => {
@@ -23,9 +40,9 @@ export const HomePage = () => {
 
 	return (
 		<Page>
-			<SchoolExcursions />
+			<SchoolExcursions ref={feedbackFromRef} />
 			<Excursions />
-			<FormAndCareerGuidanceExcursions />
+			<FormAndCareerGuidanceExcursions ref={feedbackFromRef} />
 			<div className={styles.iconPhoneWrapper}>
 				<IconButton className={styles.iconButton} Icon={<IconPhone />} />
 			</div>
@@ -37,7 +54,7 @@ export const HomePage = () => {
 				<Button
 					className={styles.chooseButton}
 					backgroundColor='blue-500'
-					cornerIcon={<IconArrowTopRight fill='#BDD4E2' />}
+					cornerIcon={isIconVisible && <IconArrowTopRight fill='#BDD4E2' />}
 					onClick={handleClick}
 				>
 					Выбрать экскурсию

@@ -22,7 +22,7 @@ export const TextArea = ({
 
 			if (!textAreaRef.current.value) {
 				const minHeight = parseInt(
-					window.getComputedStyle(textAreaRef.current).minHeight
+					window.getComputedStyle(textAreaRef.current).height
 				);
 
 				if (textAreaRef.current.scrollHeight < minHeight) {
