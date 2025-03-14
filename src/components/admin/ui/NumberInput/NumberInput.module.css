@@ -2,7 +2,8 @@
 	padding: 4px 12px;
 	border-radius: 8px;
 	border: 0.2px solid var(--blue-500);
-	line-height: 30px;
+	font-size: 36px;
+	line-height: 49px;
 	font-weight: 400;
 }
 

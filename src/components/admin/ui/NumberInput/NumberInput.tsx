@@ -10,35 +10,42 @@ export const NumberInput = ({
 	onChange,
 	minWidth = 37,
 	maxWidth = 100,
-	fontSize = 22,
-	paddingsBlock = 24,
 	...props
 }: NumberInputProps) => {
 	const [width, setWidth] = useState(minWidth);
 	const [inputValue, setInputValue] = useState(String(value));
-	const inputRef = useRef(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		setInputValue(String(value));
 	}, [value]);
 
 	useEffect(() => {
+		const inputElement = inputRef.current;
+
+		if (!inputElement) {
+			return;
+		}
+
 		const tempElement = document.createElement('span');
-		tempElement.style.fontSize = `${fontSize}px`;
-		tempElement.style.fontWeight = '400';
-		tempElement.style.lineHeight = '30px';
+		tempElement.style.fontSize = getComputedStyle(inputElement).fontSize;
+		tempElement.style.fontWeight = getComputedStyle(inputElement).fontWeight; // Or a default if not defined
+		tempElement.style.lineHeight = getComputedStyle(inputElement).lineHeight; // Or a default if not defined
 		tempElement.style.position = 'absolute';
 		tempElement.style.left = '-9999px';
 		tempElement.textContent = inputValue || '';
 		document.body.appendChild(tempElement);
-		const newWidth = Math.max(
-			minWidth,
-			tempElement.offsetWidth + paddingsBlock
-		);
+
+		// Calculate padding from the input element
+		const paddingBlock =
+			parseFloat(getComputedStyle(inputElement).paddingLeft) +
+			parseFloat(getComputedStyle(inputElement).paddingRight);
+
+		const newWidth = Math.max(minWidth, tempElement.offsetWidth + paddingBlock);
 		document.body.removeChild(tempElement);
 
 		setWidth(Math.min(maxWidth, newWidth));
-	}, [inputValue, minWidth, maxWidth, fontSize, paddingsBlock]);
+	}, [inputValue, minWidth, maxWidth]);
 
 	const isNumber = (value: string) => {
 		return /^\d*$/.test(value);
@@ -66,7 +73,7 @@ export const NumberInput = ({
 			placeholder='0'
 			value={inputValue}
 			onChange={handleChange}
-			style={{ width, minWidth, maxWidth, fontSize }}
+			style={{ width, minWidth, maxWidth }} // Remove fontSize
 			{...props}
 		/>
 	);

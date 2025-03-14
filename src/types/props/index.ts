@@ -121,7 +121,7 @@ export interface NumberInputProps extends ComponentProps<'input'> {
 	minWidth?: number;
 	maxWidth?: number;
 	fontSize?: number;
-	paddingsBlock?: number;
+	paddingBlock?: number;
 }
 
 export interface TextAreaProps extends ComponentProps<'textarea'> {}

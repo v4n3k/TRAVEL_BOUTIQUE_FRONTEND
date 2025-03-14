@@ -8,7 +8,7 @@
 	scroll-snap-type: x mandatory;
 	-webkit-overflow-scrolling: touch;
 	scrollbar-width: none;
-	padding-right: var(--button-offset);
+	padding-right: calc(var(--button-offset) * 2);
 }
 
 @media (max-width: 900px) {

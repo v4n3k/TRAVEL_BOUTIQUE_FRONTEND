@@ -1,8 +1,6 @@
 .imageUploader {
 	position: relative;
 	display: flex;
-	width: 378px;
-	height: 420px;
 	cursor: pointer;
 }
 
@@ -14,8 +12,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 378px;
-	height: 420px;
 	object-fit: cover;
 	border-radius: 12px;
 	margin-bottom: 12px;
@@ -27,9 +23,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 378px;
-	height: 420px;
-	border-radius: 26px;
+	border-radius: 20px;
 	border: none;
 	background-color: var(--grey-700);
 	cursor: pointer;
@@ -38,4 +32,20 @@
 
 .upload:hover {
 	opacity: 0.9;
+}
+
+.imageUploader,
+.imagePreview,
+.upload {
+	max-width: 637px;
+	height: 507px;
+}
+
+@media (max-width: 1480px) {
+	.imageUploader,
+	.imagePreview,
+	.upload {
+		max-width: 378px;
+		height: 420px;
+	}
 }

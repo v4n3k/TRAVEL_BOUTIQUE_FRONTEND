@@ -2,11 +2,11 @@
 	padding: 16px;
 	border: 0.2px solid var(--blue-500);
 	border-radius: 6px;
-	min-height: 56px;
+	min-height: 60px;
 	max-height: 300px;
 	resize: none;
-	font-size: 18px;
-	line-height: 24px;
+	font-size: 20px;
+	line-height: 27px;
 	font-weight: 400;
 	color: var(--black-900);
 	background-color: var(--grey-600);
@@ -20,30 +20,9 @@
 	color: var(--black-900-99);
 }
 
-@media (max-width: 800px) {
-	.textArea {
-		font-size: 28px;
-		line-height: 38px;
-	}
-}
-
-@media (max-width: 650px) {
-	.textArea {
-		font-size: 22px;
-		line-height: 30px;
-	}
-}
-
-@media (max-width: 500px) {
+@media (max-width: 1480px) {
 	.textArea {
 		font-size: 18px;
-		line-height: 25px;
-	}
-}
-
-@media (max-width: 400px) {
-	.textArea {
-		font-size: 16px;
-		line-height: 22px;
+		line-height: 24px;
 	}
 }

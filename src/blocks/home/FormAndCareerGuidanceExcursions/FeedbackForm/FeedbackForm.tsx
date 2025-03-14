@@ -32,7 +32,6 @@ export const FeedbackForm = ({ ref }: FeedbackFormProps) => {
 					</div>
 					<TextArea
 						className={styles.textArea}
-						id={styles.textArea}
 						placeholder='Добавить комментарий'
 						rows={3}
 					/>

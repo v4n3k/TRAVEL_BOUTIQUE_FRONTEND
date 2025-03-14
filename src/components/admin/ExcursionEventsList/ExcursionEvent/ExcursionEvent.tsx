@@ -38,6 +38,37 @@ export const ExcursionEvent = ({ id, time, name }: ExcursionEventEntity) => {
 	};
 
 	const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const inputValue = e.target.value;
+
+		if (inputValue.length > 5) return;
+
+		let isValid = true;
+
+		if (inputValue.length > 0) {
+			switch (inputValue.length) {
+				case 1:
+					isValid = /^[0-2]$/.test(inputValue);
+					break;
+				case 2:
+					isValid = /^(0[0-9]|1[0-9]|2[0-3])$/.test(inputValue);
+					break;
+				case 3:
+					isValid = /^(0[0-9]|1[0-9]|2[0-3]):$/.test(inputValue);
+					break;
+				case 4:
+					isValid = /^(0[0-9]|1[0-9]|2[0-3]):[0-5]$/.test(inputValue);
+					break;
+				case 5:
+					isValid = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(inputValue);
+					break;
+				default:
+					isValid = false;
+					break;
+			}
+		}
+
+		if (!isValid) return;
+
 		handleChange('time', e);
 	};
 
