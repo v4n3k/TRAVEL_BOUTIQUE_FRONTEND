@@ -13,9 +13,9 @@
 
 .triggerModalButton {
 	border-radius: 12px;
-	padding-inline: 24px;
-	font-size: 18px;
-	line-height: 24px;
+	padding: 12px 20px;
+	font-size: 24px;
+	line-height: 32px;
 	font-weight: 600;
 }
 
@@ -47,6 +47,7 @@
 	font-size: 28px;
 	line-height: 32px;
 	padding-block: 3px;
+	min-width: 41px;
 }
 
 .infoWrapper {
@@ -128,11 +129,66 @@
 }
 
 @media (max-width: 1480px) {
+	.createContainer {
+		gap: 32px;
+	}
+
 	.imageUploaderAndButton {
 		max-width: 378px;
 	}
 
 	.inner {
 		padding-right: 131px;
+	}
+
+	.titleInput {
+		font-size: 30px;
+		line-height: 40px;
+	}
+
+	.priceContainer label,
+	.priceInput {
+		font-size: 32px;
+		line-height: 44px;
+	}
+
+	.priceContainer .priceInput {
+		padding: 6px 16px;
+	}
+
+	.amountInput {
+		font-size: 22px;
+		line-height: 30px;
+		min-width: 30px !important;
+	}
+
+	.addButton {
+		font-size: 18px;
+		line-height: 24px;
+		padding: 8px 36px;
+	}
+
+	.triggerModalButton {
+		padding: 8px 24px;
+		font-size: 18px;
+		line-height: 24px;
+	}
+}
+
+@media (max-width: 1050px) {
+	.createContainer {
+		flex-direction: column;
+	}
+
+	.imageUploaderAndButton {
+		max-width: 100%;
+	}
+
+	.mainInfoContainer {
+		max-width: 100%;
+	}
+
+	.inner {
+		padding-right: 0;
 	}
 }

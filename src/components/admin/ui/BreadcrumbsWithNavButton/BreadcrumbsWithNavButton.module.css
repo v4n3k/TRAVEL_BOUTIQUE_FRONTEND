@@ -1,8 +1,14 @@
 .breadcrumbsWithNavButton {
 	display: flex;
+	align-items: center;
 	gap: 24px;
-	height: 32px;
 	margin-bottom: 32px;
+}
+
+.iconButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @media (max-width: 1480px) {

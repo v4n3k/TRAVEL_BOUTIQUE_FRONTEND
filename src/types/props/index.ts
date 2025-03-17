@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode, SVGProps } from 'react';
+import { ComponentProps, ReactNode, RefObject, SVGProps } from 'react';
 import {
 	BreadcrumbEntity,
 	ExcursionEntity,
@@ -37,7 +37,11 @@ export interface FormAndCareerGuidanceExcursionsProps extends FeedbackFormRef {}
 
 export interface ListSliderProps extends ComponentProps<'div'> {
 	buttonOffset?: number;
-	onClick: () => void;
+	listRef: RefObject<HTMLUListElement | null>;
+}
+
+export interface ExpandableProps extends ComponentProps<'div'> {
+	collapsedHeight?: number;
 }
 
 export interface IconButtonProps extends ComponentProps<'button'> {

@@ -19,7 +19,11 @@ export const BreadcrumbsWithNavButton = ({
 
 	return (
 		<div className={cn(styles.breadcrumbsWithNavButton, className)} {...props}>
-			<IconButton Icon={<IconArrowLeft />} onClick={handleGoBack} />
+			<IconButton
+				className={styles.iconButton}
+				Icon={<IconArrowLeft />}
+				onClick={handleGoBack}
+			/>
 			<Breadcrumbs crumbs={crumbs} />
 		</div>
 	);

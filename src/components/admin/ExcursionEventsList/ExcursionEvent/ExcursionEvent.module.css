@@ -36,3 +36,26 @@
 	font-weight: 600;
 	padding: 2px 16.5px 5px;
 }
+
+@media (max-width: 1440px) {
+	.timeInput,
+	#nameTextArea {
+		font-size: 16px;
+		line-height: 22px;
+	}
+
+	.timeInput {
+		width: 54px;
+		padding: 4px 6px;
+	}
+
+	#nameTextArea {
+		padding: 8px;
+		min-height: 38px;
+	}
+
+	.deleteButton {
+		line-height: 1;
+		padding: 2px 16px 6px;
+	}
+}

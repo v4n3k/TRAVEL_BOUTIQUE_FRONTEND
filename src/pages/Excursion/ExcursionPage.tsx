@@ -9,7 +9,7 @@ import {
 } from '../../components/excursion';
 import { Price } from '../../components/excursion/Price/Price';
 import { Button, Image, Page, Section } from '../../components/ui';
-import { ExcursionEventEntity } from '../../types';
+import { ExcursionEventEntity, RouteName } from '../../types';
 import styles from './ExcursionPage.module.css';
 
 export const ExcursionPage = () => {
@@ -45,8 +45,8 @@ export const ExcursionPage = () => {
 			<BreadcrumbsWithNavButton
 				className={styles.breadcrumbs}
 				crumbs={[
-					{ id: 1, label: 'Категории' },
-					{ id: 2, label: 'Тюмень' },
+					{ id: 1, label: 'Категории', path: RouteName.EXCURSIONS },
+					{ id: 2, label: 'Тюмень', path: RouteName.HOME },
 				]}
 			/>
 			<Section className={styles.excursion}>

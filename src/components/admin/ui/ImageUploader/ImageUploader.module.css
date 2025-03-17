@@ -13,8 +13,8 @@
 	justify-content: center;
 	align-items: center;
 	object-fit: cover;
+	width: 100%;
 	border-radius: 12px;
-	margin-bottom: 12px;
 }
 
 .upload {
@@ -47,5 +47,16 @@
 	.upload {
 		max-width: 378px;
 		height: 420px;
+	}
+}
+
+@media (max-width: 1050px) {
+	.imageUploader,
+	.imagePreview,
+	.upload {
+		max-width: 100%;
+		width: 100%;
+		aspect-ratio: 656 / 456;
+		height: auto;
 	}
 }

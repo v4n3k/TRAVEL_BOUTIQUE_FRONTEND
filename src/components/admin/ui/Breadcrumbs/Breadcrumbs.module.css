@@ -1,18 +1,20 @@
 .breadcrumbs {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 16px;
-	list-style: none;
 }
 
 .crumb {
 	display: flex;
 	align-items: center;
 	gap: 16px;
+	height: 32px;
 	font-size: 20px;
 	line-height: 27px;
 	font-weight: 600;
 	color: var(--grey-900);
+	text-wrap: nowrap;
 }
 
 .divider {

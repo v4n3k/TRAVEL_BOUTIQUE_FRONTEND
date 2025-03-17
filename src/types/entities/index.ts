@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { RouteName } from '../routes';
 
 export interface TagEntity {
 	id: number;
@@ -37,6 +38,7 @@ export interface ExcursionBaseWithImage
 export interface BreadcrumbEntity {
 	id: number;
 	label: string;
+	path: RouteName;
 }
 
 export interface AdvantageEntity {

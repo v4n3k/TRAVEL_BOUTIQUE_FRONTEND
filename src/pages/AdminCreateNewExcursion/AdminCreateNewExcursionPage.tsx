@@ -16,6 +16,7 @@ import {
 	ExcursionBaseWithImage,
 	ExcursionWithImage,
 	ImageEntity,
+	RouteName,
 } from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
@@ -137,9 +138,13 @@ export const AdminCreateNewExcursionPage = () => {
 		<Page>
 			<BreadcrumbsWithNavButton
 				crumbs={[
-					{ id: 1, label: 'Админ-панель' },
-					{ id: 2, label: 'Экскурсии Тюмени' },
-					{ id: 3, label: 'Создание нового мероприятия' },
+					{ id: 1, label: 'Админ-панель', path: RouteName.ADMIN },
+					{ id: 2, label: 'Экскурсии Тюмени', path: RouteName.HOME },
+					{
+						id: 3,
+						label: 'Создание нового мероприятия',
+						path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
+					},
 				]}
 			/>
 			<Section className={styles.createContainer}>
@@ -186,8 +191,6 @@ export const AdminCreateNewExcursionPage = () => {
 										className={styles.amountInput}
 										value={accompanistsAmount || ''}
 										onChange={handleAccompanistsAmountChange}
-										minWidth={41}
-										maxWidth={72}
 									/>
 								)}
 							/>
@@ -198,8 +201,6 @@ export const AdminCreateNewExcursionPage = () => {
 										className={styles.amountInput}
 										value={personsAmount || ''}
 										onChange={handlePersonsAmountChange}
-										minWidth={41}
-										maxWidth={72}
 									/>
 								)}
 							/>

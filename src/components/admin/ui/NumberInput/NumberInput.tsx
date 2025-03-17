@@ -29,14 +29,13 @@ export const NumberInput = ({
 
 		const tempElement = document.createElement('span');
 		tempElement.style.fontSize = getComputedStyle(inputElement).fontSize;
-		tempElement.style.fontWeight = getComputedStyle(inputElement).fontWeight; // Or a default if not defined
-		tempElement.style.lineHeight = getComputedStyle(inputElement).lineHeight; // Or a default if not defined
+		tempElement.style.fontWeight = getComputedStyle(inputElement).fontWeight;
+		tempElement.style.lineHeight = getComputedStyle(inputElement).lineHeight;
 		tempElement.style.position = 'absolute';
 		tempElement.style.left = '-9999px';
 		tempElement.textContent = inputValue || '';
 		document.body.appendChild(tempElement);
 
-		// Calculate padding from the input element
 		const paddingBlock =
 			parseFloat(getComputedStyle(inputElement).paddingLeft) +
 			parseFloat(getComputedStyle(inputElement).paddingRight);
@@ -65,6 +64,12 @@ export const NumberInput = ({
 			});
 	};
 
+	const style = {
+		'--min-input-width': `${minWidth}px`,
+		'--max-input-width': `${maxWidth}px`,
+		width,
+	} as React.CSSProperties;
+
 	return (
 		<TextInput
 			ref={inputRef}
@@ -73,7 +78,7 @@ export const NumberInput = ({
 			placeholder='0'
 			value={inputValue}
 			onChange={handleChange}
-			style={{ width, minWidth, maxWidth }} // Remove fontSize
+			style={style}
 			{...props}
 		/>
 	);
