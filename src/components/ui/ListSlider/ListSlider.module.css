@@ -1,18 +1,24 @@
-.maskedListWrapper {
+.listSlider {
 	position: relative;
 	display: flex;
 	align-items: center;
 	width: 100%;
+	margin-bottom: 40px;
 }
 
-.maskedListWrapper::after {
+.listSlider::after {
 	content: '';
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	width: calc(var(--button-offset) * 2);
+	width: var(--gradient-width);
 	height: 100%;
 	background: linear-gradient(to left, var(--white-100), #f5f5f500);
+	pointer-events: none;
+}
+
+.listSlider.gradientHidden::after {
+	height: 0;
 }
 
 .iconButtonRoot {

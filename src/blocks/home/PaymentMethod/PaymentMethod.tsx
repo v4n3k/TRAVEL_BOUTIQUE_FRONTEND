@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import imgChildren from '../../../../assets/images/Rectangle 25.png';
 import imgGrandParents from '../../../../assets/images/Rectangle 27.png';
 import { IconButton, Image, Section } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
+import { RouteName } from '../../../types';
 import styles from './PaymentMethod.module.css';
 
 const methods = [
@@ -11,6 +13,12 @@ const methods = [
 ];
 
 export const PaymentMethod = () => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate(RouteName.ABOUT);
+	};
+
 	return (
 		<Section className={styles.paymentMethod}>
 			<div className={styles.container}>
@@ -19,6 +27,7 @@ export const PaymentMethod = () => {
 					<IconButton
 						className={styles.iconButton}
 						Icon={<IconArrowTopRight />}
+						onClick={handleClick}
 					/>
 				</div>
 				<ul className={styles.methodsList}>

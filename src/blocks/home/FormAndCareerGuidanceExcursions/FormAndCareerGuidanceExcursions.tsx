@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import img from '../../../../assets/images/Rectangle 33.png';
-import { Image, TagsList } from '../../../components/ui';
+import { IconButton, Image, TagsList } from '../../../components/ui';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
 import {
 	FormAndCareerGuidanceExcursionsProps,
+	RouteName,
 	TagEntity,
 } from '../../../types';
 import { FeedbackForm } from './FeedbackForm/FeedbackForm';
@@ -45,6 +47,8 @@ export const FormAndCareerGuidanceExcursions = ({
 }: FormAndCareerGuidanceExcursionsProps) => {
 	const [cities, setCities] = useState<TagEntity[]>(citiesOnLargeScreen);
 
+	const navigate = useNavigate();
+
 	const handleResize = () => {
 		if (window.innerWidth <= 1100) {
 			setCities(citiesOnSmallScreen);
@@ -69,6 +73,10 @@ export const FormAndCareerGuidanceExcursions = ({
 		};
 	}, [handleResize]);
 
+	const handleClick = () => {
+		navigate(RouteName.EXCURSIONS);
+	};
+
 	return (
 		<section className={styles.formAndCareerGuidanceExcursions}>
 			<FeedbackForm ref={ref} />
@@ -78,7 +86,10 @@ export const FormAndCareerGuidanceExcursions = ({
 						<h2>
 							Профориентационные <br /> экскурсии
 						</h2>
-						<IconArrowTopRight className={styles.icon} />
+						<IconButton
+							Icon={<IconArrowTopRight className={styles.icon} />}
+							onClick={handleClick}
+						/>
 					</div>
 
 					<TagsList tags={cities} size='s' />

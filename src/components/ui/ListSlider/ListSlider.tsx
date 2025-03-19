@@ -1,15 +1,26 @@
+import { useEffect, useState } from 'react';
 import { IconArrowRight } from '../../../icons/IconArrowRight';
 import { ListSliderProps } from '../../../types';
+import { cn } from '../../../utils/cn';
 import { Button } from '../Button/Button';
 import styles from './ListSlider.module.css';
 
 export const ListSlider = ({
 	children,
+	className,
 	buttonOffset = 100,
 	listRef,
+	buttonClassName,
+	widthOnGradientHide = 0,
+	gradientWidth = buttonOffset * 2,
 }: ListSliderProps) => {
+	const [isGradientHidden, setIsGradientHidden] = useState(
+		window.innerWidth <= widthOnGradientHide
+	);
+
 	const wrapperStyle = {
 		'--button-offset': `${buttonOffset}px`,
+		'--gradient-width': `${gradientWidth}px`,
 	} as React.CSSProperties;
 
 	const handleClick = () => {
@@ -17,7 +28,7 @@ export const ListSlider = ({
 			const currentScrollLeft = listRef.current.scrollLeft;
 			const cards = Array.from(listRef.current.children);
 
-			if (cards.length === 0) {
+			if (!cards.length) {
 				console.warn('No excursion cards found in the list.');
 				return;
 			}
@@ -46,7 +57,9 @@ export const ListSlider = ({
 			}
 
 			const computedStyle = window.getComputedStyle(listRef.current);
-			const listGap = parseInt(computedStyle.gap);
+			const listGap = parseInt(computedStyle.columnGap);
+
+			console.log(listGap);
 
 			listRef.current.scrollTo({
 				left: currentScrollLeft + cardWidthToScroll + listGap,
@@ -55,12 +68,39 @@ export const ListSlider = ({
 		}
 	};
 
+	useEffect(() => {
+		if (widthOnGradientHide <= 0) return;
+
+		const mediaQuery = window.matchMedia(
+			`(max-width: ${widthOnGradientHide}px)`
+		);
+
+		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+			setIsGradientHidden(event.matches);
+		};
+
+		mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+		setIsGradientHidden(mediaQuery.matches);
+
+		return () => {
+			mediaQuery.removeEventListener('change', handleMediaQueryChange);
+		};
+	}, [widthOnGradientHide]);
+
 	return (
-		<div className={styles.maskedListWrapper} style={wrapperStyle}>
+		<div
+			className={cn(
+				styles.listSlider,
+				className,
+				isGradientHidden ? styles.gradientHidden : ''
+			)}
+			style={wrapperStyle}
+		>
 			{children}
 			<Button
 				className={styles.iconButton}
-				rootClassName={styles.iconButtonRoot}
+				rootClassName={cn(styles.iconButtonRoot, buttonClassName)}
 				backgroundColor='white-100'
 				onClick={handleClick}
 			>

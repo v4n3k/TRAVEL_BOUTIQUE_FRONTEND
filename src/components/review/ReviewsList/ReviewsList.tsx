@@ -1,21 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import { Review } from '../../../blocks/home/Reviews/Review/Review';
-import { ReviewEntity } from '../../../types';
-import { ListSlider } from '../../ui';
-import { Expandable } from '../../ui/Expandable/Expandable';
+import { ReviewsListProps } from '../../../types';
+import { Expandable, ListSlider } from '../../ui';
+import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
 
-export interface ReviewsListProps {
-	reviews: ReviewEntity[];
-}
-
 export const ReviewsList = ({ reviews }: ReviewsListProps) => {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 440);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const listRef = useRef<HTMLUListElement>(null);
+
+	const isMobile = windowWidth <= 440;
+	const isX = windowWidth <= 510;
+	const isTablet = windowWidth <= 800;
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 440);
+			setWindowWidth(window.innerWidth);
 		};
 
 		window.addEventListener('resize', handleResize);
@@ -26,7 +25,13 @@ export const ReviewsList = ({ reviews }: ReviewsListProps) => {
 	return (
 		<>
 			{!isMobile ? (
-				<ListSlider listRef={listRef}>
+				<ListSlider
+					className={styles.listSlider}
+					listRef={listRef}
+					buttonOffset={isX ? 52 : isTablet ? 86 : 32}
+					widthOnGradientHide={0}
+					gradientWidth={300}
+				>
 					<ul className={styles.reviewsList} ref={listRef}>
 						{reviews.map(review => (
 							<Review key={review.id} {...review} />

@@ -1,4 +1,5 @@
 export * from '../ui/Button/Button';
+export * from '../ui/Expandable/Expandable';
 export * from '../ui/Form/Form';
 export * from '../ui/IconButton/IconButton';
 export * from '../ui/Image/Image';

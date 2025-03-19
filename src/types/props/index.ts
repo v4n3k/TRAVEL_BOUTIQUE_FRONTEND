@@ -4,6 +4,7 @@ import {
 	ExcursionEntity,
 	ExcursionEventEntity,
 	ImageEntity,
+	ReviewEntity,
 	TagEntity,
 } from '../entities';
 
@@ -38,10 +39,17 @@ export interface FormAndCareerGuidanceExcursionsProps extends FeedbackFormRef {}
 export interface ListSliderProps extends ComponentProps<'div'> {
 	buttonOffset?: number;
 	listRef: RefObject<HTMLUListElement | null>;
+	buttonClassName?: string;
+	widthOnGradientHide?: number;
+	gradientWidth?: number;
 }
 
 export interface ExpandableProps extends ComponentProps<'div'> {
 	collapsedHeight?: number;
+}
+
+export interface ReviewsListProps {
+	reviews: ReviewEntity[];
 }
 
 export interface IconButtonProps extends ComponentProps<'button'> {

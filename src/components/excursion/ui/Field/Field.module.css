@@ -32,7 +32,8 @@
 }
 
 .transparent {
-	background-color: 'transparent';
+	background-color: transparent;
+	padding: 0;
 }
 
 .white-50 {

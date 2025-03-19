@@ -30,7 +30,7 @@ export const HomePage = () => {
 		};
 	}, [window.innerWidth]);
 
-	const feedbackFromRef = useRef<HTMLDivElement>(null);
+	const feedbackFormRef = useRef<HTMLDivElement>(null);
 
 	const navigate = useNavigate();
 
@@ -40,9 +40,9 @@ export const HomePage = () => {
 
 	return (
 		<Page>
-			<SchoolExcursions ref={feedbackFromRef} />
+			<SchoolExcursions ref={feedbackFormRef} />
 			<Excursions />
-			<FormAndCareerGuidanceExcursions ref={feedbackFromRef} />
+			<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
 			<div className={styles.iconPhoneWrapper}>
 				<IconButton className={styles.iconButton} Icon={<IconPhone />} />
 			</div>

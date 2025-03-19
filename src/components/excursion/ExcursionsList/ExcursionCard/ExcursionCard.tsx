@@ -38,12 +38,14 @@ export const ExcursionCard = ({
 			<div className={styles.textInfo}>
 				<h2 className={styles.title}>{name}</h2>
 				<ul className={styles.fieldsList}>
-					<Field fieldKey='Город' fieldValue={city} />
+					<Field className={styles.field} fieldKey='Город' fieldValue={city} />
 					<Field
+						className={styles.field}
 						fieldKey='Количество сопровождающих'
 						fieldValue={accompanistsAmount}
 					/>
 					<Field
+						className={styles.field}
 						fieldKey='Количество человек в группе'
 						fieldValue={personsAmount}
 					/>

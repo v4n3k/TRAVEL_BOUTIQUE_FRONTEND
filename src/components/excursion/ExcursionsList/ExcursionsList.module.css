@@ -11,7 +11,7 @@
 	padding-right: calc(var(--button-offset) * 2);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 990px) {
 	.excursionsList {
 		padding-top: 16px;
 		margin-top: -16px;
@@ -20,7 +20,7 @@
 
 @media (max-width: 760px) {
 	.excursionsList {
-		padding: 0;
+		padding: 0 0 72px;
 		margin-top: 0;
 		margin-left: 0;
 	}

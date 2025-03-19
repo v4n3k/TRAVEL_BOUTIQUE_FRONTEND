@@ -3,11 +3,13 @@
 	display: flex;
 	width: 100%;
 	transition: all 0.5s ease-in-out;
+	margin-bottom: 40px;
 }
 
 .expandable.collapsed {
 	max-height: 417px;
 	overflow: hidden;
+	margin-bottom: 0;
 }
 
 .expandable.collapsed::after {
@@ -33,10 +35,11 @@
 	width: 64px;
 	padding: 0;
 	border-radius: 32px;
+	box-shadow: 0 0 10px 1px rgba(62, 88, 121, 0.18);
 }
 
 .iconButtonRoot.expanded {
-	bottom: -40px;
+	bottom: -50px;
 }
 
 .iconButton:hover {

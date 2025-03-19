@@ -34,14 +34,12 @@ export const Expandable = ({
 				contentRef.current.style.overflow = 'visible';
 			}, 500);
 		} else {
-			setTimeout(() => {
-				if (!contentRef.current) {
-					console.log('no ref');
-					return;
-				}
+			if (!contentRef.current) {
+				console.log('no ref');
+				return;
+			}
 
-				contentRef.current.style.overflow = 'hidden';
-			}, 100);
+			contentRef.current.style.overflow = 'hidden';
 		}
 	}, [isExpanded]);
 

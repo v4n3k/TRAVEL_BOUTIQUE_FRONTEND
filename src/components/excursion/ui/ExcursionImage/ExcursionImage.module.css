@@ -4,7 +4,7 @@
 	width: 360px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 990px) {
 	.excursionImage {
 		height: 293px;
 		min-width: 250px;

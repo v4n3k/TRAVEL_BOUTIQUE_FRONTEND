@@ -8,14 +8,31 @@
 	height: 288px;
 	overflow-x: auto;
 	padding: 32px;
+	padding-right: 200px;
 	border-radius: 40px;
 	background-color: var(--blue-300);
+	scrollbar-width: none;
+}
+
+@media (max-width: 800px) {
+	.reviewsList,
+	.listSlider {
+		width: 100vw;
+		margin-right: calc(-50vw + 50%);
+	}
 }
 
 @media (max-width: 440px) {
+	.reviewsList,
+	.listSlider {
+		width: auto;
+		margin-right: 0;
+	}
+
 	.reviewsList {
 		height: 100%;
 		overflow-x: hidden;
 		overflow-y: auto;
+		padding: 20px;
 	}
 }
