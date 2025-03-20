@@ -6,9 +6,14 @@ export const LabeledInput = ({
 	label,
 	renderInput,
 	direction = 'row',
+	className,
+	...props
 }: LabeledInputProps) => {
 	return (
-		<div className={cn(styles.labeledInput, styles[direction])}>
+		<div
+			className={cn(styles.labeledInput, styles[direction], className)}
+			{...props}
+		>
 			<label className={styles.label}>{label}:</label>
 			{renderInput()}
 		</div>

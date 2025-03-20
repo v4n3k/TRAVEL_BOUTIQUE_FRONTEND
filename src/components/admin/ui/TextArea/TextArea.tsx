@@ -7,13 +7,14 @@ export const TextArea = ({
 	className,
 	value,
 	onChange,
+	rows = 2,
 	...props
 }: TextAreaProps) => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
 	useEffect(() => {
 		adjustHeight();
-	}, [value]);
+	}, [value, window.innerWidth]);
 
 	const adjustHeight = () => {
 		if (textAreaRef.current) {
@@ -45,7 +46,7 @@ export const TextArea = ({
 			ref={textAreaRef}
 			value={value}
 			onChange={handleChange}
-			rows={1}
+			rows={rows}
 			{...props}
 		/>
 	);

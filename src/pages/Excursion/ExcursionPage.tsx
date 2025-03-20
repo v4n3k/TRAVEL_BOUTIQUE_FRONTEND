@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
+import { Modal } from '../../components/admin';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import {
 	ExcursionEventsList,
@@ -8,8 +9,17 @@ import {
 	ManagerButton,
 } from '../../components/excursion';
 import { Price } from '../../components/excursion/Price/Price';
-import { Button, Image, Page, Section } from '../../components/ui';
+import {
+	Button,
+	Form,
+	Image,
+	Page,
+	Section,
+	TextInput,
+} from '../../components/ui';
+import { useModal } from '../../hooks/useModal';
 import { ExcursionEventEntity, RouteName } from '../../types';
+import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 export const ExcursionPage = () => {
@@ -21,6 +31,8 @@ export const ExcursionPage = () => {
 		retry: false, // set true after deleting mock data
 	});
 
+	const { isModalOpen, openModal, closeModal } = useModal();
+
 	const {
 		imgSrc,
 		name,
@@ -30,6 +42,17 @@ export const ExcursionPage = () => {
 		info,
 		excursionEvents,
 	} = excursion || {};
+
+	const formattedPrice = formatNumber(price as number);
+
+	if (!excursion) {
+		return (
+			<>
+				<p>Error:</p>
+				<p>no data</p>
+			</>
+		);
+	}
 
 	if (isError) {
 		return (
@@ -66,6 +89,7 @@ export const ExcursionPage = () => {
 							className={styles.buyButton}
 							fullWidth
 							backgroundColor='blue-500'
+							onClick={openModal}
 						>
 							Купить
 						</Button>
@@ -102,6 +126,27 @@ export const ExcursionPage = () => {
 					className={styles.managerButtonOnSmallScreen}
 					rootClassName={styles.managerButtonRoot}
 				/>
+
+				<Modal isOpen={isModalOpen} onClose={closeModal}>
+					<div className={styles.modalContainer}>
+						<h3 className={styles.modalTitle}>Введите ключ</h3>
+						<Form className={styles.modalForm}>
+							<div className={styles.formContainer}>
+								<TextInput
+									className={styles.modalInput}
+									placeholder='Поле для ввода ключа'
+								/>
+								<Price className={styles.modalPrice} price={formattedPrice} />
+							</div>
+							<Button
+								rootClassName={styles.modalButtonRoot}
+								backgroundColor='blue-500'
+							>
+								Оплатить
+							</Button>
+						</Form>
+					</div>
+				</Modal>
 			</Section>
 		</Page>
 	);

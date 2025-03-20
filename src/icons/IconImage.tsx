@@ -7,12 +7,16 @@ export const IconImage = () => {
 		const handleResize = () => {
 			const windowWidth = window.innerWidth;
 
-			if (windowWidth >= 1480) {
+			if (windowWidth <= 650) {
+				setSize('s');
+			} else if (windowWidth <= 800) {
+				setSize('l');
+			} else if (windowWidth <= 1050) {
 				setSize('m');
-			} else if (windowWidth >= 800) {
+			} else if (windowWidth <= 1480) {
 				setSize('s');
 			} else {
-				setSize('l');
+				setSize('m');
 			}
 		};
 
@@ -24,6 +28,10 @@ export const IconImage = () => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
+
+	useEffect(() => {
+		console.log(size);
+	}, [size]);
 
 	return (
 		<>

@@ -41,3 +41,16 @@
 	overscroll-behavior: contain;
 	scrollbar-width: none;
 }
+
+@media (max-width: 750px) {
+	.content {
+		width: 100%;
+	}
+}
+
+@media (max-width: 480px) {
+	.content {
+		padding: 20px;
+		border-radius: 20px;
+	}
+}

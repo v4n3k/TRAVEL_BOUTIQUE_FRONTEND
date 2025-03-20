@@ -1,5 +1,5 @@
 import { ExcursionApi, ExcursionEntity } from '../../types';
-import { handleApiResponse } from '../../utils/apiUtils';
+import { handleApiResponse } from '../../utils/api';
 import { api } from '../api';
 
 export const excursionApi: ExcursionApi = {

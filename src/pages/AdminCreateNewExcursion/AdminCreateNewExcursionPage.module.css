@@ -19,6 +19,10 @@
 	font-weight: 600;
 }
 
+.createButton {
+	border-radius: 12px;
+}
+
 .mainInfoContainer {
 	display: flex;
 	flex-direction: column;
@@ -128,6 +132,14 @@
 	border-radius: 12px;
 }
 
+.buttonsOnMediumScreen {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+}
+
 @media (max-width: 1480px) {
 	.createContainer {
 		gap: 32px;
@@ -178,17 +190,64 @@
 @media (max-width: 1050px) {
 	.createContainer {
 		flex-direction: column;
+		gap: 36px;
 	}
 
 	.imageUploaderAndButton {
 		max-width: 100%;
+		gap: 0;
 	}
 
 	.mainInfoContainer {
 		max-width: 100%;
 	}
 
+	.titleInput {
+		font-size: 32px;
+		line-height: 44px;
+		margin-bottom: 32px;
+	}
+
+	.priceInput {
+		font-size: 36px;
+		line-height: 49px;
+	}
+
 	.inner {
 		padding-right: 0;
+	}
+
+	.infoInput {
+		gap: 8px;
+	}
+
+	.eventsContainer {
+		margin-bottom: 32px;
+	}
+
+	.addButton {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.triggerModalButton,
+	.createButton {
+		display: none;
+	}
+
+	.buttonsOnMediumScreen {
+		display: flex;
+	}
+}
+
+@media (max-width: 700px) {
+	.titleInput {
+		font-size: 28px;
+		line-height: 40px;
+	}
+
+	.priceInput {
+		font-size: 32px;
+		line-height: 44px;
 	}
 }

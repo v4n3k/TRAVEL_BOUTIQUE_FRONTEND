@@ -30,6 +30,13 @@
 	}
 }
 
+@media (max-width: 470px) {
+	.review {
+		max-width: 295px;
+		min-width: 295px;
+	}
+}
+
 @media (max-width: 440px) {
 	.review {
 		max-width: 100%;

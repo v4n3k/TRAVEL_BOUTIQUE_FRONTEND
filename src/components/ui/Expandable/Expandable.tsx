@@ -21,7 +21,7 @@ export const Expandable = ({
 		} else {
 			contentElement.style.maxHeight = `${collapsedHeight}px`;
 		}
-	}, [isExpanded, collapsedHeight]);
+	}, [isExpanded, collapsedHeight, window.innerWidth]);
 
 	useEffect(() => {
 		if (isExpanded) {

@@ -106,7 +106,7 @@ export interface ExcursionEventProps {
 }
 
 export interface PriceProps extends ComponentProps<'div'> {
-	price: number;
+	price: number | string;
 }
 
 export interface ManagerButtonProps extends ButtonProps {}

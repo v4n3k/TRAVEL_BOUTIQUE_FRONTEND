@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import {
 	ExcursionEventsList,
@@ -11,6 +11,7 @@ import {
 import { InputWrapper, TextArea } from '../../components/admin/';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { Button, Page, Section, TextInput } from '../../components/ui';
+import { useModal } from '../../hooks/useModal';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
@@ -24,7 +25,7 @@ export const AdminCreateNewExcursionPage = () => {
 	const newExcursion = useAdminStore(state => state.newExcursion);
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
@@ -123,15 +124,7 @@ export const AdminCreateNewExcursionPage = () => {
 			uploadedImage: null,
 		} as ExcursionWithImage);
 
-		setIsModalOpen(false);
-	};
-
-	const handleModalOpen = () => {
-		setIsModalOpen(true);
-	};
-
-	const handleModalClose = () => {
-		setIsModalOpen(false);
+		closeModal();
 	};
 
 	return (
@@ -157,11 +150,17 @@ export const AdminCreateNewExcursionPage = () => {
 						className={styles.triggerModalButton}
 						backgroundColor='red-300'
 						color='white-100'
-						onClick={handleModalOpen}
+						onClick={openModal}
 					>
 						Удалить экскурсию
 					</Button>
-					<Button onClick={handleCreateExcursion}>Создать</Button>
+					<Button
+						className={styles.createButton}
+						backgroundColor='blue-500'
+						onClick={handleCreateExcursion}
+					>
+						Создать
+					</Button>
 				</div>
 				<div className={styles.mainInfoContainer}>
 					<div className={styles.titleAndPrice}>
@@ -177,7 +176,7 @@ export const AdminCreateNewExcursionPage = () => {
 								value={price || ''}
 								onChange={handlePriceChange}
 								minWidth={53}
-								maxWidth={145}
+								maxWidth={155}
 							/>
 							<label>₽</label>
 						</div>
@@ -208,12 +207,14 @@ export const AdminCreateNewExcursionPage = () => {
 
 						<InputWrapper className={styles.infoWrapper}>
 							<LabeledInput
+								className={styles.infoInput}
 								label='В стоимость входит'
 								renderInput={() => (
 									<TextArea
 										value={info}
 										onChange={handleInfoChange}
 										placeholder='Информация'
+										rows={1}
 									/>
 								)}
 								direction='column'
@@ -236,21 +237,40 @@ export const AdminCreateNewExcursionPage = () => {
 						</div>
 					</div>
 				</div>
-			</Section>
-
-			<Modal isOpen={isModalOpen} onClose={handleModalClose}>
-				<div className={styles.modalContainer}>
-					<h2>Удаление карточки экскурсии</h2>
+				<div className={styles.buttonsOnMediumScreen}>
 					<Button
-						rootClassName={styles.deleteButtonRoot}
+						className={styles.triggerModalButtonOnMediumScreen}
 						backgroundColor='red-300'
 						color='white-100'
-						onClick={handleDeleteExcursion}
+						onClick={openModal}
 					>
-						Удалить
+						Удалить экскурсию
+					</Button>
+					<Button
+						className={styles.createButtonOnMediumScreen}
+						backgroundColor='blue-500'
+						onClick={handleCreateExcursion}
+					>
+						Создать
 					</Button>
 				</div>
-			</Modal>
+			</Section>
+
+			{isModalOpen && (
+				<Modal isOpen={isModalOpen} onClose={closeModal}>
+					<div className={styles.modalContainer}>
+						<h2>Удаление карточки экскурсии</h2>
+						<Button
+							rootClassName={styles.deleteButtonRoot}
+							backgroundColor='red-300'
+							color='white-100'
+							onClick={handleDeleteExcursion}
+						>
+							Удалить
+						</Button>
+					</div>
+				</Modal>
+			)}
 
 			{isError && <p>error!</p>}
 		</Page>

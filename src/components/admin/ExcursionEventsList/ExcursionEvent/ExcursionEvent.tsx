@@ -88,6 +88,7 @@ export const ExcursionEvent = ({ id, time, name }: ExcursionEventEntity) => {
 				id={styles.nameTextArea}
 				value={name}
 				onChange={handleNameChange}
+				rows={1}
 				placeholder='Событие'
 			/>
 			<Button
