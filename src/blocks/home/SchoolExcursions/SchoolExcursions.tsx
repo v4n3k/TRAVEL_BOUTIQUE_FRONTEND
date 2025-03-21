@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import mainImage from '../../../../assets/images/Frame 168@2x.png';
 import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
 import { IconButton, Image, Section, TagsList } from '../../../components/ui';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
 import { SchoolExcursionsProps, TagEntity } from '../../../types';
 import styles from './SchoolExcursions.module.css';
@@ -31,21 +31,7 @@ const citiesOnSmallScreen: TagEntity[] = [
 ];
 
 export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
-	const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 630);
-
-	useEffect(() => {
-		const mediaQuery = window.matchMedia('(max-width: 630px)');
-
-		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-			setIsSmallScreen(event.matches);
-		};
-
-		mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-		return () => {
-			mediaQuery.removeEventListener('change', handleMediaQueryChange);
-		};
-	}, []);
+	const isSmallScreen = useMediaQuery('(max-width: 630px)');
 
 	const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
 

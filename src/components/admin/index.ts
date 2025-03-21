@@ -1,5 +1,6 @@
 export * from './ExcursionEventsList/ExcursionEventsList';
-export * from './ui/Breadcrumbs/BreadCrumbs';
+export * from './ui/Breadcrumbs/Breadcrumbs';
+export * from './ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 export * from './ui/ImageUploader/ImageUploader';
 export * from './ui/InputWrapper/InputWrapper';
 export * from './ui/LabeledInput/LabeledInput';

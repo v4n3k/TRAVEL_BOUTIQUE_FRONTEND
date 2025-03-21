@@ -4,6 +4,7 @@ import mainImg from '../../../../assets/images/Frame 168@2x.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionCard } from './ExcursionCard/ExcursionCard';
 import styles from './ExcursionsList.module.css';
+import { ExcursionListProps } from '../../../types';
 
 const mockExcursions = [
 	{
@@ -34,8 +35,6 @@ const mockExcursions = [
 		price: 1500,
 	},
 ];
-
-export interface ExcursionListProps extends ComponentProps<'ul'> {}
 
 export const ExcursionsList = ({ ref }: ExcursionListProps) => {
 	const { data: excursions } = useQuery({

@@ -1,5 +1,5 @@
 export const formatNumber = (num: number) => {
-	if (typeof num !== 'number') return;
+	if (typeof num !== 'number') return '';
 
 	const numString = String(num);
 	const parts = [];

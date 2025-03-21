@@ -1,6 +1,4 @@
-export interface IconArrowProps {
-	direction: 'left' | 'right' | 'top' | 'bottom';
-}
+import { IconArrowProps } from '../types';
 
 export const IconArrow = ({ direction = 'right' }: IconArrowProps) => {
 	let rotation = 0;

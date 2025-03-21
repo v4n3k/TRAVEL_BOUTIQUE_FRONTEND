@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { TextArea } from '../../../../components/admin';
 import { Button, Form, TextInput } from '../../../../components/ui';
+import { useWindowSize } from '../../../../hooks/useWindowSize';
 import { IconArrowTopRight } from '../../../../icons/IconArrowTopRight';
 import { FeedbackFormProps } from '../../../../types';
 import styles from './FeedbackForm.module.css';
@@ -8,17 +9,11 @@ import styles from './FeedbackForm.module.css';
 export const FeedbackForm = ({ ref }: FeedbackFormProps) => {
 	const [isIconVisible, setIsIconVisible] = useState(window.innerWidth >= 560);
 
+	const { width } = useWindowSize();
+
 	useEffect(() => {
-		const handleResize = () => {
-			setIsIconVisible(window.innerWidth >= 560);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [window.innerWidth]);
+		setIsIconVisible(Number(width) >= 560);
+	}, [width]);
 
 	return (
 		<div className={styles.feedbackFormContainer} ref={ref}>

@@ -97,6 +97,8 @@ export interface ExcursionCardProps
 		| 'price'
 	> {}
 
+export interface ExcursionListProps extends ComponentProps<'ul'> {}
+
 export interface ExcursionEventsListProps extends ComponentProps<'ul'> {
 	excursionEvents: ExcursionEventEntity[];
 }
@@ -155,6 +157,10 @@ export interface BreadcrumbsWithNavButtonProps extends ComponentProps<'div'> {
 
 export interface TitleProps extends ComponentProps<'h2'> {
 	as: 'h1' | 'h2' | 'h3';
+}
+
+export interface IconArrowProps {
+	direction: 'left' | 'right' | 'top' | 'bottom';
 }
 
 export interface IconArrowRightProps extends SVGProps<SVGSVGElement> {}

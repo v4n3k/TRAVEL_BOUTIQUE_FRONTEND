@@ -18,7 +18,7 @@ import {
 	TextInput,
 } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
-import { ExcursionEventEntity, RouteName } from '../../types';
+import { RouteName } from '../../types';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
@@ -32,18 +32,6 @@ export const ExcursionPage = () => {
 	});
 
 	const { isModalOpen, openModal, closeModal } = useModal();
-
-	const {
-		imgSrc,
-		name,
-		personsAmount,
-		accompanistsAmount,
-		price,
-		info,
-		excursionEvents,
-	} = excursion || {};
-
-	const formattedPrice = formatNumber(price as number);
 
 	if (!excursion) {
 		return (
@@ -63,6 +51,22 @@ export const ExcursionPage = () => {
 		);
 	}
 
+	const {
+		imgSrc,
+		name,
+		personsAmount,
+		accompanistsAmount,
+		price,
+		info,
+		excursionEvents,
+	} = excursion;
+
+	const formattedPrice = formatNumber(price);
+
+	const handlePay = () => {
+		closeModal();
+	};
+
 	return (
 		<Page className={styles.excursionPage}>
 			<BreadcrumbsWithNavButton
@@ -75,16 +79,13 @@ export const ExcursionPage = () => {
 			<Section className={styles.excursion}>
 				<div className={styles.imageContainer}>
 					<Image src={imgSrc} />
-					<Price
-						className={styles.priceOnSmallScreen}
-						price={price as number}
-					/>
+					<Price className={styles.priceOnSmallScreen} price={price} />
 					<ManagerButton className={styles.managerButton} />
 				</div>
 				<div className={styles.info}>
 					<h2 className={styles.title}>{name}</h2>
 					<div className={styles.priceContainer}>
-						<Price className={styles.price} price={price as number} />
+						<Price className={styles.price} price={price} />
 						<Button
 							className={styles.buyButton}
 							fullWidth
@@ -99,14 +100,14 @@ export const ExcursionPage = () => {
 						<Field
 							className={styles.field}
 							fieldKey='Количество сопровождающих'
-							fieldValue={accompanistsAmount as number}
+							fieldValue={accompanistsAmount}
 							width='fullWidth'
 							valueBackground='white-50'
 						/>
 						<Field
 							className={styles.field}
 							fieldKey='Количество в группе'
-							fieldValue={personsAmount as number}
+							fieldValue={personsAmount}
 							width='fullWidth'
 							valueBackground='white-50'
 						/>
@@ -117,9 +118,7 @@ export const ExcursionPage = () => {
 						<p>{info}</p>
 					</div>
 
-					<ExcursionEventsList
-						excursionEvents={excursionEvents as ExcursionEventEntity[]}
-					/>
+					<ExcursionEventsList excursionEvents={excursionEvents} />
 				</div>
 
 				<ManagerButton
@@ -141,6 +140,7 @@ export const ExcursionPage = () => {
 							<Button
 								rootClassName={styles.modalButtonRoot}
 								backgroundColor='blue-500'
+								onClick={handlePay}
 							>
 								Оплатить
 							</Button>

@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent } from 'react';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import {
+	BreadcrumbsWithNavButton,
 	ExcursionEventsList,
 	ImageUploader,
 	LabeledInput,
@@ -9,7 +10,6 @@ import {
 	NumberInput,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
-import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { Button, Page, Section, TextInput } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
 import { useAdminStore } from '../../stores/useAdminSrore';
