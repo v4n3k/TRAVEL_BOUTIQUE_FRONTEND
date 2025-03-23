@@ -1,26 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useWindowSize } from '../../../hooks/useWindowSize';
 import { ReviewsListProps } from '../../../types';
 import { Expandable, ListSlider } from '../../ui';
 import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
 
 export const ReviewsList = ({ reviews }: ReviewsListProps) => {
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const { width } = useWindowSize();
 	const listRef = useRef<HTMLUListElement>(null);
 
-	const isSlider = windowWidth > 440;
-	const isSmallSlider = windowWidth <= 510;
-	const isMediumSlider = windowWidth <= 800;
-
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
+	const isSlider = width && width > 440;
+	const isSmallSlider = width && width <= 510;
+	const isMediumSlider = width && width <= 800;
 
 	return (
 		<>

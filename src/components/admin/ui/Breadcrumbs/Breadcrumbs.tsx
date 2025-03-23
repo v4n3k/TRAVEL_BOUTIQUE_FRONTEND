@@ -13,8 +13,7 @@ export const Breadcrumbs = ({
 			{crumbs.map((crumb, index) => (
 				<li className={styles.crumb} key={crumb.id}>
 					<Link to={crumb.path}>{crumb.label}</Link>
-
-					{index < crumbs.length - 1 && <span className={styles.divider} />}
+					{index !== 0 && <span className={styles.divider} />}
 				</li>
 			))}
 		</ul>

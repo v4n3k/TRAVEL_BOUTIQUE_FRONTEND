@@ -23,3 +23,17 @@
 	border-radius: 50%;
 	background-color: var(--blue-500);
 }
+
+@media (max-width: 700px) {
+	.crumb {
+		font-size: 18px;
+		line-height: 25px;
+	}
+}
+
+@media (max-width: 480px) {
+	.crumb {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}

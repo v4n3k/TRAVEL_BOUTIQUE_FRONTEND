@@ -5,8 +5,9 @@ import styles from './LabeledInput.module.css';
 export const LabeledInput = ({
 	label,
 	renderInput,
-	direction = 'row',
 	className,
+	direction = 'row',
+	size = 'm',
 	...props
 }: LabeledInputProps) => {
 	return (
@@ -14,7 +15,7 @@ export const LabeledInput = ({
 			className={cn(styles.labeledInput, styles[direction], className)}
 			{...props}
 		>
-			<label className={styles.label}>{label}:</label>
+			<label className={cn(styles.label, styles[size])}>{label}:</label>
 			{renderInput()}
 		</div>
 	);

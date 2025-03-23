@@ -5,10 +5,14 @@ import styles from './InputWrapper.module.css';
 export const InputWrapper = ({
 	className,
 	children,
+	size = 'm',
 	...props
 }: InputWrapperProps) => {
 	return (
-		<div className={cn(styles.inputWrapper, className)} {...props}>
+		<div
+			className={cn(styles.inputWrapper, styles[size], className)}
+			{...props}
+		>
 			{children}
 		</div>
 	);

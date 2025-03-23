@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 export const IconImage = () => {
+	const { width } = useWindowSize();
 	const [size, setSize] = useState<'s' | 'm' | 'l'>('m');
 
 	useEffect(() => {
 		const handleResize = () => {
-			const windowWidth = window.innerWidth;
-
-			if (windowWidth <= 650) {
+			if (width && width <= 650) {
 				setSize('s');
-			} else if (windowWidth <= 800) {
+			} else if (width && width <= 800) {
 				setSize('l');
-			} else if (windowWidth <= 1050) {
+			} else if (width && width <= 1050) {
 				setSize('m');
-			} else if (windowWidth <= 1480) {
+			} else if (width && width <= 1480) {
 				setSize('s');
 			} else {
 				setSize('m');
@@ -21,13 +21,7 @@ export const IconImage = () => {
 		};
 
 		handleResize();
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
+	}, [width]);
 
 	useEffect(() => {
 		console.log(size);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
 	Advantages,
@@ -10,25 +10,14 @@ import {
 } from '../../blocks/home';
 import { PaymentMethod } from '../../blocks/home/PaymentMethod/PaymentMethod';
 import { Button, IconButton, Page } from '../../components/ui';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
 import { IconPhone } from '../../icons/IconPhone';
 import { RouteName } from '../../types';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
-	const [isIconVisible, setIsIconVisible] = useState(window.innerWidth >= 560);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsIconVisible(window.innerWidth >= 560);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, [window.innerWidth]);
+	const isIconVisible = useMediaQuery('(max-width: 560px)');
 
 	const feedbackFormRef = useRef<HTMLDivElement>(null);
 

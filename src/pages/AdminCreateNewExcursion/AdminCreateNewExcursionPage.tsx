@@ -11,6 +11,7 @@ import {
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
 import { Button, Page, Section, TextInput } from '../../components/ui';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
@@ -26,6 +27,7 @@ export const AdminCreateNewExcursionPage = () => {
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
 	const { isModalOpen, openModal, closeModal } = useModal();
+	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
@@ -175,7 +177,7 @@ export const AdminCreateNewExcursionPage = () => {
 								className={styles.priceInput}
 								value={price || ''}
 								onChange={handlePriceChange}
-								minWidth={53}
+								minWidth={isSmallScreen ? 45 : 53}
 								maxWidth={155}
 							/>
 							<label>₽</label>
@@ -205,12 +207,13 @@ export const AdminCreateNewExcursionPage = () => {
 							/>
 						</InputWrapper>
 
-						<InputWrapper className={styles.infoWrapper}>
+						<InputWrapper className={styles.infoWrapper} size='l'>
 							<LabeledInput
 								className={styles.infoInput}
 								label='В стоимость входит'
 								renderInput={() => (
 									<TextArea
+										className={styles.infoTextArea}
 										value={info}
 										onChange={handleInfoChange}
 										placeholder='Информация'
@@ -218,6 +221,7 @@ export const AdminCreateNewExcursionPage = () => {
 									/>
 								)}
 								direction='column'
+								size='l'
 							/>
 						</InputWrapper>
 
@@ -248,6 +252,7 @@ export const AdminCreateNewExcursionPage = () => {
 					</Button>
 					<Button
 						className={styles.createButtonOnMediumScreen}
+						rootClassName={styles.createButtonOnMediumScreenRoot}
 						backgroundColor='blue-500'
 						onClick={handleCreateExcursion}
 					>

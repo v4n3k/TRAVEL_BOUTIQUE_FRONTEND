@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 export const IconConnect = () => {
-	const [size, setSize] = useState(window.innerWidth <= 400 ? 24 : 27);
+	const { width } = useWindowSize();
+
+	const [size, setSize] = useState(width && width <= 400 ? 24 : 27);
 
 	useEffect(() => {
 		const handleResize = () => {
-			setSize(window.innerWidth <= 400 ? 24 : 27);
+			setSize(width && width <= 400 ? 24 : 27);
 		};
 
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
+		handleResize();
+	}, [width]);
 
 	return (
 		<svg

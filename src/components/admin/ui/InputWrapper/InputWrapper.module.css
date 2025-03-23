@@ -6,3 +6,13 @@
 	border-radius: 20px;
 	background-color: var(--white-50);
 }
+
+@media (max-width: 550px) {
+	.inputWrapper.m {
+		padding: 16px 20px;
+	}
+
+	.inputWrapper.l {
+		padding: 20px;
+	}
+}

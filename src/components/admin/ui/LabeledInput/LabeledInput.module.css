@@ -28,3 +28,31 @@
 		line-height: 27px;
 	}
 }
+
+@media (max-width: 700px) {
+	.labeledInput {
+		gap: 12px;
+	}
+
+	.label.m {
+		font-size: 18px;
+		line-height: 23px;
+	}
+
+	.label.l {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 440px) {
+	.label.m {
+		font-size: 14px;
+		line-height: 19px;
+	}
+
+	.label.l {
+		font-size: 16px;
+		line-height: 21px;
+	}
+}

@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export const IconBurgerMenu = () => {
-	const [isMobile, setIsMobile] = useState(window.innerWidth <= 740);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 740);
-		};
-
-		window.addEventListener('resize', handleResize);
-
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
+	const isMobile = useMediaQuery('(max-width: 740px)');
 
 	const iconSize = isMobile ? '48' : '56';
 

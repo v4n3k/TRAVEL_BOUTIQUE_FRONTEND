@@ -1,6 +1,6 @@
 .breadcrumbsWithNavButton {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 24px;
 	margin-bottom: 32px;
 }

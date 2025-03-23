@@ -238,6 +238,23 @@
 	.buttonsOnMediumScreen {
 		display: flex;
 	}
+
+	.addButton,
+	.triggerModalButtonOnMediumScreen,
+	.createButtonOnMediumScreen {
+		justify-content: center;
+		width: 100% !important;
+		border-radius: 12px;
+	}
+
+	.buttonsOnMediumScreen {
+		width: fit-content;
+		margin: 0 auto;
+	}
+
+	.createButtonOnMediumScreenRoot {
+		width: 100% !important;
+	}
 }
 
 @media (max-width: 700px) {
@@ -249,5 +266,50 @@
 	.priceInput {
 		font-size: 32px;
 		line-height: 44px;
+	}
+
+	.priceContainer {
+		margin-left: 32px;
+	}
+}
+
+@media (max-width: 550px) {
+	.createContainer {
+		gap: 16px;
+	}
+
+	.titleInput {
+		font-size: 20px;
+		line-height: 27px;
+		margin-bottom: 16px;
+	}
+
+	.priceInput {
+		padding: 7px 16px;
+		font-size: 22px;
+		line-height: 30px;
+	}
+
+	.priceContainer {
+		margin-left: 16px;
+	}
+
+	.infoTextArea {
+		padding: 12px;
+		font-size: 16px;
+		line-height: 22px;
+		min-height: 46px;
+	}
+
+	.addButton {
+		padding: 12px 36px;
+	}
+
+	.addButton,
+	.triggerModalButtonOnMediumScreen,
+	.createButtonOnMediumScreen {
+		font-size: 20px;
+		line-height: 27px;
+		border-radius: 12px;
 	}
 }

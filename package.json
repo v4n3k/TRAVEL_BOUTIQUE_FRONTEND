@@ -4,7 +4,8 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "cross-env NODE_ENV=dev vite --host",
+		"prod": "cross-env NODE_ENV=prod vite --host",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview"
@@ -19,6 +20,7 @@
 		"zustand": "^5.0.3"
 	},
 	"devDependencies": {
+		"cross-env": "^7.0.3",
 		"@eslint/js": "^9.19.0",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",

@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconTelegram } from '../../icons/IconTelegram';
 import { IconWhatsApp } from '../../icons/IconWhatsApp';
 import { useAuthStore } from '../../stores/useAuthStore';
@@ -6,11 +8,17 @@ import { RouteName } from '../../types';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
-	const isAuth = useAuthStore(state => state.isAuth);
-
 	const { pathname } = useLocation();
 
+	const isAuth = useAuthStore(state => state.isAuth);
+	const isMobile = useMediaQuery('(max-width: 800px)');
 	const isAdminPage = pathname.includes('admin');
+
+	const showExtendedNav = isAuth && isAdminPage && !isMobile;
+
+	useEffect(() => {
+		console.log(isAuth, isAdminPage, !isMobile);
+	}, [isAuth, isAdminPage, !isMobile]);
 
 	return (
 		<footer className={styles.footer}>
@@ -19,7 +27,7 @@ export const Footer = () => {
 					<div className={styles.topContainer}>
 						<nav>
 							<ul>
-								{isAuth && isAdminPage ? (
+								{showExtendedNav ? (
 									<>
 										<li>
 											<Link to={RouteName.CATEGORIES}>категории</Link>

@@ -127,9 +127,12 @@ export interface LabeledInputProps extends ComponentProps<'div'> {
 	label: string;
 	renderInput: () => ReactNode;
 	direction?: 'row' | 'column';
+	size?: 'm' | 'l';
 }
 
-export interface InputWrapperProps extends React.ComponentProps<'div'> {}
+export interface InputWrapperProps extends React.ComponentProps<'div'> {
+	size?: 'm' | 'l';
+}
 
 export interface NumberInputProps extends ComponentProps<'input'> {
 	minWidth?: number;
