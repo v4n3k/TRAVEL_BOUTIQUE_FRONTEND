@@ -19,6 +19,7 @@
 	font-weight: 600;
 	transition: 0.3s ease-in-out;
 	overflow: hidden;
+	user-select: none;
 }
 
 .button:hover {
