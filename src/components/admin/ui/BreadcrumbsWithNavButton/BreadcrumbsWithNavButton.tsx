@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { Breadcrumbs } from '../..';
 import { IconArrowLeft } from '../../../../icons/IconArrowLeft';
 import { BreadcrumbsWithNavButtonProps } from '../../../../types';
 import { cn } from '../../../../utils/cn';
 import { IconButton } from '../../../ui';
 import styles from './BreadcrumbsWithNavButton.module.css';
+import { Breadcrumbs } from '../..';
 
 export const BreadcrumbsWithNavButton = ({
 	crumbs,
@@ -24,6 +24,7 @@ export const BreadcrumbsWithNavButton = ({
 				Icon={<IconArrowLeft />}
 				onClick={handleGoBack}
 			/>
+
 			<Breadcrumbs crumbs={crumbs} />
 		</div>
 	);

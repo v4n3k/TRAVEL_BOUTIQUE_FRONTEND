@@ -11,9 +11,12 @@ export const Breadcrumbs = ({
 	return (
 		<ul className={cn(styles.breadcrumbs, className)} {...props}>
 			{crumbs.map((crumb, index) => (
-				<li className={styles.crumb} key={crumb.id}>
-					<Link to={crumb.path}>{crumb.label}</Link>
+				<li
+					className={cn(styles.crumb, index === 0 ? styles.first : '')}
+					key={crumb.id}
+				>
 					{index !== 0 && <span className={styles.divider} />}
+					<Link to={crumb.path}>{crumb.label}</Link>
 				</li>
 			))}
 		</ul>

@@ -27,13 +27,21 @@ export const HomePage = () => {
 		navigate(RouteName.EXCURSIONS);
 	};
 
+	const handleOpenWhatsApp = () => {
+		window.open('https://whatsApp.com');
+	};
+
 	return (
 		<Page>
 			<SchoolExcursions ref={feedbackFormRef} />
 			<Excursions />
 			<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
 			<div className={styles.iconPhoneWrapper}>
-				<IconButton className={styles.iconButton} Icon={<IconPhone />} />
+				<IconButton
+					className={styles.iconButton}
+					Icon={<IconPhone />}
+					onClick={handleOpenWhatsApp}
+				/>
 			</div>
 			<Advantages />
 			<ChildrenAmount />

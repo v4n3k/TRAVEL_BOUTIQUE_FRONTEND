@@ -18,29 +18,22 @@ import {
 	TextInput,
 } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
-import { RouteName } from '../../types';
+import { ExcursionEntity, RouteName } from '../../types';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 export const ExcursionPage = () => {
 	const { id } = useParams();
 
-	const { data: excursion, isError, error } = useQuery({
+	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
 		queryFn: () => excursionApi.getById(Number(id)),
-		retry: false, // set true after deleting mock data
+		retry: true,
 	});
 
 	const { isModalOpen, openModal, closeModal } = useModal();
 
-	if (!excursion) {
-		return (
-			<>
-				<p>Error:</p>
-				<p>no data</p>
-			</>
-		);
-	}
+	if (isLoading) return <></>;
 
 	if (isError) {
 		return (
@@ -59,7 +52,7 @@ export const ExcursionPage = () => {
 		price,
 		info,
 		excursionEvents,
-	} = excursion;
+	} = excursion as ExcursionEntity;
 
 	const formattedPrice = formatNumber(price);
 
