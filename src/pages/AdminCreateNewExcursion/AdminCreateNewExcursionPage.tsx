@@ -10,15 +10,15 @@ import {
 	NumberInput,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
-import { Button, Page, Section, TextInput } from '../../components/ui';
+import { Button, Form, Page, Section, TextInput } from '../../components/ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
+import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
 	ExcursionWithImage,
 	ImageEntity,
-	RouteName,
 } from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
@@ -26,15 +26,14 @@ export const AdminCreateNewExcursionPage = () => {
 	const newExcursion = useAdminStore(state => state.newExcursion);
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
+	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
 
-		onSuccess: () => {
-			handleDeleteExcursion();
-		},
+		onSuccess: () => handleDeleteExcursion(),
 
 		onError: (error: unknown) => {
 			console.error('Error creating new Excursion: ', error);
@@ -131,134 +130,126 @@ export const AdminCreateNewExcursionPage = () => {
 
 	return (
 		<Page>
-			<BreadcrumbsWithNavButton
-				crumbs={[
-					{ id: 1, label: 'Админ-панель', path: RouteName.ADMIN },
-					{ id: 2, label: 'Экскурсии Тюмени', path: RouteName.HOME },
-					{
-						id: 3,
-						label: 'Создание нового мероприятия',
-						path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
-					},
-				]}
-			/>
+			<BreadcrumbsWithNavButton crumbs={navHistory} />
 			<Section className={styles.createContainer}>
-				<div className={styles.imageUploaderAndButton}>
-					<ImageUploader
-						selectedImage={uploadedImage}
-						onImageUpload={handleImageChange}
-					/>
-					<Button
-						className={styles.triggerModalButton}
-						backgroundColor='red-300'
-						color='white-100'
-						onClick={openModal}
-					>
-						Удалить экскурсию
-					</Button>
-					<Button
-						className={styles.createButton}
-						backgroundColor='blue-500'
-						onClick={handleCreateExcursion}
-					>
-						Создать
-					</Button>
-				</div>
-				<div className={styles.mainInfoContainer}>
-					<div className={styles.titleAndPrice}>
-						<TextInput
-							className={styles.titleInput}
-							value={name}
-							onChange={handleTitleChange}
-							placeholder='Название экскурсии'
+				<Form className={styles.form}>
+					<div className={styles.imageUploaderAndButton}>
+						<ImageUploader
+							selectedImage={uploadedImage}
+							onImageUpload={handleImageChange}
 						/>
-						<div className={styles.priceContainer}>
-							<NumberInput
-								className={styles.priceInput}
-								value={price || ''}
-								onChange={handlePriceChange}
-								minWidth={isSmallScreen ? 45 : 53}
-								maxWidth={155}
+						<Button
+							className={styles.triggerModalButton}
+							backgroundColor='red-300'
+							color='white-100'
+							onClick={openModal}
+						>
+							Удалить экскурсию
+						</Button>
+						<Button
+							className={styles.createButton}
+							backgroundColor='blue-500'
+							onClick={handleCreateExcursion}
+						>
+							Создать
+						</Button>
+					</div>
+					<div className={styles.mainInfoContainer}>
+						<div className={styles.titleAndPrice}>
+							<TextInput
+								className={styles.titleInput}
+								value={name}
+								onChange={handleTitleChange}
+								placeholder='Название экскурсии'
 							/>
-							<label>₽</label>
+							<div className={styles.priceContainer}>
+								<NumberInput
+									className={styles.priceInput}
+									value={price || ''}
+									onChange={handlePriceChange}
+									minWidth={isSmallScreen ? 45 : 53}
+									maxWidth={155}
+								/>
+								<label>₽</label>
+							</div>
+						</div>
+						<div className={styles.inner}>
+							<InputWrapper className={styles.amountsWrapper}>
+								<LabeledInput
+									label='Количество сопровождающих'
+									renderInput={() => (
+										<NumberInput
+											className={styles.amountInput}
+											value={accompanistsAmount || ''}
+											onChange={handleAccompanistsAmountChange}
+										/>
+									)}
+								/>
+								<LabeledInput
+									label='Количество человек в группе'
+									renderInput={() => (
+										<NumberInput
+											className={styles.amountInput}
+											value={personsAmount || ''}
+											onChange={handlePersonsAmountChange}
+										/>
+									)}
+								/>
+							</InputWrapper>
+
+							<InputWrapper className={styles.infoWrapper} size='l'>
+								<LabeledInput
+									className={styles.infoInput}
+									label='В стоимость входит'
+									renderInput={() => (
+										<TextArea
+											className={styles.infoTextArea}
+											value={info}
+											onChange={handleInfoChange}
+											placeholder='Информация'
+											rows={1}
+										/>
+									)}
+									direction='column'
+									size='l'
+								/>
+							</InputWrapper>
+
+							<div className={styles.eventsContainer}>
+								<ExcursionEventsList />
+
+								<Button
+									className={styles.addButton}
+									rootClassName={styles.addButtonRoot}
+									onClick={handleAddEvent}
+									backgroundColor='white-50'
+									color='blue-500'
+									withBorder
+								>
+									Добавить<span>+</span>
+								</Button>
+							</div>
 						</div>
 					</div>
-					<div className={styles.inner}>
-						<InputWrapper className={styles.amountsWrapper}>
-							<LabeledInput
-								label='Количество сопровождающих'
-								renderInput={() => (
-									<NumberInput
-										className={styles.amountInput}
-										value={accompanistsAmount || ''}
-										onChange={handleAccompanistsAmountChange}
-									/>
-								)}
-							/>
-							<LabeledInput
-								label='Количество человек в группе'
-								renderInput={() => (
-									<NumberInput
-										className={styles.amountInput}
-										value={personsAmount || ''}
-										onChange={handlePersonsAmountChange}
-									/>
-								)}
-							/>
-						</InputWrapper>
-
-						<InputWrapper className={styles.infoWrapper} size='l'>
-							<LabeledInput
-								className={styles.infoInput}
-								label='В стоимость входит'
-								renderInput={() => (
-									<TextArea
-										className={styles.infoTextArea}
-										value={info}
-										onChange={handleInfoChange}
-										placeholder='Информация'
-										rows={1}
-									/>
-								)}
-								direction='column'
-								size='l'
-							/>
-						</InputWrapper>
-
-						<div className={styles.eventsContainer}>
-							<ExcursionEventsList />
-
-							<Button
-								className={styles.addButton}
-								rootClassName={styles.addButtonRoot}
-								onClick={handleAddEvent}
-								backgroundColor='white-50'
-								color='blue-500'
-								withBorder
-							>
-								Добавить<span>+</span>
-							</Button>
-						</div>
+					<div className={styles.buttonsOnMediumScreen}>
+						<Button
+							className={styles.triggerModalButtonOnMediumScreen}
+							backgroundColor='red-300'
+							color='white-100'
+							onClick={openModal}
+						>
+							Удалить экскурсию
+						</Button>
+						<Button
+							className={styles.createButtonOnMediumScreen}
+							rootClassName={styles.createButtonOnMediumScreenRoot}
+							backgroundColor='blue-500'
+							onClick={handleCreateExcursion}
+						>
+							Создать
+						</Button>
 					</div>
-				</div>
-				<div className={styles.buttonsOnMediumScreen}>
-					<Button
-						className={styles.triggerModalButtonOnMediumScreen}
-						backgroundColor='red-300'
-						color='white-100'
-						onClick={openModal}
-					>
-						Удалить экскурсию
-					</Button>
-					<Button
-						className={styles.createButtonOnMediumScreen}
-						rootClassName={styles.createButtonOnMediumScreenRoot}
-						backgroundColor='blue-500'
-						onClick={handleCreateExcursion}
-					>
-						Создать
-					</Button>
-				</div>
+				</Form>
 			</Section>
 
 			{isModalOpen && (

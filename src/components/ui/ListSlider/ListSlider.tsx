@@ -59,8 +59,6 @@ export const ListSlider = ({
 			const computedStyle = window.getComputedStyle(listRef.current);
 			const listGap = parseInt(computedStyle.columnGap);
 
-			console.log(listGap);
-
 			listRef.current.scrollTo({
 				left: currentScrollLeft + cardWidthToScroll + listGap,
 				behavior: 'smooth',

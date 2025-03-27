@@ -26,18 +26,12 @@ export const Expandable = ({
 	useEffect(() => {
 		if (isExpanded) {
 			setTimeout(() => {
-				if (!contentRef.current) {
-					console.log('no ref');
-					return;
-				}
+				if (!contentRef.current) return;
 
 				contentRef.current.style.overflow = 'visible';
 			}, 500);
 		} else {
-			if (!contentRef.current) {
-				console.log('no ref');
-				return;
-			}
+			if (!contentRef.current) return;
 
 			contentRef.current.style.overflow = 'hidden';
 		}

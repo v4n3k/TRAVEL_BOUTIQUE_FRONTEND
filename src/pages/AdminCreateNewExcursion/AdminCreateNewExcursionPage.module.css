@@ -1,4 +1,4 @@
-.createContainer {
+.form {
 	display: flex;
 	gap: 52px;
 }
@@ -141,7 +141,7 @@
 }
 
 @media (max-width: 1480px) {
-	.createContainer {
+	.form {
 		gap: 32px;
 	}
 
@@ -188,7 +188,7 @@
 }
 
 @media (max-width: 1050px) {
-	.createContainer {
+	.form {
 		flex-direction: column;
 		gap: 36px;
 	}
@@ -274,7 +274,7 @@
 }
 
 @media (max-width: 550px) {
-	.createContainer {
+	.form {
 		gap: 16px;
 	}
 

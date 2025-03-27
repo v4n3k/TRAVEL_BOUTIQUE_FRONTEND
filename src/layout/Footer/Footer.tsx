@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconTelegram } from '../../icons/IconTelegram';
@@ -15,10 +14,6 @@ export const Footer = () => {
 	const isAdminPage = pathname.includes('admin');
 
 	const showExtendedNav = isAuth && isAdminPage && !isMobile;
-
-	useEffect(() => {
-		console.log(isAuth, isAdminPage, !isMobile);
-	}, [isAuth, isAdminPage, !isMobile]);
 
 	return (
 		<footer className={styles.footer}>

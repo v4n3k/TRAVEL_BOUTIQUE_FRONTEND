@@ -38,7 +38,7 @@ export interface ExcursionBaseWithImage
 export interface BreadcrumbEntity {
 	id: number;
 	label: string;
-	path: RouteName;
+	to: RouteName;
 }
 
 export interface AdvantageEntity {
@@ -52,3 +52,17 @@ export interface ReviewEntity {
 	author: string;
 	text: string;
 }
+
+export interface CategoryEntity {
+	id: number;
+	name: string;
+	imgSrc: string;
+}
+
+export interface CategoryBase extends Omit<CategoryEntity, 'id'> {}
+
+export interface CategoryWithImage extends Omit<CategoryEntity, 'imgSrc'> {
+	uploadedImage: ImageEntity;
+}
+
+export interface CategoryBaseWithImage extends Omit<CategoryWithImage, 'id'> {}

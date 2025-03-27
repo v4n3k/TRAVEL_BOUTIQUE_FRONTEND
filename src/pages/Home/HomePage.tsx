@@ -17,7 +17,7 @@ import { RouteName } from '../../types';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
-	const isIconVisible = useMediaQuery('(max-width: 560px)');
+	const isIconHidden = useMediaQuery('(max-width: 560px)');
 
 	const feedbackFormRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +51,7 @@ export const HomePage = () => {
 				<Button
 					className={styles.chooseButton}
 					backgroundColor='blue-500'
-					cornerIcon={isIconVisible && <IconArrowTopRight fill='#BDD4E2' />}
+					cornerIcon={!isIconHidden && <IconArrowTopRight fill='#BDD4E2' />}
 					onClick={handleClick}
 				>
 					Выбрать экскурсию

@@ -16,7 +16,7 @@ export const Breadcrumbs = ({
 					key={crumb.id}
 				>
 					{index !== 0 && <span className={styles.divider} />}
-					<Link to={crumb.path}>{crumb.label}</Link>
+					<Link to={crumb.to}>{crumb.label}</Link>
 				</li>
 			))}
 		</ul>

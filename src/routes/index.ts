@@ -1,21 +1,21 @@
 import {
 	AboutPage,
+	AdminCreateNewCategoryPage,
 	AdminCreateNewExcursionPage,
 	AdminPage,
 	BlogPage,
 	CategoriesPage,
+	ExcursionPage,
 	ExcursionsPage,
 	HomePage,
 	InfoPage,
 	ServicePage,
-	ExcursionPage,
 	SignInPage,
 } from '../pages';
 import { Route, RouteName } from '../types/routes';
 
 export const publicRoutes: Route[] = [
 	{ path: RouteName.HOME, Component: HomePage },
-
 	{ path: RouteName.EXCURSIONS, Component: ExcursionsPage },
 	{ path: RouteName.EXCURSION, Component: ExcursionPage },
 	{ path: RouteName.ABOUT, Component: AboutPage },
@@ -31,5 +31,9 @@ export const privateRoutes: Route[] = [
 	{
 		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
 		Component: AdminCreateNewExcursionPage,
+	},
+	{
+		path: RouteName.ADMIN_CREATE_NEW_CATEGORY,
+		Component: AdminCreateNewCategoryPage,
 	},
 ];

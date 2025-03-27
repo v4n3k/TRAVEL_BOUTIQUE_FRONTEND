@@ -23,10 +23,6 @@ export const IconImage = () => {
 		handleResize();
 	}, [width]);
 
-	useEffect(() => {
-		console.log(size);
-	}, [size]);
-
 	return (
 		<>
 			{size === 's' && (

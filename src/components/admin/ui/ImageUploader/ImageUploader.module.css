@@ -39,6 +39,7 @@
 .upload {
 	max-width: 637px;
 	height: 507px;
+	width: 100%;
 }
 
 @media (max-width: 1480px) {

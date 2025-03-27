@@ -18,7 +18,8 @@ import {
 	TextInput,
 } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
-import { ExcursionEntity, RouteName } from '../../types';
+import { useNavHistory } from '../../hooks/useNavHistory';
+import { ExcursionEntity } from '../../types';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
@@ -31,6 +32,7 @@ export const ExcursionPage = () => {
 		retry: true,
 	});
 
+	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 
 	if (isLoading) return <></>;
@@ -64,10 +66,7 @@ export const ExcursionPage = () => {
 		<Page className={styles.excursionPage}>
 			<BreadcrumbsWithNavButton
 				className={styles.breadcrumbs}
-				crumbs={[
-					{ id: 1, label: 'Категории', path: RouteName.EXCURSIONS },
-					{ id: 2, label: 'Тюмень', path: RouteName.HOME },
-				]}
+				crumbs={navHistory}
 			/>
 			<Section className={styles.excursion}>
 				<div className={styles.imageContainer}>

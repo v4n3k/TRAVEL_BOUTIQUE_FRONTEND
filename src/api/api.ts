@@ -6,8 +6,6 @@ const ip = isDev ? 'localhost' : '103.88.243.252';
 
 const baseURL = `http://${ip}:4200/api`;
 
-console.log(baseURL);
-
 export const api = axios.create({
 	baseURL,
 });
