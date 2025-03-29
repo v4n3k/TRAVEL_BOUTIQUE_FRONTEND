@@ -150,6 +150,12 @@ export interface ModalProps extends ComponentProps<'div'> {
 	onClose: () => void;
 }
 
+export interface TitledModalProps extends ModalProps {
+	title: string;
+}
+
+export interface ModalButtonProps extends ButtonProps {}
+
 export interface BreadcrumbsProps extends ComponentProps<'ul'> {
 	crumbs: BreadcrumbEntity[];
 }
@@ -159,7 +165,13 @@ export interface BreadcrumbsWithNavButtonProps extends ComponentProps<'div'> {
 }
 
 export interface TitleProps extends ComponentProps<'h2'> {
-	as: 'h1' | 'h2' | 'h3';
+	as?: 'h1' | 'h2' | 'h3';
+}
+
+export interface TextContainerProps extends ComponentProps<'div'> {}
+
+export interface ServiceProps {
+	name: string;
 }
 
 export interface IconArrowProps {

@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { Modal } from '../../components/admin';
+import { ModalButton, TitledModal } from '../../components/admin';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import {
 	ExcursionEventsList,
@@ -34,6 +35,10 @@ export const ExcursionPage = () => {
 
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
+
+	useEffect(() => {
+		console.log(navHistory);
+	}, [navHistory]);
 
 	if (isLoading) return <></>;
 
@@ -118,27 +123,24 @@ export const ExcursionPage = () => {
 					rootClassName={styles.managerButtonRoot}
 				/>
 
-				<Modal isOpen={isModalOpen} onClose={closeModal}>
-					<div className={styles.modalContainer}>
-						<h3 className={styles.modalTitle}>Введите ключ</h3>
-						<Form className={styles.modalForm}>
-							<div className={styles.formContainer}>
-								<TextInput
-									className={styles.modalInput}
-									placeholder='Поле для ввода ключа'
-								/>
-								<Price className={styles.modalPrice} price={formattedPrice} />
-							</div>
-							<Button
-								rootClassName={styles.modalButtonRoot}
-								backgroundColor='blue-500'
-								onClick={handlePay}
-							>
-								Оплатить
-							</Button>
-						</Form>
-					</div>
-				</Modal>
+				<TitledModal
+					isOpen={isModalOpen}
+					onClose={closeModal}
+					title='Введите ключ'
+				>
+					<Form className={styles.modalForm}>
+						<div className={styles.formContainer}>
+							<TextInput
+								className={styles.modalInput}
+								placeholder='Поле для ввода ключа'
+							/>
+							<Price className={styles.modalPrice} price={formattedPrice} />
+						</div>
+						<ModalButton backgroundColor='blue-500' onClick={handlePay}>
+							Оплатить
+						</ModalButton>
+					</Form>
+				</TitledModal>
 			</Section>
 		</Page>
 	);

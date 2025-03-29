@@ -8,3 +8,5 @@ export * from '../ui/Page/Page';
 export * from '../ui/Section/Section';
 export * from '../ui/TagsList/TagsList';
 export * from '../ui/TextInput/TextInput';
+export * from '../ui/Title/Title';
+export * from '../ui/TextContainer/TextContainer';

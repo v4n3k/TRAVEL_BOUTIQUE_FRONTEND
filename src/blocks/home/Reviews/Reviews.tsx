@@ -1,5 +1,5 @@
 import { ReviewsList } from '../../../components/review';
-import { Section } from '../../../components/ui';
+import { Section, Title } from '../../../components/ui';
 import styles from './Reviews.module.css';
 
 const reviews = [
@@ -72,7 +72,7 @@ const reviews = [
 export const Reviews = () => {
 	return (
 		<Section className={styles.reviews}>
-			<h2 className={styles.title}>Отзывы</h2>
+			<Title className={styles.title}>Отзывы</Title>
 			<ReviewsList reviews={reviews} />
 		</Section>
 	);

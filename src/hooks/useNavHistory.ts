@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { RouteName } from '../types';
+import { RouteBase, RouteName } from '../types';
 import { NavHistoryLink } from '../types/hooks';
 
 export const useNavHistory = () => {
 	const { pathname } = useLocation();
 	const [navHistory, setNavHistory] = useState<NavHistoryLink[]>([]);
 
+	localStorage.setItem('category', 'Тюмень');
 	const category = localStorage.getItem('category');
 
 	useEffect(() => {
 		const navConfig = [
 			{
-				condition: pathname.includes(RouteName.EXCURSIONS),
+				condition: pathname.includes(RouteBase.EXCURSION),
 				link: { label: 'Категории', to: RouteName.EXCURSIONS },
 			},
 			{
-				condition: pathname.includes('admin'),
+				condition: pathname.includes(RouteName.ADMIN),
 				link: { label: 'Админ-панель', to: RouteName.ADMIN },
 			},
 			{

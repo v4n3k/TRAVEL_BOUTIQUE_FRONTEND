@@ -1,0 +1,19 @@
+.textContainer {
+	display: flex;
+	padding: 24px 32px;
+	border-radius: 40px;
+	background-color: var(--white-50);
+}
+
+@media (max-width: 1480px) {
+	.textContainer {
+		padding: 24px;
+	}
+}
+
+@media (max-width: 600px) {
+	.textContainer {
+		padding: 20px;
+		border-radius: 20px;
+	}
+}

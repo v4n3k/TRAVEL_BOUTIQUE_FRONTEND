@@ -1,5 +1,15 @@
+import { About, QualityGuarantees, Services } from '../../blocks/about';
+import { Reviews } from '../../blocks/home';
+import { Page } from '../../components/ui';
 import styles from './AboutPage.module.css';
 
 export const AboutPage = () => {
-	return <div className={styles.aboutPage}>AboutPage</div>;
+	return (
+		<Page className={styles.aboutPage}>
+			<About />
+			<Reviews />
+			<QualityGuarantees />
+			<Services />
+		</Page>
+	);
 };

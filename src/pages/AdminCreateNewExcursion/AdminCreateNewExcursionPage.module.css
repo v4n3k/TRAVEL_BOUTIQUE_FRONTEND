@@ -110,28 +110,6 @@
 	color: var(--blue-500-70);
 }
 
-.modalContainer {
-	display: flex;
-	flex-direction: column;
-	gap: 28px;
-}
-
-.modalContainer h2 {
-	font-size: 36px;
-	line-height: 49px;
-	font-weight: 600;
-}
-
-.modalContainer .deleteButtonRoot {
-	width: 100% !important;
-}
-
-.modalContainer button {
-	justify-content: center;
-	width: 100%;
-	border-radius: 12px;
-}
-
 .buttonsOnMediumScreen {
 	display: none;
 	flex-direction: column;

@@ -1,21 +1,24 @@
 import { useMutation } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import { categoryApi } from '../../api/category/categoryApi';
 import {
 	BreadcrumbsWithNavButton,
 	ImageUploader,
+	ModalButton,
+	TitledModal,
 } from '../../components/admin';
 import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import { ImageEntity } from '../../types';
 import styles from './AdminCreateNewCategory.module.css';
 
 export const AdminCreateNewCategoryPage = () => {
-	const navHistory = useNavHistory();
-
 	const newCategory = useAdminStore(state => state.newCategory);
 	const setNewCategory = useAdminStore(state => state.setNewCategory);
+
+	const navHistory = useNavHistory();
+	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => categoryApi.create(formData),
@@ -52,14 +55,6 @@ export const AdminCreateNewCategoryPage = () => {
 		setNewCategory(prev => ({ ...prev, name: e.target.value }));
 	};
 
-	useEffect(() => {
-		console.log(navHistory);
-	}, [navHistory]);
-
-	useEffect(() => {
-		console.log(name, uploadedImage);
-	}, [name, uploadedImage]);
-
 	return (
 		<Page>
 			<BreadcrumbsWithNavButton crumbs={navHistory} />
@@ -71,7 +66,6 @@ export const AdminCreateNewCategoryPage = () => {
 							onImageUpload={handleImageChange}
 						/>
 					</div>
-
 					<div className={styles.inputAndButton}>
 						<TextInput
 							className={styles.input}
@@ -81,9 +75,9 @@ export const AdminCreateNewCategoryPage = () => {
 						/>
 						<div className={styles.buttonsContainer}>
 							<Button
-								className={styles.deleteButton}
+								className={styles.triggerModalButton}
 								backgroundColor='red-300'
-								onClick={handleDeleteCategory}
+								onClick={openModal}
 							>
 								Удалить категорию
 							</Button>
@@ -99,6 +93,22 @@ export const AdminCreateNewCategoryPage = () => {
 					</div>
 				</Form>
 			</Section>
+
+			<TitledModal
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title='Удаление карточки категории'
+			>
+				<ModalButton
+					className={styles.deleteButton}
+					rootClassName={styles.deleteButtonRoot}
+					backgroundColor='red-300'
+					color='white-100'
+					onClick={handleDeleteCategory}
+				>
+					Удалить
+				</ModalButton>
+			</TitledModal>
 
 			{isError && <p>error!</p>}
 		</Page>

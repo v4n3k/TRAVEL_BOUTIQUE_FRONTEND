@@ -6,8 +6,9 @@ import {
 	ExcursionEventsList,
 	ImageUploader,
 	LabeledInput,
-	Modal,
+	ModalButton,
 	NumberInput,
+	TitledModal,
 } from '../../components/admin';
 import { InputWrapper, TextArea } from '../../components/admin/';
 import { Button, Form, Page, Section, TextInput } from '../../components/ui';
@@ -252,21 +253,19 @@ export const AdminCreateNewExcursionPage = () => {
 				</Form>
 			</Section>
 
-			{isModalOpen && (
-				<Modal isOpen={isModalOpen} onClose={closeModal}>
-					<div className={styles.modalContainer}>
-						<h2>Удаление карточки экскурсии</h2>
-						<Button
-							rootClassName={styles.deleteButtonRoot}
-							backgroundColor='red-300'
-							color='white-100'
-							onClick={handleDeleteExcursion}
-						>
-							Удалить
-						</Button>
-					</div>
-				</Modal>
-			)}
+			<TitledModal
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				title='Удаление карточки экскурсии'
+			>
+				<ModalButton
+					backgroundColor='red-300'
+					color='white-100'
+					onClick={handleDeleteExcursion}
+				>
+					Удалить
+				</ModalButton>
+			</TitledModal>
 
 			{isError && <p>error!</p>}
 		</Page>
