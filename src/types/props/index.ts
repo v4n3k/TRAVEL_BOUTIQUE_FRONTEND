@@ -179,3 +179,16 @@ export interface IconArrowProps {
 }
 
 export interface IconArrowRightProps extends SVGProps<SVGSVGElement> {}
+
+export interface TransportVariantProps {
+	title: string;
+	Icon: ReactNode;
+	renderDescription: () => ReactNode;
+}
+
+export interface TextItemProps extends ComponentProps<'li'> {}
+
+export interface WrappedTextProps extends ComponentProps<'div'> {
+	textColor?: 'blue-500' | 'red-300';
+	italic?: boolean;
+}

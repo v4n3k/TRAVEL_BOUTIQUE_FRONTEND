@@ -1,0 +1,17 @@
+.title {
+	font-size: 36px;
+	line-height: 49px;
+	color: var(--blue-500);
+	margin-bottom: 36px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.item {
+	font-size: 28px;
+	line-height: 38px;
+}
