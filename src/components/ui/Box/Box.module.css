@@ -1,0 +1,17 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 92px;
+}
+
+@media (max-width: 1480px) {
+	.box {
+		margin-bottom: 48px;
+	}
+}
+
+/* @media (max-width: 900px) {
+	.box {
+		margin-bottom: 96px;
+	}
+} */

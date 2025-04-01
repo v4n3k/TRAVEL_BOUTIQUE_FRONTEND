@@ -1,37 +1,46 @@
+.titleAccent {
+	color: var(--blue-500);
+}
+
 .transportVariants {
 	display: flex;
 	flex-direction: column;
 	gap: 72px;
 }
 
-.textContainer {
-	display: flex;
-	gap: 32px;
-	margin-bottom: 36px;
+.wrappedTextContainer {
+	gap: 16px;
 }
 
 .wrappedText {
-	width: 106%;
+	width: 830px;
 }
 
-.title {
-	font-size: 32px;
-	line-height: 44px;
-	font-weight: 600;
-	color: var(--black-900);
-	margin-bottom: 32px;
+.image {
+	display: none;
+	border-radius: 20px;
 }
 
-.list {
-	display: flex;
-	flex-direction: column;
-	gap: 32px;
+@media (max-width: 1100px) {
+	.transportVariants {
+		gap: 48px;
+	}
 }
 
-.textItem {
-	width: 45%;
+@media (max-width: 950px) {
+	.wrappedText {
+		width: auto;
+	}
 }
 
-.wrappedText2 {
-	width: 58%;
+@media (max-width: 440px) {
+	.image {
+		display: block;
+	}
+}
+
+@media (max-width: 400px) {
+	.transportVariants {
+		gap: 56px;
+	}
 }

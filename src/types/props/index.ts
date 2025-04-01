@@ -20,6 +20,8 @@ export interface PageProps extends ComponentProps<'div'> {}
 
 export interface SectionProps extends ComponentProps<'section'> {}
 
+export interface BoxProps extends ComponentProps<'div'> {}
+
 export interface ImageProps extends ComponentProps<'img'> {}
 
 export interface TagProps extends ComponentProps<'li'> {

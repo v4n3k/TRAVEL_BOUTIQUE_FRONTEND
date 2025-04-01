@@ -16,3 +16,30 @@
 	border-radius: 50%;
 	background-color: var(--blue-500);
 }
+
+@media (max-width: 1480px) {
+	.textItem {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+@media (max-width: 600px) {
+	.textItem {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 400px) {
+	.textItem {
+		padding-left: 28px;
+		font-size: 14px;
+		line-height: 19px;
+	}
+
+	.textItem::before {
+		width: 8px;
+		height: 8px;
+	}
+}

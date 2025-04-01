@@ -8,7 +8,13 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	gap: 20px;
 	min-width: 244px;
+}
+
+.titleContainer svg {
+	width: 64px;
+	height: 64px;
 }
 
 .title {
@@ -22,4 +28,55 @@
 	font-size: 24px;
 	line-height: 33px;
 	color: var(--black-900);
+}
+
+@media (max-width: 1480px) {
+	.transportVariant {
+		gap: 160px;
+	}
+
+	.titleContainer {
+		justify-content: flex-start;
+		gap: 32px;
+		min-width: 240px;
+	}
+}
+
+@media (max-width: 1250px) {
+	.transportVariant {
+		gap: 80px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.transportVariant {
+		flex-direction: column;
+		gap: 38px;
+	}
+
+	.titleContainer {
+		margin: 0 auto;
+		min-width: auto;
+	}
+}
+
+@media (max-width: 400px) {
+	.transportVariant {
+		gap: 28px;
+	}
+
+	.titleContainer svg {
+		width: 40px;
+		height: 40px;
+	}
+
+	.title {
+		font-size: 40px;
+		line-height: 54px;
+	}
+
+	.description {
+		font-size: 16px;
+		line-height: 22px;
+	}
 }

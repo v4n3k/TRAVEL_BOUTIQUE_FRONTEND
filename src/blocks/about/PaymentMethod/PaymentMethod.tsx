@@ -1,6 +1,6 @@
-import { ManagerButton } from '../../../../components/excursion';
-import { Section, Title } from '../../../../components/ui';
-import { cn } from '../../../../utils/cn';
+import { ManagerButton } from '../../../components/excursion';
+import { Section, Title } from '../../../components/ui';
+import { cn } from '../../../utils/cn';
 import styles from './PaymentMethod.module.css';
 
 export const PaymentMethod = () => {

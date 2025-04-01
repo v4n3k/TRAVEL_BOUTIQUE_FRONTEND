@@ -1,21 +1,22 @@
-import { Section, Title } from '../../../components/ui';
+import img from '../../../../assets/images/WhatsApp Image 2024-11-21 at 22.58.05 (1) 3.png';
+import { Box, Image, Section, Title } from '../../../components/ui';
 import { IconAvia } from '../../../icons/IconAvia';
 import { IconCar } from '../../../icons/IconCar';
 import { IconRZD } from '../../../icons/IconRZD';
 import { Documents } from './Documents/Documents';
-import { PaymentMethod } from './PaymentMethod/PaymentMethod';
-import { TextItem } from './TextItem/TextItem';
+import { PaymentDetails } from './PaymentDetails/PaymentDetails';
 import styles from './TransportRules.module.css';
 import { TransportVariant } from './TransportVariant/TransportVariant';
 import { WrappedText } from './WrappedText/WrappedText';
 
 export const TransportRules = () => {
 	return (
-		<Section className={styles.a}>
+		<Section>
 			<Title>
-				Правила перевозки групп <span>детей</span>
+				Правила перевозки групп
+				<span className={styles.titleAccent}> детей</span>
 			</Title>
-			<Section className={styles.transportVariants}>
+			<Box className={styles.transportVariants}>
 				<TransportVariant
 					title='авиа'
 					Icon={<IconAvia />}
@@ -59,38 +60,12 @@ export const TransportRules = () => {
 						</>
 					)}
 				/>
-			</Section>
+			</Box>
 
 			<Documents />
+			<PaymentDetails />
 
-			<Section>
-				<div className={styles.textContainer}>
-					<WrappedText className={styles.wrappedText}>
-						Заявки для перевозки ОГП, ОГД принимаются от 90-60-45 суток до 10
-						суток до отправления поезда. Заявки, предъявленные менее чем за 10
-						суток до отправления поезда, принимаются при возможности их
-						выполнения.
-					</WrappedText>
-					<WrappedText textColor='red-300' italic>
-						Для оформления перевозки организованных групп пассажиров на поездах
-						«Сапсан» действуют иные правила.
-					</WrappedText>
-				</div>
-
-				<h4 className={styles.title}>Размер сбора с 1 декабря 2023 года:</h4>
-				<ul className={styles.list}>
-					<TextItem className={styles.textItem}>
-						для перевозки ОГД – 120,20 руб. за каждое место (ставка установлена
-						ФАС России).
-					</TextItem>
-					<TextItem className={styles.textItem}>
-						для перевозки ОГП – 481,20 руб. за каждое место (ставка установлена
-						ФАС России).
-					</TextItem>
-				</ul>
-			</Section>
-
-			<Section>
+			<Box>
 				<TransportVariant
 					title='авто'
 					Icon={<IconCar />}
@@ -134,16 +109,15 @@ export const TransportRules = () => {
 						</>
 					)}
 				/>
-			</Section>
+			</Box>
 
-			<Section>
-				<WrappedText className={styles.wrappedText2} italic>
+			<Box className={styles.wrappedTextContainer}>
+				<WrappedText className={styles.wrappedText} italic>
 					Все сопроводительные документы по экскурсии оформляют наши менеджеры,
 					заверяют и отправляют по всем ведомствам.
 				</WrappedText>
-			</Section>
-
-			<PaymentMethod />
+				<Image className={styles.image} src={img} />
+			</Box>
 		</Section>
 	);
 };

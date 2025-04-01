@@ -1,5 +1,6 @@
 .wrappedText {
 	display: flex;
+	height: fit-content;
 	padding: 16px;
 	border-radius: 20px;
 	background-color: var(--white-50);
@@ -9,4 +10,22 @@
 	font-size: 24px;
 	line-height: 33px;
 	font-weight: 600;
+}
+
+@media (max-width: 600px) {
+	.text {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 400px) {
+	.wrappedText {
+		padding: 20px;
+	}
+
+	.text {
+		font-size: 16px;
+		line-height: 22px;
+	}
 }

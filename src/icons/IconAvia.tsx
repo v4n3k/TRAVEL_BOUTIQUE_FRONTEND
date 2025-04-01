@@ -7,7 +7,6 @@ export const IconAvia = () => {
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
-			style={{ height: 64, width: 64 }}
 		>
 			<rect
 				x='46'

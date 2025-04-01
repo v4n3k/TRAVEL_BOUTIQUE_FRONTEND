@@ -1,5 +1,6 @@
 import {
 	About,
+	PaymentMethod,
 	QualityGuarantees,
 	Services,
 	TransportRules,
@@ -15,6 +16,7 @@ export const AboutPage = () => {
 			<Reviews />
 			<QualityGuarantees />
 			<TransportRules />
+			<PaymentMethod />
 			<Services />
 		</Page>
 	);
