@@ -104,11 +104,6 @@ export interface ExcursionListProps extends ComponentProps<'ul'> {}
 
 export interface ExcursionEventsListProps extends ComponentProps<'ul'> {
 	excursionEvents: ExcursionEventEntity[];
-	setExcursion: (
-		updater:
-			| ExcursionWithImage
-			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
-	) => void;
 }
 
 export interface ExcursionEventProps {
@@ -116,9 +111,15 @@ export interface ExcursionEventProps {
 }
 
 export interface ExcursionEventsInputsListProps
-	extends Pick<ExcursionEntity, 'excursionEvents'> {}
+	extends Pick<ExcursionEntity, 'excursionEvents'> {
+	setExcursion: (
+		updater:
+			| ExcursionWithImage
+			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
+	) => void;
+}
 
-export interface ExcursionEventInputsProps extends ExcursionEventEntity {
+export interface ExcursionEventInputsListProps extends ExcursionEventEntity {
 	setExcursion: (
 		updater:
 			| ExcursionWithImage

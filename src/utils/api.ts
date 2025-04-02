@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 export const handleApiResponse = async <T>(
 	promise: Promise<AxiosResponse<T>>,
 	errorMessage?: string
-): Promise<T> => {
+) => {
 	try {
 		const response = await promise;
 
@@ -17,6 +17,5 @@ export const handleApiResponse = async <T>(
 		return response.data;
 	} catch (error) {
 		console.error(error);
-		throw error;
 	}
 };

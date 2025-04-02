@@ -35,7 +35,7 @@ export const AdminEditExcursion = () => {
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
-	const { data: excursion } = useQuery({
+	const { data: excursion, isError: isGetError } = useQuery({
 		queryKey: ['excursion', id],
 		queryFn: () => excursionApi.getById(id),
 		retry: true,
@@ -59,17 +59,26 @@ export const AdminEditExcursion = () => {
 		}
 	}, [excursion]);
 
-	const mutation = useMutation({
+	const editMutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.edit(id, formData),
 
-		onSuccess: () => handleDeleteExcursion(),
+		onSuccess: () => handleClearExcursion(),
 
 		onError: (error: unknown) => {
 			console.error('Error creating new Excursion: ', error);
 		},
 	});
 
-	const { isError } = mutation;
+	const deleteMutaton = useMutation({
+		mutationFn: (id: number) => excursionApi.delete(id),
+
+		onError: (error: unknown) => {
+			console.error('Error creating new Excursion: ', error);
+		},
+	});
+
+	const { isError: isEditError } = editMutation;
+	const { isError: isDeleteError } = deleteMutaton;
 
 	const {
 		uploadedImage,
@@ -84,18 +93,26 @@ export const AdminEditExcursion = () => {
 	const handleEditExcursion = () => {
 		const formData = new FormData();
 
-		if (editedExcursion) {
-			formData.append('name', name);
-			formData.append('personsAmount', String(personsAmount));
-			formData.append('accompanistsAmount', String(accompanistsAmount));
-			formData.append('info', info);
-			formData.append('price', String(price));
-			formData.append('excursionEvents', JSON.stringify(excursionEvents));
-			formData.append('uploadedImage', uploadedImage as File);
+		formData.append('name', name);
+		formData.append('personsAmount', String(personsAmount));
+		formData.append('accompanistsAmount', String(accompanistsAmount));
+		formData.append('info', info);
+		formData.append('price', String(price));
+		formData.append('excursionEvents', JSON.stringify(excursionEvents));
+		formData.append('uploadedImage', uploadedImage as File);
 
-			mutation.mutate(formData);
-		}
+		editMutation.mutate(formData);
 	};
+
+	const handleDeleteExcursion = () => {
+		deleteMutaton.mutate(id);
+		handleClearExcursion();
+		closeModal();
+	};
+
+	useEffect(() => {
+		console.log(isGetError, isEditError, isDeleteError);
+	}, [isGetError, isEditError, isDeleteError]);
 
 	const handleeditedExcursionChange = (
 		key: keyof ExcursionBaseWithImage,
@@ -144,7 +161,7 @@ export const AdminEditExcursion = () => {
 		}));
 	};
 
-	const handleDeleteExcursion = () => {
+	const handleClearExcursion = () => {
 		setEditedExcursion({
 			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
 			name: '',
@@ -302,7 +319,7 @@ export const AdminEditExcursion = () => {
 				</ModalButton>
 			</TitledModal>
 
-			{isError && <p>error!</p>}
+			{(isGetError || isEditError || isDeleteError) && <p>error!</p>}
 		</Page>
 	);
 };

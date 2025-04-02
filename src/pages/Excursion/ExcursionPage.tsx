@@ -30,7 +30,6 @@ export const ExcursionPage = () => {
 	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
 		queryFn: () => excursionApi.getById(Number(id)),
-		retry: true,
 	});
 
 	const navHistory = useNavHistory();
@@ -39,6 +38,10 @@ export const ExcursionPage = () => {
 	useEffect(() => {
 		console.log(navHistory);
 	}, [navHistory]);
+
+	useEffect(() => {
+		console.log(isError);
+	}, [isError]);
 
 	if (isLoading) return <></>;
 

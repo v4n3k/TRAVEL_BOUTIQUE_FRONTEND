@@ -11,7 +11,10 @@ export const excursionApi: ExcursionApi = {
 	},
 
 	async getById(id) {
-		return handleApiResponse<ExcursionEntity>(api.get(`/excursion/${id}`));
+		return handleApiResponse<ExcursionEntity>(
+			api.get(`/excursion/${id}`),
+			`Failed to get excursion with id ${id}`
+		);
 	},
 
 	async create(newExcursion) {
@@ -28,6 +31,13 @@ export const excursionApi: ExcursionApi = {
 	async edit(id, updatedFields) {
 		return handleApiResponse(
 			api.patch(`/excursion/${id}`, updatedFields),
+			'Failed to edit excursion'
+		);
+	},
+
+	async delete(id) {
+		return handleApiResponse(
+			api.delete(`/excursion/${id}`),
 			'Failed to edit excursion'
 		);
 	},

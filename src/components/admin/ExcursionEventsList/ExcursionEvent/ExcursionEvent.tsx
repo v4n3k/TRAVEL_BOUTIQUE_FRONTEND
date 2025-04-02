@@ -1,7 +1,7 @@
 import { TextArea } from '../../';
 import {
 	ExcursionEventEntity,
-	ExcursionEventInputsProps,
+	ExcursionEventInputsListProps,
 } from '../../../../types';
 import { Button, TextInput } from '../../../ui';
 import styles from './ExcursionEvent.module.css';
@@ -11,7 +11,7 @@ export const ExcursionEvent = ({
 	time,
 	name,
 	setExcursion,
-}: ExcursionEventInputsProps) => {
+}: ExcursionEventInputsListProps) => {
 	const setExcursionEvents = (
 		updater:
 			| ExcursionEventEntity[]

@@ -61,7 +61,9 @@ export const AdminCreateNewExcursionPage = () => {
 		formData.append('accompanistsAmount', String(accompanistsAmount));
 		formData.append('info', info);
 		formData.append('price', String(price));
-		formData.append('uploadedImage', uploadedImage as File);
+		if (uploadedImage) {
+			formData.append('uploadedImage', uploadedImage as File);
+		}
 		formData.append('city', 'Тюмень');
 		formData.append('excursionEvents', JSON.stringify(excursionEvents));
 
@@ -217,7 +219,10 @@ export const AdminCreateNewExcursionPage = () => {
 							</InputWrapper>
 
 							<div className={styles.eventsContainer}>
-								<ExcursionEventsList excursionEvents={excursionEvents} />
+								<ExcursionEventsList
+									setExcursion={setNewExcursion}
+									excursionEvents={excursionEvents}
+								/>
 
 								<Button
 									className={styles.addButton}
