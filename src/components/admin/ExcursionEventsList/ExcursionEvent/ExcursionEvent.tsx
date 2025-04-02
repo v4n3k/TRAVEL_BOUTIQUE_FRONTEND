@@ -1,12 +1,17 @@
 import { TextArea } from '../../';
-import { useAdminStore } from '../../../../stores/useAdminSrore';
-import { ExcursionEventEntity } from '../../../../types';
+import {
+	ExcursionEventEntity,
+	ExcursionEventInputsProps,
+} from '../../../../types';
 import { Button, TextInput } from '../../../ui';
 import styles from './ExcursionEvent.module.css';
 
-export const ExcursionEvent = ({ id, time, name }: ExcursionEventEntity) => {
-	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
-
+export const ExcursionEvent = ({
+	id,
+	time,
+	name,
+	setExcursion,
+}: ExcursionEventInputsProps) => {
 	const setExcursionEvents = (
 		updater:
 			| ExcursionEventEntity[]
@@ -14,7 +19,7 @@ export const ExcursionEvent = ({ id, time, name }: ExcursionEventEntity) => {
 					prevExcursionEvents: ExcursionEventEntity[]
 			  ) => ExcursionEventEntity[])
 	) => {
-		setNewExcursion(prev => ({
+		setExcursion(prev => ({
 			...prev,
 			excursionEvents:
 				typeof updater === 'function' ? updater(prev.excursionEvents) : updater,

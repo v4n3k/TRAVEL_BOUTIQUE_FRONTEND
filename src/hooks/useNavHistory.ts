@@ -38,6 +38,13 @@ export const useNavHistory = () => {
 					to: RouteName.ADMIN_CREATE_NEW_EXCURSION,
 				},
 			},
+			{
+				condition: pathname.includes(RouteBase.ADMIN_EDIT_EXCURSION),
+				link: {
+					label: 'Редактировать карточку экскурсии',
+					to: pathname as RouteName,
+				},
+			},
 		];
 
 		const newNavHistory = navConfig

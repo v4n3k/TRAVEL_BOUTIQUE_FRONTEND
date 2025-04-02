@@ -24,4 +24,11 @@ export const excursionApi: ExcursionApi = {
 			'Failed to create excursion'
 		);
 	},
+
+	async edit(id, updatedFields) {
+		return handleApiResponse(
+			api.patch(`/excursion/${id}`, updatedFields),
+			'Failed to edit excursion'
+		);
+	},
 };

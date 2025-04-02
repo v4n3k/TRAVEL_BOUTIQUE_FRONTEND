@@ -2,6 +2,7 @@ import {
 	AboutPage,
 	AdminCreateNewCategoryPage,
 	AdminCreateNewExcursionPage,
+	AdminEditExcursion,
 	AdminPage,
 	BlogPage,
 	CategoriesPage,
@@ -31,6 +32,10 @@ export const privateRoutes: Route[] = [
 	{
 		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
 		Component: AdminCreateNewExcursionPage,
+	},
+	{
+		path: RouteName.ADMIN_EDIT_EXCURSION,
+		Component: AdminEditExcursion,
 	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_CATEGORY,

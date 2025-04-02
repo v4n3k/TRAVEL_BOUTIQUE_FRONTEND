@@ -13,6 +13,13 @@ export interface UseAdminStore {
 			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
 	) => void;
 
+	editedExcursion: ExcursionWithImage;
+	setEditedExcursion: (
+		updater:
+			| ExcursionWithImage
+			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
+	) => void;
+
 	newCategory: CategoryBaseWithImage;
 	setNewCategory: (
 		updater:

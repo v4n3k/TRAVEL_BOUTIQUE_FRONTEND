@@ -12,6 +12,17 @@ export const useAdminStore = create<UseAdminStore>(set => ({
 				typeof updater === 'function' ? updater(state.newExcursion) : updater,
 		})),
 
+	editedExcursion: {
+		excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
+	} as ExcursionWithImage,
+	setEditedExcursion: updater =>
+		set(state => ({
+			editedExcursion:
+				typeof updater === 'function'
+					? updater(state.editedExcursion)
+					: updater,
+		})),
+
 	newCategory: {} as CategoryBaseWithImage,
 	setNewCategory: updater =>
 		set(state => ({

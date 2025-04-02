@@ -3,6 +3,7 @@ import {
 	BreadcrumbEntity,
 	ExcursionEntity,
 	ExcursionEventEntity,
+	ExcursionWithImage,
 	ImageEntity,
 	ReviewEntity,
 	TagEntity,
@@ -103,10 +104,26 @@ export interface ExcursionListProps extends ComponentProps<'ul'> {}
 
 export interface ExcursionEventsListProps extends ComponentProps<'ul'> {
 	excursionEvents: ExcursionEventEntity[];
+	setExcursion: (
+		updater:
+			| ExcursionWithImage
+			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
+	) => void;
 }
 
 export interface ExcursionEventProps {
 	event: ExcursionEventEntity;
+}
+
+export interface ExcursionEventsInputsListProps
+	extends Pick<ExcursionEntity, 'excursionEvents'> {}
+
+export interface ExcursionEventInputsProps extends ExcursionEventEntity {
+	setExcursion: (
+		updater:
+			| ExcursionWithImage
+			| ((prevExcursion: ExcursionWithImage) => ExcursionWithImage)
+	) => void;
 }
 
 export interface PriceProps extends ComponentProps<'div'> {
@@ -123,6 +140,7 @@ export interface TagsListProps {
 export interface ImageUploaderProps extends ComponentProps<'label'> {
 	onImageUpload: (image: ImageEntity, imagePreview: string | null) => void;
 	selectedImage: ImageEntity;
+	initialPreviewUrl?: string | null;
 }
 
 export interface LabeledInputProps extends ComponentProps<'div'> {

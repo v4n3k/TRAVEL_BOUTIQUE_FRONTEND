@@ -6,9 +6,13 @@ import styles from './ImageUploader.module.css';
 export const ImageUploader = ({
 	onImageUpload,
 	selectedImage,
+	initialPreviewUrl,
 	...props
 }: ImageUploaderProps) => {
-	const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+	const [previewUrl, setPreviewUrl] = useState<string | null>(
+		initialPreviewUrl || null
+	);
+
 	const [inputId] = useState(
 		`image-upload-${Math.random().toString(36).substring(2, 9)}`
 	);
@@ -40,10 +44,10 @@ export const ImageUploader = ({
 				};
 				reader.readAsDataURL(selectedImage);
 			}
-		} else {
-			setPreviewUrl(null);
+		} else if (!selectedImage) {
+			setPreviewUrl(initialPreviewUrl || initialPreviewUrl || null);
 		}
-	}, [selectedImage]);
+	}, [selectedImage, initialPreviewUrl, initialPreviewUrl]);
 
 	return (
 		<label className={styles.imageUploader} htmlFor={inputId} {...props}>

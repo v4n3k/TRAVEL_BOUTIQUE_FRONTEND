@@ -1,16 +1,18 @@
-import { useMutation } from '@tanstack/react-query';
-import { ChangeEvent } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import {
 	BreadcrumbsWithNavButton,
 	ExcursionEventsList,
 	ImageUploader,
+	InputWrapper,
 	LabeledInput,
 	ModalButton,
 	NumberInput,
+	TextArea,
 	TitledModal,
 } from '../../components/admin';
-import { InputWrapper, TextArea } from '../../components/admin/';
 import { Button, Form, Page, Section, TextInput } from '../../components/ui';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
@@ -18,21 +20,47 @@ import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
+	ExcursionEntity,
 	ExcursionWithImage,
 	ImageEntity,
 } from '../../types';
-import styles from './AdminCreateNewExcursionPage.module.css';
+import styles from './AdminEditExcursion.module.css';
 
-export const AdminCreateNewExcursionPage = () => {
-	const newExcursion = useAdminStore(state => state.newExcursion);
-	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
+export const AdminEditExcursion = () => {
+	const editedExcursion = useAdminStore(state => state.editedExcursion);
+	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
+	const id = Number(useParams().id);
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
+	const { data: excursion } = useQuery({
+		queryKey: ['excursion', id],
+		queryFn: () => excursionApi.getById(id),
+		retry: true,
+	});
+
+	const [initialPreviewUrl, setInitialPreviewUrl] = useState<string | null>(
+		excursion?.imgSrc || null
+	);
+
+	useEffect(() => {
+		if (excursion) {
+			const { imgSrc, ...rest } = excursion as ExcursionEntity;
+
+			const updatedExcursion = {
+				...rest,
+				uploadedImage: null,
+			};
+
+			setEditedExcursion(updatedExcursion);
+			setInitialPreviewUrl(excursion.imgSrc);
+		}
+	}, [excursion]);
+
 	const mutation = useMutation({
-		mutationFn: (formData: FormData) => excursionApi.create(formData),
+		mutationFn: (formData: FormData) => excursionApi.edit(id, formData),
 
 		onSuccess: () => handleDeleteExcursion(),
 
@@ -51,62 +79,63 @@ export const AdminCreateNewExcursionPage = () => {
 		info,
 		price,
 		excursionEvents,
-	} = newExcursion;
+	} = editedExcursion;
 
-	const handleCreateExcursion = () => {
+	const handleEditExcursion = () => {
 		const formData = new FormData();
 
-		formData.append('name', name);
-		formData.append('personsAmount', String(personsAmount));
-		formData.append('accompanistsAmount', String(accompanistsAmount));
-		formData.append('info', info);
-		formData.append('price', String(price));
-		formData.append('uploadedImage', uploadedImage as File);
-		formData.append('city', 'Тюмень');
-		formData.append('excursionEvents', JSON.stringify(excursionEvents));
+		if (editedExcursion) {
+			formData.append('name', name);
+			formData.append('personsAmount', String(personsAmount));
+			formData.append('accompanistsAmount', String(accompanistsAmount));
+			formData.append('info', info);
+			formData.append('price', String(price));
+			formData.append('excursionEvents', JSON.stringify(excursionEvents));
+			formData.append('uploadedImage', uploadedImage as File);
 
-		mutation.mutate(formData);
+			mutation.mutate(formData);
+		}
 	};
 
-	const handleNewExcursionChange = (
+	const handleeditedExcursionChange = (
 		key: keyof ExcursionBaseWithImage,
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
-		setNewExcursion(prev => ({
+		setEditedExcursion(prev => ({
 			...prev,
 			[key]: e.target.value,
 		}));
 	};
 
 	const handleImageChange = (image: ImageEntity) => {
-		setNewExcursion(prev => ({
+		setEditedExcursion(prev => ({
 			...prev,
 			uploadedImage: image,
 		}));
 	};
 
 	const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('name', e);
+		handleeditedExcursionChange('name', e);
 	};
 
 	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('personsAmount', e);
+		handleeditedExcursionChange('personsAmount', e);
 	};
 
 	const handleAccompanistsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('accompanistsAmount', e);
+		handleeditedExcursionChange('accompanistsAmount', e);
 	};
 
 	const handleInfoChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		handleNewExcursionChange('info', e);
+		handleeditedExcursionChange('info', e);
 	};
 
 	const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleNewExcursionChange('price', e);
+		handleeditedExcursionChange('price', e);
 	};
 
 	const handleAddEvent = () => {
-		setNewExcursion(prev => ({
+		setEditedExcursion(prev => ({
 			...prev,
 			excursionEvents: [
 				...prev.excursionEvents,
@@ -116,7 +145,7 @@ export const AdminCreateNewExcursionPage = () => {
 	};
 
 	const handleDeleteExcursion = () => {
-		setNewExcursion({
+		setEditedExcursion({
 			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
 			name: '',
 			personsAmount: 0,
@@ -125,6 +154,8 @@ export const AdminCreateNewExcursionPage = () => {
 			price: 0,
 			uploadedImage: null,
 		} as ExcursionWithImage);
+
+		setInitialPreviewUrl(null);
 
 		closeModal();
 	};
@@ -136,7 +167,8 @@ export const AdminCreateNewExcursionPage = () => {
 				<Form className={styles.form}>
 					<div className={styles.imageUploaderAndButton}>
 						<ImageUploader
-							selectedImage={uploadedImage}
+							initialPreviewUrl={initialPreviewUrl}
+							selectedImage={editedExcursion.uploadedImage}
 							onImageUpload={handleImageChange}
 						/>
 						<Button
@@ -148,11 +180,11 @@ export const AdminCreateNewExcursionPage = () => {
 							Удалить экскурсию
 						</Button>
 						<Button
-							className={styles.createButton}
+							className={styles.editButton}
 							backgroundColor='blue-500'
-							onClick={handleCreateExcursion}
+							onClick={handleEditExcursion}
 						>
-							Создать
+							Сохранить
 						</Button>
 					</div>
 					<div className={styles.mainInfoContainer}>
@@ -217,7 +249,10 @@ export const AdminCreateNewExcursionPage = () => {
 							</InputWrapper>
 
 							<div className={styles.eventsContainer}>
-								<ExcursionEventsList excursionEvents={excursionEvents} />
+								<ExcursionEventsList
+									setExcursion={setEditedExcursion}
+									excursionEvents={excursionEvents}
+								/>
 
 								<Button
 									className={styles.addButton}
@@ -242,12 +277,12 @@ export const AdminCreateNewExcursionPage = () => {
 							Удалить экскурсию
 						</Button>
 						<Button
-							className={styles.createButtonOnMediumScreen}
-							rootClassName={styles.createButtonOnMediumScreenRoot}
+							className={styles.editButtonOnMediumScreen}
+							rootClassName={styles.editButtonOnMediumScreenRoot}
 							backgroundColor='blue-500'
-							onClick={handleCreateExcursion}
+							onClick={handleEditExcursion}
 						>
-							Создать
+							Сохранить
 						</Button>
 					</div>
 				</Form>
