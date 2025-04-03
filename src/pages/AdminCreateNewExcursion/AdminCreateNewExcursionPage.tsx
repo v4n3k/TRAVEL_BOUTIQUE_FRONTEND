@@ -61,11 +61,12 @@ export const AdminCreateNewExcursionPage = () => {
 		formData.append('accompanistsAmount', String(accompanistsAmount));
 		formData.append('info', info);
 		formData.append('price', String(price));
-		if (uploadedImage) {
-			formData.append('uploadedImage', uploadedImage as File);
-		}
+		formData.append('uploadedImage', uploadedImage as File);
 		formData.append('city', 'Тюмень');
-		formData.append('excursionEvents', JSON.stringify(excursionEvents));
+		formData.append(
+			'excursionEvents',
+			JSON.stringify(excursionEvents[0].name ? excursionEvents : [])
+		);
 
 		mutation.mutate(formData);
 	};

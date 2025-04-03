@@ -26,4 +26,7 @@ export interface UseAdminStore {
 			| CategoryBaseWithImage
 			| ((prevCategory: CategoryBaseWithImage) => CategoryBaseWithImage)
 	) => void;
+
+	key: string;
+	setKey: (key: string) => void;
 }

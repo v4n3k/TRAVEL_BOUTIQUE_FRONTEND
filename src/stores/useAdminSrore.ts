@@ -29,4 +29,7 @@ export const useAdminStore = create<UseAdminStore>(set => ({
 			newCategory:
 				typeof updater === 'function' ? updater(state.newCategory) : updater,
 		})),
+
+	key: 'some key',
+	setKey: key => set({ key }),
 }));

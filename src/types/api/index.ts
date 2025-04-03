@@ -9,6 +9,7 @@ export interface ExcursionApi {
 		updatedFields: FormData
 	) => Promise<ExcursionEntity | undefined>;
 	delete: (id: number) => Promise<void | undefined>;
+	generateKey: (id: number) => Promise<string | undefined>;
 }
 
 export interface CategoryApi {

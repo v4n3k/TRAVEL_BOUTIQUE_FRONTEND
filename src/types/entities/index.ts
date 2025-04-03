@@ -24,6 +24,7 @@ export interface ExcursionEntity {
 	city: string;
 	excursionEvents: ExcursionEventEntity[];
 	price: number;
+	key: string;
 }
 
 export interface ExcursionBase extends Omit<ExcursionEntity, 'id'> {}

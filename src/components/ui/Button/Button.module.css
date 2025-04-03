@@ -68,6 +68,13 @@
 	margin-right: 20px;
 }
 
+.rightIcon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 8px;
+}
+
 @media (max-width: 1480px) {
 	.leftIcon {
 		margin-right: 16px;

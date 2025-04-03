@@ -10,3 +10,11 @@ export interface NavHistoryLink {
 	label: string;
 	to: RouteName;
 }
+
+export interface UseCopyToClipboard {
+	value: string | null;
+	copy: (text: string) => Promise<boolean>;
+	reset: () => void;
+	error: Error | null;
+	isCopied: boolean;
+}

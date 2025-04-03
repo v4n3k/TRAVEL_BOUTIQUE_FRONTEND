@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
@@ -13,10 +13,20 @@ import {
 	TextArea,
 	TitledModal,
 } from '../../components/admin';
-import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+import {
+	Button,
+	Form,
+	IconButton,
+	Page,
+	Section,
+	TextInput,
+} from '../../components/ui';
+import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
+import { IconCopy } from '../../icons/IconCopy';
+import { IconKey } from '../../icons/IconKey';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
@@ -30,10 +40,12 @@ export const AdminEditExcursion = () => {
 	const editedExcursion = useAdminStore(state => state.editedExcursion);
 	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
+	const queryClient = useQueryClient();
 	const id = Number(useParams().id);
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
+	const { copy } = useCopyToClipboard();
 
 	const { data: excursion, isError: isGetError } = useQuery({
 		queryKey: ['excursion', id],
@@ -65,7 +77,7 @@ export const AdminEditExcursion = () => {
 		onSuccess: () => handleClearExcursion(),
 
 		onError: (error: unknown) => {
-			console.error('Error creating new Excursion: ', error);
+			console.error('Error editing Excursion: ', error);
 		},
 	});
 
@@ -73,7 +85,19 @@ export const AdminEditExcursion = () => {
 		mutationFn: (id: number) => excursionApi.delete(id),
 
 		onError: (error: unknown) => {
-			console.error('Error creating new Excursion: ', error);
+			console.error('Error deleting Excursion: ', error);
+		},
+	});
+
+	const generateMutation = useMutation({
+		mutationFn: (id: number) => excursionApi.generateKey(id),
+
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ['excursion', id] });
+		},
+
+		onError: (error: unknown) => {
+			console.error('Error generating Unique key: ', error);
 		},
 	});
 
@@ -88,6 +112,7 @@ export const AdminEditExcursion = () => {
 		info,
 		price,
 		excursionEvents,
+		key,
 	} = editedExcursion;
 
 	const handleEditExcursion = () => {
@@ -110,11 +135,11 @@ export const AdminEditExcursion = () => {
 		closeModal();
 	};
 
-	useEffect(() => {
-		console.log(isGetError, isEditError, isDeleteError);
-	}, [isGetError, isEditError, isDeleteError]);
+	const handleGenerateKey = () => {
+		generateMutation.mutate(id);
+	};
 
-	const handleeditedExcursionChange = (
+	const handleEditedExcursionChange = (
 		key: keyof ExcursionBaseWithImage,
 		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 	) => {
@@ -132,23 +157,23 @@ export const AdminEditExcursion = () => {
 	};
 
 	const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleeditedExcursionChange('name', e);
+		handleEditedExcursionChange('name', e);
 	};
 
 	const handlePersonsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleeditedExcursionChange('personsAmount', e);
+		handleEditedExcursionChange('personsAmount', e);
 	};
 
 	const handleAccompanistsAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleeditedExcursionChange('accompanistsAmount', e);
+		handleEditedExcursionChange('accompanistsAmount', e);
 	};
 
 	const handleInfoChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		handleeditedExcursionChange('info', e);
+		handleEditedExcursionChange('info', e);
 	};
 
 	const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-		handleeditedExcursionChange('price', e);
+		handleEditedExcursionChange('price', e);
 	};
 
 	const handleAddEvent = () => {
@@ -177,6 +202,14 @@ export const AdminEditExcursion = () => {
 		closeModal();
 	};
 
+	const handleCopyKey = () => {
+		copy(key);
+
+		setTimeout(() => {
+			console.log(key);
+		}, 100);
+	};
+
 	return (
 		<Page>
 			<BreadcrumbsWithNavButton crumbs={navHistory} />
@@ -203,6 +236,31 @@ export const AdminEditExcursion = () => {
 						>
 							Сохранить
 						</Button>
+
+						<div className={styles.keyGeneration}>
+							<Button
+								className={styles.generateButton}
+								rootClassName={styles.generateButtonRoot}
+								color='black-900'
+								rightIcon={<IconKey />}
+								onClick={handleGenerateKey}
+							>
+								Сгенерировать ключ
+							</Button>
+							<div className={styles.copyContainer}>
+								<TextInput
+									className={styles.output}
+									value={key}
+									placeholder='0000'
+									disabled
+								/>
+								<IconButton
+									className={styles.copyButton}
+									Icon={<IconCopy />}
+									onClick={handleCopyKey}
+								/>
+							</div>
+						</div>
 					</div>
 					<div className={styles.mainInfoContainer}>
 						<div className={styles.titleAndPrice}>

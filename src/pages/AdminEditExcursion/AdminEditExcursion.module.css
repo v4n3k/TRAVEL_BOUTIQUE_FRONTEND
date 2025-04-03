@@ -23,6 +23,52 @@
 	border-radius: 12px;
 }
 
+.keyGeneration {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+	padding: 30px 46px;
+	border-radius: 20px;
+	background-color: var(--white-50);
+}
+
+.generateButton {
+	justify-content: center;
+	width: 100%;
+	padding: 12px;
+	border-radius: 12px;
+	font-size: 20px;
+	line-height: 27px;
+	font-weight: 400;
+}
+
+.generateButtonRoot {
+	width: 100% !important;
+}
+
+.copyContainer {
+	display: flex;
+	gap: 24px;
+}
+
+.output {
+	width: 473px;
+	padding: 8px 12px;
+	font-size: 20px;
+	line-height: 27px;
+}
+
+.copyButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	border: 0.2px solid var(--blue-300);
+}
+
 .mainInfoContainer {
 	display: flex;
 	flex-direction: column;
