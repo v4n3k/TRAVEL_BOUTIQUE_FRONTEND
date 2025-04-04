@@ -30,7 +30,6 @@ import { IconKey } from '../../icons/IconKey';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
-	ExcursionEntity,
 	ExcursionWithImage,
 	ImageEntity,
 } from '../../types';
@@ -59,14 +58,14 @@ export const AdminEditExcursion = () => {
 
 	useEffect(() => {
 		if (excursion) {
-			const { imgSrc, ...rest } = excursion as ExcursionEntity;
+			const { imgSrc, ...rest } = excursion;
 
-			const updatedExcursion = {
+			const excursionWithImage = {
 				...rest,
 				uploadedImage: null,
 			};
 
-			setEditedExcursion(updatedExcursion);
+			setEditedExcursion(excursionWithImage);
 			setInitialPreviewUrl(excursion.imgSrc);
 		}
 	}, [excursion]);
@@ -103,6 +102,7 @@ export const AdminEditExcursion = () => {
 
 	const { isError: isEditError } = editMutation;
 	const { isError: isDeleteError } = deleteMutaton;
+	const { isError: isGenerateError } = generateMutation;
 
 	const {
 		uploadedImage,
@@ -131,12 +131,17 @@ export const AdminEditExcursion = () => {
 
 	const handleDeleteExcursion = () => {
 		deleteMutaton.mutate(id);
+
 		handleClearExcursion();
 		closeModal();
 	};
 
 	const handleGenerateKey = () => {
 		generateMutation.mutate(id);
+	};
+
+	const handleCopyKey = () => {
+		copy(key);
 	};
 
 	const handleEditedExcursionChange = (
@@ -198,16 +203,7 @@ export const AdminEditExcursion = () => {
 		} as ExcursionWithImage);
 
 		setInitialPreviewUrl(null);
-
 		closeModal();
-	};
-
-	const handleCopyKey = () => {
-		copy(key);
-
-		setTimeout(() => {
-			console.log(key);
-		}, 100);
 	};
 
 	return (
@@ -360,6 +356,30 @@ export const AdminEditExcursion = () => {
 							Сохранить
 						</Button>
 					</div>
+					<div className={styles.keyGenerationOnSmallScreen}>
+						<Button
+							className={styles.generateButton}
+							rootClassName={styles.generateButtonRoot}
+							color='black-900'
+							rightIcon={<IconKey />}
+							onClick={handleGenerateKey}
+						>
+							Сгенерировать ключ
+						</Button>
+						<div className={styles.copyContainer}>
+							<TextInput
+								className={styles.output}
+								value={key}
+								placeholder='0000'
+								disabled
+							/>
+							<IconButton
+								className={styles.copyButton}
+								Icon={<IconCopy />}
+								onClick={handleCopyKey}
+							/>
+						</div>
+					</div>
 				</Form>
 			</Section>
 
@@ -377,7 +397,9 @@ export const AdminEditExcursion = () => {
 				</ModalButton>
 			</TitledModal>
 
-			{(isGetError || isEditError || isDeleteError) && <p>error!</p>}
+			{(isGetError || isEditError || isDeleteError || isGenerateError) && (
+				<p>error!</p>
+			)}
 		</Page>
 	);
 };

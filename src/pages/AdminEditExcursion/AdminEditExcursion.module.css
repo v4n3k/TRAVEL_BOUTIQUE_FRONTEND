@@ -23,7 +23,8 @@
 	border-radius: 12px;
 }
 
-.keyGeneration {
+.keyGeneration,
+.keyGenerationOnSmallScreen {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -63,6 +64,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-width: 48px;
 	width: 48px;
 	height: 48px;
 	border-radius: 12px;
@@ -164,9 +166,21 @@
 	gap: 32px;
 }
 
+.keyGenerationOnSmallScreen {
+	display: none;
+}
+
 @media (max-width: 1480px) {
 	.form {
 		gap: 32px;
+	}
+
+	.copyContainer {
+		gap: 16px;
+	}
+
+	.output {
+		width: 222px;
 	}
 
 	.imageUploaderAndButton {
@@ -215,6 +229,28 @@
 	.form {
 		flex-direction: column;
 		gap: 36px;
+	}
+
+	.keyGeneration {
+		display: none;
+	}
+
+	.keyGenerationOnSmallScreen {
+		display: flex;
+		gap: 16px;
+	}
+
+	.generateButton {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.copyContainer {
+		gap: 24px;
+	}
+
+	.output {
+		width: 100%;
 	}
 
 	.imageUploaderAndButton {
@@ -273,11 +309,17 @@
 
 	.buttonsOnMediumScreen {
 		width: fit-content;
-		margin: 0 auto;
+		margin: 0 auto 12px;
 	}
 
 	.editButtonOnMediumScreenRoot {
 		width: 100% !important;
+	}
+}
+
+@media (max-width: 800px) {
+	.generateButton {
+		padding-block: 7.5px;
 	}
 }
 
@@ -299,6 +341,21 @@
 
 @media (max-width: 550px) {
 	.form {
+		gap: 16px;
+	}
+
+	.keyGenerationOnSmallScreen {
+		gap: 10px;
+		padding: 16px;
+	}
+
+	.generateButton,
+	.output {
+		font-size: 20px;
+		line-height: 27px;
+	}
+
+	.copyContainer {
 		gap: 16px;
 	}
 
@@ -335,5 +392,17 @@
 		font-size: 20px;
 		line-height: 27px;
 		border-radius: 12px;
+	}
+}
+
+@media (max-width: 400px) {
+	.generateButton {
+		padding-block: 12px;
+	}
+
+	.generateButton,
+	.output {
+		font-size: 18px;
+		line-height: 25px;
 	}
 }
