@@ -2,26 +2,29 @@
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	max-width: var(--max-width);
 	width: 100%;
 	height: 100%;
 	margin: 0 auto;
 }
 
+.limitedWidth {
+	max-width: var(--max-width);
+}
+
 @media (max-width: 1480px) {
-	.main {
+	.limitedWidth {
 		max-width: calc(100% - 272px);
 	}
 }
 
 @media (max-width: 1280px) {
-	.main {
+	.limitedWidth {
 		max-width: calc(100% - 112px);
 	}
 }
 
 @media (max-width: 510px) {
-	.main {
+	.limitedWidth {
 		max-width: calc(100% - 40px);
 	}
 }

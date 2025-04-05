@@ -1,0 +1,68 @@
+.signInPage {
+	display: flex;
+	height: 100dvh;
+}
+
+.signInSection {
+	display: flex;
+	height: 100%;
+	margin-bottom: 0;
+}
+
+.halfWidth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	overflow: hidden;
+	background-color: var(--white-100);
+}
+
+.formWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 44px;
+	padding: 56px 43px;
+	border-radius: 40px;
+	background-color: var(--white-50);
+}
+
+.title {
+	font-size: 40px;
+	line-height: 54px;
+	font-weight: 600px;
+	text-align: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+}
+
+.inputsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	width: 498px;
+}
+
+.input {
+	border: 0.2px solid var(--blue-300);
+}
+
+.button {
+	justify-content: center;
+	width: 100%;
+	border-radius: 12px;
+}
+
+.buttonRoot {
+	width: 100% !important;
+}
+
+.icons {
+	position: relative;
+	background-color: var(--blue-500);
+}
