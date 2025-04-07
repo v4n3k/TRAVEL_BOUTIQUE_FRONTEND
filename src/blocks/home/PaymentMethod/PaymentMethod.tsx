@@ -16,7 +16,7 @@ export const PaymentMethod = () => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(RouteName.ABOUT);
+		navigate(RouteName.ABOUT, { state: { scrollToPayment: true } });
 	};
 
 	return (

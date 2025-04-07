@@ -19,28 +19,28 @@ export const excursionApi: ExcursionApi = {
 
 	async create(newExcursion) {
 		return await handleApiResponse(
-			api.post('/excursion', newExcursion),
+			api.post('/excursion', newExcursion, { withCredentials: true }),
 			'Failed to create excursion'
 		);
 	},
 
 	async edit(id, updatedFields) {
 		return await handleApiResponse(
-			api.patch(`/excursion/${id}`, updatedFields),
+			api.patch(`/excursion/${id}`, updatedFields, { withCredentials: true }),
 			'Failed to edit excursion'
 		);
 	},
 
 	async delete(id) {
 		return await handleApiResponse(
-			api.delete(`/excursion/${id}`),
+			api.delete(`/excursion/${id}`, { withCredentials: true }),
 			'Failed to delete excursion'
 		);
 	},
 
 	async generateKey(id) {
 		return await handleApiResponse(
-			api.patch(`/excursion/${id}/key`),
+			api.patch(`/excursion/${id}/key`, { withCredentials: true }),
 			'Failed to generate key'
 		);
 	},

@@ -10,6 +10,13 @@ export const authApi: AuthApi = {
 		);
 	},
 
+	async signOut() {
+		return await handleApiResponse(
+			api.post('/auth/sign_out', { withCredentials: true }),
+			'Failed to sign out'
+		);
+	},
+
 	async checkIsAuth() {
 		return await handleApiResponse(
 			api.get('/auth/check_token', { withCredentials: true }),

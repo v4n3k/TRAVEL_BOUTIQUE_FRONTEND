@@ -19,7 +19,8 @@ export interface CategoryApi {
 }
 
 export interface AuthApi {
-	signIn: (credentials: SignInCredentials) => any; // TODO
+	signIn: (credentials: SignInCredentials) => Promise<void>;
+	signOut: () => Promise<void>;
 	checkIsAuth: () => OptionalPromise<boolean>;
 }
 

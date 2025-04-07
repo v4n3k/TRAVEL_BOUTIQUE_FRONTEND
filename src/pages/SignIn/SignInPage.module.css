@@ -33,6 +33,7 @@
 	padding: 56px 43px;
 	border-radius: 40px;
 	background-color: var(--white-50);
+	box-shadow: 0 0 250px 0 #3e587929;
 }
 
 .title {
@@ -133,6 +134,10 @@
 }
 
 @media (max-width: 500px) {
+	.formBackground {
+		padding-inline: 32px;
+	}
+
 	.formWrapper {
 		gap: 40px;
 	}

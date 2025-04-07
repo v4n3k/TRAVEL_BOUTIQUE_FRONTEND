@@ -1,11 +1,25 @@
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ManagerButton } from '../../../components/excursion';
 import { Section, Title } from '../../../components/ui';
 import { cn } from '../../../utils/cn';
 import styles from './PaymentMethod.module.css';
 
 export const PaymentMethod = () => {
+	const location = useLocation();
+	const scrollRef = useRef<HTMLSelectElement>(null);
+
+	useEffect(() => {
+		if (location.state?.scrollToPayment) {
+			scrollRef.current?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+			});
+		}
+	}, []);
+
 	return (
-		<Section className={styles.paymentMethod}>
+		<Section className={styles.paymentMethod} ref={scrollRef}>
 			<Title>Выберите удобный способ оплаты:</Title>
 			<ul className={styles.list}>
 				<li className={cn(styles.item, styles.first)}>
