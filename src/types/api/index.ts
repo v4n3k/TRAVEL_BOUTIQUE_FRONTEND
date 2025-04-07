@@ -1,17 +1,29 @@
 import { CategoryEntity, ExcursionEntity } from '../entities';
 
+export type OptionalPromise<T> = Promise<T | undefined>;
+
 export interface ExcursionApi {
-	getAll: () => Promise<ExcursionEntity[] | undefined>;
-	getById: (id: number) => Promise<ExcursionEntity | undefined>;
-	create: (newExcursion: FormData) => Promise<ExcursionEntity | undefined>;
+	getAll: () => OptionalPromise<ExcursionEntity[]>;
+	getById: (id: number) => OptionalPromise<ExcursionEntity>;
+	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,
 		updatedFields: FormData
-	) => Promise<ExcursionEntity | undefined>;
-	delete: (id: number) => Promise<void | undefined>;
-	generateKey: (id: number) => Promise<string | undefined>;
+	) => OptionalPromise<ExcursionEntity>;
+	delete: (id: number) => OptionalPromise<void>;
+	generateKey: (id: number) => OptionalPromise<string>;
 }
 
 export interface CategoryApi {
-	create: (newCategory: FormData) => Promise<CategoryEntity>;
+	create: (newCategory: FormData) => OptionalPromise<CategoryEntity>;
+}
+
+export interface AuthApi {
+	signIn: (credentials: SignInCredentials) => any; // TODO
+	checkIsAuth: () => OptionalPromise<boolean>;
+}
+
+export interface SignInCredentials {
+	login: string;
+	password: string;
 }

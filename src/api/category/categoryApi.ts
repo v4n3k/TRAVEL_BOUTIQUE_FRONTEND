@@ -4,7 +4,7 @@ import { api } from '../api';
 
 export const categoryApi: CategoryApi = {
 	async create(newCategory) {
-		return handleApiResponse<CategoryEntity>(
+		return await handleApiResponse<CategoryEntity>(
 			api.post('/category', newCategory, {
 				headers: {
 					'Content-Type': 'multipart/form-data',

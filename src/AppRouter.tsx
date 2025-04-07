@@ -1,12 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { privateRoutes, publicRoutes } from './routes';
-import { useAuthStore } from './stores/useAuthStore';
-import { RouteName } from './types/routes';
+import { useAvailableRoutes } from './hooks/useAvailableRoutes';
+import { RouteName } from './types';
 
 export const AppRouter = () => {
-	const isAuth = useAuthStore(state => state.isAuth);
+	const { availableRoutes, isLoading } = useAvailableRoutes();
 
-	const availableRoutes = [...publicRoutes, ...(isAuth ? privateRoutes : [])];
+	if (isLoading) return <></>;
 
 	return (
 		<Routes>

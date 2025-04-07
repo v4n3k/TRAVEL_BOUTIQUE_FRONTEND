@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export type PositionProperty = number | 'auto';
@@ -25,10 +24,6 @@ export const IconRotatedLogo = ({
 	left = 'auto',
 }: IconRotatedLogoProps) => {
 	const isHidden = useMediaQuery('(max-width: 1480px)');
-
-	useEffect(() => {
-		console.log(isHidden);
-	}, [isHidden]);
 
 	let svgTransform = `rotate(${rotation}deg)`;
 

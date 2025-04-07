@@ -1,34 +1,63 @@
+import { useState } from 'react';
 import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+import { useSignIn } from '../../hooks/api/useSignIn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconRotatedLogo } from '../../icons/IconRotatedLogo';
-import { cn } from '../../utils/cn';
 import styles from './SignInPage.module.css';
 
 export const SignInPage = () => {
+	const [credentials, setCredentials] = useState({ login: '', password: '' });
+
+	const { signIn } = useSignIn();
 	const isLargeScreen = useMediaQuery('(min-width: 1481px)');
+
+	const { login, password } = credentials;
+
+	const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCredentials(prev => ({ ...prev, login: e.target.value }));
+	};
+
+	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setCredentials(prev => ({ ...prev, password: e.target.value }));
+	};
+
+	const handleSignIn = () => {
+		signIn(credentials);
+	};
 
 	return (
 		<Page className={styles.signInPage}>
 			<Section className={styles.signInSection}>
-				<div className={styles.halfWidth}>
+				<div className={styles.formBackground}>
 					<div className={styles.formWrapper}>
 						<h2 className={styles.title}>Вход</h2>
 						<Form className={styles.form}>
 							<div className={styles.inputsContainer}>
-								<TextInput className={styles.input} placeholder='Логин' />
-								<TextInput className={styles.input} placeholder='Пароль' />
+								<TextInput
+									className={styles.input}
+									placeholder='Логин'
+									value={login}
+									onChange={handleLoginChange}
+								/>
+								<TextInput
+									className={styles.input}
+									placeholder='Пароль'
+									value={password}
+									onChange={handlePasswordChange}
+								/>
 							</div>
 							<Button
 								className={styles.button}
 								rootClassName={styles.buttonRoot}
 								backgroundColor='blue-500'
+								onClick={handleSignIn}
 							>
 								Войти
 							</Button>
 						</Form>
 					</div>
 				</div>
-				<div className={cn(styles.halfWidth, styles.icons)}>
+				<div className={styles.icons}>
 					<IconRotatedLogo top={55} left={102} rotation={60} hideable />
 					<IconRotatedLogo
 						top={111}

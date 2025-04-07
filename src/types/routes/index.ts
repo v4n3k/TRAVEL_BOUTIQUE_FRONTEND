@@ -1,4 +1,4 @@
-export interface Route {
+export interface RouteEntity {
 	path: string;
 	Component: React.ComponentType;
 }

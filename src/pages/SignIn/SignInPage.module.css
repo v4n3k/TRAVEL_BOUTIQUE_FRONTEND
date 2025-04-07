@@ -19,6 +19,13 @@
 	background-color: var(--white-100);
 }
 
+.formBackground {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+}
+
 .formWrapper {
 	display: flex;
 	flex-direction: column;
@@ -50,6 +57,11 @@
 
 .input {
 	border: 0.2px solid var(--blue-300);
+	background-color: var(--white-50);
+}
+
+.input::placeholder {
+	color: var(--black-900-80);
 }
 
 .button {
@@ -64,5 +76,94 @@
 
 .icons {
 	position: relative;
+	display: flex;
+	width: 50%;
 	background-color: var(--blue-500);
+}
+
+@media (max-width: 1480px) {
+	.title {
+		font-size: 36px;
+		line-height: 49px;
+	}
+
+	.inputsContainer {
+		width: 394px;
+	}
+
+	.input {
+		padding-block: 8px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.inputsContainer {
+		width: 350px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.icons {
+		display: none;
+	}
+
+	.formBackground {
+		width: 100%;
+	}
+
+	.formWrapper {
+		width: 65%;
+	}
+
+	.inputsContainer {
+		width: 100%;
+	}
+}
+
+@media (max-width: 800px) {
+	.formBackground {
+		padding-inline: 56px;
+	}
+
+	.formWrapper {
+		width: 100%;
+		padding: 32px;
+		border-radius: 32px;
+	}
+}
+
+@media (max-width: 500px) {
+	.formWrapper {
+		gap: 40px;
+	}
+
+	.input {
+		font-size: 22px;
+		line-height: 29px;
+	}
+
+	.button {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+@media (max-width: 440px) {
+	.title {
+		font-size: 32px;
+		line-height: 44px;
+	}
+
+	.formBackground {
+		padding-inline: 20px;
+	}
+
+	.formWrapper {
+		border-radius: 20px;
+	}
+
+	.input {
+		font-size: 20px;
+		line-height: 27px;
+	}
 }

@@ -1,6 +1,10 @@
-import { CategoryBaseWithImage, ExcursionWithImage } from '../entities';
+import { CategoryBaseWithImage, ExcursionWithImage, UserId } from '../entities';
 
 export interface UseAuthStore {
+	token: string | null;
+	setToken: (token: string | null) => void;
+	userId: UserId;
+	setUserId: (userId: UserId) => void;
 	isAuth: boolean;
 	setIsAuth: (isAuth: boolean) => void;
 }

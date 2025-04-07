@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { RouteName } from '../routes';
 
+export type UserId = number | null;
+
 export interface TagEntity {
 	id: number;
 	name: string;

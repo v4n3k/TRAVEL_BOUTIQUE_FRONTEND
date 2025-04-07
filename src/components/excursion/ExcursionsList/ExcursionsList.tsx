@@ -13,7 +13,7 @@ export const ExcursionsList = ({ ref }: ExcursionListProps) => {
 	return (
 		<ul className={styles.excursionsList} ref={ref}>
 			{excursions?.map(excursion => (
-				<ExcursionCard key={excursion.id} {...excursion} />
+				<ExcursionCard {...excursion} key={excursion.id} />
 			))}
 		</ul>
 	);
