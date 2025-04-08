@@ -1,14 +1,15 @@
 export interface RouteEntity {
 	path: string;
 	Component: React.ComponentType;
+	isPrivate?: boolean;
 }
 
 export enum RouteBase {
 	HOME = '/',
-	EXCURSIONS = '/excursions',
 	EXCURSION = '/excursion',
 	ABOUT = '/about',
 	CATEGORIES = '/categories',
+	CATEGORY = '/category',
 	BLOG = '/blog',
 	INFO = '/info',
 	SERVICE = '/service',
@@ -23,10 +24,10 @@ const idParam = '/:id';
 
 export enum RouteName {
 	HOME = RouteBase.HOME,
-	EXCURSIONS = RouteBase.EXCURSIONS,
 	EXCURSION = RouteBase.EXCURSION + idParam,
 	ABOUT = RouteBase.ABOUT,
 	CATEGORIES = RouteBase.CATEGORIES,
+	CATEGORY = RouteBase.CATEGORY,
 	BLOG = RouteBase.BLOG,
 	INFO = RouteBase.INFO,
 	SERVICE = RouteBase.SERVICE,

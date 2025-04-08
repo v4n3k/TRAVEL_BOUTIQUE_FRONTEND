@@ -24,7 +24,7 @@ export const HomePage = () => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(RouteName.EXCURSIONS);
+		navigate(RouteName.CATEGORIES);
 	};
 
 	const handleOpenWhatsApp = () => {

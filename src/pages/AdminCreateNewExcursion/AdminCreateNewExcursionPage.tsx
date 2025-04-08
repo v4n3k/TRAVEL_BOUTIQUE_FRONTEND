@@ -31,6 +31,10 @@ export const AdminCreateNewExcursionPage = () => {
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
+	const categoryName = localStorage.getItem('categoryName');
+
+	console.log(categoryName);
+
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
 
@@ -62,7 +66,7 @@ export const AdminCreateNewExcursionPage = () => {
 		formData.append('info', info);
 		formData.append('price', String(price));
 		formData.append('uploadedImage', uploadedImage as File);
-		formData.append('city', 'Тюмень');
+		formData.append('categoryName', String(categoryName));
 		formData.append(
 			'excursionEvents',
 			JSON.stringify(excursionEvents[0].name ? excursionEvents : [])

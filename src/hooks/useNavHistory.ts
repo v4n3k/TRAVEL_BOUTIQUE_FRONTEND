@@ -7,22 +7,36 @@ export const useNavHistory = () => {
 	const { pathname } = useLocation();
 	const [navHistory, setNavHistory] = useState<NavHistoryLink[]>([]);
 
-	localStorage.setItem('category', 'Тюмень');
-	const category = localStorage.getItem('category');
+	const [category, setCategory] = useState<string | null>(
+		localStorage.getItem('categoryName')
+	);
+
+	useEffect(() => {
+		if (pathname === RouteBase.CATEGORY) {
+			const storedCategory = localStorage.getItem('categoryName');
+			if (storedCategory !== category) {
+				setCategory(storedCategory);
+			}
+		}
+	}, [pathname, category, setCategory]);
 
 	useEffect(() => {
 		const navConfig = [
 			{
 				condition: pathname.includes(RouteBase.EXCURSION),
-				link: { label: 'Категории', to: RouteName.EXCURSIONS },
+				link: { label: 'Категории', to: RouteName.CATEGORIES },
 			},
 			{
 				condition: pathname.includes(RouteName.ADMIN),
 				link: { label: 'Админ-панель', to: RouteName.ADMIN },
 			},
 			{
+				condition: pathname.includes(RouteBase.CATEGORY),
+				link: { label: 'Экскурсии', to: RouteName.CATEGORIES },
+			},
+			{
 				condition: category,
-				link: { label: String(category), to: RouteName.EXCURSIONS },
+				link: { label: String(category), to: RouteName.CATEGORY },
 			},
 			{
 				condition: pathname.includes(RouteName.ADMIN_CREATE_NEW_CATEGORY),

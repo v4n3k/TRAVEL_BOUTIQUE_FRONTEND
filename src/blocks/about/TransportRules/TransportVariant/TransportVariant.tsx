@@ -12,7 +12,7 @@ export const TransportVariant = ({
 				<h3 className={styles.title}>{title}</h3>
 				{Icon}
 			</div>
-			<p className={styles.description}>{renderDescription()}</p>
+			<div className={styles.description}>{renderDescription()}</div>
 		</div>
 	);
 };

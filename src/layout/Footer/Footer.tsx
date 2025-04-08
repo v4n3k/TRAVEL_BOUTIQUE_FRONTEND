@@ -46,7 +46,7 @@ export const Footer = () => {
 											<Link to={RouteName.HOME}>главная</Link>
 										</li>
 										<li>
-											<Link to={RouteName.EXCURSIONS}>экскурсии</Link>
+											<Link to={RouteName.CATEGORIES}>экскурсии</Link>
 										</li>
 										<li>
 											<Link to={RouteName.ABOUT}>о нас</Link>

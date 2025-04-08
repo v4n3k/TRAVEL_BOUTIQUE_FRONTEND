@@ -11,8 +11,6 @@ const services = [
 ];
 
 export const Services = () => {
-	console.log(styles);
-
 	return (
 		<Section>
 			<Title>Услуги</Title>

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { CategoryType } from '../../pages';
 import { RouteName } from '../routes';
 
 export type UserId = number | null;
@@ -23,7 +24,7 @@ export interface ExcursionEntity {
 	personsAmount: number;
 	accompanistsAmount: number;
 	info: string;
-	city: string;
+	categoryName: string;
 	excursionEvents: ExcursionEventEntity[];
 	price: number;
 	key: string;
@@ -60,6 +61,7 @@ export interface CategoryEntity {
 	id: number;
 	name: string;
 	imgSrc: string;
+	type: CategoryType;
 }
 
 export interface CategoryBase extends Omit<CategoryEntity, 'id'> {}

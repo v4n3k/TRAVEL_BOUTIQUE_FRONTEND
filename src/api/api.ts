@@ -8,4 +8,5 @@ const baseURL = `http://${ip}:4200/api`;
 
 export const api = axios.create({
 	baseURL,
+	withCredentials: true,
 });

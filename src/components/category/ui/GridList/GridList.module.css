@@ -1,0 +1,36 @@
+.gridList {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 32px 56px;
+}
+
+@media (max-width: 1480px) {
+	.gridList {
+		gap: 32px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.gridList {
+		gap: 24px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.gridList {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 32px;
+	}
+}
+
+@media (max-width: 900px) {
+	.gridList {
+		gap: 24px;
+	}
+}
+
+@media (max-width: 550px) {
+	.gridList {
+		grid-template-columns: 1fr;
+	}
+}

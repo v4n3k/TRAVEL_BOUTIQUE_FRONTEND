@@ -25,11 +25,9 @@ export const Expandable = ({
 
 	useEffect(() => {
 		if (isExpanded) {
-			setTimeout(() => {
-				if (!contentRef.current) return;
+			if (!contentRef.current) return;
 
-				contentRef.current.style.overflow = 'visible';
-			}, 500);
+			contentRef.current.style.overflow = 'visible';
 		} else {
 			if (!contentRef.current) return;
 

@@ -94,7 +94,7 @@ export interface ExcursionCardProps
 		| 'id'
 		| 'name'
 		| 'imgSrc'
-		| 'city'
+		| 'categoryName'
 		| 'accompanistsAmount'
 		| 'personsAmount'
 		| 'price'

@@ -1,0 +1,39 @@
+.title {
+	margin-bottom: 24px;
+}
+
+.title span {
+	color: var(--blue-500);
+}
+
+@media (max-width: 1480px) {
+	.title {
+		font-size: 56px;
+		line-height: 76px;
+	}
+}
+
+@media (max-width: 800px) {
+	.title {
+		font-size: 64px;
+		line-height: 87px;
+		margin-bottom: 32px;
+	}
+}
+
+@media (max-width: 650px) {
+	.title {
+		font-size: 48px;
+		line-height: 64px;
+		margin-bottom: 24px;
+		text-align: center;
+	}
+}
+
+@media (max-width: 440px) {
+	.title {
+		font-size: 32px;
+		line-height: 44px;
+		margin-bottom: 16px;
+	}
+}

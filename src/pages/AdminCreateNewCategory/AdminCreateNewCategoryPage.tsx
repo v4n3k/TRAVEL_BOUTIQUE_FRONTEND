@@ -14,6 +14,9 @@ import { ImageEntity } from '../../types';
 import styles from './AdminCreateNewCategory.module.css';
 
 export const AdminCreateNewCategoryPage = () => {
+	localStorage.setItem('categoryType', 'cities');
+	const categoryType = String(localStorage.getItem('categoryType'));
+
 	const newCategory = useAdminStore(state => state.newCategory);
 	const setNewCategory = useAdminStore(state => state.setNewCategory);
 
@@ -39,6 +42,7 @@ export const AdminCreateNewCategoryPage = () => {
 
 		formData.append('name', name);
 		formData.append('uploadedImage', uploadedImage as File);
+		formData.append('type', categoryType);
 
 		mutation.mutate(formData);
 	};

@@ -113,7 +113,7 @@ export const Header = () => {
 								</Link>
 							</li>
 							<li>
-								<Link to={RouteName.EXCURSIONS} onClick={handleClose}>
+								<Link to={RouteName.CATEGORIES} onClick={handleClose}>
 									экскурсии
 								</Link>
 							</li>
@@ -139,7 +139,7 @@ export const Header = () => {
 							<Link to={RouteName.HOME}>главная</Link>
 						</li>
 						<li>
-							<Link to={RouteName.EXCURSIONS}>экскурсии</Link>
+							<Link to={RouteName.CATEGORIES}>экскурсии</Link>
 						</li>
 						<li>
 							<Link to={RouteName.ABOUT}>о нас</Link>

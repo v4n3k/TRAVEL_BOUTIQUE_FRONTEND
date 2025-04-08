@@ -14,7 +14,7 @@ export const IconCar = () => {
 				width='64.3288'
 				height='64.3288'
 				fill='url(#pattern0_1091_1387)'
-				fill-opacity='0.24'
+				fillOpacity='0.24'
 			/>
 			<defs>
 				<pattern

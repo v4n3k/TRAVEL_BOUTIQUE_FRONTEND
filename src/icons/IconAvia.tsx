@@ -14,7 +14,7 @@ export const IconAvia = () => {
 				height='64.3288'
 				transform='rotate(45 46 0)'
 				fill='url(#pattern0_1091_1359)'
-				fill-opacity='0.24'
+				fillOpacity='0.24'
 			/>
 			<defs>
 				<pattern

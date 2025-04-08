@@ -74,7 +74,7 @@ export const FormAndCareerGuidanceExcursions = ({
 	}, [handleResize]);
 
 	const handleClick = () => {
-		navigate(RouteName.EXCURSIONS);
+		navigate(RouteName.CATEGORIES);
 	};
 
 	return (

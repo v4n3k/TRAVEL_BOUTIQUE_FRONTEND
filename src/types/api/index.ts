@@ -1,3 +1,4 @@
+import { CategoriesByType } from '../../pages';
 import { CategoryEntity, ExcursionEntity } from '../entities';
 
 export type OptionalPromise<T> = Promise<T | undefined>;
@@ -5,6 +6,9 @@ export type OptionalPromise<T> = Promise<T | undefined>;
 export interface ExcursionApi {
 	getAll: () => OptionalPromise<ExcursionEntity[]>;
 	getById: (id: number) => OptionalPromise<ExcursionEntity>;
+	getByCategoryName: (
+		categoryName: string
+	) => OptionalPromise<ExcursionEntity[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,
@@ -15,6 +19,7 @@ export interface ExcursionApi {
 }
 
 export interface CategoryApi {
+	getAll: () => OptionalPromise<CategoriesByType>;
 	create: (newCategory: FormData) => OptionalPromise<CategoryEntity>;
 }
 
