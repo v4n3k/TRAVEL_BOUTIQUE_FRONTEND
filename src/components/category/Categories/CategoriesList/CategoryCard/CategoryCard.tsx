@@ -5,13 +5,14 @@ import { CategoriesProps } from '../../Categories';
 
 export interface CategoryCardProps
 	extends Pick<CategoryEntity, 'id' | 'name' | 'imgSrc'>,
-		Pick<CategoriesProps, 'withName' | 'withIcon'> {}
+		Pick<CategoriesProps, 'withName' | 'withIcon' | 'textUnderImage'> {}
 
 export const CategoryCard = ({
 	name,
 	imgSrc,
 	withName,
 	withIcon,
+	textUnderImage,
 }: CategoryCardProps) => {
 	const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ export const CategoryCard = ({
 			imgSrc={imgSrc}
 			withName={withName}
 			withIcon={withIcon}
+			textUnderImage={textUnderImage}
 			onClick={handleClick}
 		/>
 	);

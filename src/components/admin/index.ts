@@ -1,4 +1,5 @@
 export * from './ExcursionEventsList/ExcursionEventsList';
+export * from './ui/AdminPanelTitle/AdminPanelTitle';
 export * from './ui/Breadcrumbs/Breadcrumbs';
 export * from './ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 export * from './ui/ImageUploader/ImageUploader';

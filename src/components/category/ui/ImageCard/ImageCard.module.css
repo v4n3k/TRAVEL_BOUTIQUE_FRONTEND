@@ -14,6 +14,12 @@
 	margin: 0;
 }
 
+.textUnderImageLayout {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; /* or center if you want to center align text */
+}
+
 .figcaptionWrapper {
 	position: absolute;
 	bottom: 36px;
@@ -23,6 +29,13 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 8px;
+}
+
+.figcaptionUnderImageWrapper {
+	margin-top: 24px; /* gap between image and text */
+	display: flex;
+	justify-content: flex-start; /* or center if you want to center align text */
+	align-items: center;
 }
 
 .reverse {

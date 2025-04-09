@@ -41,8 +41,8 @@ export const Expandable = ({
 
 	return (
 		<div
-			ref={contentRef}
 			className={cn(styles.expandable, !isExpanded ? styles.collapsed : '')}
+			ref={contentRef}
 		>
 			{children}
 			<Button

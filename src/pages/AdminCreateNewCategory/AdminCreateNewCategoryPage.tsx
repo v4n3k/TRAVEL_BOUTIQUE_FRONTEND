@@ -11,11 +11,12 @@ import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import { ImageEntity } from '../../types';
+import { CategoryType } from '../Categories/CategoriesPage';
 import styles from './AdminCreateNewCategory.module.css';
 
 export const AdminCreateNewCategoryPage = () => {
 	localStorage.setItem('categoryType', 'cities');
-	const categoryType = String(localStorage.getItem('categoryType'));
+	const categoryType = localStorage.getItem('categoryType') as CategoryType;
 
 	const newCategory = useAdminStore(state => state.newCategory);
 	const setNewCategory = useAdminStore(state => state.setNewCategory);
@@ -48,7 +49,7 @@ export const AdminCreateNewCategoryPage = () => {
 	};
 
 	const handleDeleteCategory = () => {
-		setNewCategory({ name: '', uploadedImage: null });
+		setNewCategory({ name: '', uploadedImage: null, type: categoryType });
 	};
 
 	const handleImageChange = (newImage: ImageEntity) => {

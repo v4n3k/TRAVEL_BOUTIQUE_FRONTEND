@@ -7,7 +7,7 @@ import styles from './PaymentMethod.module.css';
 
 export const PaymentMethod = () => {
 	const location = useLocation();
-	const scrollRef = useRef<HTMLSelectElement>(null);
+	const scrollRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
 		if (location.state?.scrollToPayment) {

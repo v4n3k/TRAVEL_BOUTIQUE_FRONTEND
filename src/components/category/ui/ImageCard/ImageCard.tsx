@@ -8,6 +8,7 @@ export interface ImageCardProps {
 	name: string;
 	withIcon?: boolean;
 	withName?: boolean;
+	textUnderImage?: boolean;
 	onClick: () => void;
 }
 
@@ -16,23 +17,37 @@ export const ImageCard = ({
 	name,
 	withIcon = true,
 	withName = true,
+	textUnderImage = false,
 	onClick,
 }: ImageCardProps) => {
 	return (
 		<li className={styles.imageCard} onClick={onClick}>
-			<figure className={styles.figure}>
+			<figure
+				className={cn(
+					styles.figure,
+					textUnderImage ? styles.textUnderImageLayout : ''
+				)}
+			>
 				<Image className={styles.image} src={imgSrc} />
-				<div
-					className={cn(
-						styles.figcaptionWrapper,
-						!withName ? styles.reverse : ''
-					)}
-				>
-					{withName && (
-						<figcaption className={styles.figcaption}>{name}</figcaption>
-					)}
-					{withIcon && <IconArrowTopRightTransparent />}
-				</div>
+				{!textUnderImage ? (
+					<div
+						className={cn(
+							styles.figcaptionWrapper,
+							!withName ? styles.reverse : ''
+						)}
+					>
+						{withName && (
+							<figcaption className={styles.figcaption}>{name}</figcaption>
+						)}
+						{withIcon && <IconArrowTopRightTransparent />}
+					</div>
+				) : (
+					<div className={styles.figcaptionUnderImageWrapper}>
+						{withName && (
+							<figcaption className={styles.figcaption}>{name}</figcaption>
+						)}
+					</div>
+				)}
 			</figure>
 		</li>
 	);

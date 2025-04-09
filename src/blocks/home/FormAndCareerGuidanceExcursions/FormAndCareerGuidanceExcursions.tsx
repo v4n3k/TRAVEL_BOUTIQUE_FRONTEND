@@ -74,7 +74,7 @@ export const FormAndCareerGuidanceExcursions = ({
 	}, [handleResize]);
 
 	const handleClick = () => {
-		navigate(RouteName.CATEGORIES);
+		navigate(RouteName.CATEGORIES, { state: { scrollToCareerGuidance: true } });
 	};
 
 	return (

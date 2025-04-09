@@ -152,13 +152,14 @@ export const CategoriesPage = () => {
 		<Page>
 			<Categories
 				renderTitle={() => <>Города</>}
-				categories={mockCategories.cities}
+				categories={categories?.cities}
 				expandable
 			/>
 			<Categories
 				renderTitle={() => <>Профориентационные экскурсии</>}
-				categories={mockCategories.careerGuidance}
+				categories={categories?.careerGuidance}
 				withName={false}
+				canAutoScroll
 			/>
 			<Categories
 				renderTitle={() => (
@@ -166,8 +167,9 @@ export const CategoriesPage = () => {
 						Туры выходного дня <span>для семей</span>
 					</>
 				)}
-				categories={mockCategories.weekends}
+				categories={categories?.weekends}
 				withIcon={false}
+				textUnderImage
 			/>
 		</Page>
 	);
