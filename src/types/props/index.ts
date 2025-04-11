@@ -1,6 +1,7 @@
 import { ComponentProps, ReactNode, RefObject, SVGProps } from 'react';
 import {
 	BreadcrumbEntity,
+	CategoryEntity,
 	ExcursionEntity,
 	ExcursionEventEntity,
 	ExcursionWithImage,
@@ -49,6 +50,7 @@ export interface ListSliderProps extends ComponentProps<'div'> {
 
 export interface ExpandableProps extends ComponentProps<'div'> {
 	collapsedHeight?: number;
+	transitionDuration?: number;
 }
 
 export interface ReviewsListProps {
@@ -73,6 +75,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 	leftIcon?: ReactNode;
 	rightIcon?: ReactNode;
 	cornerIcon?: ReactNode | null;
+	gap?: number;
 }
 
 export interface TextInputProps extends ComponentProps<'input'> {}
@@ -212,4 +215,68 @@ export interface TextItemProps extends ComponentProps<'li'> {}
 export interface WrappedTextProps extends ComponentProps<'div'> {
 	textColor?: 'blue-500' | 'red-300';
 	italic?: boolean;
+}
+
+export type PositionProperty = number | 'auto';
+
+export interface IconRotatedLogoProps {
+	rotation?: number;
+	width?: 68.7 | 98.8 | 127.5;
+	mirrorY?: boolean;
+	hideable?: boolean;
+	top?: PositionProperty;
+	right?: PositionProperty;
+	bottom?: PositionProperty;
+	left?: PositionProperty;
+}
+
+export interface SearchableCategoriesProps
+	extends Pick<CategoriesProps, 'withName' | 'withIcon'>,
+		Pick<ImageCardProps, 'nameSize'> {
+	categories: CategoryEntity[];
+	onAdd: () => void;
+}
+
+export interface SearchableListProps {
+	title: string;
+	buttonText: string;
+	children: ReactNode;
+	withBackButton?: boolean;
+	onAdd: () => void;
+}
+
+export interface CategoriesProps {
+	renderTitle: () => ReactNode;
+	categories: CategoryEntity[];
+	expandable?: boolean;
+	withName?: boolean;
+	withIcon?: boolean;
+	textUnderImage?: boolean;
+	canAutoScroll?: boolean;
+}
+
+export interface CategoriesListProps
+	extends Pick<
+		CategoriesProps,
+		'categories' | 'withName' | 'withIcon' | 'textUnderImage'
+	> {}
+
+export interface CategoryCardProps
+	extends Pick<CategoryEntity, 'id' | 'name' | 'imgSrc'>,
+		Pick<CategoriesProps, 'withName' | 'withIcon' | 'textUnderImage'>,
+		Pick<ImageCardProps, 'nameSize' | 'radiusSize'> {}
+
+export interface GridListProps extends ComponentProps<'ul'> {
+	gapSize?: 'm' | 'l';
+}
+
+export interface ImageCardProps {
+	imgSrc: string;
+	name: string;
+	withIcon?: boolean;
+	withName?: boolean;
+	textUnderImage?: boolean;
+	nameSize?: 's' | 'm' | 'l';
+	radiusSize?: 'm' | 'l';
+	onClick: () => void;
 }

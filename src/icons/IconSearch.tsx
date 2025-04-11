@@ -1,23 +1,44 @@
-export const IconSearch = () => {
+import { useMediaQuery } from '../hooks/useMediaQuery';
+
+export interface IconSearchProps {
+	resizable?: boolean;
+}
+
+export const IconSearch = ({ resizable = false }: IconSearchProps) => {
+	const isLaptop = useMediaQuery('(max-width: 1480px)');
+	const isMobile = useMediaQuery('(max-width: 440px)');
+
+	let iconSize = 28;
+
+	if (resizable) {
+		if (isMobile) {
+			iconSize = 16;
+		} else if (isLaptop) {
+			iconSize = 20;
+		}
+	}
+
 	return (
 		<svg
-			width='28'
-			height='28'
-			viewBox='0 0 28 28'
+			width={iconSize}
+			height={iconSize}
+			viewBox={`0 0 ${iconSize} ${iconSize}`}
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
 			<circle
-				cx='12.8333'
-				cy='12.8333'
-				r='7'
+				cx={iconSize * 0.4583}
+				cy={iconSize * 0.4583}
+				r={iconSize * 0.25}
 				stroke='#222222'
-				strokeWidth='2'
+				strokeWidth={iconSize / 14}
 			/>
 			<path
-				d='M23.3333 23.3333L19.8333 19.8333'
+				d={`M${iconSize * 0.8333} ${iconSize * 0.8333}L${iconSize * 0.7083} ${
+					iconSize * 0.7083
+				}`}
 				stroke='#222222'
-				strokeWidth='2'
+				strokeWidth={iconSize / 14}
 				strokeLinecap='round'
 			/>
 		</svg>

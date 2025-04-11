@@ -10,10 +10,12 @@ export const Expandable = ({
 	collapsedHeight = 417,
 }: ExpandableProps) => {
 	const contentRef = useRef<HTMLDivElement>(null);
+	const buttonRef = useRef<HTMLButtonElement>(null);
 	const [isExpanded, setIsExpanded] = useState(false);
 
 	useEffect(() => {
 		const contentElement = contentRef.current;
+
 		if (!contentElement) return;
 
 		if (isExpanded) {
@@ -25,11 +27,14 @@ export const Expandable = ({
 
 	useEffect(() => {
 		if (isExpanded) {
-			if (!contentRef.current) return;
+			if (!contentRef.current || !buttonRef.current) return;
 
-			contentRef.current.style.overflow = 'visible';
+			setTimeout(() => {
+				if (!contentRef.current || !buttonRef.current) return;
+				contentRef.current.style.overflow = 'visible';
+			}, 500);
 		} else {
-			if (!contentRef.current) return;
+			if (!contentRef.current || !buttonRef.current) return;
 
 			contentRef.current.style.overflow = 'hidden';
 		}
@@ -51,6 +56,7 @@ export const Expandable = ({
 					styles.iconButtonRoot,
 					isExpanded ? styles.expanded : ''
 				)}
+				ref={buttonRef}
 				backgroundColor='white-100'
 				onClick={toggleExpand}
 			>

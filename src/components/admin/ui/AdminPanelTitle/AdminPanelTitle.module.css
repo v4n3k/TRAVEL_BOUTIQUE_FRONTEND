@@ -1,0 +1,116 @@
+.adminPanelTitle {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 36px;
+	margin: 0 auto 48px;
+}
+
+.title {
+	white-space: nowrap;
+	margin-bottom: 0;
+}
+
+.signOutButton {
+	justify-content: center;
+	width: 100%;
+	border-radius: 12px;
+}
+
+.triggerModalButton {
+	padding: 6px 16px;
+	border-radius: 12px;
+	font-weight: 400;
+}
+
+.signOutButtonRoot {
+	width: 100% !important;
+}
+
+@media (max-width: 1480px) {
+	.adminPanelTitle {
+		gap: 26px;
+		margin-bottom: 40px;
+	}
+
+	.title {
+		font-size: 36px;
+		line-height: 49px;
+	}
+
+	.triggerModalButton {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 950px) {
+	.adminPanelTitle {
+		gap: 20px;
+	}
+
+	.title {
+		font-size: 64px;
+		line-height: 87px;
+	}
+}
+
+@media (max-width: 800px) {
+	.adminPanelTitle {
+		justify-content: space-between;
+
+		margin: 0 0 48px;
+	}
+
+	.title {
+		letter-spacing: -0.6px;
+	}
+
+	.triggerModalButton {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+@media (max-width: 600px) {
+	.adminPanelTitle {
+		gap: 16px;
+	}
+
+	.title {
+		font-size: 48px;
+		line-height: 64px;
+		letter-spacing: normal;
+	}
+
+	.triggerModalButton {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 600px) {
+	.title {
+		font-size: 40px;
+		line-height: 53px;
+	}
+}
+
+@media (max-width: 440px) {
+	.signOutButton {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+@media (max-width: 400px) {
+	.title {
+		font-size: 32px;
+		line-height: 44px;
+	}
+
+	.triggerModalButton {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}

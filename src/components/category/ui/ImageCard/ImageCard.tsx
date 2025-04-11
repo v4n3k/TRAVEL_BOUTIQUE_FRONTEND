@@ -1,16 +1,8 @@
 import { IconArrowTopRightTransparent } from '../../../../icons/IconArrowTopRightTransparent';
+import { ImageCardProps } from '../../../../types';
 import { cn } from '../../../../utils/cn';
 import { Image } from '../../../ui';
 import styles from './ImageCard.module.css';
-
-export interface ImageCardProps {
-	imgSrc: string;
-	name: string;
-	withIcon?: boolean;
-	withName?: boolean;
-	textUnderImage?: boolean;
-	onClick: () => void;
-}
 
 export const ImageCard = ({
 	imgSrc,
@@ -18,6 +10,8 @@ export const ImageCard = ({
 	withIcon = true,
 	withName = true,
 	textUnderImage = false,
+	nameSize = 'l',
+	radiusSize = 'l',
 	onClick,
 }: ImageCardProps) => {
 	return (
@@ -28,16 +22,19 @@ export const ImageCard = ({
 					textUnderImage ? styles.textUnderImageLayout : ''
 				)}
 			>
-				<Image className={styles.image} src={imgSrc} />
+				<Image className={cn(styles.image, styles[radiusSize])} src={imgSrc} />
 				{!textUnderImage ? (
 					<div
 						className={cn(
 							styles.figcaptionWrapper,
+							styles[nameSize],
 							!withName ? styles.reverse : ''
 						)}
 					>
 						{withName && (
-							<figcaption className={styles.figcaption}>{name}</figcaption>
+							<figcaption className={cn(styles.figcaption, styles[nameSize])}>
+								{name}
+							</figcaption>
 						)}
 						{withIcon && <IconArrowTopRightTransparent />}
 					</div>

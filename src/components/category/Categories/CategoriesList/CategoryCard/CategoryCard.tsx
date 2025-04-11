@@ -1,11 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { CategoryEntity, RouteName } from '../../../../../types';
+import { CategoryCardProps, RouteName } from '../../../../../types';
 import { ImageCard } from '../../../ui/ImageCard/ImageCard';
-import { CategoriesProps } from '../../Categories';
-
-export interface CategoryCardProps
-	extends Pick<CategoryEntity, 'id' | 'name' | 'imgSrc'>,
-		Pick<CategoriesProps, 'withName' | 'withIcon' | 'textUnderImage'> {}
 
 export const CategoryCard = ({
 	name,
@@ -13,6 +8,8 @@ export const CategoryCard = ({
 	withName,
 	withIcon,
 	textUnderImage,
+	nameSize,
+	radiusSize,
 }: CategoryCardProps) => {
 	const navigate = useNavigate();
 
@@ -28,6 +25,8 @@ export const CategoryCard = ({
 			withName={withName}
 			withIcon={withIcon}
 			textUnderImage={textUnderImage}
+			nameSize={nameSize}
+			radiusSize={radiusSize}
 			onClick={handleClick}
 		/>
 	);

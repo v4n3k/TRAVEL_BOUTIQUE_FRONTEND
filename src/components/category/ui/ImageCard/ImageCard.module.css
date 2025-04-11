@@ -17,7 +17,7 @@
 .textUnderImageLayout {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start; /* or center if you want to center align text */
+	align-items: flex-start;
 }
 
 .figcaptionWrapper {
@@ -31,10 +31,23 @@
 	gap: 8px;
 }
 
+.figcaptionWrapper.l {
+	bottom: 36px;
+	left: 32px;
+	right: 32px;
+}
+
+.figcaptionWrapper.m,
+.figcaptionWrapper.s {
+	bottom: 20px;
+	left: 20px;
+	right: 20px;
+}
+
 .figcaptionUnderImageWrapper {
-	margin-top: 24px; /* gap between image and text */
+	margin-top: 24px;
 	display: flex;
-	justify-content: flex-start; /* or center if you want to center align text */
+	justify-content: flex-start;
 	align-items: center;
 }
 
@@ -46,13 +59,32 @@
 	padding: 2px 12px;
 	border-radius: 8px;
 	background-color: var(--white-50);
-	font-size: 24px;
-	line-height: 33px;
 	font-weight: 600;
 }
 
-.image {
+.figcaption.l {
+	font-size: 24px;
+	line-height: 33px;
+}
+
+.figcaption.m {
+	font-size: 20px;
+	line-height: 27px;
+}
+
+.figcaption.s {
+	font-size: 16px;
+	line-height: 22px;
+}
+
+.image.l {
 	aspect-ratio: 440 / 240;
+	border-radius: 40px;
+}
+
+.image.m {
+	aspect-ratio: 426 / 220;
+	border-radius: 36px;
 }
 
 @media (max-width: 1480px) {
@@ -60,21 +92,43 @@
 		bottom: 32px;
 	}
 
-	.image {
+	.figcaptionWrapper.m,
+	.figcaptionWrapper.s {
+		bottom: 16px;
+		left: 16px;
+		right: 16px;
+	}
+
+	.image.l {
 		aspect-ratio: 368 / 216;
+	}
+
+	.image.m {
+		aspect-ratio: 317 / 180;
+		border-radius: 28px;
+	}
+
+	.figcaption.m {
+		font-size: 16px;
+		line-height: 22px;
 	}
 }
 
 @media (max-width: 900px) {
-	.figcaptionWrapper {
+	.figcaptionWrapper.l {
 		bottom: 24px;
 		left: 24px;
 		right: 24px;
 	}
 
-	.image {
+	.image.l {
 		border-radius: 32px;
 		aspect-ratio: 316 / 184;
+	}
+
+	.image.m {
+		border-radius: 32px;
+		aspect-ratio: 280 / 164;
 	}
 }
 
@@ -85,13 +139,20 @@
 		right: 16px;
 	}
 
-	.figcaption {
+	.figcaption.l {
 		font-size: 20px;
 		line-height: 27px;
 	}
 
-	.image {
+	.image.l {
 		border-radius: 20px;
 		aspect-ratio: 335 / 184;
+	}
+}
+
+@media (max-width: 550px) {
+	.image.m {
+		aspect-ratio: 303 / 164;
+		border-radius: 20px;
 	}
 }

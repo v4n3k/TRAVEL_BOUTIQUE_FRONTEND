@@ -1,12 +1,6 @@
+import { CategoriesListProps } from '../../../../types';
 import { GridList } from '../../ui/GridList/GridList';
-import { CategoriesProps } from '../Categories';
 import { CategoryCard } from './CategoryCard/CategoryCard';
-
-export interface CategoriesListProps
-	extends Pick<
-		CategoriesProps,
-		'categories' | 'withName' | 'withIcon' | 'textUnderImage'
-	> {}
 
 export const CategoriesList = ({
 	categories,

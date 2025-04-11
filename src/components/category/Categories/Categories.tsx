@@ -1,19 +1,9 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CategoryEntity } from '../../../types';
+import { CategoriesProps } from '../../../types';
 import { Expandable, Section, Title } from '../../ui';
 import styles from './Categories.module.css';
 import { CategoriesList } from './CategoriesList/CategoriesList';
-
-export interface CategoriesProps {
-	renderTitle: () => ReactNode;
-	categories: CategoryEntity[];
-	expandable?: boolean;
-	withName?: boolean;
-	withIcon?: boolean;
-	textUnderImage?: boolean;
-	canAutoScroll?: boolean;
-}
 
 export const Categories = ({
 	renderTitle,

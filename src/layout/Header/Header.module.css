@@ -173,8 +173,8 @@
 	transition: width 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
-.phone p,
-.phoneOnSmallScreen p {
+.phone a,
+.phoneOnSmallScreen a {
 	font-size: 24px;
 	line-height: 33px;
 	font-weight: 400;

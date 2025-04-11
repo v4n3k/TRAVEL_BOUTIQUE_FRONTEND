@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { CategoryType } from '../../pages';
 import { RouteName } from '../routes';
 
 export type UserId = number | null;
@@ -71,3 +70,8 @@ export interface CategoryWithImage extends Omit<CategoryEntity, 'imgSrc'> {
 }
 
 export interface CategoryBaseWithImage extends Omit<CategoryWithImage, 'id'> {}
+
+export type CategoryType = 'cities' | 'careerGuidance' | 'weekends';
+
+export interface CategoriesByType
+	extends Record<CategoryType, CategoryEntity[]> {}

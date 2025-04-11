@@ -24,7 +24,7 @@ export interface CategoryApi {
 }
 
 export interface AuthApi {
-	signIn: (credentials: SignInCredentials) => Promise<void>;
+	signIn: (credentials: SignInCredentials) => OptionalPromise<signInResponse>;
 	signOut: () => Promise<void>;
 	checkIsAuth: () => OptionalPromise<boolean>;
 }
@@ -32,4 +32,9 @@ export interface AuthApi {
 export interface SignInCredentials {
 	login: string;
 	password: string;
+}
+
+export interface signInResponse {
+	message: string;
+	login: string;
 }

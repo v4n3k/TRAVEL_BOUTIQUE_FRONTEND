@@ -1,17 +1,5 @@
 import { useMediaQuery } from '../hooks/useMediaQuery';
-
-export type PositionProperty = number | 'auto';
-
-export interface IconRotatedLogoProps {
-	rotation?: number;
-	width?: 68.7 | 98.8 | 127.5;
-	mirrorY?: boolean;
-	hideable?: boolean;
-	top?: PositionProperty;
-	right?: PositionProperty;
-	bottom?: PositionProperty;
-	left?: PositionProperty;
-}
+import { IconRotatedLogoProps } from '../types';
 
 export const IconRotatedLogo = ({
 	rotation = 0,

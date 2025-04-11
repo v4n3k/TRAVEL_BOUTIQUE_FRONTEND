@@ -1,15 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { categoryApi } from '../../api/category/categoryApi';
-import { Categories } from '../../components/category/Categories/Categories';
+import { Categories } from '../../components/category';
 import { Page } from '../../components/ui';
-import { CategoryEntity } from '../../types';
+import { CategoriesByType, CategoryEntity } from '../../types';
 
-export type CategoryType = 'cities' | 'careerGuidance' | 'weekends';
-
-export interface CategoriesByType
-	extends Record<CategoryType, CategoryEntity[]> {}
-
-const mockCategories: CategoriesByType = {
+export const mockCategories: CategoriesByType = {
 	cities: [
 		{
 			id: 1,

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useImperativeHandle, useRef } from 'react';
 import { ButtonProps } from '../../../types';
 import { cn } from '../../../utils/cn';
 import styles from './Button.module.css';
@@ -14,9 +14,19 @@ export const Button = ({
 	leftIcon,
 	rightIcon,
 	cornerIcon,
+	gap = 20,
+	ref,
 	...props
 }: ButtonProps) => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
+
+	useImperativeHandle(
+		ref,
+		() => {
+			return buttonRef.current as HTMLButtonElement;
+		},
+		[buttonRef]
+	);
 
 	const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
 		const button = buttonRef.current;
@@ -46,11 +56,16 @@ export const Button = ({
 		});
 	};
 
+	const iconGap = {
+		'--icon-gap': `${gap}px`,
+	} as React.CSSProperties;
+
 	return (
 		<div
 			className={cn(styles.buttonWrapper, rootClassName)}
 			style={{
 				width: fullWidth ? '100%' : 'fit-content',
+				...iconGap,
 			}}
 		>
 			<button

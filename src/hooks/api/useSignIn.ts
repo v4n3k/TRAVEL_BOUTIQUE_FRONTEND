@@ -13,10 +13,11 @@ export const useSignIn = () => {
 	const signInMutation = useMutation({
 		mutationFn: (credentials: SignInCredentials) => authApi.signIn(credentials),
 
-		onSuccess: () => {
+		onSuccess: data => {
 			try {
 				setIsAuth(true);
 				setErrorMessage(null);
+				localStorage.setItem('login', String(data?.login));
 				navigate(RouteName.ADMIN);
 			} catch (err) {
 				console.error(err);

@@ -166,12 +166,12 @@ export const Header = () => {
 				mountOnEnter
 			>
 				<div ref={phoneRef} className={styles.phoneOnSmallScreen}>
-					<p>+ 7 988 999 46 53</p>
+					<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
 				</div>
 			</CSSTransition>
 
 			<div className={styles.phone}>
-				<p>+ 7 988 999 46 53</p>
+				<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
 			</div>
 
 			<CSSTransition

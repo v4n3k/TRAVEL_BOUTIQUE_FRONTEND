@@ -1,8 +1,7 @@
-import { ComponentProps } from 'react';
+import { GridListProps } from '../../../../types';
+import { cn } from '../../../../utils/cn';
 import styles from './GridList.module.css';
 
-export interface GridListProps extends ComponentProps<'ul'> {}
-
-export const GridList = ({ children }: GridListProps) => {
-	return <ul className={styles.gridList}>{children}</ul>;
+export const GridList = ({ children, gapSize = 'l' }: GridListProps) => {
+	return <ul className={cn(styles.gridList, styles[gapSize])}>{children}</ul>;
 };

@@ -1,18 +1,19 @@
 import {
 	AboutPage,
+	AdminCategoryPage,
 	AdminCreateNewCategoryPage,
 	AdminCreateNewExcursionPage,
 	AdminEditExcursion,
 	AdminPage,
 	BlogPage,
 	CategoriesPage,
+	CategoryPage,
 	ExcursionPage,
 	HomePage,
 	InfoPage,
 	ServicePage,
 	SignInPage,
 } from '../pages';
-import { CategoryPage } from '../pages/Category/CategoryPage';
 import { RouteEntity, RouteName } from '../types/routes';
 
 export const publicRoutes: RouteEntity[] = [
@@ -29,6 +30,11 @@ export const publicRoutes: RouteEntity[] = [
 
 export const privateRoutes: RouteEntity[] = [
 	{ path: RouteName.ADMIN, Component: AdminPage, isPrivate: true },
+	{
+		path: RouteName.ADMIN_CATEGORY,
+		Component: AdminCategoryPage,
+		isPrivate: true,
+	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
 		Component: AdminCreateNewExcursionPage,
