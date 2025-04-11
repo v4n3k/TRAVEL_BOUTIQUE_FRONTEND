@@ -1,5 +1,9 @@
-import { CategoriesByType } from '../../pages';
-import { CategoryEntity, ExcursionEntity } from '../entities';
+import {
+	CategoriesByType,
+	CategoryEntity,
+	CategoryType,
+	ExcursionEntity,
+} from '../entities';
 
 export type OptionalPromise<T> = Promise<T | undefined>;
 
@@ -20,6 +24,10 @@ export interface ExcursionApi {
 
 export interface CategoryApi {
 	getAll: () => OptionalPromise<CategoriesByType>;
+	getBySearch: (
+		categoryType: CategoryType,
+		searchQuery: string
+	) => OptionalPromise<CategoryEntity[]>;
 	create: (newCategory: FormData) => OptionalPromise<CategoryEntity>;
 }
 

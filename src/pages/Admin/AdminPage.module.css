@@ -4,3 +4,22 @@
 	gap: 88px;
 	margin-bottom: 254px;
 }
+
+@media (max-width: 1480px) {
+	.container {
+		margin-bottom: 132px;
+	}
+}
+
+@media (max-width: 900px) {
+	.container {
+		gap: 72px;
+	}
+}
+
+@media (max-width: 440px) {
+	.container {
+		gap: 64px;
+		margin-bottom: 64px;
+	}
+}

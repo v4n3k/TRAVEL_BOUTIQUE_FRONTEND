@@ -42,6 +42,12 @@ export const Expandable = ({
 
 	const toggleExpand = () => {
 		setIsExpanded(prev => !prev);
+		if (isExpanded) {
+			contentRef.current?.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
 	};
 
 	return (

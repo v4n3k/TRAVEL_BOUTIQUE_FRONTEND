@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
 import { AdminPanelTitle, SearchableCategories } from '../../components/admin';
-import { Expandable, Page } from '../../components/ui';
+import { Page } from '../../components/ui';
+import { useDebounce } from '../../hooks/useDebounce';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { RouteName } from '../../types';
 import styles from './AdminPage.module.css';
@@ -15,6 +16,16 @@ export const AdminPage = () => {
 	const isMScreen = useMediaQuery('(min-width: 600px) and (max-width: 699px)');
 	const isSScreen = useMediaQuery('(min-width: 440px) and (max-width: 599px)');
 	const isXSScreen = useMediaQuery('(max-width: 439px)');
+
+	const [citiesSearchQuery, setCitiesSearchQuery] = useState('');
+	const [careerGuidanceSearchQuery, setCareerGuidanceSearchQuery] = useState(
+		''
+	);
+	const [weekendsSearchQuery, setWeekendsSearchQuery] = useState('');
+
+	const debCitiesSearchQuery = useDebounce(citiesSearchQuery);
+	const debCareerGuidanceSearchQuery = useDebounce(careerGuidanceSearchQuery);
+	const debWeekendsSearchQuery = useDebounce(weekendsSearchQuery);
 
 	const navigate = useNavigate();
 
@@ -32,14 +43,33 @@ export const AdminPage = () => {
 		} else {
 			setCollapsedHeight(740);
 		}
-	}, []);
+	}, [isXLScreen, isLScreen, isMScreen, isSScreen, isXSScreen]);
 
-	const { data: categories } = useQuery({
+	const { data: initialCategories } = useQuery({
 		queryKey: ['categories'],
 		queryFn: () => categoryApi.getAll(),
 	});
 
-	if (!categories) return <></>;
+	const { data: citiesCategories } = useQuery({
+		queryKey: ['citiesCategories', debCitiesSearchQuery],
+		queryFn: () => categoryApi.getBySearch('cities', debCitiesSearchQuery),
+		enabled: !!debCitiesSearchQuery,
+	});
+
+	const { data: careerGuidanceCategories } = useQuery({
+		queryKey: ['careerGuidanceCategories', debCareerGuidanceSearchQuery],
+		queryFn: () =>
+			categoryApi.getBySearch('careerGuidance', debCareerGuidanceSearchQuery),
+		enabled: !!debCareerGuidanceSearchQuery,
+	});
+
+	const { data: weekendsCategories } = useQuery({
+		queryKey: ['weekendsCategories', debWeekendsSearchQuery],
+		queryFn: () => categoryApi.getBySearch('weekends', debWeekendsSearchQuery),
+		enabled: !!debWeekendsSearchQuery,
+	});
+
+	if (!initialCategories) return <></>;
 
 	const handleNavigate = () => {
 		navigate(RouteName.ADMIN_CREATE_NEW_CATEGORY);
@@ -60,43 +90,61 @@ export const AdminPage = () => {
 		handleNavigate();
 	};
 
+	const displayedCitiesCategories = debCitiesSearchQuery
+		? citiesCategories
+		: initialCategories?.cities;
+	const displayedCareerGuidanceCategories = debCareerGuidanceSearchQuery
+		? careerGuidanceCategories
+		: initialCategories?.careerGuidance;
+	const displayedWeekendsCategories = debWeekendsSearchQuery
+		? weekendsCategories
+		: initialCategories?.weekends;
+
 	return (
 		<Page>
 			<AdminPanelTitle />
 
 			<div className={styles.container}>
-				<Expandable collapsedHeight={collapsedHeight}>
-					<SearchableCategories
-						categories={[
-							...categories?.cities,
-							...categories?.cities,
-							...categories?.cities,
-						]}
-						onAdd={handleCitiesClick}
-						withIcon={false}
-						nameSize='m'
-					/>
-				</Expandable>
+				<SearchableCategories
+					categories={[
+						...(displayedCitiesCategories || []),
+						...(displayedCitiesCategories || []),
+						...(displayedCitiesCategories || []),
+					]}
+					searchQuery={citiesSearchQuery}
+					setSearchQuery={setCitiesSearchQuery}
+					onAdd={handleCitiesClick}
+					withIcon={false}
+					nameSize='m'
+					expandable={
+						displayedCitiesCategories?.length !== undefined &&
+						displayedCitiesCategories?.length > 3
+					}
+					collapsedHeight={collapsedHeight}
+				/>
 
 				<SearchableCategories
-					categories={categories?.careerGuidance}
+					categories={displayedCareerGuidanceCategories || []}
+					searchQuery={careerGuidanceSearchQuery}
+					setSearchQuery={setCareerGuidanceSearchQuery}
 					onAdd={handleCareerGuidanceClick}
 					withName={false}
 					nameSize='s'
 				/>
 
-				<Expandable>
-					<SearchableCategories
-						categories={[
-							...categories?.weekends,
-							...categories?.weekends,
-							...categories?.weekends,
-						]}
-						onAdd={handleWeekendsClick}
-						withIcon={false}
-						nameSize='s'
-					/>
-				</Expandable>
+				<SearchableCategories
+					categories={[...(displayedWeekendsCategories || [])]}
+					searchQuery={weekendsSearchQuery}
+					setSearchQuery={setWeekendsSearchQuery}
+					onAdd={handleWeekendsClick}
+					withIcon={false}
+					nameSize='s'
+					expandable={
+						displayedWeekendsCategories?.length !== undefined &&
+						displayedWeekendsCategories?.length > 3
+					}
+					collapsedHeight={collapsedHeight}
+				/>
 			</div>
 		</Page>
 	);

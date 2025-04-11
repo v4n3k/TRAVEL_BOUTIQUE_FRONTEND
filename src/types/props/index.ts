@@ -1,4 +1,11 @@
-import { ComponentProps, ReactNode, RefObject, SVGProps } from 'react';
+import {
+	ComponentProps,
+	Dispatch,
+	ReactNode,
+	RefObject,
+	SetStateAction,
+	SVGProps,
+} from 'react';
 import {
 	BreadcrumbEntity,
 	CategoryEntity,
@@ -232,8 +239,11 @@ export interface IconRotatedLogoProps {
 
 export interface SearchableCategoriesProps
 	extends Pick<CategoriesProps, 'withName' | 'withIcon'>,
-		Pick<ImageCardProps, 'nameSize'> {
+		Pick<ImageCardProps, 'nameSize'>,
+		Pick<SearchableListProps, 'searchQuery' | 'setSearchQuery'> {
 	categories: CategoryEntity[];
+	expandable?: boolean;
+	collapsedHeight?: number;
 	onAdd: () => void;
 }
 
@@ -242,6 +252,8 @@ export interface SearchableListProps {
 	buttonText: string;
 	children: ReactNode;
 	withBackButton?: boolean;
+	searchQuery: string;
+	setSearchQuery: Dispatch<SetStateAction<string>>;
 	onAdd: () => void;
 }
 

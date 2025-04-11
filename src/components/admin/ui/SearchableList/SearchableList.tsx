@@ -12,6 +12,8 @@ export const SearchableList = ({
 	buttonText,
 	children,
 	withBackButton = false,
+	searchQuery,
+	setSearchQuery,
 	onAdd,
 }: SearchableListProps) => {
 	const navigate = useNavigate();
@@ -21,6 +23,12 @@ export const SearchableList = ({
 
 	const handleGoBack = () => {
 		navigate(-1);
+	};
+
+	const handleSearchQueryChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setSearchQuery(event.target.value);
 	};
 
 	const checkSearchWrap = () => {
@@ -82,6 +90,8 @@ export const SearchableList = ({
 							className={styles.input}
 							type='search'
 							placeholder='Поиск по карточкам'
+							value={searchQuery}
+							onChange={handleSearchQueryChange}
 						/>
 					</div>
 				</div>
