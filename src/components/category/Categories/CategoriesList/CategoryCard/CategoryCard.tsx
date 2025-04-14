@@ -10,6 +10,7 @@ export const CategoryCard = ({
 	textUnderImage,
 	nameSize,
 	radiusSize,
+	onClick,
 }: CategoryCardProps) => {
 	const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ export const CategoryCard = ({
 			textUnderImage={textUnderImage}
 			nameSize={nameSize}
 			radiusSize={radiusSize}
-			onClick={handleClick}
+			onClick={onClick || handleClick}
 		/>
 	);
 };

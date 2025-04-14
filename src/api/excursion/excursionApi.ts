@@ -24,6 +24,13 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
+	async getBySearch(searchQuery) {
+		return await handleApiResponse(
+			api.post('/excursions', { searchQuery }),
+			'Failed to get excursions by search'
+		);
+	},
+
 	async create(newExcursion) {
 		return await handleApiResponse(
 			api.post('/excursion', newExcursion),

@@ -1,4 +1,5 @@
-import { SearchableCategoriesProps } from '../../../types';
+import { useNavigate } from 'react-router-dom';
+import { RouteName, SearchableCategoriesProps } from '../../../types';
 import { CategoryCard } from '../../category/Categories/CategoriesList/CategoryCard/CategoryCard';
 import { GridList } from '../../category/ui/GridList/GridList';
 import { Expandable } from '../../ui';
@@ -15,6 +16,13 @@ export const SearchableCategories = ({
 	expandable = false,
 	collapsedHeight,
 }: SearchableCategoriesProps) => {
+	const navigate = useNavigate();
+
+	const handleCardClick = (categoryName: string) => {
+		navigate(RouteName.ADMIN_CATEGORY);
+		localStorage.setItem('categoryName', categoryName);
+	};
+
 	const searchableList = (
 		<SearchableList
 			title='Предпросмотр карточек категорий'
@@ -32,6 +40,7 @@ export const SearchableCategories = ({
 						withIcon={withIcon}
 						nameSize={nameSize}
 						radiusSize='m'
+						onClick={() => handleCardClick(category.name)}
 					/>
 				))}
 			</GridList>

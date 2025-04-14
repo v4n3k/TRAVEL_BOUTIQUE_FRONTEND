@@ -13,6 +13,7 @@ export interface ExcursionApi {
 	getByCategoryName: (
 		categoryName: string
 	) => OptionalPromise<ExcursionEntity[]>;
+	getBySearch: (searchQuery: string) => OptionalPromise<ExcursionEntity[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,

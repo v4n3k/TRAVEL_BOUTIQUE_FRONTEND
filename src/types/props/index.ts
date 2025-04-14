@@ -276,7 +276,7 @@ export interface CategoriesListProps
 export interface CategoryCardProps
 	extends Pick<CategoryEntity, 'id' | 'name' | 'imgSrc'>,
 		Pick<CategoriesProps, 'withName' | 'withIcon' | 'textUnderImage'>,
-		Pick<ImageCardProps, 'nameSize' | 'radiusSize'> {}
+		Pick<ImageCardProps, 'nameSize' | 'radiusSize' | 'onClick'> {}
 
 export interface GridListProps extends ComponentProps<'ul'> {
 	gapSize?: 'm' | 'l';
@@ -290,5 +290,5 @@ export interface ImageCardProps {
 	textUnderImage?: boolean;
 	nameSize?: 's' | 'm' | 'l';
 	radiusSize?: 'm' | 'l';
-	onClick: () => void;
+	onClick?: () => void;
 }
