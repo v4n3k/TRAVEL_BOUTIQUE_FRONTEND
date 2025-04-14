@@ -9,6 +9,10 @@ export const ManagerButton = ({
 	rootClassName,
 	...props
 }: ManagerButtonProps) => {
+	const handleClick = () => {
+		window.open('https://whatsapp.com', '_blank');
+	};
+
 	return (
 		<Button
 			className={cn(styles.managerButton, className)}
@@ -16,6 +20,7 @@ export const ManagerButton = ({
 			leftIcon={<IconConnect />}
 			backgroundColor='white-50'
 			color='blue-500'
+			onClick={handleClick}
 			{...props}
 		>
 			Связаться с менеджером

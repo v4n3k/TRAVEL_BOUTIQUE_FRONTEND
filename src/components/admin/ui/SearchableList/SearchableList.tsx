@@ -8,6 +8,7 @@ import { Button, Section } from '../../../ui';
 import styles from './SearchableList.module.css';
 
 export const SearchableList = ({
+	className,
 	title,
 	buttonText,
 	children,
@@ -56,7 +57,7 @@ export const SearchableList = ({
 	}, []);
 
 	return (
-		<Section className={styles.searchableList}>
+		<Section className={cn(styles.searchableList, className)}>
 			<header className={styles.header}>
 				<div className={styles.headerContainer} ref={headerContainerRef}>
 					{withBackButton && (

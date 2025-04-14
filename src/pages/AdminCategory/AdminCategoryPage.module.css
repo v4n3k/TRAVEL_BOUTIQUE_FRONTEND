@@ -1,0 +1,9 @@
+.searchableExcursions {
+	margin-bottom: 132px;
+}
+
+@media (max-width: 600px) {
+	.searchableExcursions {
+		margin-bottom: 64px;
+	}
+}

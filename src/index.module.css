@@ -82,6 +82,7 @@ ul {
 
 a {
 	text-decoration: none;
+	user-select: none;
 	color: inherit;
 	transition: 0.2s ease-in-out;
 }

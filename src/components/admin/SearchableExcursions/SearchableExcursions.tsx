@@ -3,12 +3,18 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { RouteBase, RouteName } from '../../../types';
+import {
+	RouteBase,
+	RouteName,
+	SearchableExcursionsProps,
+} from '../../../types';
 import { ImageCard } from '../../category';
 import { GridList } from '../../category/ui/GridList/GridList';
 import { SearchableList } from '../ui/SearchableList/SearchableList';
 
-export const SearchableExcursions = () => {
+export const SearchableExcursions = ({
+	className,
+}: SearchableExcursionsProps) => {
 	const navigate = useNavigate();
 	const [searchQuery, setSearchQuery] = useState('');
 	const debSearchQuery = useDebounce(searchQuery);
@@ -34,6 +40,7 @@ export const SearchableExcursions = () => {
 
 	return (
 		<SearchableList
+			className={className}
 			title={categoryName}
 			buttonText='Добавить экскурсию'
 			searchQuery={searchQuery}
@@ -49,7 +56,9 @@ export const SearchableExcursions = () => {
 						withIcon={false}
 						nameSize='m'
 						radiusSize='m'
-						onClick={() => navigate(`${RouteBase.EXCURSION}/${excursion.id}`)}
+						onClick={() =>
+							navigate(`${RouteBase.ADMIN_EDIT_EXCURSION}/${excursion.id}`)
+						}
 					/>
 				))}
 			</GridList>

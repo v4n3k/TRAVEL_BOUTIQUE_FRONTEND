@@ -23,9 +23,11 @@ export const Categories = ({
 			ref.current &&
 			canAutoScroll
 		) {
-			ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(() => {
+				ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}, 50);
 		}
-	}, [location.state?.scrollToCareerGuidance, ref.current]);
+	}, [location.state?.scrollToCareerGuidance, ref.current, canAutoScroll]);
 
 	return (
 		<Section ref={ref}>

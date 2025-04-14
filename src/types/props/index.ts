@@ -247,7 +247,12 @@ export interface SearchableCategoriesProps
 	onAdd: () => void;
 }
 
+export interface SearchableExcursionsProps {
+	className?: string;
+}
+
 export interface SearchableListProps {
+	className?: string;
 	title: string;
 	buttonText: string;
 	children: ReactNode;
