@@ -45,7 +45,7 @@ export const AdminPage = () => {
 		}
 	}, [isXLScreen, isLScreen, isMScreen, isSScreen, isXSScreen]);
 
-	const { data: initialCategories } = useQuery({
+	const { data: initialCategories, isLoading } = useQuery({
 		queryKey: ['categories'],
 		queryFn: () => categoryApi.getAll(),
 	});
@@ -68,6 +68,8 @@ export const AdminPage = () => {
 		queryFn: () => categoryApi.getBySearch('weekends', debWeekendsSearchQuery),
 		enabled: !!debWeekendsSearchQuery,
 	});
+
+	if (isLoading) return <></>;
 
 	if (!initialCategories) return <></>;
 
@@ -106,11 +108,7 @@ export const AdminPage = () => {
 
 			<div className={styles.container}>
 				<SearchableCategories
-					categories={[
-						...(displayedCitiesCategories || []),
-						...(displayedCitiesCategories || []),
-						...(displayedCitiesCategories || []),
-					]}
+					categories={[...(displayedCitiesCategories || [])]}
 					searchQuery={citiesSearchQuery}
 					setSearchQuery={setCitiesSearchQuery}
 					onAdd={handleCitiesClick}

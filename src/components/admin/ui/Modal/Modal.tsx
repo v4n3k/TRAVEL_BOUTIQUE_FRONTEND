@@ -1,18 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ModalProps } from '../../../../types';
 import styles from './Modal.module.css';
 
 export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
 	const nodeRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		if (isOpen) {
-			document.body.style.overflow = 'hidden';
-		} else {
-			document.body.style.overflow = 'unset';
-		}
-	});
 
 	return (
 		<CSSTransition

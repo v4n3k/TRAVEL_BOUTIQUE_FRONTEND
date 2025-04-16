@@ -10,8 +10,7 @@ import { Button, Form, Page, Section, TextInput } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
-import { ImageEntity } from '../../types';
-import { CategoryType } from '../Categories/CategoriesPage';
+import { CategoryType, ImageEntity } from '../../types';
 import styles from './AdminCreateNewCategory.module.css';
 
 export const AdminCreateNewCategoryPage = () => {

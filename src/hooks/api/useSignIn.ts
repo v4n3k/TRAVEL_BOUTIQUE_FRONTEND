@@ -15,10 +15,12 @@ export const useSignIn = () => {
 
 		onSuccess: data => {
 			try {
-				setIsAuth(true);
-				setErrorMessage(null);
-				localStorage.setItem('login', String(data?.login));
-				navigate(RouteName.ADMIN);
+				if (data?.login) {
+					setIsAuth(true);
+					setErrorMessage(null);
+					localStorage.setItem('login', String(data?.login));
+					navigate(RouteName.ADMIN);
+				}
 			} catch (err) {
 				console.error(err);
 			}
