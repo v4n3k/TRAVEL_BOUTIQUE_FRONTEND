@@ -13,7 +13,7 @@ export const PaymentMethod = () => {
 		if (location.state?.scrollToPayment) {
 			scrollRef.current?.scrollIntoView({
 				behavior: 'smooth',
-				block: 'center',
+				block: 'start',
 			});
 		}
 	}, []);

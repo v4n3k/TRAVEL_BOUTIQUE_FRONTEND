@@ -28,6 +28,7 @@ export const AdminPanelTitle = () => {
 
 	const handleSignOut = () => {
 		mutation.mutate();
+		closeModal();
 	};
 
 	return (

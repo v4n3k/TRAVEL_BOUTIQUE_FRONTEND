@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import {
 	BreadcrumbsWithNavButton,
@@ -20,14 +21,17 @@ import {
 	ExcursionBaseWithImage,
 	ExcursionWithImage,
 	ImageEntity,
+	RouteName,
 } from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
 export const AdminCreateNewExcursionPage = () => {
+	const navigate = useNavigate();
+	const navHistory = useNavHistory();
+
 	const newExcursion = useAdminStore(state => state.newExcursion);
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
 
-	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 
@@ -38,7 +42,10 @@ export const AdminCreateNewExcursionPage = () => {
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
 
-		onSuccess: () => handleDeleteExcursion(),
+		onSuccess: () => {
+			handleDeleteExcursion();
+			navigate(RouteName.ADMIN_CATEGORY);
+		},
 
 		onError: (error: unknown) => {
 			console.error('Error creating new Excursion: ', error);

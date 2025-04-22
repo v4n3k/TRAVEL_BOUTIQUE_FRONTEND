@@ -24,7 +24,7 @@ export const Categories = ({
 			canAutoScroll
 		) {
 			setTimeout(() => {
-				ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 			}, 50);
 		}
 	}, [location.state?.scrollToCareerGuidance, ref.current, canAutoScroll]);

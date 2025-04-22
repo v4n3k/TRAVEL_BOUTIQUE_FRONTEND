@@ -36,7 +36,7 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 	const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
 
 	const handleClick = () => {
-		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
 
 	return (

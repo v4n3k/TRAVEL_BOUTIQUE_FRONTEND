@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
 import {
 	BreadcrumbsWithNavButton,
@@ -10,23 +11,25 @@ import { Button, Form, Page, Section, TextInput } from '../../components/ui';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
-import { CategoryType, ImageEntity } from '../../types';
+import { CategoryType, ImageEntity, RouteName } from '../../types';
 import styles from './AdminCreateNewCategory.module.css';
 
 export const AdminCreateNewCategoryPage = () => {
-	localStorage.setItem('categoryType', 'cities');
-	const categoryType = localStorage.getItem('categoryType') as CategoryType;
+	const navigate = useNavigate();
+	const navHistory = useNavHistory();
 
 	const newCategory = useAdminStore(state => state.newCategory);
 	const setNewCategory = useAdminStore(state => state.setNewCategory);
 
-	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => categoryApi.create(formData),
 
-		onSuccess: () => handleDeleteCategory(),
+		onSuccess: () => {
+			handleDeleteCategory();
+			navigate(RouteName.ADMIN);
+		},
 
 		onError: (error: unknown) => {
 			console.error('Error creating new Category: ', error);
@@ -34,8 +37,9 @@ export const AdminCreateNewCategoryPage = () => {
 	});
 
 	const { isError } = mutation;
-
 	const { name, uploadedImage } = newCategory;
+
+	const categoryType = localStorage.getItem('categoryType') as CategoryType;
 
 	const handleCreateCategory = () => {
 		const formData = new FormData();

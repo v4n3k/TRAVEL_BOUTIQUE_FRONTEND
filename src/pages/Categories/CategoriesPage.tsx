@@ -16,7 +16,6 @@ export const CategoriesPage = () => {
 			<Categories
 				renderTitle={() => <>Города</>}
 				categories={categories?.cities}
-				expandable
 			/>
 			<Categories
 				renderTitle={() => <>Профориентационные экскурсии</>}

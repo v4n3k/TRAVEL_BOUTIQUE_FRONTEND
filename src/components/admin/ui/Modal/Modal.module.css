@@ -1,7 +1,6 @@
 .modal {
 	position: fixed;
-	top: 0;
-	left: 0;
+	inset: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,8 +8,8 @@
 	width: 100vw;
 	padding-bottom: 10vh;
 	background-color: rgba(0, 0, 0, 0.3);
-	z-index: 10;
-	overscroll-behavior: contain;
+	z-index: 100;
+	overflow: auto;
 }
 
 .modalEnter {
@@ -38,7 +37,6 @@
 	max-width: 90%;
 	max-height: 90%;
 	overflow-y: auto;
-	overscroll-behavior: contain;
 	scrollbar-width: none;
 }
 
