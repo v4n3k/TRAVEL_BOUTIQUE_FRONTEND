@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowRight } from '../../../icons/IconArrowRight';
 import { ListSliderProps } from '../../../types';
 import { cn } from '../../../utils/cn';
@@ -14,8 +14,8 @@ export const ListSlider = ({
 	widthOnGradientHide = 0,
 	gradientWidth = buttonOffset * 2,
 }: ListSliderProps) => {
-	const [isGradientHidden, setIsGradientHidden] = useState(
-		window.innerWidth <= widthOnGradientHide
+	const isGradientHidden = useMediaQuery(
+		`(max-width: ${widthOnGradientHide}px)`
 	);
 
 	const wrapperStyle = {
@@ -65,26 +65,6 @@ export const ListSlider = ({
 			});
 		}
 	};
-
-	useEffect(() => {
-		if (widthOnGradientHide <= 0) return;
-
-		const mediaQuery = window.matchMedia(
-			`(max-width: ${widthOnGradientHide}px)`
-		);
-
-		const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-			setIsGradientHidden(event.matches);
-		};
-
-		mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-		setIsGradientHidden(mediaQuery.matches);
-
-		return () => {
-			mediaQuery.removeEventListener('change', handleMediaQueryChange);
-		};
-	}, [widthOnGradientHide]);
 
 	return (
 		<div

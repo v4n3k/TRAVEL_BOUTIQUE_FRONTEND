@@ -84,39 +84,49 @@ export const ExcursionPage = () => {
 				</div>
 				<div className={styles.info}>
 					<h2 className={styles.title}>{name}</h2>
-					<div className={styles.priceContainer}>
-						<Price className={styles.price} price={price} />
-						<Button
-							className={styles.buyButton}
-							fullWidth
-							backgroundColor='blue-500'
-							onClick={openModal}
-						>
-							Купить
-						</Button>
-					</div>
+
+					{!!price && (
+						<div className={styles.priceContainer}>
+							<Price className={styles.price} price={price} />
+							<Button
+								className={styles.buyButton}
+								fullWidth
+								backgroundColor='blue-500'
+								onClick={openModal}
+							>
+								Купить
+							</Button>
+						</div>
+					)}
 
 					<ul className={styles.amounts}>
-						<Field
-							className={styles.field}
-							fieldKey='Количество сопровождающих'
-							fieldValue={accompanistsAmount}
-							width='fullWidth'
-							valueBackground='white-50'
-						/>
-						<Field
-							className={styles.field}
-							fieldKey='Количество в группе'
-							fieldValue={personsAmount}
-							width='fullWidth'
-							valueBackground='white-50'
-						/>
+						{!!accompanistsAmount && (
+							<Field
+								className={styles.field}
+								fieldKey='Количество сопровождающих'
+								fieldValue={accompanistsAmount}
+								width='fullWidth'
+								valueBackground='white-50'
+							/>
+						)}
+
+						{!!personsAmount && (
+							<Field
+								className={styles.field}
+								fieldKey='Количество в группе'
+								fieldValue={personsAmount}
+								width='fullWidth'
+								valueBackground='white-50'
+							/>
+						)}
 					</ul>
 
-					<div className={styles.descriptionContainer}>
-						<h3>В стоимость входит:</h3>
-						<p>{info}</p>
-					</div>
+					{!!info && (
+						<div className={styles.descriptionContainer}>
+							<h3>В стоимость входит:</h3>
+							<p>{info}</p>
+						</div>
+					)}
 
 					<ExcursionEventsList excursionEvents={excursionEvents} />
 				</div>
