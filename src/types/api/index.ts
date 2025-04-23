@@ -3,6 +3,7 @@ import {
 	CategoryEntity,
 	CategoryType,
 	ExcursionEntity,
+	TagEntity,
 } from '../entities';
 
 export type OptionalPromise<T> = Promise<T | undefined>;
@@ -14,6 +15,7 @@ export interface ExcursionApi {
 		categoryName: string
 	) => OptionalPromise<ExcursionEntity[]>;
 	getBySearch: (searchQuery: string) => OptionalPromise<ExcursionEntity[]>;
+	getExcursionsCities: () => OptionalPromise<TagEntity[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,

@@ -17,10 +17,8 @@ import { RouteName } from '../../types';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
-	const isIconHidden = useMediaQuery('(max-width: 560px)');
-
 	const feedbackFormRef = useRef<HTMLDivElement>(null);
-
+	const isIconHidden = useMediaQuery('(max-width: 560px)');
 	const navigate = useNavigate();
 
 	const handleClick = () => {

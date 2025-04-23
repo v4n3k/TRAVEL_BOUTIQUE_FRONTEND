@@ -145,6 +145,7 @@ export interface ManagerButtonProps extends ButtonProps {}
 
 export interface TagsListProps {
 	tags: TagEntity[];
+	rowsAmount?: number;
 	size?: 's' | 'm';
 }
 

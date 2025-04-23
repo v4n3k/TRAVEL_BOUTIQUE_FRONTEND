@@ -31,6 +31,13 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
+	async getExcursionsCities() {
+		return await handleApiResponse(
+			api.get('/excursions/cities'),
+			'Failed to get excursions cities'
+		);
+	},
+
 	async create(newExcursion) {
 		return await handleApiResponse(
 			api.post('/excursion', newExcursion),
