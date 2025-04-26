@@ -35,6 +35,10 @@ export interface ExcursionWithImage extends Omit<ExcursionEntity, 'imgSrc'> {
 	uploadedImage: ImageEntity;
 }
 
+export interface ExcursionWithCity extends ExcursionEntity {
+	city: string | null;
+}
+
 export interface ExcursionBaseWithImage
 	extends Omit<ExcursionWithImage, 'id'> {}
 

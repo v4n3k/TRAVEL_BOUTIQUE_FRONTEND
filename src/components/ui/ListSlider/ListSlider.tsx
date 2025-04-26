@@ -5,7 +5,7 @@ import { cn } from '../../../utils/cn';
 import { Button } from '../Button/Button';
 import styles from './ListSlider.module.css';
 
-export const ListSlider = ({
+export const ListSlider = <T extends unknown>({
 	children,
 	className,
 	buttonOffset = 100,
@@ -13,7 +13,9 @@ export const ListSlider = ({
 	buttonClassName,
 	widthOnGradientHide = 0,
 	gradientWidth = buttonOffset * 2,
-}: ListSliderProps) => {
+	items,
+	setItems,
+}: ListSliderProps<T>) => {
 	const isGradientHidden = useMediaQuery(
 		`(max-width: ${widthOnGradientHide}px)`
 	);
@@ -25,8 +27,9 @@ export const ListSlider = ({
 
 	const handleClick = () => {
 		if (listRef?.current) {
-			const currentScrollLeft = listRef.current.scrollLeft;
-			const cards = Array.from(listRef.current.children);
+			const list = listRef.current;
+			const currentScrollLeft = list.scrollLeft;
+			const cards = Array.from(list.children);
 
 			if (!cards.length) {
 				console.warn('No excursion cards found in the list.');
@@ -56,11 +59,20 @@ export const ListSlider = ({
 				cardWidthToScroll = cards[0].scrollWidth;
 			}
 
-			const computedStyle = window.getComputedStyle(listRef.current);
+			const computedStyle = window.getComputedStyle(list);
 			const listGap = parseInt(computedStyle.columnGap);
+			const nextScrollLeft = currentScrollLeft + cardWidthToScroll + listGap;
+			const scrollWidth = list.scrollWidth;
+			const clientWidth = list.clientWidth;
 
-			listRef.current.scrollTo({
-				left: currentScrollLeft + cardWidthToScroll + listGap,
+			const oneCardAndGap = cardWidthToScroll + listGap;
+
+			if (nextScrollLeft >= scrollWidth - clientWidth - oneCardAndGap) {
+				items && setItems && setItems(prev => [...prev, ...items]);
+			}
+
+			list.scrollTo({
+				left: nextScrollLeft,
 				behavior: 'smooth',
 			});
 		}

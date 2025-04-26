@@ -2,9 +2,9 @@ import { TagProps } from '../../../../types';
 import { cn } from '../../../../utils/cn';
 import styles from './Tag.module.css';
 
-export const Tag = ({ children, size = 'm', ...props }: TagProps) => {
+export const Tag = ({ children, size = 'm', onClick, ...props }: TagProps) => {
 	return (
-		<li className={cn(styles.tag, styles[size])} {...props}>
+		<li className={cn(styles.tag, styles[size])} onClick={onClick} {...props}>
 			<span>{children}</span>
 		</li>
 	);

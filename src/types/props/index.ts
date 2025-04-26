@@ -11,9 +11,9 @@ import {
 	CategoryEntity,
 	ExcursionEntity,
 	ExcursionEventEntity,
+	ExcursionWithCity,
 	ExcursionWithImage,
 	ImageEntity,
-	ReviewEntity,
 	TagEntity,
 } from '../entities';
 
@@ -47,21 +47,19 @@ export interface SchoolExcursionsProps extends FeedbackFormRef {}
 
 export interface FormAndCareerGuidanceExcursionsProps extends FeedbackFormRef {}
 
-export interface ListSliderProps extends ComponentProps<'div'> {
+export interface ListSliderProps<T> extends ComponentProps<'div'> {
 	buttonOffset?: number;
 	listRef: RefObject<HTMLUListElement | null>;
 	buttonClassName?: string;
 	widthOnGradientHide?: number;
 	gradientWidth?: number;
+	items?: T[];
+	setItems?: Dispatch<SetStateAction<T[]>>;
 }
 
 export interface ExpandableProps extends ComponentProps<'div'> {
 	collapsedHeight?: number;
 	transitionDuration?: number;
-}
-
-export interface ReviewsListProps {
-	reviews: ReviewEntity[];
 }
 
 export interface IconButtonProps extends ComponentProps<'button'> {
@@ -100,9 +98,10 @@ export interface FieldProps extends ComponentProps<'li'> {
 
 export interface ExcursionCardProps
 	extends Pick<
-		ExcursionEntity,
+		ExcursionWithCity,
 		| 'id'
 		| 'name'
+		| 'city'
 		| 'imgSrc'
 		| 'categoryName'
 		| 'accompanistsAmount'
@@ -110,7 +109,9 @@ export interface ExcursionCardProps
 		| 'price'
 	> {}
 
-export interface ExcursionListProps extends ComponentProps<'ul'> {}
+export interface ExcursionListProps extends ComponentProps<'ul'> {
+	excursions: ExcursionWithCity[] | undefined;
+}
 
 export interface ExcursionEventsListProps extends ComponentProps<'ul'> {
 	excursionEvents: ExcursionEventEntity[];
@@ -146,6 +147,7 @@ export interface ManagerButtonProps extends ButtonProps {}
 export interface TagsListProps {
 	tags: TagEntity[];
 	rowsAmount?: number;
+	onTagClick?: any;
 	size?: 's' | 'm';
 }
 

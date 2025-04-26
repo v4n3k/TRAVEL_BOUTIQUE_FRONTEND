@@ -3,13 +3,14 @@ import {
 	CategoryEntity,
 	CategoryType,
 	ExcursionEntity,
+	ExcursionWithCity,
 	TagEntity,
 } from '../entities';
 
 export type OptionalPromise<T> = Promise<T | undefined>;
 
 export interface ExcursionApi {
-	getAll: () => OptionalPromise<ExcursionEntity[]>;
+	getAllWithCities: () => OptionalPromise<ExcursionWithCity[]>;
 	getById: (id: number) => OptionalPromise<ExcursionEntity>;
 	getByCategoryName: (
 		categoryName: string

@@ -44,8 +44,13 @@ export const FormAndCareerGuidanceExcursions = ({
 
 	const tagsListRows = getTagsListRows();
 
-	const handleClick = () => {
+	const handleArrowClick = () => {
 		navigate(RouteName.CATEGORIES, { state: { scrollToCareerGuidance: true } });
+	};
+
+	const handleTagClick = (city: string) => {
+		navigate(RouteName.CATEGORY);
+		localStorage.setItem('categoryName', city);
 	};
 
 	if (!cities) return;
@@ -61,11 +66,16 @@ export const FormAndCareerGuidanceExcursions = ({
 						</h2>
 						<IconButton
 							Icon={<IconArrowTopRight className={styles.icon} />}
-							onClick={handleClick}
+							onClick={handleArrowClick}
 						/>
 					</div>
 
-					<TagsList tags={cities} size='s' rowsAmount={tagsListRows} />
+					<TagsList
+						tags={cities}
+						size='s'
+						rowsAmount={tagsListRows}
+						onTagClick={handleTagClick}
+					/>
 				</div>
 				<Image className={styles.img} src={img} />
 			</div>

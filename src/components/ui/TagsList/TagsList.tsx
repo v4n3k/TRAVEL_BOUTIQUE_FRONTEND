@@ -3,7 +3,12 @@ import { TagsListProps } from '../../../types';
 import { Tag } from './Tag/Tag';
 import styles from './TagsList.module.css';
 
-export const TagsList = ({ tags, rowsAmount = 8, size }: TagsListProps) => {
+export const TagsList = ({
+	tags,
+	rowsAmount = 8,
+	onTagClick,
+	size,
+}: TagsListProps) => {
 	const tagsListRef = useRef<HTMLUListElement>(null);
 	const [tagHeight, setTagHeight] = useState<number>(0);
 	const rowGapRef = useRef<number>(0);
@@ -36,11 +41,17 @@ export const TagsList = ({ tags, rowsAmount = 8, size }: TagsListProps) => {
 			style={{
 				maxHeight: tagHeight > 0 ? `${maxHeight}px` : 'none',
 				overflow: 'hidden',
+				cursor: onTagClick ? 'pointer' : 'default',
 			}}
 			ref={tagsListRef}
 		>
 			{tags.map(tag => (
-				<Tag key={tag.id} size={size} children={tag.name} />
+				<Tag
+					key={tag.id}
+					size={size}
+					children={tag.name}
+					onClick={() => onTagClick(tag.name)}
+				/>
 			))}
 		</ul>
 	);

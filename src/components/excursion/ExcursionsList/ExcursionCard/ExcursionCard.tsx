@@ -9,8 +9,8 @@ import styles from './ExcursionCard.module.css';
 export const ExcursionCard = ({
 	id,
 	name,
-	imgSrc,
 	city,
+	imgSrc,
 	accompanistsAmount,
 	personsAmount,
 	price,
@@ -31,29 +31,43 @@ export const ExcursionCard = ({
 				/>
 			</div>
 
-			<div className={styles.priceOverlay}>
-				<span>{price} ₽</span>
-			</div>
+			{price && (
+				<div className={styles.priceOverlay}>
+					<span>{price} ₽</span>
+				</div>
+			)}
 
 			<div className={styles.textInfo}>
 				<h2 className={styles.title}>{name}</h2>
 				<ul className={styles.fieldsList}>
-					<Field className={styles.field} fieldKey='Город' fieldValue={city} />
-					<Field
-						className={styles.field}
-						fieldKey='Количество сопровождающих'
-						fieldValue={accompanistsAmount}
-					/>
-					<Field
-						className={styles.field}
-						fieldKey='Количество человек в группе'
-						fieldValue={personsAmount}
-					/>
+					{!!city && (
+						<Field
+							className={styles.field}
+							fieldKey='Город'
+							fieldValue={city}
+						/>
+					)}
+					{accompanistsAmount && (
+						<Field
+							className={styles.field}
+							fieldKey='Количество сопровождающих'
+							fieldValue={accompanistsAmount}
+						/>
+					)}
+					{personsAmount && (
+						<Field
+							className={styles.field}
+							fieldKey='Количество человек в группе'
+							fieldValue={personsAmount}
+						/>
+					)}
 				</ul>
 
-				<div className={styles.price}>
-					<span>{price} ₽</span>
-				</div>
+				{price && (
+					<div className={styles.price}>
+						<span>{price} ₽</span>
+					</div>
+				)}
 			</div>
 		</li>
 	);

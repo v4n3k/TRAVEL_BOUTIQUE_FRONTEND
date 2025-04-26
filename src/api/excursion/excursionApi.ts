@@ -3,7 +3,7 @@ import { handleApiResponse } from '../../utils/api';
 import { api } from '../api';
 
 export const excursionApi: ExcursionApi = {
-	async getAll() {
+	async getAllWithCities() {
 		return await handleApiResponse(
 			api.get('/excursions'),
 			'Failed to get excursions'
