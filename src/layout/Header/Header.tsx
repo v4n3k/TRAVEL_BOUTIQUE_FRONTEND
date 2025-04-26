@@ -1,13 +1,21 @@
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { IconBurgerMenu } from '../../icons/IconBurgerMenu';
 import { IconLogo } from '../../icons/IconLogo';
 import { IconSearch } from '../../icons/IconSearch';
+import { useSearchStore } from '../../stores/useSearchStore';
 import { RouteName } from '../../types';
 import styles from './Header.module.css';
 
 export const Header = () => {
+	const navigate = useNavigate();
+	const queryClient = useQueryClient();
+
+	const searchQuery = useSearchStore(state => state.searchQuery);
+	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
+
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 	const [isInputOpen, setIsInputOpen] = useState(false);
 
@@ -31,6 +39,19 @@ export const Header = () => {
 
 	const toggleInput = () => {
 		setIsInputOpen(prev => !prev);
+	};
+
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchQuery(e.target.value);
+	};
+
+	const handleSearch = (e: React.KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			navigate(RouteName.SEARCHED_EXCURSIONS);
+			queryClient.invalidateQueries({ queryKey: ['searchedExcursions'] });
+		} else {
+			console.log(e.key);
+		}
 	};
 
 	useEffect(() => {
@@ -149,7 +170,13 @@ export const Header = () => {
 			</div>
 			<div className={styles.search}>
 				<IconSearch />
-				<input type='search' placeholder='Город, экскурсия...' />
+				<input
+					type='search'
+					placeholder='Город, экскурсия...'
+					value={searchQuery}
+					onChange={handleSearchChange}
+					onKeyDown={e => handleSearch(e)}
+				/>
 			</div>
 
 			<CSSTransition
@@ -213,6 +240,9 @@ export const Header = () => {
 							className={styles.input}
 							type='search'
 							placeholder='Город, экскурсия...'
+							value={searchQuery}
+							onChange={handleSearchChange}
+							onKeyDown={e => handleSearch(e)}
 						/>
 					</CSSTransition>
 				</div>

@@ -11,6 +11,7 @@ import {
 	ExcursionPage,
 	HomePage,
 	InfoPage,
+	SearchedExcursionsPage,
 	ServicePage,
 	SignInPage,
 } from '../pages';
@@ -22,6 +23,11 @@ export const publicRoutes: RouteEntity[] = [
 	{ path: RouteName.CATEGORY, Component: CategoryPage, isPrivate: false },
 	{ path: RouteName.ABOUT, Component: AboutPage, isPrivate: false },
 	{ path: RouteName.EXCURSION, Component: ExcursionPage, isPrivate: false },
+	{
+		path: RouteName.SEARCHED_EXCURSIONS,
+		Component: SearchedExcursionsPage,
+		isPrivate: false,
+	},
 	{ path: RouteName.BLOG, Component: BlogPage, isPrivate: false },
 	{ path: RouteName.INFO, Component: InfoPage, isPrivate: false },
 	{ path: RouteName.SERVICE, Component: ServicePage, isPrivate: false },

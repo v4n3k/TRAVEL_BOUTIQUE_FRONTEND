@@ -16,6 +16,9 @@ export interface ExcursionApi {
 		categoryName: string
 	) => OptionalPromise<ExcursionEntity[]>;
 	getBySearch: (searchQuery: string) => OptionalPromise<ExcursionEntity[]>;
+	getBySearchWithCities: (
+		searchQuery: string
+	) => OptionalPromise<ExcursionWithCity[]>;
 	getExcursionsCities: () => OptionalPromise<TagEntity[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (

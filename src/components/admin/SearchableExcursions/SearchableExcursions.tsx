@@ -32,6 +32,10 @@ export const SearchableExcursions = ({
 		enabled: !!debSearchQuery,
 	});
 
+	const handleClick = (id: number) => {
+		navigate(`${RouteBase.ADMIN_EDIT_EXCURSION}/${id}`);
+	};
+
 	const handleAdd = () => {
 		navigate(RouteName.ADMIN_CREATE_NEW_EXCURSION);
 	};
@@ -56,9 +60,7 @@ export const SearchableExcursions = ({
 						withIcon={false}
 						nameSize='m'
 						radiusSize='m'
-						onClick={() =>
-							navigate(`${RouteBase.ADMIN_EDIT_EXCURSION}/${excursion.id}`)
-						}
+						onClick={() => handleClick(excursion.id)}
 					/>
 				))}
 			</GridList>

@@ -30,3 +30,8 @@ export interface UseAdminStore {
 	key: string;
 	setKey: (key: string) => void;
 }
+
+export interface UseSearchStore {
+	searchQuery: string;
+	setSearchQuery: (searchQuery: string) => void;
+}

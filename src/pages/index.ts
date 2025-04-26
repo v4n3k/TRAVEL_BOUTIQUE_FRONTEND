@@ -2,6 +2,7 @@ export * from './About/AboutPage';
 export * from './Admin/AdminPage';
 export * from './AdminCategory/AdminCategoryPage';
 export * from './AdminCreateNewCategory/AdminCreateNewCategoryPage';
+export * from './SearchedExcursions/SearchedExcursionsPage';
 export * from './AdminCreateNewExcursion/AdminCreateNewExcursionPage';
 export * from './AdminEditExcursion/AdminEditExcursion';
 export * from './Blog/BlogPage';

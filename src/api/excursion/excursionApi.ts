@@ -31,6 +31,13 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
+	async getBySearchWithCities(searchQuery) {
+		return await handleApiResponse(
+			api.post('/excursions/cities', { searchQuery }),
+			'Failed to get excursions by search'
+		);
+	},
+
 	async getExcursionsCities() {
 		return await handleApiResponse(
 			api.get('/excursions/cities'),
