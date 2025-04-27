@@ -49,8 +49,6 @@ export const Header = () => {
 		if (e.key === 'Enter') {
 			navigate(RouteName.SEARCHED_EXCURSIONS);
 			queryClient.invalidateQueries({ queryKey: ['searchedExcursions'] });
-		} else {
-			console.log(e.key);
 		}
 	};
 

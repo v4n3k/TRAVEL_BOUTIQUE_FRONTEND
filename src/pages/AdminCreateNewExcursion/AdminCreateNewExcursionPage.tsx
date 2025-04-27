@@ -37,8 +37,6 @@ export const AdminCreateNewExcursionPage = () => {
 
 	const categoryName = localStorage.getItem('categoryName');
 
-	console.log(categoryName);
-
 	const mutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
 

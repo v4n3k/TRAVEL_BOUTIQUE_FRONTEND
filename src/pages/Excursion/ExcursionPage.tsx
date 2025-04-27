@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import { ModalButton, TitledModal } from '../../components/admin';
@@ -34,14 +33,6 @@ export const ExcursionPage = () => {
 
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
-
-	useEffect(() => {
-		console.log(navHistory);
-	}, [navHistory]);
-
-	useEffect(() => {
-		console.log(isError);
-	}, [isError]);
 
 	if (isLoading) return <></>;
 

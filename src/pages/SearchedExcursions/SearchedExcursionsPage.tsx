@@ -15,7 +15,8 @@ export const SearchedExcursionsPage = () => {
 		queryFn: () => excursionApi.getBySearchWithCities(searchQuery),
 	});
 
-	const handleClick = (id: number) => {
+	const handleClick = (id: number, categoryName: string) => {
+		localStorage.setItem('categoryName', categoryName);
 		navigate(`${RouteBase.EXCURSION}/${id}`);
 	};
 
@@ -24,16 +25,22 @@ export const SearchedExcursionsPage = () => {
 			<Section>
 				<Title>Поиск по экскурсиям</Title>
 				<GridList gapSize='m'>
-					{searchedExcursions?.map(excursion => (
-						<ImageCard
-							{...excursion}
-							key={excursion.id}
-							withIcon={false}
-							nameSize='m'
-							radiusSize='m'
-							onClick={() => handleClick(excursion.id)}
-						/>
-					))}
+					{searchedExcursions?.length ? (
+						searchedExcursions?.map(excursion => (
+							<ImageCard
+								{...excursion}
+								key={excursion.id}
+								withIcon={false}
+								nameSize='m'
+								radiusSize='m'
+								onClick={() =>
+									handleClick(excursion.id, excursion?.city || excursion.name)
+								}
+							/>
+						))
+					) : (
+						<p>Ничего не найдено</p>
+					)}
 				</GridList>
 			</Section>
 		</Page>
