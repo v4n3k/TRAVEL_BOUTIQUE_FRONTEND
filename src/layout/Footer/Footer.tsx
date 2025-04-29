@@ -8,7 +8,6 @@ import styles from './Footer.module.css';
 
 export const Footer = () => {
 	const { pathname } = useLocation();
-
 	const isAuth = useAuthStore(state => state.isAuth);
 	const isMobile = useMediaQuery('(max-width: 800px)');
 	const isAdminPage = pathname.includes('admin');
