@@ -1,10 +1,13 @@
+import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import mainImage from '../../../../assets/images/Frame 168@2x.png';
 import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
+import { excursionApi } from '../../../api/excursion/excursionApi';
 import { IconButton, Image, Section, TagsList } from '../../../components/ui';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { SchoolExcursionsProps, TagEntity } from '../../../types';
+import { RouteName, SchoolExcursionsProps, TagEntity } from '../../../types';
 import styles from './SchoolExcursions.module.css';
 
 const cities: TagEntity[] = [
@@ -31,13 +34,40 @@ const citiesOnSmallScreen: TagEntity[] = [
 ];
 
 export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
-	const isSmallScreen = useMediaQuery('(max-width: 630px)');
+	// const isSmallScreen = useMediaQuery('(max-width: 630px)');
 
-	const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
+	// const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
+	const navigate = useNavigate();
+
+	const isLargeScreen = useMediaQuery('(min-width: 1440px)');
+	const isMediumScreen = useMediaQuery(
+		'(min-width: 500px) and (max-width: 1439px)'
+	);
+	const isSmallScreen = useMediaQuery(
+		'(min-width: 1px) and (max-width: 499px)'
+	);
+
+	const { data: cities } = useQuery({
+		queryKey: ['cities'],
+		queryFn: () => excursionApi.getExcursionsCities(),
+	});
+
+	const getTagsListRows = () => {
+		return 3;
+	};
 
 	const handleClick = () => {
 		ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
+
+	const handleTagClick = (city: string) => {
+		navigate(RouteName.CATEGORY);
+		localStorage.setItem('categoryName', city);
+	};
+
+	const tagsListRows = getTagsListRows();
+
+	if (!cities) return;
 
 	return (
 		<Section>
@@ -76,7 +106,11 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 
 					<div className={styles.rowContainer}>
 						<div className={styles.cities}>
-							<TagsList tags={tagsToDisplay} />
+							<TagsList
+								tags={cities}
+								rowsAmount={tagsListRows}
+								onTagClick={handleTagClick}
+							/>
 						</div>
 
 						<div className={styles.bottomImagesContainer}>

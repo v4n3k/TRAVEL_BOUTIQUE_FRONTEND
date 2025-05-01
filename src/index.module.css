@@ -9,6 +9,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	-webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -97,4 +98,10 @@ a:hover {
 
 button {
 	cursor: pointer;
+}
+
+@media (max-width: 440px) {
+	html {
+		scroll-padding-top: 32px;
+	}
 }

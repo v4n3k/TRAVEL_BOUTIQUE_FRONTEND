@@ -30,17 +30,10 @@ export const HomePage = () => {
 	};
 
 	return (
-		<Page>
+		<Page className={styles.homePage}>
 			<SchoolExcursions ref={feedbackFormRef} />
 			<Excursions />
 			<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
-			<div className={styles.iconPhoneWrapper}>
-				<IconButton
-					className={styles.iconButton}
-					Icon={<IconPhone />}
-					onClick={handleOpenWhatsApp}
-				/>
-			</div>
 			<Advantages />
 			<ChildrenAmount />
 			<PaymentMethod />
@@ -54,6 +47,13 @@ export const HomePage = () => {
 				>
 					Выбрать экскурсию
 				</Button>
+			</div>
+			<div className={styles.iconPhoneWrapper}>
+				<IconButton
+					className={styles.iconButton}
+					Icon={<IconPhone />}
+					onClick={handleOpenWhatsApp}
+				/>
 			</div>
 		</Page>
 	);

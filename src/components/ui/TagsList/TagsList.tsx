@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { TagsListProps } from '../../../types';
 import { Tag } from './Tag/Tag';
 import styles from './TagsList.module.css';
@@ -12,6 +12,8 @@ export const TagsList = ({
 	const tagsListRef = useRef<HTMLUListElement>(null);
 	const [tagHeight, setTagHeight] = useState<number>(0);
 	const rowGapRef = useRef<number>(0);
+
+	useEffect(() => console.log(tagHeight), [tagHeight]);
 
 	useLayoutEffect(() => {
 		if (!tagsListRef.current) {
