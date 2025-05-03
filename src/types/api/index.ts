@@ -20,6 +20,7 @@ export interface ExcursionApi {
 		searchQuery: string
 	) => OptionalPromise<ExcursionWithCity[]>;
 	getExcursionsCities: () => OptionalPromise<TagEntity[]>;
+	getSearchTips: (searchQuery: string) => OptionalPromise<string[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,

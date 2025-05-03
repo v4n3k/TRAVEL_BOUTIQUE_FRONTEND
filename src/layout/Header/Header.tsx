@@ -1,7 +1,8 @@
-import { useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { excursionApi } from '../../api/excursion/excursionApi';
 import { IconBurgerMenu } from '../../icons/IconBurgerMenu';
 import { IconLogo } from '../../icons/IconLogo';
 import { IconSearch } from '../../icons/IconSearch';
@@ -16,6 +17,7 @@ export const Header = () => {
 	const searchQuery = useSearchStore(state => state.searchQuery);
 	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
 
+	const [areInputTipsVisible, setAreInputTipsVisible] = useState(false);
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 	const [isInputOpen, setIsInputOpen] = useState(false);
 
@@ -24,12 +26,18 @@ export const Header = () => {
 	);
 	const [shouldMountSearch, setShouldMountSearch] = useState(false);
 
+	const inputOnDesktopRef = useRef<HTMLInputElement | null>(null);
 	const burgerMenuRef = useRef(null);
 	const hideableSearchRef = useRef(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const phoneRef = useRef(null);
 
-	const handleClick = () => {
+	const { data: searchTips } = useQuery({
+		queryKey: ['searchTips', searchQuery],
+		queryFn: () => excursionApi.getSearchTips(searchQuery),
+	});
+
+	const handleToggle = () => {
 		setIsBurgerMenuOpen(prev => !prev);
 	};
 
@@ -45,11 +53,29 @@ export const Header = () => {
 		setSearchQuery(e.target.value);
 	};
 
+	const search = () => {
+		navigate(RouteName.SEARCHED_EXCURSIONS);
+		queryClient.invalidateQueries({
+			queryKey: ['searchedExcursions', searchQuery],
+		});
+		inputOnDesktopRef.current?.blur();
+		inputRef.current?.blur();
+	};
+
 	const handleSearch = (e: React.KeyboardEvent) => {
 		if (e.key === 'Enter') {
-			navigate(RouteName.SEARCHED_EXCURSIONS);
-			queryClient.invalidateQueries({ queryKey: ['searchedExcursions'] });
+			search();
 		}
+	};
+
+	const handleInputOnDesktopFocus = () => {
+		setAreInputTipsVisible(true);
+	};
+
+	const handleInputOnDesktopBlur = () => {
+		setTimeout(() => {
+			setAreInputTipsVisible(false);
+		}, 100);
 	};
 
 	useEffect(() => {
@@ -104,7 +130,7 @@ export const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.iconBurgerMenu}>
-				<button onClick={handleClick}>
+				<button onClick={handleToggle}>
 					<IconBurgerMenu />
 				</button>
 			</div>
@@ -166,14 +192,27 @@ export const Header = () => {
 					</ul>
 				</nav>
 			</div>
-			<div className={styles.search}>
-				<IconSearch />
-				<input
-					type='search'
-					placeholder='Город, экскурсия...'
-					value={searchQuery}
-					onChange={handleSearchChange}
-					onKeyDown={e => handleSearch(e)}
+
+			<div className={styles.searchWrapper} style={{ position: 'relative' }}>
+				<div className={styles.search}>
+					<IconSearch />
+
+					<input
+						ref={inputOnDesktopRef}
+						type='search'
+						placeholder='Город, экскурсия...'
+						value={searchQuery}
+						onChange={handleSearchChange}
+						onKeyDown={e => handleSearch(e)}
+						onFocus={handleInputOnDesktopFocus}
+						onBlur={handleInputOnDesktopBlur}
+					/>
+				</div>
+
+				<InputTips
+					areOpen={areInputTipsVisible}
+					tips={searchTips as string[]}
+					onTipClick={search}
 				/>
 			</div>
 
@@ -199,52 +238,117 @@ export const Header = () => {
 				<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
 			</div>
 
-			<CSSTransition
-				nodeRef={hideableSearchRef}
-				in={true}
-				timeout={300}
-				classNames={{
-					enter: styles.hideableSearchEnter,
-					enterActive: styles.hideableSearchEnterActive,
-					exit: styles.hideableSearchExit,
-					exitActive: styles.hideableSearchExit,
-				}}
+			<div
+				className={styles.hideableSearchWrapper}
+				style={{ position: 'relative' }}
 			>
-				<div
-					ref={hideableSearchRef}
-					className={`${styles.hideableSearch} ${
-						isInputOpen ? styles.hideableSearchOpen : ''
-					}`}
+				<CSSTransition
+					nodeRef={hideableSearchRef}
+					in={true}
+					timeout={300}
+					classNames={{
+						enter: styles.hideableSearchEnter,
+						enterActive: styles.hideableSearchEnterActive,
+						exit: styles.hideableSearchExit,
+						exitActive: styles.hideableSearchExit,
+					}}
 				>
-					<button onClick={toggleInput}>
-						<IconSearch />
-					</button>
-
-					<CSSTransition
-						nodeRef={inputRef}
-						in={shouldMountSearch}
-						timeout={300}
-						classNames={{
-							enter: styles.inputEnter,
-							enterActive: styles.inputEnterActive,
-							exit: styles.inputExit,
-							exitActive: styles.inputExitActive,
-						}}
-						unmountOnExit
-						mountOnEnter
+					<div
+						ref={hideableSearchRef}
+						className={`${styles.hideableSearch} ${
+							isInputOpen ? styles.hideableSearchOpen : ''
+						}`}
 					>
-						<input
-							ref={inputRef}
-							className={styles.input}
-							type='search'
-							placeholder='Город, экскурсия...'
-							value={searchQuery}
-							onChange={handleSearchChange}
-							onKeyDown={e => handleSearch(e)}
-						/>
-					</CSSTransition>
-				</div>
-			</CSSTransition>
+						<button onClick={toggleInput}>
+							<IconSearch />
+						</button>
+
+						<CSSTransition
+							nodeRef={inputRef}
+							in={shouldMountSearch}
+							timeout={300}
+							classNames={{
+								enter: styles.inputEnter,
+								enterActive: styles.inputEnterActive,
+								exit: styles.inputExit,
+								exitActive: styles.inputExitActive,
+							}}
+							unmountOnExit
+							mountOnEnter
+						>
+							<input
+								ref={inputRef}
+								className={styles.input}
+								type='search'
+								placeholder='Город, экскурсия...'
+								value={searchQuery}
+								onChange={handleSearchChange}
+								onKeyDown={e => handleSearch(e)}
+							/>
+						</CSSTransition>
+					</div>
+				</CSSTransition>
+				<InputTips
+					areOpen={isInputOpen}
+					tips={searchTips as string[]}
+					onTipClick={search}
+				/>
+			</div>
 		</header>
+	);
+};
+
+export const InputTips = ({
+	tips,
+	areOpen,
+	onTipClick,
+}: {
+	tips: string[];
+	areOpen: boolean;
+	onTipClick: () => void;
+}) => {
+	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
+
+	return (
+		<>
+			{areOpen && (
+				<ul
+					style={{
+						position: 'absolute',
+						top: 84,
+						right: 0,
+						left: 0,
+						display: 'flex',
+						flexDirection: 'column',
+						borderRadius: 20,
+						padding: '12px 0',
+						backgroundColor: '#fff',
+						zIndex: 10,
+					}}
+				>
+					{tips?.length ? (
+						tips?.map(tip => (
+							<li
+								style={{
+									display: 'flex',
+									padding: '8px 16px',
+									cursor: 'pointer',
+								}}
+								onClick={() => {
+									setSearchQuery(tip);
+									onTipClick();
+								}}
+							>
+								{tip}
+							</li>
+						))
+					) : (
+						<li style={{ display: 'flex', padding: '8px 20px' }}>
+							Нет совпадений
+						</li>
+					)}
+				</ul>
+			)}
+		</>
 	);
 };

@@ -45,6 +45,13 @@ export const excursionApi: ExcursionApi = {
 		);
 	},
 
+	async getSearchTips(searchQuery) {
+		return await handleApiResponse(
+			api.post('/excursions/search_tips', { searchQuery }),
+			'Failed to get search tips'
+		);
+	},
+
 	async create(newExcursion) {
 		return await handleApiResponse(
 			api.post('/excursion', newExcursion),

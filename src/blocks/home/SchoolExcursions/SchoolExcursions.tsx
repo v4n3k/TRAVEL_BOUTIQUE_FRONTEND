@@ -7,44 +7,21 @@ import { excursionApi } from '../../../api/excursion/excursionApi';
 import { IconButton, Image, Section, TagsList } from '../../../components/ui';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { RouteName, SchoolExcursionsProps, TagEntity } from '../../../types';
+import { RouteName, SchoolExcursionsProps } from '../../../types';
 import styles from './SchoolExcursions.module.css';
 
-const cities: TagEntity[] = [
-	{ id: 1, name: 'Санкт-Петербург' },
-	{ id: 2, name: 'Казань' },
-	{ id: 3, name: 'Реж' },
-	{ id: 4, name: 'Карелия' },
-	{ id: 5, name: 'Сочи' },
-	{ id: 6, name: 'Екатеринбург' },
-	{ id: 7, name: 'Тюмень' },
-];
-
-const citiesOnSmallScreen: TagEntity[] = [
-	{ id: 1, name: 'Санкт-Петербург' },
-	{ id: 2, name: 'Казань' },
-	{ id: 3, name: 'Реж' },
-	{ id: 4, name: 'Сочи' },
-	{ id: 5, name: 'Беларусь' },
-	{ id: 6, name: 'Екатеринбург' },
-	{ id: 7, name: 'Карелия' },
-	{ id: 8, name: 'Тюмень' },
-	{ id: 9, name: 'Тула' },
-	{ id: 10, name: 'Тверь' },
-];
-
 export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
-	// const isSmallScreen = useMediaQuery('(max-width: 630px)');
-
-	// const tagsToDisplay = isSmallScreen ? citiesOnSmallScreen : cities;
 	const navigate = useNavigate();
 
-	const isLargeScreen = useMediaQuery('(min-width: 1440px)');
+	const isLargeScreen = useMediaQuery('(min-width: 1100px)');
 	const isMediumScreen = useMediaQuery(
-		'(min-width: 500px) and (max-width: 1439px)'
+		'(min-width: 800px) and (max-width: 1099px)'
 	);
 	const isSmallScreen = useMediaQuery(
-		'(min-width: 1px) and (max-width: 499px)'
+		'(min-width: 400px) and (max-width: 799px)'
+	);
+	const isXSmallScreen = useMediaQuery(
+		'(min-width: 1px) and (max-width: 399px)'
 	);
 
 	const { data: cities } = useQuery({
@@ -53,7 +30,17 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 	});
 
 	const getTagsListRows = () => {
-		return 3;
+		if (isLargeScreen) {
+			return 3;
+		} else if (isMediumScreen) {
+			return 5;
+		} else if (isSmallScreen) {
+			return 3;
+		} else if (isXSmallScreen) {
+			return 4;
+		} else {
+			return 3;
+		}
 	};
 
 	const handleClick = () => {

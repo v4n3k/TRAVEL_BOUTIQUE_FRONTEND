@@ -11,7 +11,7 @@ export const SearchedExcursionsPage = () => {
 	const searchQuery = useSearchStore(state => state.searchQuery);
 
 	const { data: searchedExcursions } = useQuery({
-		queryKey: ['searchedExcursions'],
+		queryKey: ['searchedExcursions', searchQuery],
 		queryFn: () => excursionApi.getBySearchWithCities(searchQuery),
 	});
 

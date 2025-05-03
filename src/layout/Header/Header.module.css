@@ -267,10 +267,11 @@
 }
 
 @media (max-width: 740px) {
-	.search {
+	.searchWrapper {
 		display: none;
 	}
 
+	.hideableSearchWrapper,
 	.hideableSearch {
 		display: flex;
 		width: auto;
