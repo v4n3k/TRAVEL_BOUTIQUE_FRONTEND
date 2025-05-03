@@ -37,7 +37,7 @@ export const Header = () => {
 		queryFn: () => excursionApi.getSearchTips(searchQuery),
 	});
 
-	const handleToggle = () => {
+	const handleLogoClick = () => {
 		setIsBurgerMenuOpen(prev => !prev);
 	};
 
@@ -47,6 +47,10 @@ export const Header = () => {
 
 	const toggleInput = () => {
 		setIsInputOpen(prev => !prev);
+
+		setTimeout(() => {
+			isBurgerMenuOpen ? inputRef.current?.blur() : inputRef.current?.focus();
+		}, 700);
 	};
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,7 +134,7 @@ export const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.iconBurgerMenu}>
-				<button onClick={handleToggle}>
+				<button onClick={handleLogoClick}>
 					<IconBurgerMenu />
 				</button>
 			</div>
