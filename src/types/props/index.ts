@@ -14,6 +14,7 @@ import {
 	ExcursionWithCity,
 	ExcursionWithImage,
 	ImageEntity,
+	SearchTipEntity,
 	TagEntity,
 } from '../entities';
 
@@ -240,10 +241,10 @@ export interface IconRotatedLogoProps {
 	left?: PositionProperty;
 }
 
-export interface SearchableCategoriesProps
+export interface SearchableCategoriesProps<T>
 	extends Pick<CategoriesProps, 'withName' | 'withIcon'>,
 		Pick<ImageCardProps, 'nameSize'>,
-		Pick<SearchableListProps, 'searchQuery' | 'setSearchQuery'> {
+		Pick<SearchableListProps<T>, 'searchQuery' | 'setSearchQuery'> {
 	categories: CategoryEntity[];
 	expandable?: boolean;
 	collapsedHeight?: number;
@@ -254,14 +255,14 @@ export interface SearchableExcursionsProps {
 	className?: string;
 }
 
-export interface SearchableListProps {
+export interface SearchableListProps<T> {
 	className?: string;
 	title: string;
 	buttonText: string;
 	children: ReactNode;
 	withBackButton?: boolean;
 	searchQuery: string;
-	setSearchQuery: Dispatch<SetStateAction<string>>;
+	setSearchQuery: T;
 	onAdd: () => void;
 }
 
@@ -299,4 +300,11 @@ export interface ImageCardProps {
 	nameSize?: 's' | 'm' | 'l';
 	radiusSize?: 'm' | 'l';
 	onClick?: () => void;
+}
+
+export interface SearchTipsProps {
+	tips: SearchTipEntity[] | undefined;
+	areOpen: boolean;
+	mountingDelay?: number;
+	onTipClick: () => void;
 }

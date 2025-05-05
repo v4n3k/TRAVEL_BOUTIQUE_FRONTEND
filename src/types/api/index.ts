@@ -4,6 +4,7 @@ import {
 	CategoryType,
 	ExcursionEntity,
 	ExcursionWithCity,
+	SearchTipEntity,
 	TagEntity,
 } from '../entities';
 
@@ -20,7 +21,7 @@ export interface ExcursionApi {
 		searchQuery: string
 	) => OptionalPromise<ExcursionWithCity[]>;
 	getExcursionsCities: () => OptionalPromise<TagEntity[]>;
-	getSearchTips: (searchQuery: string) => OptionalPromise<string[]>;
+	getSearchTips: (searchQuery: string) => OptionalPromise<SearchTipEntity[]>;
 	create: (newExcursion: FormData) => OptionalPromise<ExcursionEntity>;
 	edit: (
 		id: number,

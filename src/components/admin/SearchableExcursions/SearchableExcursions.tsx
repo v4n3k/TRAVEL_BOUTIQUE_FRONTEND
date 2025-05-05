@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { useDebounce } from '../../../hooks/useDebounce';
+import { useSearchStore } from '../../../stores/useSearchStore';
 import {
 	RouteBase,
 	RouteName,
@@ -16,14 +16,16 @@ export const SearchableExcursions = ({
 	className,
 }: SearchableExcursionsProps) => {
 	const navigate = useNavigate();
-	const [searchQuery, setSearchQuery] = useState('');
+
+	const searchQuery = useSearchStore(state => state.searchQuery);
+	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
 	const debSearchQuery = useDebounce(searchQuery);
 
 	const categoryName = localStorage.getItem('categoryName') as string;
 
 	const { data: excursions } = useQuery({
-		queryKey: ['excursions', categoryName],
-		queryFn: () => excursionApi.getByCategoryName(categoryName),
+		queryKey: ['excursions', debSearchQuery],
+		queryFn: () => excursionApi.getByCategoryName(debSearchQuery),
 	});
 
 	const { data: searchedExcursions } = useQuery({
@@ -32,7 +34,7 @@ export const SearchableExcursions = ({
 		enabled: !!debSearchQuery,
 	});
 
-	const handleClick = (id: number) => {
+	const handleCardClick = (id: number) => {
 		navigate(`${RouteBase.ADMIN_EDIT_EXCURSION}/${id}`);
 	};
 
@@ -40,7 +42,7 @@ export const SearchableExcursions = ({
 		navigate(RouteName.ADMIN_CREATE_NEW_EXCURSION);
 	};
 
-	const displayedExcursions = debSearchQuery ? searchedExcursions : excursions;
+	const displayedExcursions = searchQuery ? searchedExcursions : excursions;
 
 	return (
 		<SearchableList
@@ -60,7 +62,7 @@ export const SearchableExcursions = ({
 						withIcon={false}
 						nameSize='m'
 						radiusSize='m'
-						onClick={() => handleClick(excursion.id)}
+						onClick={() => handleCardClick(excursion.id)}
 					/>
 				))}
 			</GridList>

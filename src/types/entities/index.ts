@@ -79,3 +79,8 @@ export type CategoryType = 'cities' | 'careerGuidance' | 'weekends';
 
 export interface CategoriesByType
 	extends Record<CategoryType, CategoryEntity[]> {}
+
+export interface SearchTipEntity {
+	id: number;
+	name: string;
+}

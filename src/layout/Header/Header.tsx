@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { excursionApi } from '../../api/excursion/excursionApi';
+import { useDebounce } from '../../hooks/useDebounce';
 import { IconBurgerMenu } from '../../icons/IconBurgerMenu';
 import { IconLogo } from '../../icons/IconLogo';
 import { IconSearch } from '../../icons/IconSearch';
 import { useSearchStore } from '../../stores/useSearchStore';
 import { RouteName } from '../../types';
 import styles from './Header.module.css';
+import { SearchTips } from './SearchTips/SearchTips';
 
 export const Header = () => {
 	const navigate = useNavigate();
@@ -16,6 +18,7 @@ export const Header = () => {
 
 	const searchQuery = useSearchStore(state => state.searchQuery);
 	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
+	const debSearchQuery = useDebounce(searchQuery);
 
 	const [areInputTipsVisible, setAreInputTipsVisible] = useState(false);
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -33,12 +36,13 @@ export const Header = () => {
 	const phoneRef = useRef(null);
 
 	const { data: searchTips } = useQuery({
-		queryKey: ['searchTips', searchQuery],
-		queryFn: () => excursionApi.getSearchTips(searchQuery),
+		queryKey: ['searchTips', debSearchQuery],
+		queryFn: () => excursionApi.getSearchTips(debSearchQuery),
 	});
 
 	const handleLogoClick = () => {
 		setIsBurgerMenuOpen(prev => !prev);
+		setIsInputOpen(false);
 	};
 
 	const handleClose = () => {
@@ -47,6 +51,7 @@ export const Header = () => {
 
 	const toggleInput = () => {
 		setIsInputOpen(prev => !prev);
+		setIsBurgerMenuOpen(false);
 
 		setTimeout(() => {
 			isBurgerMenuOpen ? inputRef.current?.blur() : inputRef.current?.focus();
@@ -60,7 +65,7 @@ export const Header = () => {
 	const search = () => {
 		navigate(RouteName.SEARCHED_EXCURSIONS);
 		queryClient.invalidateQueries({
-			queryKey: ['searchedExcursions', searchQuery],
+			queryKey: ['searchedExcursions', debSearchQuery],
 		});
 		inputOnDesktopRef.current?.blur();
 		inputRef.current?.blur();
@@ -213,9 +218,9 @@ export const Header = () => {
 					/>
 				</div>
 
-				<InputTips
+				<SearchTips
 					areOpen={areInputTipsVisible}
-					tips={searchTips as string[]}
+					tips={searchTips}
 					onTipClick={search}
 				/>
 			</div>
@@ -292,67 +297,13 @@ export const Header = () => {
 						</CSSTransition>
 					</div>
 				</CSSTransition>
-				<InputTips
+				<SearchTips
 					areOpen={isInputOpen}
-					tips={searchTips as string[]}
+					tips={searchTips}
+					mountingDelay={300}
 					onTipClick={search}
 				/>
 			</div>
 		</header>
-	);
-};
-
-export const InputTips = ({
-	tips,
-	areOpen,
-	onTipClick,
-}: {
-	tips: string[];
-	areOpen: boolean;
-	onTipClick: () => void;
-}) => {
-	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
-
-	return (
-		<>
-			{areOpen && (
-				<ul
-					style={{
-						position: 'absolute',
-						top: 84,
-						right: 0,
-						left: 0,
-						display: 'flex',
-						flexDirection: 'column',
-						borderRadius: 20,
-						padding: '12px 0',
-						backgroundColor: '#fff',
-						zIndex: 10,
-					}}
-				>
-					{tips?.length ? (
-						tips?.map(tip => (
-							<li
-								style={{
-									display: 'flex',
-									padding: '8px 16px',
-									cursor: 'pointer',
-								}}
-								onClick={() => {
-									setSearchQuery(tip);
-									onTipClick();
-								}}
-							>
-								{tip}
-							</li>
-						))
-					) : (
-						<li style={{ display: 'flex', padding: '8px 20px' }}>
-							Нет совпадений
-						</li>
-					)}
-				</ul>
-			)}
-		</>
 	);
 };
