@@ -91,21 +91,28 @@
 	color: var(--black-700);
 }
 
+.searchWrapper {
+	position: relative;
+}
+
 .search,
 .hideableSearch {
 	display: flex;
 	gap: 10px;
-	padding: 14px 16px;
+	padding: 10px;
 	border-radius: 40px;
 	background-color: var(--blue-300);
 }
 
-.hideableSearch {
+.hideableSearchWrapper {
+	position: relative;
 	display: none;
 	gap: 0;
-	padding: 10px;
 	width: 0;
-	overflow: hidden;
+}
+
+.hideableSearch {
+	gap: 0;
 }
 
 .hideableSearchEnter {
@@ -278,7 +285,7 @@
 	}
 
 	.hideableSearch input {
-		min-width: calc(100% - 28px);
+		min-width: calc(100% - 40px);
 		max-width: calc(100% - 28px);
 	}
 

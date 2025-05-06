@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionsList } from '../../../components/excursion';
 import { Section } from '../../../components/ui';
-import { ListSlider } from '../../../components/ui/ListSlider/ListSlider';
 import { ExcursionWithCity } from '../../../types';
 import styles from './Excursions.module.css';
 
@@ -29,15 +28,9 @@ export const Excursions = () => {
 
 	return (
 		<Section>
-			<ListSlider
-				listRef={listRef}
-				buttonClassName={styles.sliderButton}
-				widthOnGradientHide={1070}
-				items={excursionItems}
-				setItems={setExcursionItems}
-			>
+			<div className={styles.sliderContainer}>
 				<ExcursionsList ref={listRef} excursions={excursionItems} />
-			</ListSlider>
+			</div>
 		</Section>
 	);
 };

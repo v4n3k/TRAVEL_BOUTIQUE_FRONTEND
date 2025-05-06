@@ -14,6 +14,73 @@
 	scrollbar-width: none;
 }
 
+.reviewsList::-webkit-scrollbar {
+	display: none;
+}
+
+.sliderContainer {
+	position: relative;
+	margin-bottom: 40px;
+	padding: 32px;
+	border-radius: 40px;
+	background-color: var(--blue-300);
+}
+
+.sliderContainer :global(.slick-slide) {
+	display: flex !important; /* Override Slick's default display */
+	align-items: center; /* Vertically center the content */
+	justify-content: center;
+	min-height: 238px;
+	height: 100%;
+	padding: 0 16px;
+}
+
+.sliderContainer :global(.slick-slide > div) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.sliderContainer :global(.slick-prev),
+.sliderContainer :global(.slick-next) {
+	z-index: 10;
+	width: 64px;
+	height: 64px;
+	padding: 0;
+	border-radius: 32px;
+	box-shadow: 0 0 10px 1px rgba(62, 88, 121, 0.18);
+	background-color: var(--white-100);
+	border: none;
+	cursor: pointer;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+
+	&::before {
+		content: none !important;
+	}
+}
+
+.sliderContainer :global(.slick-prev) {
+	left: 0;
+}
+
+.sliderContainer :global(.slick-next) {
+	right: 0;
+}
+
+.sliderContainer :global(.slick-prev) svg,
+.sliderContainer :global(.slick-next) svg {
+	display: block;
+}
+
+.sliderContainer :global(.slick-prev):hover,
+.sliderContainer :global(.slick-next):hover {
+	opacity: 0.95;
+}
+
 @media (max-width: 600px) {
 	.reviewsList {
 		height: 338px;
@@ -21,24 +88,24 @@
 }
 
 @media (max-width: 800px) {
-	.reviewsList,
-	.listSlider {
+	.reviewsList {
 		width: 100vw;
 		margin-right: calc(-50vw + 50%);
 	}
 }
 
-@media (max-width: 440px) {
-	.reviewsList,
-	.listSlider {
+@media (max-width: 600px) {
+	.reviewsList {
 		width: auto;
 		margin-right: 0;
-	}
-
-	.reviewsList {
 		height: 100%;
 		overflow-x: hidden;
 		overflow-y: auto;
 		padding: 20px;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		column-gap: 0;
+		row-gap: 20px;
+		padding-right: 20px;
 	}
 }

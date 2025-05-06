@@ -11,6 +11,54 @@
 	padding-right: calc(var(--button-offset) * 2);
 }
 
+.sliderContainer :global(.slick-slide) {
+	display: flex;
+	padding: 0 16px;
+}
+
+.sliderContainer :global(.slick-slide > div) {
+	display: flex;
+	width: auto;
+}
+
+.sliderContainer :global(.slick-prev),
+.sliderContainer :global(.slick-next) {
+	z-index: 10;
+	width: 64px;
+	height: 64px;
+	padding: 0;
+	border-radius: 32px;
+	box-shadow: 0 0 10px 1px rgba(62, 88, 121, 0.18);
+	background-color: var(--white-100);
+	border: none;
+	cursor: pointer;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+
+	&::before {
+		content: none !important;
+	}
+}
+
+.sliderContainer :global(.slick-prev) {
+	left: 0;
+}
+
+.sliderContainer :global(.slick-next) {
+	right: 0;
+}
+
+.sliderContainer :global(.slick-prev) svg,
+.sliderContainer :global(.slick-next) svg {
+	display: block;
+}
+
+.sliderContainer :global(.slick-prev):hover,
+.sliderContainer :global(.slick-next):hover {
+	opacity: 0.95;
+}
+
 @media (max-width: 990px) {
 	.excursionsList {
 		padding-top: 16px;

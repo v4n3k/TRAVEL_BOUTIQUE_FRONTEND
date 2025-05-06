@@ -58,6 +58,8 @@ export interface ReviewEntity {
 	id: number;
 	author: string;
 	text: string;
+	marginBottom?: number | string;
+	marginTop?: number | string;
 }
 
 export interface CategoryEntity {

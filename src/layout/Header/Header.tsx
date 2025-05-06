@@ -247,10 +247,7 @@ export const Header = () => {
 				<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
 			</div>
 
-			<div
-				className={styles.hideableSearchWrapper}
-				style={{ position: 'relative' }}
-			>
+			<div className={styles.hideableSearchWrapper}>
 				<CSSTransition
 					nodeRef={hideableSearchRef}
 					in={true}
