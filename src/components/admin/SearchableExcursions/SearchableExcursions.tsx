@@ -25,7 +25,7 @@ export const SearchableExcursions = ({
 
 	const { data: excursions } = useQuery({
 		queryKey: ['excursions', debSearchQuery],
-		queryFn: () => excursionApi.getByCategoryName(debSearchQuery),
+		queryFn: () => excursionApi.getByCategoryName(categoryName),
 	});
 
 	const { data: searchedExcursions } = useQuery({
