@@ -156,5 +156,6 @@
 @media (max-width: 440px) {
 	.excursionCard {
 		max-width: 335px;
+		min-height: 527px;
 	}
 }

@@ -27,10 +27,10 @@
 }
 
 .sliderContainer :global(.slick-slide) {
-	display: flex !important; /* Override Slick's default display */
-	align-items: center; /* Vertically center the content */
+	display: flex !important;
+	align-items: center;
 	justify-content: center;
-	min-height: 238px;
+	min-height: var(--min-height);
 	height: 100%;
 	padding: 0 16px;
 }

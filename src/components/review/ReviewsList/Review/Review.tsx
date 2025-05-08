@@ -6,9 +6,10 @@ export const Review = ({
 	text,
 	marginBottom = 0,
 	marginTop = 0,
+	ref,
 }: ReviewEntity) => {
 	return (
-		<li className={styles.review} style={{ marginBottom, marginTop }}>
+		<li className={styles.review} style={{ marginBottom, marginTop }} ref={ref}>
 			<span className={styles.author}>{author}</span>
 			<p className={styles.text}>{text}</p>
 		</li>

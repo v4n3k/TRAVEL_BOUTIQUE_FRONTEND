@@ -60,6 +60,7 @@ export interface ReviewEntity {
 	text: string;
 	marginBottom?: number | string;
 	marginTop?: number | string;
+	ref?: React.RefObject<HTMLLIElement | null>;
 }
 
 export interface CategoryEntity {

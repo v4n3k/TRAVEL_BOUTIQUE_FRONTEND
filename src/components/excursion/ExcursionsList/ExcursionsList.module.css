@@ -11,9 +11,13 @@
 	padding-right: calc(var(--button-offset) * 2);
 }
 
+.sliderContainer :global(.slick-track) {
+	padding-top: 16px;
+}
+
 .sliderContainer :global(.slick-slide) {
 	display: flex;
-	padding: 0 16px;
+	padding: 0 32px;
 }
 
 .sliderContainer :global(.slick-slide > div) {
@@ -42,11 +46,11 @@
 }
 
 .sliderContainer :global(.slick-prev) {
-	left: 0;
+	left: 10px;
 }
 
 .sliderContainer :global(.slick-next) {
-	right: 0;
+	right: 10px;
 }
 
 .sliderContainer :global(.slick-prev) svg,
@@ -64,6 +68,10 @@
 		padding-top: 16px;
 		margin-top: -16px;
 	}
+
+	.sliderContainer :global(.slick-list) {
+		max-height: 320px;
+	}
 }
 
 @media (max-width: 760px) {
@@ -71,5 +79,23 @@
 		padding: 0 0 72px;
 		margin-top: 0;
 		margin-left: 0;
+	}
+
+	.sliderContainer :global(.slick-list) {
+		max-height: 580px;
+	}
+
+	.sliderContainer :global(.slick-track) {
+		padding-top: 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.sliderContainer :global(.slick-slide) {
+		padding-inline: 20px;
+	}
+
+	.sliderContainer :global(.slick-list) {
+		max-height: 620px;
 	}
 }

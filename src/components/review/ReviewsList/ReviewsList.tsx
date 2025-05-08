@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -53,6 +54,18 @@ export const PrevArrow = ({ className, onClick }: any) => (
 
 export const ReviewsList = () => {
 	const { width } = useWindowSize();
+	const containerRef = useRef<HTMLDivElement>(null);
+	const blockRef = useRef<HTMLDivElement>(null);
+	const reviewRef = useRef<HTMLLIElement>(null);
+	const [minHeight, setMinHeigth] = useState('258px');
+
+	useEffect(() => {
+		if (!blockRef.current) return;
+
+		setMinHeigth(blockRef.current.offsetHeight + 'px'); // 258px
+	}, [blockRef, window.innerWidth]);
+
+	useEffect(() => console.log(minHeight), [minHeight]);
 
 	const isSlider = width !== undefined && width > 600;
 
@@ -89,10 +102,15 @@ export const ReviewsList = () => {
 		],
 	};
 
+	const containerStyle = { '--min-height': minHeight } as React.CSSProperties;
 	return (
 		<>
 			{isSlider ? (
-				<div className={styles.sliderContainer}>
+				<div
+					className={styles.sliderContainer}
+					style={containerStyle}
+					ref={containerRef}
+				>
 					<Slider {...settings}>
 						<div className={styles.reviewsBlock}>
 							<Review
@@ -108,11 +126,12 @@ export const ReviewsList = () => {
 							/>
 						</div>
 						<Review
+							ref={reviewRef}
 							id={3}
 							author='Панина Марина'
 							text='Да очень здорово было. Дочь в восторге. Ножки устали говорит,но это приятная и усталость. Столько впечатлений!!! Если будет ещё что то подобное, обязательно поедем'
 						/>
-						<div className={styles.reviewsBlock}>
+						<div className={styles.reviewsBlock} ref={blockRef}>
 							<Review
 								id={4}
 								author='Богданова Ольга'

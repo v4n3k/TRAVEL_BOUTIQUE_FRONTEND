@@ -8,25 +8,24 @@ import styles from './ExcursionsList.module.css';
 
 export const ExcursionsList = ({ excursions }: ExcursionListProps) => {
 	const settings = {
-		dots: false,
 		infinite: true,
 		centerMode: true,
+		variableWidth: true,
 		adaptiveWidth: true,
 		speed: 500,
-		initialSlide: 1,
-		slidePerRow: 1,
+		initialSlide: 0,
+		slidesPerRow: 1,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		nextArrow: <NextArrow />,
 		prevArrow: <PrevArrow />,
-		responsive: [],
 	};
 
 	return (
 		<div className={styles.sliderContainer}>
 			<Slider {...settings}>
-				{excursions?.map(excursion => (
-					<ExcursionCard {...excursion} key={excursion.id} />
+				{excursions?.map((excursion, index) => (
+					<ExcursionCard {...excursion} key={index} data-index={index} />
 				))}
 			</Slider>
 		</div>

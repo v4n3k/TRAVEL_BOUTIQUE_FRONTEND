@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { ExcursionsList } from '../../../components/excursion';
 import { Section } from '../../../components/ui';
-import { ExcursionWithCity } from '../../../types';
 import styles from './Excursions.module.css';
+import { ExcursionWithCity } from '../../../types';
 
 export const Excursions = () => {
 	const listRef = useRef<HTMLUListElement>(null);
@@ -27,10 +27,8 @@ export const Excursions = () => {
 	}
 
 	return (
-		<Section>
-			<div className={styles.sliderContainer}>
-				<ExcursionsList ref={listRef} excursions={excursionItems} />
-			</div>
+		<Section className={styles.excursions}>
+			<ExcursionsList ref={listRef} excursions={excursionItems} />
 		</Section>
 	);
 };
