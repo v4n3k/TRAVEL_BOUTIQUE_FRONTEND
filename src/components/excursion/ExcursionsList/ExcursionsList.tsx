@@ -12,6 +12,9 @@ export const ExcursionsList = ({ excursions }: ExcursionListProps) => {
 		centerMode: true,
 		variableWidth: true,
 		adaptiveWidth: true,
+		draggable: false,
+		swipeToSlide: false,
+		touchMove: false,
 		speed: 500,
 		initialSlide: 0,
 		slidesPerRow: 1,
@@ -19,13 +22,24 @@ export const ExcursionsList = ({ excursions }: ExcursionListProps) => {
 		slidesToScroll: 1,
 		nextArrow: <NextArrow />,
 		prevArrow: <PrevArrow />,
+
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					draggable: true,
+					swipeToSlide: true,
+					touchMove: true,
+				},
+			},
+		],
 	};
 
 	return (
 		<div className={styles.sliderContainer}>
 			<Slider {...settings}>
-				{excursions?.map((excursion, index) => (
-					<ExcursionCard {...excursion} key={index} data-index={index} />
+				{excursions?.map(excursion => (
+					<ExcursionCard {...excursion} key={excursion.id} />
 				))}
 			</Slider>
 		</div>

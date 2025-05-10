@@ -20,7 +20,10 @@ export const Header = () => {
 	const setSearchQuery = useSearchStore(state => state.setSearchQuery);
 	const debSearchQuery = useDebounce(searchQuery);
 
-	const [areInputTipsVisible, setAreInputTipsVisible] = useState(false);
+	const [areInputTipsOpen, setAreInputTipsOpen] = useState(false);
+	const [areInputTipsOnMobileOpen, setAreInputTipsOnMobileOpen] = useState(
+		false
+	);
 	const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 	const [isInputOpen, setIsInputOpen] = useState(false);
 
@@ -30,7 +33,7 @@ export const Header = () => {
 	const [shouldMountSearch, setShouldMountSearch] = useState(false);
 
 	const inputOnDesktopRef = useRef<HTMLInputElement | null>(null);
-	const burgerMenuRef = useRef(null);
+	const burgerMenuRef = useRef<HTMLDivElement>(null);
 	const hideableSearchRef = useRef(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const phoneRef = useRef(null);
@@ -51,7 +54,6 @@ export const Header = () => {
 
 	const toggleInput = () => {
 		setIsInputOpen(prev => !prev);
-		setIsBurgerMenuOpen(false);
 
 		setTimeout(() => {
 			isBurgerMenuOpen ? inputRef.current?.blur() : inputRef.current?.focus();
@@ -78,12 +80,22 @@ export const Header = () => {
 	};
 
 	const handleInputOnDesktopFocus = () => {
-		setAreInputTipsVisible(true);
+		setAreInputTipsOpen(true);
 	};
 
 	const handleInputOnDesktopBlur = () => {
 		setTimeout(() => {
-			setAreInputTipsVisible(false);
+			setAreInputTipsOpen(false);
+		}, 100);
+	};
+
+	const handleInputOnMobileFocus = () => {
+		setAreInputTipsOnMobileOpen(true);
+	};
+
+	const handleInputOnMobileBlur = () => {
+		setTimeout(() => {
+			setAreInputTipsOnMobileOpen(false);
 		}, 100);
 	};
 
@@ -135,6 +147,25 @@ export const Header = () => {
 			}
 		};
 	}, [isInputOpen]);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				burgerMenuRef.current &&
+				!burgerMenuRef.current.contains(event.target as Node)
+			) {
+				setIsBurgerMenuOpen(false);
+			}
+		};
+
+		if (isBurgerMenuOpen) {
+			document.addEventListener('mousedown', handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isBurgerMenuOpen]);
 
 	return (
 		<header className={styles.header}>
@@ -219,7 +250,7 @@ export const Header = () => {
 				</div>
 
 				<SearchTips
-					areOpen={areInputTipsVisible}
+					areOpen={areInputTipsOpen}
 					tips={searchTips}
 					onTipClick={search}
 				/>
@@ -290,12 +321,14 @@ export const Header = () => {
 								value={searchQuery}
 								onChange={handleSearchChange}
 								onKeyDown={e => handleSearch(e)}
+								onFocus={handleInputOnMobileFocus}
+								onBlur={handleInputOnMobileBlur}
 							/>
 						</CSSTransition>
 					</div>
 				</CSSTransition>
 				<SearchTips
-					areOpen={isInputOpen}
+					areOpen={areInputTipsOnMobileOpen}
 					tips={searchTips}
 					mountingDelay={300}
 					onTipClick={search}

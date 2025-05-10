@@ -2,6 +2,7 @@
 	position: relative;
 	display: flex;
 	flex-shrink: 0;
+	min-width: 335px;
 	width: auto;
 	gap: 32px;
 	cursor: pointer;
@@ -74,7 +75,7 @@
 	color: var(--black-900);
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1050px) {
 	.textInfo {
 		max-width: 450px;
 	}
@@ -108,7 +109,7 @@
 	}
 }
 
-@media (max-width: 760px) {
+@media (max-width: 890px) {
 	.excursionCard {
 		flex-direction: column;
 	}

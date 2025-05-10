@@ -9,11 +9,13 @@
 	display: flex;
 	align-self: flex-end;
 	width: 88px;
+	z-index: 1000;
 }
 
 .iconButton {
 	height: 100%;
 	width: 100%;
+	box-shadow: 0 0 10px 1px rgba(62, 88, 121, 0.18);
 }
 
 .chooseButtonWrapper {

@@ -1,28 +1,43 @@
-.excursionsList {
-	display: flex;
-	gap: 64px;
-	padding-left: 16px;
-	margin-left: -16px;
-	overflow-x: auto;
-	overflow-y: hidden;
-	scroll-snap-type: x mandatory;
-	-webkit-overflow-scrolling: touch;
-	scrollbar-width: none;
-	padding-right: calc(var(--button-offset) * 2);
+.sliderContainer {
+	position: relative;
+	overflow: visible;
+	height: auto;
+}
+
+.sliderContainer::before,
+.sliderContainer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 150px;
+	height: 100%;
+	z-index: 5;
+	pointer-events: none;
+}
+
+.sliderContainer::before {
+	left: 0;
+	background: linear-gradient(to right, var(--white-100), transparent);
+}
+
+.sliderContainer::after {
+	right: 0;
+	background: linear-gradient(to left, var(--white-100), transparent);
 }
 
 .sliderContainer :global(.slick-track) {
+	display: flex;
 	padding-top: 16px;
 }
 
 .sliderContainer :global(.slick-slide) {
-	display: flex;
-	padding: 0 32px;
+	padding-inline: 32px;
+	width: auto;
 }
 
-.sliderContainer :global(.slick-slide > div) {
+.sliderContainer .slick-slide > div {
 	display: flex;
-	width: auto;
+	width: 100%;
 }
 
 .sliderContainer :global(.slick-prev),
@@ -63,26 +78,48 @@
 	opacity: 0.95;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1100px) {
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 100px;
+	}
+}
+
+@media (max-width: 1050px) {
 	.excursionsList {
 		padding-top: 16px;
 		margin-top: -16px;
 	}
 
-	.sliderContainer :global(.slick-list) {
-		max-height: 320px;
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 70px;
 	}
 }
 
-@media (max-width: 760px) {
+@media (max-width: 850px) {
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 50px;
+	}
+}
+
+@media (max-width: 800px) {
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 40px;
+	}
+
+	.sliderContainer :global(.slick-slide) {
+		padding-inline: 24px;
+	}
+}
+
+@media (max-width: 890px) {
 	.excursionsList {
 		padding: 0 0 72px;
 		margin-top: 0;
 		margin-left: 0;
-	}
-
-	.sliderContainer :global(.slick-list) {
-		max-height: 580px;
 	}
 
 	.sliderContainer :global(.slick-track) {
@@ -95,7 +132,35 @@
 		padding-inline: 20px;
 	}
 
-	.sliderContainer :global(.slick-list) {
-		max-height: 620px;
+	.sliderContainer :global(.slick-prev),
+	.sliderContainer :global(.slick-next) {
+		top: unset;
+		bottom: -120px;
+	}
+
+	.sliderContainer :global(.slick-prev) {
+		left: 80px;
+	}
+
+	.sliderContainer :global(.slick-next) {
+		right: 80px;
+	}
+
+	.sliderContainer {
+		padding-bottom: 120px;
+	}
+}
+
+@media (max-width: 440px) {
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 30px;
+	}
+}
+
+@media (max-width: 410px) {
+	.sliderContainer::before,
+	.sliderContainer::after {
+		width: 0;
 	}
 }

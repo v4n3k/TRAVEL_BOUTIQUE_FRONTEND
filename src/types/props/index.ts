@@ -148,7 +148,7 @@ export interface ManagerButtonProps extends ButtonProps {}
 export interface TagsListProps {
 	tags: TagEntity[];
 	rowsAmount?: number;
-	onTagClick?: any;
+	onTagClick?: () => void;
 	size?: 's' | 'm';
 }
 
@@ -307,4 +307,9 @@ export interface SearchTipsProps {
 	areOpen: boolean;
 	mountingDelay?: number;
 	onTipClick: () => void;
+}
+
+export interface SliderArrowProps {
+	className?: string;
+	onClick?: () => void;
 }

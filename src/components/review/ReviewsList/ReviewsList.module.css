@@ -26,6 +26,27 @@
 	background-color: var(--blue-300);
 }
 
+.sliderContainer :global(.slick-list)::before,
+.sliderContainer :global(.slick-list)::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 100px;
+	height: 100%;
+	z-index: 5;
+	pointer-events: none;
+}
+
+.sliderContainer :global(.slick-list)::before {
+	left: 0;
+	background: linear-gradient(to right, var(--blue-300), transparent);
+}
+
+.sliderContainer :global(.slick-list)::after {
+	right: 0;
+	background: linear-gradient(to left, var(--blue-300), transparent);
+}
+
 .sliderContainer :global(.slick-slide) {
 	display: flex !important;
 	align-items: center;
@@ -81,13 +102,12 @@
 	opacity: 0.95;
 }
 
-@media (max-width: 600px) {
-	.reviewsList {
-		height: 338px;
-	}
-}
-
 @media (max-width: 800px) {
+	.sliderContainer :global(.slick-list)::before,
+	.sliderContainer :global(.slick-list)::after {
+		width: 50px;
+	}
+
 	.reviewsList {
 		width: 100vw;
 		margin-right: calc(-50vw + 50%);

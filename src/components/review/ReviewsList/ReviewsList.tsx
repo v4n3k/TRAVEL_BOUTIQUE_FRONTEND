@@ -8,6 +8,7 @@ import { cn } from '../../../utils/cn';
 import { Expandable } from '../../ui';
 import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
+import { SliderArrowProps } from '../../../types';
 
 const mockReviews = [
 	{
@@ -34,7 +35,7 @@ const mockReviews = [
 	},
 ];
 
-export const NextArrow = ({ className, onClick }: any) => (
+export const NextArrow = ({ className, onClick }: SliderArrowProps) => (
 	<button
 		className={cn(styles.slickArrow, styles.slickNext, className)}
 		onClick={onClick}
@@ -43,7 +44,7 @@ export const NextArrow = ({ className, onClick }: any) => (
 	</button>
 );
 
-export const PrevArrow = ({ className, onClick }: any) => (
+export const PrevArrow = ({ className, onClick }: SliderArrowProps) => (
 	<button
 		className={cn(styles.slickArrow, styles.slickPrev, className)}
 		onClick={onClick}
@@ -62,7 +63,7 @@ export const ReviewsList = () => {
 	useEffect(() => {
 		if (!blockRef.current) return;
 
-		setMinHeigth(blockRef.current.offsetHeight + 'px'); // 258px
+		setMinHeigth(blockRef.current.offsetHeight + 'px');
 	}, [blockRef, window.innerWidth]);
 
 	useEffect(() => console.log(minHeight), [minHeight]);
@@ -73,6 +74,9 @@ export const ReviewsList = () => {
 		dots: false,
 		infinite: true,
 		centerMode: true,
+		draggable: false,
+		swipeToSlide: false,
+		touchMove: false,
 		speed: 500,
 		initialSlide: 1,
 		slidePerRow: 1,
@@ -80,6 +84,7 @@ export const ReviewsList = () => {
 		slidesToScroll: 1,
 		nextArrow: <NextArrow />,
 		prevArrow: <PrevArrow />,
+
 		responsive: [
 			{
 				breakpoint: 1480,
@@ -96,6 +101,15 @@ export const ReviewsList = () => {
 			{
 				breakpoint: 900,
 				settings: {
+					slidesToShow: 1,
+				},
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					draggable: true,
+					swipeToSlide: true,
+					touchMove: true,
 					slidesToShow: 1,
 				},
 			},
