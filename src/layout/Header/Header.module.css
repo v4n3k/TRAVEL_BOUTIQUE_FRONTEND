@@ -10,6 +10,11 @@
 	margin: 78px auto 64px;
 	border-radius: 40px;
 	background-color: var(--white-50);
+	overflow-y: visible;
+}
+
+.header > * {
+	overflow-y: visible;
 }
 
 .iconBurgerMenu {
@@ -78,8 +83,7 @@
 
 .logo {
 	display: block;
-	line-height: 1;
-	height: 60px;
+	height: 100%;
 }
 
 .navigation nav ul {

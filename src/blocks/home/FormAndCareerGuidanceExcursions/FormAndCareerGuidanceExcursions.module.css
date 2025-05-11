@@ -28,9 +28,9 @@
 .titleContainer {
 	display: flex;
 	justify-content: space-between;
-
 	gap: 10px;
 	margin-bottom: 16px;
+	overflow-y: visible;
 }
 
 .titleContainer h2 {

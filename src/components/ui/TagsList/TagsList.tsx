@@ -50,7 +50,7 @@ export const TagsList = ({
 					key={tag.id}
 					size={size}
 					children={tag.name}
-					onClick={() => onTagClick(tag.name)}
+					onClick={() => onTagClick?.(tag.name)}
 				/>
 			))}
 		</ul>

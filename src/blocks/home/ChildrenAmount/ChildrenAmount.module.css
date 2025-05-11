@@ -10,6 +10,7 @@
 	line-height: 42px;
 	font-weight: 300;
 	font-style: italic;
+	overflow-y: visible;
 }
 
 .description span {

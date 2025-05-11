@@ -2,6 +2,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: row;
+	overflow: visible;
 }
 
 .button {
@@ -18,7 +19,7 @@
 	line-height: 38px;
 	font-weight: 600;
 	transition: 0.3s ease-in-out;
-	overflow: hidden;
+	overflow: visible;
 	user-select: none;
 }
 

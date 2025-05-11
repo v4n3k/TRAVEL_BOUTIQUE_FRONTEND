@@ -14,12 +14,14 @@
 	align-items: center;
 	width: 100%;
 	gap: 24px;
+	overflow: visible;
 }
 
 .iconWrapper {
 	height: 56px;
 	width: 56px;
 	aspect-ratio: 1 / 1;
+	overflow: visible;
 }
 
 .text {
