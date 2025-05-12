@@ -149,7 +149,7 @@ export const Header = () => {
 	}, [isInputOpen]);
 
 	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
+		const handleClickOutside = (event: Event) => {
 			if (
 				burgerMenuRef.current &&
 				!burgerMenuRef.current.contains(event.target as Node)
@@ -160,10 +160,12 @@ export const Header = () => {
 
 		if (isBurgerMenuOpen) {
 			document.addEventListener('mousedown', handleClickOutside);
+			document.addEventListener('touchstart', handleClickOutside);
 		}
 
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
+			document.removeEventListener('touchstart', handleClickOutside);
 		};
 	}, [isBurgerMenuOpen]);
 
