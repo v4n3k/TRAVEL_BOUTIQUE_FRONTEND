@@ -109,8 +109,20 @@ export const Footer = () => {
 							</div>
 							<p className={styles.email}>butik20@inbox.ru</p>
 							<div className={styles.icons}>
-								<IconTelegram />
-								<IconWhatsApp />
+								<a
+									href='https://web.telegram.org'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<IconTelegram />
+								</a>
+								<a
+									href='https://whatsapp.com'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<IconWhatsApp />
+								</a>
 							</div>
 						</div>
 					</div>
