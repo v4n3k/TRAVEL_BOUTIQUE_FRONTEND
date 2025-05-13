@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Form, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
@@ -9,6 +9,7 @@ import { Price } from '../../components/excursion/Price/Price';
 import { Field } from '../../components/excursion/ui/Field/Field';
 import { ManagerButton } from '../../components/excursion/ui/ManagerButton/ManagerButton';
 import { Button } from '../../components/ui/Button/Button';
+import { Form } from '../../components/ui/Form/Form';
 import { Image } from '../../components/ui/Image/Image';
 import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';

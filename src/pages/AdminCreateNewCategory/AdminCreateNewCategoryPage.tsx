@@ -1,12 +1,12 @@
 import { useMutation } from '@tanstack/react-query';
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
-
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
 import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
 import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
 import { Button } from '../../components/ui/Button/Button';
+import { Form } from '../../components/ui/Form/Form';
 import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
