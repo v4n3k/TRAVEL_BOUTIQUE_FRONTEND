@@ -1,12 +1,10 @@
-import {
-	About,
-	PaymentMethod,
-	QualityGuarantees,
-	Services,
-	TransportRules,
-} from '../../blocks/about';
-import { Reviews } from '../../blocks/home';
-import { Page } from '../../components/ui';
+import { About } from '../../blocks/about/About/About';
+import { PaymentMethod } from '../../blocks/about/PaymentMethod/PaymentMethod';
+import { QualityGuarantees } from '../../blocks/about/QualityGuarantees/QualityGuarantees';
+import { Services } from '../../blocks/about/Services/Services';
+import { TransportRules } from '../../blocks/about/TransportRules/TransportRules';
+import { Reviews } from '../../blocks/home/Reviews/Reviews';
+import { Page } from '../../components/ui/Page/Page';
 
 export const AboutPage = () => {
 	return (

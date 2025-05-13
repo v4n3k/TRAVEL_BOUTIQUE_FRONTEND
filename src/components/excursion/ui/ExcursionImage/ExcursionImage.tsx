@@ -1,6 +1,6 @@
-import { ExcursionImageProps } from '../../../../types';
+import { ExcursionImageProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
-import { Image } from '../../../ui';
+import { Image } from '../../../ui/Image/Image';
 import styles from './ExcursionImage.module.css';
 
 export const ExcursionImage = ({

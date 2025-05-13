@@ -1,4 +1,4 @@
-import { SectionProps } from '../../../types';
+import { SectionProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Section.module.css';
 

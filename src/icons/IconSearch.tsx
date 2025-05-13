@@ -1,5 +1,5 @@
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { IconSearchProps } from '../types';
+import { IconSearchProps } from '../types/props';
 
 export const IconSearch = ({ resizable = false }: IconSearchProps) => {
 	const isLaptop = useMediaQuery('(max-width: 1480px)');

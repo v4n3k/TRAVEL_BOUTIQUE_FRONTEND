@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { categoryApi } from '../../api/category/categoryApi';
-import { Categories } from '../../components/category';
-import { Page } from '../../components/ui';
+import { Categories } from '../../components/category/Categories/Categories';
+import { Page } from '../../components/ui/Page/Page';
 
 export const CategoriesPage = () => {
 	const { data: categories } = useQuery({

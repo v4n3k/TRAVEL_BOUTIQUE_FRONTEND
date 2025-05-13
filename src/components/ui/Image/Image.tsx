@@ -1,4 +1,4 @@
-import { ImageProps } from '../../../types';
+import { ImageProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Image.module.css';
 

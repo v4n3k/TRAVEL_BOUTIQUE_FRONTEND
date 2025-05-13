@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Section } from '../../../components/ui';
+import { Section } from '../../../components/ui/Section/Section';
 import { useIntersectionObserver } from '../../../hooks/useObserver';
 import styles from './ChildrenAmount.module.css';
 

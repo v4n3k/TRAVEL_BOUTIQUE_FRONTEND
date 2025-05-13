@@ -2,10 +2,11 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../../../../api/auth/authApi';
 import { useModal } from '../../../../hooks/useModal';
-import { RouteName } from '../../../../types';
-import { Button, Title } from '../../../ui';
 import { TitledModal } from '../TitledModal/TitledModal';
 import styles from './AdminPanelTitle.module.css';
+import { RouteName } from '../../../../types/routes';
+import { Button } from '../../../ui/Button/Button';
+import { Title } from '../../../ui/Title/Title';
 
 export const AdminPanelTitle = () => {
 	const navigate = useNavigate();

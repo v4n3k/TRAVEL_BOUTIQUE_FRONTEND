@@ -1,4 +1,4 @@
-import { PriceProps } from '../../../types';
+import { PriceProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Price.module.css';
 

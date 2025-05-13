@@ -1,17 +1,14 @@
-import {
-	AboutPage,
-	BlogPage,
-	CategoriesPage,
-	CategoryPage,
-	ExcursionPage,
-	HomePage,
-	InfoPage,
-	SearchedExcursionsPage,
-	ServicePage,
-	SignInPage,
-} from '../pages';
-
 import { withLazy } from '../hocs/withLazy';
+import { AboutPage } from '../pages/About/AboutPage';
+import { BlogPage } from '../pages/Blog/BlogPage';
+import { CategoriesPage } from '../pages/Categories/CategoriesPage';
+import { CategoryPage } from '../pages/Category/CategoryPage';
+import { ExcursionPage } from '../pages/Excursion/ExcursionPage';
+import { HomePage } from '../pages/Home/HomePage';
+import { InfoPage } from '../pages/Info/InfoPage';
+import { SearchedExcursionsPage } from '../pages/SearchedExcursions/SearchedExcursionsPage';
+import { ServicePage } from '../pages/Service/ServicePage';
+import { SignInPage } from '../pages/SignIn/SignInPage';
 import { RouteEntity, RouteName } from '../types/routes';
 
 export const publicRoutes: RouteEntity[] = [

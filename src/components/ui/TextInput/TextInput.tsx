@@ -1,4 +1,4 @@
-import { TextInputProps } from '../../../types';
+import { TextInputProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './TextInput.module.css';
 

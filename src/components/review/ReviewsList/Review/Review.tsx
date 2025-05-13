@@ -1,4 +1,4 @@
-import { ReviewEntity } from '../../../../types';
+import { ReviewEntity } from '../../../../types/entities';
 import styles from './Review.module.css';
 
 export const Review = ({

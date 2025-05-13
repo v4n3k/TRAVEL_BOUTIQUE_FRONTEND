@@ -1,4 +1,4 @@
-import { InputWrapperProps } from '../../../../types';
+import { InputWrapperProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './InputWrapper.module.css';
 

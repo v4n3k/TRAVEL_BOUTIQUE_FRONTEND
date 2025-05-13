@@ -1,7 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CategoriesProps } from '../../../types';
-import { Expandable, Section, Title } from '../../ui';
+
+import { CategoriesProps } from '../../../types/props';
+import { Expandable } from '../../ui/Expandable/Expandable';
+import { Section } from '../../ui/Section/Section';
+import { Title } from '../../ui/Title/Title';
 import styles from './Categories.module.css';
 import { CategoriesList } from './CategoriesList/CategoriesList';
 

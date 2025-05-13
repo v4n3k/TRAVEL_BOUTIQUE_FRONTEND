@@ -1,18 +1,20 @@
 import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import {
-	BreadcrumbsWithNavButton,
-	ExcursionEventsList,
-	ImageUploader,
-	LabeledInput,
-	ModalButton,
-	NumberInput,
-	TitledModal,
-} from '../../components/admin';
-import { InputWrapper, TextArea } from '../../components/admin/';
-import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
+import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
+import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
+import { InputWrapper } from '../../components/admin/ui/InputWrapper/InputWrapper';
+import { LabeledInput } from '../../components/admin/ui/LabeledInput/LabeledInput';
+import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
+import { NumberInput } from '../../components/admin/ui/NumberInput/NumberInput';
+import { TextArea } from '../../components/admin/ui/TextArea/TextArea';
+import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
+import { Button } from '../../components/ui/Button/Button';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
@@ -21,8 +23,8 @@ import {
 	ExcursionBaseWithImage,
 	ExcursionWithImage,
 	ImageEntity,
-	RouteName,
-} from '../../types';
+} from '../../types/entities';
+import { RouteName } from '../../types/routes';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
 const AdminCreateNewExcursionPage = () => {

@@ -1,40 +1,36 @@
 import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
+import { Form, useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { ModalButton, TitledModal } from '../../components/admin';
+import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
-import {
-	ExcursionEventsList,
-	Field,
-	ManagerButton,
-} from '../../components/excursion';
+import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
+import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
 import { Price } from '../../components/excursion/Price/Price';
-import {
-	Button,
-	Form,
-	Image,
-	Page,
-	Section,
-	TextInput,
-} from '../../components/ui';
+import { Field } from '../../components/excursion/ui/Field/Field';
+import { ManagerButton } from '../../components/excursion/ui/ManagerButton/ManagerButton';
+import { Button } from '../../components/ui/Button/Button';
+import { Image } from '../../components/ui/Image/Image';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
-import { ExcursionEntity } from '../../types';
+import { useAdminStore } from '../../stores/useAdminSrore';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 export const ExcursionPage = () => {
 	const { id } = useParams();
+	const navHistory = useNavHistory();
+	const { isModalOpen, openModal, closeModal } = useModal();
+	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
 	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
 		queryFn: () => excursionApi.getById(Number(id)),
 	});
 
-	const navHistory = useNavHistory();
-	const { isModalOpen, openModal, closeModal } = useModal();
-
-	if (isLoading) return <></>;
+	if (isLoading || !excursion) return <></>;
 
 	if (isError) {
 		return (
@@ -53,7 +49,7 @@ export const ExcursionPage = () => {
 		price,
 		info,
 		excursionEvents,
-	} = excursion as ExcursionEntity;
+	} = excursion;
 
 	const formattedPrice = formatNumber(price);
 
@@ -119,7 +115,10 @@ export const ExcursionPage = () => {
 						</div>
 					)}
 
-					<ExcursionEventsList excursionEvents={excursionEvents} />
+					<ExcursionEventsList
+						excursionEvents={excursionEvents}
+						setExcursion={setEditedExcursion}
+					/>
 				</div>
 
 				<ManagerButton

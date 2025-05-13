@@ -319,9 +319,7 @@ export interface CircularLoaderProps {
 	className?: string;
 }
 
-export interface LazyComponentProps {
-	loader: () => Promise<any>;
-}
+export interface LazyComponentProps extends React.ComponentProps<'div'> {}
 
 export interface IconSearchProps {
 	resizable?: boolean;

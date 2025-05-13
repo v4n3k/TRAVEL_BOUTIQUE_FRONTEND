@@ -1,4 +1,4 @@
-import { ExcursionEventProps } from '../../../../types';
+import { ExcursionEventProps } from '../../../../types/props';
 import styles from './ExcursionEvent.module.css';
 
 export const ExcursionEvent = ({ event }: ExcursionEventProps) => {

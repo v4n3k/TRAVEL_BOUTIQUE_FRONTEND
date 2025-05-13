@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { IconArrow } from '../../../icons/IconArrow';
-import { ExpandableProps } from '../../../types';
+import { ExpandableProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import { Button } from '../Button/Button';
 import styles from './Expandable.module.css';

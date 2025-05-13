@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { Breadcrumbs } from '../..';
+
 import { useNavHistory } from '../../../../hooks/useNavHistory';
 import { IconArrowLeft } from '../../../../icons/IconArrowLeft';
-import { BreadcrumbsWithNavButtonProps } from '../../../../types';
+import { BreadcrumbsWithNavButtonProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
-import { IconButton } from '../../../ui';
+import { IconButton } from '../../../ui/IconButton/IconButton';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import styles from './BreadcrumbsWithNavButton.module.css';
 
 export const BreadcrumbsWithNavButton = ({

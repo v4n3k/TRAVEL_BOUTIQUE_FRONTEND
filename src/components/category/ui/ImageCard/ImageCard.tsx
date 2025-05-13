@@ -1,7 +1,7 @@
 import { IconArrowTopRightTransparent } from '../../../../icons/IconArrowTopRightTransparent';
-import { ImageCardProps } from '../../../../types';
+import { ImageCardProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
-import { Image } from '../../../ui';
+import { Image } from '../../../ui/Image/Image';
 import styles from './ImageCard.module.css';
 
 export const ImageCard = ({

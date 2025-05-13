@@ -1,4 +1,4 @@
-import { IconButtonProps } from '../../../types';
+import { IconButtonProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './IconButton.module.css';
 

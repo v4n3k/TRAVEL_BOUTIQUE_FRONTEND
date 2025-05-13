@@ -1,4 +1,4 @@
-import { BoxProps } from '../../../types';
+import { BoxProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Box.module.css';
 

@@ -3,13 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useSearchStore } from '../../../stores/useSearchStore';
-import {
-	RouteBase,
-	RouteName,
-	SearchableExcursionsProps,
-} from '../../../types';
-import { ImageCard } from '../../category';
+import { SearchableExcursionsProps } from '../../../types/props';
+import { RouteBase, RouteName } from '../../../types/routes';
 import { GridList } from '../../category/ui/GridList/GridList';
+import { ImageCard } from '../../category/ui/ImageCard/ImageCard';
 import { SearchableList } from '../ui/SearchableList/SearchableList';
 
 export const SearchableExcursions = ({

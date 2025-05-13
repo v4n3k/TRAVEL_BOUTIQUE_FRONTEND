@@ -1,7 +1,7 @@
 import { IconConnect } from '../../../../icons/IconConnect';
-import { ManagerButtonProps } from '../../../../types';
+import { ManagerButtonProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
-import { Button } from '../../../ui';
+import { Button } from '../../../ui/Button/Button';
 import styles from './ManagerButton.module.css';
 
 export const ManagerButton = ({

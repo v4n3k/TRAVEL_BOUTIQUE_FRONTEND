@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { TagsListProps } from '../../../types';
+import { TagsListProps } from '../../../types/props';
 import { Tag } from './Tag/Tag';
 import styles from './TagsList.module.css';
 

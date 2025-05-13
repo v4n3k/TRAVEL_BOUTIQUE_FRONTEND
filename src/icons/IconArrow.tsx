@@ -1,4 +1,4 @@
-import { IconArrowProps } from '../types';
+import { IconArrowProps } from '../types/props';
 
 export const IconArrow = ({ direction = 'right' }: IconArrowProps) => {
 	let rotation = 0;

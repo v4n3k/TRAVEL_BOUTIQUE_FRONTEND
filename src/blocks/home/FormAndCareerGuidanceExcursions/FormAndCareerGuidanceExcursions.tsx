@@ -2,13 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import img from '../../../../assets/images/Rectangle 33.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
-import { IconButton, Image, TagsList } from '../../../components/ui';
+import { IconButton } from '../../../components/ui/IconButton/IconButton';
+import { Image } from '../../../components/ui/Image/Image';
+import { TagsList } from '../../../components/ui/TagsList/TagsList';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import {
-	FormAndCareerGuidanceExcursionsProps,
-	RouteName,
-} from '../../../types';
+import { FormAndCareerGuidanceExcursionsProps } from '../../../types/props';
+import { RouteName } from '../../../types/routes';
 import { FeedbackForm } from './FeedbackForm/FeedbackForm';
 import styles from './FormAndCareerGuidanceExcursions.module.css';
 

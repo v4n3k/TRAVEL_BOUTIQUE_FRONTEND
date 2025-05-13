@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { IconArrowTopRight } from '../../../../icons/IconArrowTopRight';
-import { ExcursionCardProps, RouteBase } from '../../../../types';
-import { IconButton } from '../../../ui';
+
+import { ExcursionCardProps } from '../../../../types/props';
+import { RouteBase } from '../../../../types/routes';
+import { IconButton } from '../../../ui/IconButton/IconButton';
 import { ExcursionImage } from '../../ui/ExcursionImage/ExcursionImage';
 import { Field } from '../../ui/Field/Field';
 import styles from './ExcursionCard.module.css';

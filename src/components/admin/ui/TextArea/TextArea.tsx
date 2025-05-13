@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { TextAreaProps } from '../../../../types';
+import { TextAreaProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './TextArea.module.css';
 

@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { RouteName } from '../types';
 import { LayoutProps } from '../types/props';
+import { RouteName } from '../types/routes';
 import { Footer } from './Footer/Footer';
 import { Header } from './Header/Header';
 import styles from './Layout.module.css';

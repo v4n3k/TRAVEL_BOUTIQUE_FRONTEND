@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { BreadcrumbsProps } from '../../../../types';
 import { cn } from '../../../../utils/cn';
 import styles from './Breadcrumbs.module.css';
+import { BreadcrumbsProps } from '../../../../types/props';
 
 export const Breadcrumbs = ({
 	crumbs,

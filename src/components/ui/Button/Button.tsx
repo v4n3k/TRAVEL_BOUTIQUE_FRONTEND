@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useRef } from 'react';
-import { ButtonProps } from '../../../types';
+import { ButtonProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Button.module.css';
 

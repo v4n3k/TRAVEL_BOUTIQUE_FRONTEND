@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { RouteName, SearchableCategoriesProps } from '../../../types';
+import { SearchableCategoriesProps } from '../../../types/props';
+import { RouteName } from '../../../types/routes';
 import { CategoryCard } from '../../category/Categories/CategoriesList/CategoryCard/CategoryCard';
 import { GridList } from '../../category/ui/GridList/GridList';
-import { Expandable } from '../../ui';
+import { Expandable } from '../../ui/Expandable/Expandable';
 import { SearchableList } from '../ui/SearchableList/SearchableList';
 
-export const SearchableCategories = ({
+export const SearchableCategories = <T extends Function>({
 	categories,
 	searchQuery,
 	setSearchQuery,
@@ -15,7 +16,7 @@ export const SearchableCategories = ({
 	nameSize,
 	expandable = false,
 	collapsedHeight,
-}: SearchableCategoriesProps) => {
+}: SearchableCategoriesProps<T>) => {
 	const navigate = useNavigate();
 
 	const handleCardClick = (categoryName: string) => {

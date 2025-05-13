@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+import { Button } from '../../components/ui/Button/Button';
+import { Form } from '../../components/ui/Form/Form';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useSignIn } from '../../hooks/api/useSignIn';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconRotatedLogo } from '../../icons/IconRotatedLogo';

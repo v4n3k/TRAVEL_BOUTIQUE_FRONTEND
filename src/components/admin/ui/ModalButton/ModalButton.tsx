@@ -1,6 +1,7 @@
-import { ModalButtonProps } from '../../../../types';
+import { ModalButtonProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
-import { Button } from '../../../ui';
+import { Button } from '../../../ui/Button/Button';
+
 import styles from './ModalButton.module.css';
 
 export const ModalButton = ({

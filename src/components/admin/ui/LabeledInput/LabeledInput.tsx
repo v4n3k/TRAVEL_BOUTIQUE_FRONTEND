@@ -1,4 +1,4 @@
-import { LabeledInputProps } from '../../../../types';
+import { LabeledInputProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './LabeledInput.module.css';
 

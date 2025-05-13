@@ -5,7 +5,7 @@ import './App.module.css';
 import { AppRouter } from './AppRouter';
 import { Layout } from './layout/Layout';
 import { useSearchStore } from './stores/useSearchStore';
-import { RouteBase } from './types';
+import { RouteBase } from './types/routes';
 
 const queryClient = new QueryClient();
 

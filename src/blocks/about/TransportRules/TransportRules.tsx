@@ -1,5 +1,8 @@
 import img from '../../../../assets/images/WhatsApp Image 2024-11-21 at 22.58.05 (1) 3.png';
-import { Box, Image, Section, Title } from '../../../components/ui';
+import { Box } from '../../../components/ui/Box/Box';
+import { Image } from '../../../components/ui/Image/Image';
+import { Section } from '../../../components/ui/Section/Section';
+import { Title } from '../../../components/ui/Title/Title';
 import { IconAvia } from '../../../icons/IconAvia';
 import { IconCar } from '../../../icons/IconCar';
 import { IconRZD } from '../../../icons/IconRZD';

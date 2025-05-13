@@ -1,4 +1,4 @@
-import { TextContainerProps } from '../../../types';
+import { TextContainerProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './TextContainer.module.css';
 

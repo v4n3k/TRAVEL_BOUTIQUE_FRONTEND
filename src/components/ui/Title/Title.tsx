@@ -1,4 +1,4 @@
-import { TitleProps } from '../../../types';
+import { TitleProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Title.module.css';
 

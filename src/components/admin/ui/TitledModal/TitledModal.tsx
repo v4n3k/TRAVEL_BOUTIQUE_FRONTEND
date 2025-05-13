@@ -1,5 +1,5 @@
-import { Modal } from '../..';
-import { TitledModalProps } from '../../../../types';
+import { TitledModalProps } from '../../../../types/props';
+import { Modal } from '../Modal/Modal';
 import styles from './TitledModal.module.css';
 
 export const TitledModal = ({

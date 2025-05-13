@@ -1,5 +1,8 @@
 import img from '../../../../assets/images/WhatsAppImage.png';
-import { Image, Section, TextContainer, Title } from '../../../components/ui';
+import { Image } from '../../../components/ui/Image/Image';
+import { Section } from '../../../components/ui/Section/Section';
+import { TextContainer } from '../../../components/ui/TextContainer/TextContainer';
+import { Title } from '../../../components/ui/Title/Title';
 import styles from './About.module.css';
 
 export const About = () => {

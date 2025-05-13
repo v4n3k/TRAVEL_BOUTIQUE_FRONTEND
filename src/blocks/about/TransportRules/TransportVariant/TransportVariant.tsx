@@ -1,4 +1,4 @@
-import { TransportVariantProps } from '../../../../types';
+import { TransportVariantProps } from '../../../../types/props';
 import styles from './TransportVariant.module.css';
 
 export const TransportVariant = ({

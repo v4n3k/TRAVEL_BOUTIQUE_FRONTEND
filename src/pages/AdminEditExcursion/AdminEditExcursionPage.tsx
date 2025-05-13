@@ -1,26 +1,21 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Form, useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import {
-	BreadcrumbsWithNavButton,
-	ExcursionEventsList,
-	ImageUploader,
-	InputWrapper,
-	LabeledInput,
-	ModalButton,
-	NumberInput,
-	TextArea,
-	TitledModal,
-} from '../../components/admin';
-import {
-	Button,
-	Form,
-	IconButton,
-	Page,
-	Section,
-	TextInput,
-} from '../../components/ui';
+import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
+import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
+import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
+import { InputWrapper } from '../../components/admin/ui/InputWrapper/InputWrapper';
+import { LabeledInput } from '../../components/admin/ui/LabeledInput/LabeledInput';
+import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
+import { NumberInput } from '../../components/admin/ui/NumberInput/NumberInput';
+import { TextArea } from '../../components/admin/ui/TextArea/TextArea';
+import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
+import { Button } from '../../components/ui/Button/Button';
+import { IconButton } from '../../components/ui/IconButton/IconButton';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
@@ -32,7 +27,7 @@ import {
 	ExcursionBaseWithImage,
 	ExcursionWithImage,
 	ImageEntity,
-} from '../../types';
+} from '../../types/entities';
 import styles from './AdminEditExcursion.module.css';
 
 const AdminEditExcursionPage = () => {

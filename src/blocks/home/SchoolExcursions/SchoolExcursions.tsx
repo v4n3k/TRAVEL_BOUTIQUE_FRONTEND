@@ -4,10 +4,14 @@ import mainImage from '../../../../assets/images/Frame 168@2x.png';
 import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
-import { IconButton, Image, Section, TagsList } from '../../../components/ui';
+import { IconButton } from '../../../components/ui/IconButton/IconButton';
+import { Image } from '../../../components/ui/Image/Image';
+import { Section } from '../../../components/ui/Section/Section';
+import { TagsList } from '../../../components/ui/TagsList/TagsList';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { RouteName, SchoolExcursionsProps } from '../../../types';
+import { SchoolExcursionsProps } from '../../../types/props';
+import { RouteName } from '../../../types/routes';
 import styles from './SchoolExcursions.module.css';
 
 export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {

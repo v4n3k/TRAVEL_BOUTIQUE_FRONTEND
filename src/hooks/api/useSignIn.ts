@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../../api/auth/authApi';
 import { useAuthStore } from '../../stores/useAuthStore';
-import { RouteName, SignInCredentials } from '../../types';
+import { SignInCredentials } from '../../types/api';
+import { RouteName } from '../../types/routes';
 
 export const useSignIn = () => {
 	const navigate = useNavigate();

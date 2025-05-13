@@ -1,9 +1,8 @@
-import { TextArea } from '../../';
-import {
-	ExcursionEventEntity,
-	ExcursionEventInputsListProps,
-} from '../../../../types';
-import { Button, TextInput } from '../../../ui';
+import { ExcursionEventEntity } from '../../../../types/entities';
+import { ExcursionEventInputsListProps } from '../../../../types/props';
+import { Button } from '../../../ui/Button/Button';
+import { TextInput } from '../../../ui/TextInput/TextInput';
+import { TextArea } from '../../ui/TextArea/TextArea';
 import styles from './ExcursionEvent.module.css';
 
 export const ExcursionEvent = ({

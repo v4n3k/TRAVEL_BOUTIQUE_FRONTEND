@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { RouteBase, RouteName } from '../types';
 import { NavHistoryLink } from '../types/hooks';
+import { RouteBase, RouteName } from '../types/routes';
 
 export const useNavHistory = () => {
 	const { pathname } = useLocation();

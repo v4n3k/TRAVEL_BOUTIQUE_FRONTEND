@@ -1,4 +1,5 @@
-import { Section, Title } from '../../../components/ui';
+import { Section } from '../../../components/ui/Section/Section';
+import { Title } from '../../../components/ui/Title/Title';
 import { Service } from './Service/Service';
 import styles from './Services.module.css';
 

@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ManagerButton } from '../../../components/excursion';
-import { Section, Title } from '../../../components/ui';
+import { ManagerButton } from '../../../components/excursion/ui/ManagerButton/ManagerButton';
+import { Section } from '../../../components/ui/Section/Section';
+import { Title } from '../../../components/ui/Title/Title';
 import { cn } from '../../../utils/cn';
 import styles from './PaymentMethod.module.css';
 

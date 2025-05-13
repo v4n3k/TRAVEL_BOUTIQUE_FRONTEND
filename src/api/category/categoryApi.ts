@@ -1,4 +1,4 @@
-import { CategoryApi } from '../../types';
+import { CategoryApi } from '../../types/api';
 import { handleApiResponse } from '../../utils/api';
 import { api } from '../api';
 

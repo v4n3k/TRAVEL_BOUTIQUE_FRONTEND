@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { NumberInputProps } from '../../../../types';
+
 import { cn } from '../../../../utils/cn';
-import { TextInput } from '../../../ui';
+
+import { NumberInputProps } from '../../../../types/props';
+import { TextInput } from '../../../ui/TextInput/TextInput';
 import styles from './NumberInput.module.css';
 
 export const NumberInput = ({

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { CategoryBaseWithImage, ExcursionWithImage } from '../types';
+import { CategoryBaseWithImage, ExcursionWithImage } from '../types/entities';
 import { UseAdminStore } from '../types/stores';
 
 export const useAdminStore = create<UseAdminStore>(set => ({

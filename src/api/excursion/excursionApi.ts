@@ -1,4 +1,4 @@
-import { ExcursionApi } from '../../types';
+import { ExcursionApi } from '../../types/api';
 import { handleApiResponse } from '../../utils/api';
 import { api } from '../api';
 

@@ -1,11 +1,11 @@
-import { Section } from '../../../components/ui';
+import { Section } from '../../../components/ui/Section/Section';
 import { IconBrain } from '../../../icons/IconBrain';
 import { IconClient } from '../../../icons/IconClient';
 import { IconComfort } from '../../../icons/IconComfort';
 import { IconContract } from '../../../icons/IconContract';
 import { IconFingerPrint } from '../../../icons/IconFingerPrint';
 import { IconLike } from '../../../icons/IconLike';
-import { AdvantageEntity } from '../../../types';
+import { AdvantageEntity } from '../../../types/entities';
 import { Advantage } from './Advantage/Advantage';
 import styles from './Advantages.module.css';
 

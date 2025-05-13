@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { RouteName } from '../../types';
+import { RouteName } from '../../types/routes';
 import { MainProps } from '../../types/props';
 import { cn } from '../../utils/cn';
 import styles from './Main.module.css';

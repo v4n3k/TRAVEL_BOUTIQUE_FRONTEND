@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IconImage } from '../../../../icons/IconImage';
-import { ImageUploaderProps } from '../../../../types';
+import { ImageUploaderProps } from '../../../../types/props';
 import styles from './ImageUploader.module.css';
 
 export const ImageUploader = ({

@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { CategoryCardProps, RouteName } from '../../../../../types';
+
+import { CategoryCardProps } from '../../../../../types/props';
+import { RouteName } from '../../../../../types/routes';
 import { ImageCard } from '../../../ui/ImageCard/ImageCard';
 
 export const CategoryCard = ({

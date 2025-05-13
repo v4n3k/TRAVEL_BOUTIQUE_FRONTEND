@@ -1,4 +1,4 @@
-import { AuthApi } from '../../types';
+import { AuthApi } from '../../types/api';
 import { handleApiResponse } from '../../utils/api';
 import { api } from '../api';
 

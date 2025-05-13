@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
-import { AdminPanelTitle, SearchableCategories } from '../../components/admin';
-import { Page } from '../../components/ui';
+import { SearchableCategories } from '../../components/admin/SearchableCategories/SearchableCategories';
+import { AdminPanelTitle } from '../../components/admin/ui/AdminPanelTitle/AdminPanelTitle';
+import { Page } from '../../components/ui/Page/Page';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { RouteName } from '../../types';
+import { RouteName } from '../../types/routes';
 import styles from './AdminPage.module.css';
 
 const AdminPage = () => {

@@ -1,4 +1,4 @@
-import { WrappedTextProps } from '../../../../types';
+import { WrappedTextProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './WrappedText.module.css';
 

@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { BreadcrumbsWithNavButton } from '../../components/admin';
+import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { GridList } from '../../components/category/ui/GridList/GridList';
 import { ImageCard } from '../../components/category/ui/ImageCard/ImageCard';
-import { Page, Section, Title } from '../../components/ui';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { Title } from '../../components/ui/Title/Title';
 import { useNavHistory } from '../../hooks/useNavHistory';
-import { RouteBase } from '../../types';
+import { RouteBase } from '../../types/routes';
 import styles from './CategoryPage.module.css';
 
 export const CategoryPage = () => {

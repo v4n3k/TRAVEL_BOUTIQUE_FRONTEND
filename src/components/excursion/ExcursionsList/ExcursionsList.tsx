@@ -1,8 +1,9 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import { ExcursionListProps } from '../../../types';
-import { NextArrow, PrevArrow } from '../../review';
+
+import { ExcursionListProps } from '../../../types/props';
+import { NextArrow, PrevArrow } from '../../review/ReviewsList/ReviewsList';
 import { ExcursionCard } from './ExcursionCard/ExcursionCard';
 import styles from './ExcursionsList.module.css';
 

@@ -1,5 +1,6 @@
-import { Button, TextContainer } from '../../../../components/ui';
-import { ServiceProps } from '../../../../types';
+import { Button } from '../../../../components/ui/Button/Button';
+import { TextContainer } from '../../../../components/ui/TextContainer/TextContainer';
+import { ServiceProps } from '../../../../types/props';
 import styles from './Service.module.css';
 
 export const Service = ({ name }: ServiceProps) => {

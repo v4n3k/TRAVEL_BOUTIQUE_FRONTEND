@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { authApi } from '../api/auth/authApi';
 import { privateRoutes, publicRoutes } from '../routes';
 import { useAuthStore } from '../stores/useAuthStore';
-import { RouteEntity } from '../types';
+import { RouteEntity } from '../types/routes';
 
 export const useAvailableRoutes = () => {
 	const [availableRoutes, setAvailableRoutes] = useState<RouteEntity[]>([]);

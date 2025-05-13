@@ -3,7 +3,7 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconTelegram } from '../../icons/IconTelegram';
 import { IconWhatsApp } from '../../icons/IconWhatsApp';
 import { useAuthStore } from '../../stores/useAuthStore';
-import { RouteName } from '../../types';
+import { RouteName } from '../../types/routes';
 import styles from './Footer.module.css';
 
 export const Footer = () => {

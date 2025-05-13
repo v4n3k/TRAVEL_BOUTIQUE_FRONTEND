@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconArrowShort } from '../../../../icons/IconArrowShort';
 import { IconSearch } from '../../../../icons/IconSearch';
-import { SearchableListProps } from '../../../../types';
+
 import { cn } from '../../../../utils/cn';
-import { Button, Section } from '../../../ui';
+
+import { SearchableListProps } from '../../../../types/props';
+import { Button } from '../../../ui/Button/Button';
+import { Section } from '../../../ui/Section/Section';
 import styles from './SearchableList.module.css';
 
-export const SearchableList = ({
+export const SearchableList = <T extends Function>({
 	className,
 	title,
 	buttonText,
@@ -16,7 +19,7 @@ export const SearchableList = ({
 	searchQuery,
 	setSearchQuery,
 	onAdd,
-}: SearchableListProps) => {
+}: SearchableListProps<T>) => {
 	const navigate = useNavigate();
 	const headerContainerRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLDivElement>(null);

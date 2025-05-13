@@ -1,4 +1,4 @@
-import { PageProps } from '../../../types';
+import { PageProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Page.module.css';
 

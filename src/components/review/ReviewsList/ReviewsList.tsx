@@ -4,9 +4,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import { IconArrow } from '../../../icons/IconArrow';
-import { SliderArrowProps } from '../../../types';
 import { cn } from '../../../utils/cn';
-import { Expandable } from '../../ui';
+import { SliderArrowProps } from '../../../types/props';
+import { Expandable } from '../../ui/Expandable/Expandable';
 import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
 

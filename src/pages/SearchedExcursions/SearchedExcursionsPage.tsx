@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { GridList, ImageCard } from '../../components/category';
-import { Page, Section, Title } from '../../components/ui';
+import { GridList } from '../../components/category/ui/GridList/GridList';
+import { ImageCard } from '../../components/category/ui/ImageCard/ImageCard';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { Title } from '../../components/ui/Title/Title';
 import { useSearchStore } from '../../stores/useSearchStore';
-import { RouteBase } from '../../types';
+import { RouteBase } from '../../types/routes';
 
 export const SearchedExcursionsPage = () => {
 	const navigate = useNavigate();

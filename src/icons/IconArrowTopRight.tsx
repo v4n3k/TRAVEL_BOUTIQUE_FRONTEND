@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IconArrowRightProps } from '../types';
+import { IconArrowRightProps } from '../types/props';
 
 export const IconArrowTopRight = ({
 	fill = '#F5F5F5',

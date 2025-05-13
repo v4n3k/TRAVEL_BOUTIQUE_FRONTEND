@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import imgChildren from '../../../../assets/images/Rectangle 25.png';
 import imgGrandParents from '../../../../assets/images/Rectangle 27.png';
-import { IconButton, Image, Section } from '../../../components/ui';
+import { IconButton } from '../../../components/ui/IconButton/IconButton';
+import { Image } from '../../../components/ui/Image/Image';
+import { Section } from '../../../components/ui/Section/Section';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
-import { RouteName } from '../../../types';
+import { RouteName } from '../../../types/routes';
 import styles from './PaymentMethod.module.css';
 
 const methods = [

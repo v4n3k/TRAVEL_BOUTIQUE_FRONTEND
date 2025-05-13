@@ -1,4 +1,4 @@
-import { RouteName } from '..';
+import { RouteName } from '../routes';
 
 export interface WindowSize {
 	width: number | undefined;

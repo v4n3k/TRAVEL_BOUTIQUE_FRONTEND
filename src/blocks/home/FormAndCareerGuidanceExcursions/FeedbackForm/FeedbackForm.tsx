@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { TextArea } from '../../../../components/admin';
-import { Button, Form, TextInput } from '../../../../components/ui';
+import { TextArea } from '../../../../components/admin/ui/TextArea/TextArea';
+import { Button } from '../../../../components/ui/Button/Button';
+import { Form } from '../../../../components/ui/Form/Form';
+import { TextInput } from '../../../../components/ui/TextInput/TextInput';
 import { useWindowSize } from '../../../../hooks/useWindowSize';
 import { IconArrowTopRight } from '../../../../icons/IconArrowTopRight';
-import { FeedbackFormProps } from '../../../../types';
+import { FeedbackFormProps } from '../../../../types/props';
 import styles from './FeedbackForm.module.css';
 
 export const FeedbackForm = ({ ref }: FeedbackFormProps) => {

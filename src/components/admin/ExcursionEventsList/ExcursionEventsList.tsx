@@ -1,4 +1,4 @@
-import { ExcursionEventsInputsListProps } from '../../../types';
+import { ExcursionEventsInputsListProps } from '../../../types/props';
 import { ExcursionEvent } from './ExcursionEvent/ExcursionEvent';
 import styles from './ExcursionEventsList.module.css';
 

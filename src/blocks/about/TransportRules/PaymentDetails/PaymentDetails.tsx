@@ -1,4 +1,4 @@
-import { Box } from '../../../../components/ui';
+import { Box } from '../../../../components/ui/Box/Box';
 import { TextItem } from '../TextItem/TextItem';
 import { WrappedText } from '../WrappedText/WrappedText';
 import styles from './PaymentDetails.module.css';

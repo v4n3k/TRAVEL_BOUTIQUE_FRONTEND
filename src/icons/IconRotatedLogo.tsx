@@ -1,5 +1,5 @@
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { IconRotatedLogoProps } from '../types';
+import { IconRotatedLogoProps } from '../types/props';
 
 export const IconRotatedLogo = ({
 	rotation = 0,

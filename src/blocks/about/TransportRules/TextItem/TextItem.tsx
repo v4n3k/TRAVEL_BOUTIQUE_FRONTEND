@@ -1,4 +1,4 @@
-import { TextItemProps } from '../../../../types';
+import { TextItemProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './TextItem.module.css';
 

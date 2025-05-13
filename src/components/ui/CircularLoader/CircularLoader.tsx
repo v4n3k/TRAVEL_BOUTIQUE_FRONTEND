@@ -1,4 +1,4 @@
-import { CircularLoaderProps } from '../../../types';
+import { CircularLoaderProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './CircularLoader.module.css';
 

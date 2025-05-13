@@ -1,17 +1,20 @@
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
-import {
-	BreadcrumbsWithNavButton,
-	ImageUploader,
-	ModalButton,
-	TitledModal,
-} from '../../components/admin';
-import { Button, Form, Page, Section, TextInput } from '../../components/ui';
+
+import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
+import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
+import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
+import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
+import { Button } from '../../components/ui/Button/Button';
+import { Page } from '../../components/ui/Page/Page';
+import { Section } from '../../components/ui/Section/Section';
+import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
-import { CategoryType, ImageEntity, RouteName } from '../../types';
+import { CategoryType, ImageEntity } from '../../types/entities';
+import { RouteName } from '../../types/routes';
 import styles from './AdminCreateNewCategory.module.css';
 
 const AdminCreateNewCategoryPage = () => {

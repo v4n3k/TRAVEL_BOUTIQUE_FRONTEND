@@ -8,7 +8,7 @@ import { IconBurgerMenu } from '../../icons/IconBurgerMenu';
 import { IconLogo } from '../../icons/IconLogo';
 import { IconSearch } from '../../icons/IconSearch';
 import { useSearchStore } from '../../stores/useSearchStore';
-import { RouteName } from '../../types';
+import { RouteName } from '../../types/routes';
 import styles from './Header.module.css';
 import { SearchTips } from './SearchTips/SearchTips';
 

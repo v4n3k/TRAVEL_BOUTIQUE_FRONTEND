@@ -1,4 +1,4 @@
-import { FieldProps } from '../../../../types';
+import { FieldProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './Field.module.css';
 
