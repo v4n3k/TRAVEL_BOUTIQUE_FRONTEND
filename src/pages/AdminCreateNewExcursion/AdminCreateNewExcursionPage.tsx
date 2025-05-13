@@ -25,7 +25,7 @@ import {
 } from '../../types';
 import styles from './AdminCreateNewExcursionPage.module.css';
 
-export const AdminCreateNewExcursionPage = () => {
+const AdminCreateNewExcursionPage = () => {
 	const navigate = useNavigate();
 	const navHistory = useNavHistory();
 
@@ -286,3 +286,5 @@ export const AdminCreateNewExcursionPage = () => {
 		</Page>
 	);
 };
+
+export default AdminCreateNewExcursionPage;

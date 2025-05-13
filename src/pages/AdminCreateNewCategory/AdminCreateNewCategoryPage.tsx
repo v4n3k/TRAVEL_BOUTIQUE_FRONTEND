@@ -14,7 +14,7 @@ import { useAdminStore } from '../../stores/useAdminSrore';
 import { CategoryType, ImageEntity, RouteName } from '../../types';
 import styles from './AdminCreateNewCategory.module.css';
 
-export const AdminCreateNewCategoryPage = () => {
+const AdminCreateNewCategoryPage = () => {
 	const navigate = useNavigate();
 	const navHistory = useNavHistory();
 
@@ -122,3 +122,5 @@ export const AdminCreateNewCategoryPage = () => {
 		</Page>
 	);
 };
+
+export default AdminCreateNewCategoryPage;

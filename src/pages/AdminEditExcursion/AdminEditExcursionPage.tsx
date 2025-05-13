@@ -35,7 +35,7 @@ import {
 } from '../../types';
 import styles from './AdminEditExcursion.module.css';
 
-export const AdminEditExcursion = () => {
+const AdminEditExcursionPage = () => {
 	const editedExcursion = useAdminStore(state => state.editedExcursion);
 	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
@@ -403,3 +403,5 @@ export const AdminEditExcursion = () => {
 		</Page>
 	);
 };
+
+export default AdminEditExcursionPage;

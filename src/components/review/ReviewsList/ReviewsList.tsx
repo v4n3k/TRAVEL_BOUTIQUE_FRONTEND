@@ -4,11 +4,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import { IconArrow } from '../../../icons/IconArrow';
+import { SliderArrowProps } from '../../../types';
 import { cn } from '../../../utils/cn';
 import { Expandable } from '../../ui';
 import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
-import { SliderArrowProps } from '../../../types';
 
 const mockReviews = [
 	{
@@ -65,8 +65,6 @@ export const ReviewsList = () => {
 
 		setMinHeigth(blockRef.current.offsetHeight + 'px');
 	}, [blockRef, window.innerWidth]);
-
-	useEffect(() => console.log(minHeight), [minHeight]);
 
 	const isSlider = width !== undefined && width > 600;
 

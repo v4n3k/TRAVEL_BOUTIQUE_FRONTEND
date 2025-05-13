@@ -1,10 +1,5 @@
 import {
 	AboutPage,
-	AdminCategoryPage,
-	AdminCreateNewCategoryPage,
-	AdminCreateNewExcursionPage,
-	AdminEditExcursion,
-	AdminPage,
 	BlogPage,
 	CategoriesPage,
 	CategoryPage,
@@ -15,6 +10,8 @@ import {
 	ServicePage,
 	SignInPage,
 } from '../pages';
+
+import { withLazy } from '../hocs/withLazy';
 import { RouteEntity, RouteName } from '../types/routes';
 
 export const publicRoutes: RouteEntity[] = [
@@ -35,25 +32,37 @@ export const publicRoutes: RouteEntity[] = [
 ];
 
 export const privateRoutes: RouteEntity[] = [
-	{ path: RouteName.ADMIN, Component: AdminPage, isPrivate: true },
+	{
+		path: RouteName.ADMIN,
+		Component: withLazy(() => import('../pages/Admin/AdminPage')),
+		isPrivate: true,
+	},
 	{
 		path: RouteName.ADMIN_CATEGORY,
-		Component: AdminCategoryPage,
+		Component: withLazy(() =>
+			import('../pages/AdminCategory/AdminCategoryPage')
+		),
 		isPrivate: true,
 	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
-		Component: AdminCreateNewExcursionPage,
+		Component: withLazy(() =>
+			import('../pages/AdminCreateNewExcursion/AdminCreateNewExcursionPage')
+		),
 		isPrivate: true,
 	},
 	{
 		path: RouteName.ADMIN_EDIT_EXCURSION,
-		Component: AdminEditExcursion,
+		Component: withLazy(() =>
+			import('../pages/AdminEditExcursion/AdminEditExcursionPage')
+		),
 		isPrivate: true,
 	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_CATEGORY,
-		Component: AdminCreateNewCategoryPage,
+		Component: withLazy(() =>
+			import('../pages/AdminCreateNewCategory/AdminCreateNewCategoryPage')
+		),
 		isPrivate: true,
 	},
 ];

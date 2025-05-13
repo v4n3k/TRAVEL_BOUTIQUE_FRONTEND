@@ -313,3 +313,16 @@ export interface SliderArrowProps {
 	className?: string;
 	onClick?: () => void;
 }
+
+export interface CircularLoaderProps {
+	onFullScreen?: boolean;
+	className?: string;
+}
+
+export interface LazyComponentProps {
+	loader: () => Promise<any>;
+}
+
+export interface IconSearchProps {
+	resizable?: boolean;
+}

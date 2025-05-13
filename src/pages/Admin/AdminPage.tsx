@@ -9,7 +9,7 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { RouteName } from '../../types';
 import styles from './AdminPage.module.css';
 
-export const AdminPage = () => {
+const AdminPage = () => {
 	const [collapsedHeight, setCollapsedHeight] = useState(740);
 	const isXLScreen = useMediaQuery('(min-width: 1481px)');
 	const isLScreen = useMediaQuery('(min-width: 700px) and (max-width: 1480px)');
@@ -147,3 +147,5 @@ export const AdminPage = () => {
 		</Page>
 	);
 };
+
+export default AdminPage;
