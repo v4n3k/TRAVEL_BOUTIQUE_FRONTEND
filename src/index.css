@@ -54,6 +54,11 @@ select {
 	font: inherit;
 }
 
+input,
+textarea {
+	outline-offset: -1px;
+}
+
 /* 7. Avoid text overflows */
 p,
 h1,

@@ -1,31 +1,50 @@
 import { withLazy } from '../hocs/withLazy';
-import { AboutPage } from '../pages/About/AboutPage';
 import { BlogPage } from '../pages/Blog/BlogPage';
-import { CategoriesPage } from '../pages/Categories/CategoriesPage';
-import { CategoryPage } from '../pages/Category/CategoryPage';
-import { ExcursionPage } from '../pages/Excursion/ExcursionPage';
-import { HomePage } from '../pages/Home/HomePage';
 import { InfoPage } from '../pages/Info/InfoPage';
-import { SearchedExcursionsPage } from '../pages/SearchedExcursions/SearchedExcursionsPage';
 import { ServicePage } from '../pages/Service/ServicePage';
-import { SignInPage } from '../pages/SignIn/SignInPage';
 import { RouteEntity, RouteName } from '../types/routes';
 
 export const publicRoutes: RouteEntity[] = [
-	{ path: RouteName.HOME, Component: HomePage, isPrivate: false },
-	{ path: RouteName.CATEGORIES, Component: CategoriesPage, isPrivate: false },
-	{ path: RouteName.CATEGORY, Component: CategoryPage, isPrivate: false },
-	{ path: RouteName.ABOUT, Component: AboutPage, isPrivate: false },
-	{ path: RouteName.EXCURSION, Component: ExcursionPage, isPrivate: false },
+	{
+		path: RouteName.HOME,
+		Component: withLazy(() => import('../pages/Home/HomePage')),
+		isPrivate: false,
+	},
+	{
+		path: RouteName.CATEGORIES,
+		Component: withLazy(() => import('../pages/Categories/CategoriesPage')),
+		isPrivate: false,
+	},
+	{
+		path: RouteName.CATEGORY,
+		Component: withLazy(() => import('../pages/Category/CategoryPage')),
+		isPrivate: false,
+	},
+	{
+		path: RouteName.ABOUT,
+		Component: withLazy(() => import('../pages/About/AboutPage')),
+		isPrivate: false,
+	},
+	{
+		path: RouteName.EXCURSION,
+		Component: withLazy(() => import('../pages/Excursion/ExcursionPage')),
+		isPrivate: false,
+	},
 	{
 		path: RouteName.SEARCHED_EXCURSIONS,
-		Component: SearchedExcursionsPage,
+		Component: withLazy(() =>
+			import('../pages/SearchedExcursions/SearchedExcursionsPage')
+		),
+		isPrivate: false,
+	},
+	{
+		path: RouteName.SIGN_IN,
+		Component: withLazy(() => import('../pages/SignIn/SignInPage')),
 		isPrivate: false,
 	},
 	{ path: RouteName.BLOG, Component: BlogPage, isPrivate: false },
 	{ path: RouteName.INFO, Component: InfoPage, isPrivate: false },
 	{ path: RouteName.SERVICE, Component: ServicePage, isPrivate: false },
-	{ path: RouteName.SIGN_IN, Component: SignInPage, isPrivate: false },
 ];
 
 export const privateRoutes: RouteEntity[] = [

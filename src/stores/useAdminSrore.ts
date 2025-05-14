@@ -4,7 +4,7 @@ import { UseAdminStore } from '../types/stores';
 
 export const useAdminStore = create<UseAdminStore>(set => ({
 	newExcursion: {
-		excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
+		excursionEvents: [{ id: Date.now(), time: '', name: '' }],
 	} as ExcursionWithImage,
 	setNewExcursion: updater =>
 		set(state => ({
@@ -13,7 +13,7 @@ export const useAdminStore = create<UseAdminStore>(set => ({
 		})),
 
 	editedExcursion: {
-		excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
+		excursionEvents: [{ id: Date.now(), time: '', name: '' }],
 	} as ExcursionWithImage,
 	setEditedExcursion: updater =>
 		set(state => ({

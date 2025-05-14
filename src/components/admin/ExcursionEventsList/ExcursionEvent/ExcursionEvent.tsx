@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { ExcursionEventEntity } from '../../../../types/entities';
 import { ExcursionEventInputsListProps } from '../../../../types/props';
 import { Button } from '../../../ui/Button/Button';
@@ -11,6 +12,8 @@ export const ExcursionEvent = ({
 	name,
 	setExcursion,
 }: ExcursionEventInputsListProps) => {
+	const timeInputRef = useRef<HTMLInputElement>(null);
+
 	const setExcursionEvents = (
 		updater:
 			| ExcursionEventEntity[]
@@ -23,10 +26,6 @@ export const ExcursionEvent = ({
 			excursionEvents:
 				typeof updater === 'function' ? updater(prev.excursionEvents) : updater,
 		}));
-	};
-
-	const handleClick = () => {
-		setExcursionEvents(prev => prev.filter(event => event.id !== id));
 	};
 
 	const handleChange = (
@@ -42,47 +41,71 @@ export const ExcursionEvent = ({
 	};
 
 	const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const inputValue = e.target.value;
+		const originalValue = e.target.value;
+		const previousValue = time;
 
-		if (inputValue.length > 5) return;
+		const wasDeletion = originalValue.length < previousValue.length;
 
-		let isValid = true;
+		let digits = originalValue.replace(/\D/g, '').substring(0, 4);
 
-		if (inputValue.length > 0) {
-			switch (inputValue.length) {
-				case 1:
-					isValid = /^[0-2]$/.test(inputValue);
-					break;
-				case 2:
-					isValid = /^(0[0-9]|1[0-9]|2[0-3])$/.test(inputValue);
-					break;
-				case 3:
-					isValid = /^(0[0-9]|1[0-9]|2[0-3]):$/.test(inputValue);
-					break;
-				case 4:
-					isValid = /^(0[0-9]|1[0-9]|2[0-3]):[0-5]$/.test(inputValue);
-					break;
-				case 5:
-					isValid = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(inputValue);
-					break;
-				default:
-					isValid = false;
-					break;
-			}
+		if (wasDeletion && previousValue.length === 3) {
+			digits = digits.substring(0, 1);
 		}
 
-		if (!isValid) return;
+		const firstDigit = digits.charAt(0);
+		const thirdDigit = digits.charAt(2);
+		if (
+			(digits.length === 1 && firstDigit >= '3' && firstDigit <= '9') ||
+			(digits.length === 3 && thirdDigit >= '6' && thirdDigit <= '9')
+		) {
+			return;
+		}
 
-		handleChange('time', e);
+		const hours = digits.substring(0, 2);
+		const minutes = digits.substring(2, 4);
+
+		const hourNum = parseInt(hours, 10);
+		const minuteNum = parseInt(minutes, 10);
+
+		const isValidHours =
+			hours.length === 0 || (!isNaN(hourNum) && hourNum >= 0 && hourNum <= 23);
+		const isValidMinutes =
+			minutes.length === 0 ||
+			(!isNaN(minuteNum) && minuteNum >= 0 && minuteNum <= 59);
+
+		if (!isValidHours || (minutes.length > 0 && !isValidMinutes)) {
+			return;
+		}
+
+		let formattedValue = digits;
+
+		if (digits.length >= 2) {
+			formattedValue = digits.substring(0, 2) + ':' + digits.substring(2);
+		} else if (digits.length === 0) {
+			formattedValue = '';
+		}
+
+		handleChange('time', {
+			...e,
+			target: {
+				...e.target,
+				value: formattedValue,
+			},
+		});
 	};
 
 	const handleNameChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		handleChange('name', e);
 	};
 
+	const handleClick = () => {
+		setExcursionEvents(prev => prev.filter(event => event.id !== id));
+	};
+
 	return (
 		<li className={styles.excursionEvent}>
 			<TextInput
+				ref={timeInputRef}
 				className={styles.timeInput}
 				value={time}
 				onChange={handleTimeChange}

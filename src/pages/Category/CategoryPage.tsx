@@ -11,7 +11,7 @@ import { useNavHistory } from '../../hooks/useNavHistory';
 import { RouteBase } from '../../types/routes';
 import styles from './CategoryPage.module.css';
 
-export const CategoryPage = () => {
+const CategoryPage = () => {
 	const navigate = useNavigate();
 	const navHistory = useNavHistory();
 
@@ -45,3 +45,5 @@ export const CategoryPage = () => {
 		</Page>
 	);
 };
+
+export default CategoryPage;

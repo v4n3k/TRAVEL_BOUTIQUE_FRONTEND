@@ -7,6 +7,7 @@ import { Expandable } from '../../ui/Expandable/Expandable';
 import { SearchableList } from '../ui/SearchableList/SearchableList';
 
 export const SearchableCategories = <T extends Function>({
+	title,
 	categories,
 	searchQuery,
 	setSearchQuery,
@@ -26,7 +27,7 @@ export const SearchableCategories = <T extends Function>({
 
 	const searchableList = (
 		<SearchableList
-			title='Предпросмотр карточек категорий'
+			title={title}
 			buttonText='Добавить категорию'
 			searchQuery={searchQuery}
 			setSearchQuery={setSearchQuery}

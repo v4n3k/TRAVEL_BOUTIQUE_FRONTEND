@@ -3,13 +3,13 @@ import { categoryApi } from '../../api/category/categoryApi';
 import { Categories } from '../../components/category/Categories/Categories';
 import { Page } from '../../components/ui/Page/Page';
 
-export const CategoriesPage = () => {
+const CategoriesPage = () => {
 	const { data: categories } = useQuery({
 		queryKey: ['categories'],
 		queryFn: () => categoryApi.getAll(),
 	});
 
-	if (!categories) return <></>;
+	if (!categories) return;
 
 	return (
 		<Page>
@@ -36,3 +36,5 @@ export const CategoriesPage = () => {
 		</Page>
 	);
 };
+
+export default CategoriesPage;

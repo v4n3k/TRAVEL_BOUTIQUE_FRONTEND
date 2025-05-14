@@ -182,14 +182,14 @@ const AdminEditExcursionPage = () => {
 			...prev,
 			excursionEvents: [
 				...prev.excursionEvents,
-				{ id: Date.now(), time: '00:00', name: '' },
+				{ id: Date.now(), time: '', name: '' },
 			],
 		}));
 	};
 
 	const handleClearExcursion = () => {
 		setEditedExcursion({
-			excursionEvents: [{ id: Date.now(), time: '00:00', name: '' }],
+			excursionEvents: [{ id: Date.now(), time: '', name: '' }],
 			name: '',
 			personsAmount: 0,
 			accompanistsAmount: 0,

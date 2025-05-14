@@ -9,7 +9,7 @@ import { Title } from '../../components/ui/Title/Title';
 import { useSearchStore } from '../../stores/useSearchStore';
 import { RouteBase } from '../../types/routes';
 
-export const SearchedExcursionsPage = () => {
+const SearchedExcursionsPage = () => {
 	const navigate = useNavigate();
 	const searchQuery = useSearchStore(state => state.searchQuery);
 
@@ -49,3 +49,5 @@ export const SearchedExcursionsPage = () => {
 		</Page>
 	);
 };
+
+export default SearchedExcursionsPage;

@@ -20,7 +20,7 @@ import { useAdminStore } from '../../stores/useAdminSrore';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
-export const ExcursionPage = () => {
+const ExcursionPage = () => {
 	const { id } = useParams();
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
@@ -149,3 +149,5 @@ export const ExcursionPage = () => {
 		</Page>
 	);
 };
+
+export default ExcursionPage;

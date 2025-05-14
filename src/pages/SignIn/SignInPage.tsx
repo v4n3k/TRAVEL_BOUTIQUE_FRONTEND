@@ -9,9 +9,8 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconRotatedLogo } from '../../icons/IconRotatedLogo';
 import styles from './SignInPage.module.css';
 
-export const SignInPage = () => {
+const SignInPage = () => {
 	const [credentials, setCredentials] = useState({ login: '', password: '' });
-
 	const { signIn } = useSignIn();
 	const isLargeScreen = useMediaQuery('(min-width: 1481px)');
 
@@ -113,3 +112,5 @@ export const SignInPage = () => {
 		</Page>
 	);
 };
+
+export default SignInPage;

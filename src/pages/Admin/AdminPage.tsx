@@ -70,9 +70,7 @@ const AdminPage = () => {
 		enabled: !!debWeekendsSearchQuery,
 	});
 
-	if (isLoading) return <></>;
-
-	if (!initialCategories) return <></>;
+	if (isLoading || !initialCategories) return;
 
 	const handleNavigate = () => {
 		navigate(RouteName.ADMIN_CREATE_NEW_CATEGORY);
@@ -109,6 +107,7 @@ const AdminPage = () => {
 
 			<div className={styles.container}>
 				<SearchableCategories
+					title='Города'
 					categories={[...(displayedCitiesCategories || [])]}
 					searchQuery={citiesSearchQuery}
 					setSearchQuery={setCitiesSearchQuery}
@@ -123,6 +122,7 @@ const AdminPage = () => {
 				/>
 
 				<SearchableCategories
+					title='Профориентационные экскурсии'
 					categories={displayedCareerGuidanceCategories || []}
 					searchQuery={careerGuidanceSearchQuery}
 					setSearchQuery={setCareerGuidanceSearchQuery}
@@ -132,6 +132,7 @@ const AdminPage = () => {
 				/>
 
 				<SearchableCategories
+					title='Туры выходного дня'
 					categories={[...(displayedWeekendsCategories || [])]}
 					searchQuery={weekendsSearchQuery}
 					setSearchQuery={setWeekendsSearchQuery}

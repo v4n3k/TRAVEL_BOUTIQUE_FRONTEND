@@ -6,7 +6,7 @@ import { TransportRules } from '../../blocks/about/TransportRules/TransportRules
 import { Reviews } from '../../blocks/home/Reviews/Reviews';
 import { Page } from '../../components/ui/Page/Page';
 
-export const AboutPage = () => {
+const AboutPage = () => {
 	return (
 		<Page>
 			<About />
@@ -18,3 +18,5 @@ export const AboutPage = () => {
 		</Page>
 	);
 };
+
+export default AboutPage;

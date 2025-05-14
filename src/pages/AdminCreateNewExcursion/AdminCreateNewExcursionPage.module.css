@@ -88,6 +88,7 @@
 	align-items: center;
 	gap: 12px;
 	margin-left: 48px;
+	padding-right: 4px;
 	height: fit-content;
 	font-style: italic;
 }

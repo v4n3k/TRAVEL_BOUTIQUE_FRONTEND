@@ -245,6 +245,7 @@ export interface SearchableCategoriesProps<T>
 	extends Pick<CategoriesProps, 'withName' | 'withIcon'>,
 		Pick<ImageCardProps, 'nameSize'>,
 		Pick<SearchableListProps<T>, 'searchQuery' | 'setSearchQuery'> {
+	title: string;
 	categories: CategoryEntity[];
 	expandable?: boolean;
 	collapsedHeight?: number;
