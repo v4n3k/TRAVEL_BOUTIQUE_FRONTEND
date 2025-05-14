@@ -87,3 +87,9 @@ export interface SearchTipEntity {
 	id: number;
 	name: string;
 }
+
+export interface FeedbackEntity {
+	name: string;
+	phone: string;
+	comment: string;
+}

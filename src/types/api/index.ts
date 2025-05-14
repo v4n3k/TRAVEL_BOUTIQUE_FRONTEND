@@ -4,6 +4,7 @@ import {
 	CategoryType,
 	ExcursionEntity,
 	ExcursionWithCity,
+	FeedbackEntity,
 	SearchTipEntity,
 	TagEntity,
 } from '../entities';
@@ -44,6 +45,10 @@ export interface AuthApi {
 	signIn: (credentials: SignInCredentials) => OptionalPromise<signInResponse>;
 	signOut: () => Promise<void>;
 	checkIsAuth: () => OptionalPromise<boolean>;
+}
+
+export interface FeedbackApi {
+	sendToTelegramBot: (feedback: FeedbackEntity) => Promise<void>;
 }
 
 export interface SignInCredentials {
