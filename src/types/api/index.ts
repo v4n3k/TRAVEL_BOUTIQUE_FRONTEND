@@ -59,4 +59,6 @@ export interface SignInCredentials {
 export interface signInResponse {
 	message: string;
 	login: string;
+	error: string;
+	errorRu: string;
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../components/ui/Button/Button';
 import { Form } from '../../components/ui/Form/Form';
 import { Page } from '../../components/ui/Page/Page';
@@ -11,7 +11,7 @@ import styles from './SignInPage.module.css';
 
 const SignInPage = () => {
 	const [credentials, setCredentials] = useState({ login: '', password: '' });
-	const { signIn } = useSignIn();
+	const { signIn, isError, errorMessage } = useSignIn();
 	const isLargeScreen = useMediaQuery('(min-width: 1481px)');
 
 	const { login, password } = credentials;
@@ -28,6 +28,10 @@ const SignInPage = () => {
 		signIn(credentials);
 	};
 
+	useEffect(() => {
+		console.log(isError, errorMessage);
+	}, [isError, errorMessage]);
+
 	return (
 		<Page className={styles.signInPage}>
 			<Section className={styles.signInSection}>
@@ -35,6 +39,9 @@ const SignInPage = () => {
 					<div className={styles.formWrapper}>
 						<h2 className={styles.title}>Вход</h2>
 						<Form className={styles.form}>
+							{isError && (
+								<p className={styles.error}>Ошибка: {errorMessage}</p>
+							)}
 							<div className={styles.inputsContainer}>
 								<TextInput
 									className={styles.input}

@@ -1,9 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../../api/auth/authApi';
 import { useAuthStore } from '../../stores/useAuthStore';
-import { SignInCredentials } from '../../types/api';
+import { SignInCredentials, signInResponse } from '../../types/api';
 import { RouteName } from '../../types/routes';
 
 export const useSignIn = () => {
@@ -27,9 +28,9 @@ export const useSignIn = () => {
 			}
 		},
 
-		onError: error => {
-			console.error('Sign-in failed:', error);
-			setErrorMessage('Invalid login or password');
+		onError: (error: AxiosError<signInResponse>) => {
+			console.log('Sign-in failed:', error);
+			setErrorMessage(error?.response?.data?.errorRu || 'Неизвестная ошибка');
 		},
 	});
 
