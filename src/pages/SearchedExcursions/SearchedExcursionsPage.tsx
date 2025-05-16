@@ -21,6 +21,7 @@ const SearchedExcursionsPage = () => {
 	const handleClick = (id: number, categoryName: string) => {
 		localStorage.setItem('categoryName', categoryName);
 		navigate(`${RouteBase.EXCURSION}/${id}`);
+		console.log(`${RouteBase.EXCURSION}/${id}`);
 	};
 
 	return (

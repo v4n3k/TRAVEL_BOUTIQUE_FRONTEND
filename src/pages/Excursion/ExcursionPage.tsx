@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
 import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
+import { ExcursionEventsList } from '../../components/excursion/ExcursionEventsList/ExcursionEventsList';
 import { Price } from '../../components/excursion/Price/Price';
 import { Field } from '../../components/excursion/ui/Field/Field';
 import { ManagerButton } from '../../components/excursion/ui/ManagerButton/ManagerButton';
@@ -16,7 +16,6 @@ import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useModal } from '../../hooks/useModal';
 import { useNavHistory } from '../../hooks/useNavHistory';
-import { useAdminStore } from '../../stores/useAdminSrore';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
@@ -24,7 +23,6 @@ const ExcursionPage = () => {
 	const { id } = useParams();
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
-	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
 	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
@@ -116,10 +114,7 @@ const ExcursionPage = () => {
 						</div>
 					)}
 
-					<ExcursionEventsList
-						excursionEvents={excursionEvents}
-						setExcursion={setEditedExcursion}
-					/>
+					<ExcursionEventsList excursionEvents={excursionEvents} />
 				</div>
 
 				<ManagerButton
