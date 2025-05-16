@@ -9,6 +9,7 @@ import { Reviews } from '../../blocks/home/Reviews/Reviews';
 import { SchoolExcursions } from '../../blocks/home/SchoolExcursions/SchoolExcursions';
 import { Button } from '../../components/ui/Button/Button';
 import { IconButton } from '../../components/ui/IconButton/IconButton';
+import { LoadingBoundary } from '../../components/ui/LoadingBoundary/LoadingBoundary';
 import { Page } from '../../components/ui/Page/Page';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
@@ -30,32 +31,34 @@ const HomePage = () => {
 	};
 
 	return (
-		<Page className={styles.homePage}>
-			<SchoolExcursions ref={feedbackFormRef} />
-			<Excursions />
-			<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
-			<Advantages />
-			<ChildrenAmount />
-			<PaymentMethod />
-			<Reviews />
-			<div className={styles.chooseButtonWrapper}>
-				<Button
-					className={styles.chooseButton}
-					backgroundColor='blue-500'
-					cornerIcon={!isIconHidden && <IconArrowTopRight fill='#BDD4E2' />}
-					onClick={handleClick}
-				>
-					Выбрать экскурсию
-				</Button>
-			</div>
-			<div className={styles.iconPhoneWrapper}>
-				<IconButton
-					className={styles.iconButton}
-					Icon={<IconPhone />}
-					onClick={handleOpenWhatsApp}
-				/>
-			</div>
-		</Page>
+		<LoadingBoundary>
+			<Page className={styles.homePage}>
+				<SchoolExcursions ref={feedbackFormRef} />
+				<Excursions />
+				<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
+				<Advantages />
+				<ChildrenAmount />
+				<PaymentMethod />
+				<Reviews />
+				<div className={styles.chooseButtonWrapper}>
+					<Button
+						className={styles.chooseButton}
+						backgroundColor='blue-500'
+						cornerIcon={!isIconHidden && <IconArrowTopRight fill='#BDD4E2' />}
+						onClick={handleClick}
+					>
+						Выбрать экскурсию
+					</Button>
+				</div>
+				<div className={styles.iconPhoneWrapper}>
+					<IconButton
+						className={styles.iconButton}
+						Icon={<IconPhone />}
+						onClick={handleOpenWhatsApp}
+					/>
+				</div>
+			</Page>
+		</LoadingBoundary>
 	);
 };
 

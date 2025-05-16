@@ -146,7 +146,7 @@ export interface PriceProps extends ComponentProps<'div'> {
 export interface ManagerButtonProps extends ButtonProps {}
 
 export interface TagsListProps {
-	tags: TagEntity[];
+	tags: TagEntity[] | undefined;
 	rowsAmount?: number;
 	onTagClick?: (city: string) => void;
 	size?: 's' | 'm';
@@ -320,7 +320,7 @@ export interface CircularLoaderProps {
 	className?: string;
 }
 
-export interface LazyComponentProps extends React.ComponentProps<'div'> {}
+export interface LoadingBoundaryProps extends React.ComponentProps<'div'> {}
 
 export interface IconSearchProps {
 	resizable?: boolean;

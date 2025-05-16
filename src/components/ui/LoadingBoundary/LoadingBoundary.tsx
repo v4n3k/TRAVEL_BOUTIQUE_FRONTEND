@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
-import { LazyComponentProps } from '../../../types/props';
+import { LoadingBoundaryProps } from '../../../types/props';
 import { CircularLoader } from '../CircularLoader/CircularLoader';
 
-export const LazyComponent = ({ children }: LazyComponentProps) => {
+export const LoadingBoundary = ({ children }: LoadingBoundaryProps) => {
 	return <Suspense fallback={<CircularLoader />}>{children}</Suspense>;
 };

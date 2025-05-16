@@ -1,14 +1,14 @@
 import { ComponentType, lazy } from 'react';
-import { LazyComponent } from '../components/ui/LazyComponent/LazyComponent';
+import { LoadingBoundary } from '../components/ui/LoadingBoundary/LoadingBoundary';
 
 export const withLazy = (componentPath: string): ComponentType => {
 	const LazyWrappedComponent = () => {
 		const Component = lazy(() => import(componentPath));
 
 		return (
-			<LazyComponent>
+			<LoadingBoundary>
 				<Component />
-			</LazyComponent>
+			</LoadingBoundary>
 		);
 	};
 

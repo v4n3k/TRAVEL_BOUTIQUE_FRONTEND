@@ -58,8 +58,6 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 
 	const tagsListRows = getTagsListRows();
 
-	if (!cities) return;
-
 	return (
 		<Section>
 			<h1 className={styles.title}>

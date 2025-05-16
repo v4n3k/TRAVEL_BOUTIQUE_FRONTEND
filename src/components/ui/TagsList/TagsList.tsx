@@ -45,7 +45,7 @@ export const TagsList = ({
 			}}
 			ref={tagsListRef}
 		>
-			{tags.map(tag => (
+			{tags?.map(tag => (
 				<Tag
 					key={tag.id}
 					size={size}
