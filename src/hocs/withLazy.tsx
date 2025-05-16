@@ -1,11 +1,9 @@
 import { ComponentType, lazy } from 'react';
 import { LazyComponent } from '../components/ui/LazyComponent/LazyComponent';
 
-export const withLazy = (
-	loader: () => Promise<{ default: ComponentType<any> }>
-): ComponentType<any> => {
-	const LazyWrappedComponent: ComponentType<any> = () => {
-		const Component = lazy(loader);
+export const withLazy = (componentPath: string): ComponentType => {
+	const LazyWrappedComponent = () => {
+		const Component = lazy(() => import(componentPath));
 
 		return (
 			<LazyComponent>
@@ -13,5 +11,6 @@ export const withLazy = (
 			</LazyComponent>
 		);
 	};
+
 	return LazyWrappedComponent;
 };
