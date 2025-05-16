@@ -4,6 +4,7 @@ import HomePage from '../pages/Home/HomePage';
 import { InfoPage } from '../pages/Info/InfoPage';
 import { ServicePage } from '../pages/Service/ServicePage';
 import { RouteEntity, RouteName } from '../types/routes';
+
 export const publicRoutes: RouteEntity[] = [
 	{
 		path: RouteName.HOME,
@@ -22,7 +23,7 @@ export const publicRoutes: RouteEntity[] = [
 	},
 	{
 		path: RouteName.ABOUT,
-		Component: withLazy('../pages/About/boutPage'),
+		Component: withLazy('../pages/About/AboutPage'),
 		isPrivate: false,
 	},
 	{
