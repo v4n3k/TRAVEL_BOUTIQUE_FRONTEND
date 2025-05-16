@@ -1,13 +1,13 @@
 import { withLazy } from '../hocs/withLazy';
 import { BlogPage } from '../pages/Blog/BlogPage';
+import HomePage from '../pages/Home/HomePage';
 import { InfoPage } from '../pages/Info/InfoPage';
 import { ServicePage } from '../pages/Service/ServicePage';
 import { RouteEntity, RouteName } from '../types/routes';
-
 export const publicRoutes: RouteEntity[] = [
 	{
 		path: RouteName.HOME,
-		Component: withLazy('../pages/Home/HomePage'),
+		Component: HomePage,
 		isPrivate: false,
 	},
 	{
