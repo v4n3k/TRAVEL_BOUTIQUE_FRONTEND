@@ -71,6 +71,7 @@
 	padding: 16px;
 	border-radius: 20px;
 	background-color: var(--white-50);
+	margin-bottom: 24px;
 }
 
 .descriptionContainer h3 {
@@ -153,6 +154,10 @@
 	}
 
 	.priceContainer {
+		margin-bottom: 32px;
+	}
+
+	.descriptionContainer {
 		margin-bottom: 32px;
 	}
 
@@ -260,6 +265,10 @@
 
 	.info {
 		margin-bottom: 40px;
+	}
+
+	.descriptionContainer {
+		margin-bottom: 16px;
 	}
 
 	.price {

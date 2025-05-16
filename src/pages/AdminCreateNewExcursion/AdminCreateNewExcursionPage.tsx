@@ -44,7 +44,6 @@ const AdminCreateNewExcursionPage = () => {
 		mutationFn: (formData: FormData) => excursionApi.create(formData),
 
 		onSuccess: () => {
-			handleDeleteExcursion();
 			navigate(RouteName.ADMIN_CATEGORY);
 		},
 

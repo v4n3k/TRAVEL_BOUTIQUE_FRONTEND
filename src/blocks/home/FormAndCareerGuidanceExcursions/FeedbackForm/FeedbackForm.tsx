@@ -42,7 +42,10 @@ export const FeedbackForm = ({ ref }: FeedbackFormProps) => {
 		mutationFn: (feedback: FeedbackEntity) =>
 			feedbackApi.sendToTelegramBot(feedback),
 
-		onSuccess: () => console.log('Feedback sent successfully'),
+		onSuccess: () => {
+			console.log('Feedback sent successfully');
+			setFeedback({ name: '', phone: '', comment: '' });
+		},
 
 		onError: (error: unknown) => console.error(error),
 	});
