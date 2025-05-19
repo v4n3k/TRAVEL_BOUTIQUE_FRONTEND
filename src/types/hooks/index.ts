@@ -18,3 +18,7 @@ export interface UseCopyToClipboard {
 	error: Error | null;
 	isCopied: boolean;
 }
+
+export interface FormFields {
+	[key: string]: string;
+}

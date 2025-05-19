@@ -15,6 +15,7 @@ export const Button = ({
 	rightIcon,
 	cornerIcon,
 	gap = 20,
+	disabled,
 	ref,
 	...props
 }: ButtonProps) => {
@@ -62,21 +63,31 @@ export const Button = ({
 
 	return (
 		<div
-			className={cn(styles.buttonWrapper, rootClassName)}
+			className={cn(
+				styles.buttonWrapper,
+				rootClassName,
+				disabled ? styles.disabled : ''
+			)}
 			style={{
 				width: fullWidth ? '100%' : 'fit-content',
 				...iconGap,
 			}}
 		>
 			<button
-				className={cn(styles.button, className)}
+				className={cn(
+					styles.button,
+					className,
+					disabled ? styles.disabled : ''
+				)}
 				style={{
 					backgroundColor: `var(--${backgroundColor})`,
 					color: `var(--${color})`,
 					border: withBorder ? '0.2px solid var(--blue-500)' : 'none',
+					cursor: disabled ? 'not-allowed' : 'pointer',
 				}}
 				ref={buttonRef}
 				onMouseDown={handleMouseDown}
+				disabled={disabled}
 				{...props}
 			>
 				<div className={styles.rippleContainer} />
