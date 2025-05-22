@@ -59,11 +59,10 @@ export const NumberInput = ({
 
 		setInputValue(newValue);
 
-		onChange &&
-			onChange({
-				...e,
-				target: { ...e.target, value: newValue },
-			});
+		onChange?.({
+			...e,
+			target: { ...e.target, value: newValue },
+		});
 	};
 
 	const style = {

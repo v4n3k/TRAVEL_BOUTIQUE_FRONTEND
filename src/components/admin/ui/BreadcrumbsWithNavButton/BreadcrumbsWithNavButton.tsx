@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-
 import { useNavHistory } from '../../../../hooks/useNavHistory';
 import { IconArrowLeft } from '../../../../icons/IconArrowLeft';
 import { BreadcrumbsWithNavButtonProps } from '../../../../types/props';

@@ -14,7 +14,7 @@ export const useFormButtonDisabled = (formFields: FormFields): boolean => {
 		} else {
 			setMounted(true);
 		}
-	}, [formFields]);
+	}, [formFields, mounted]);
 
 	return disabled;
 };

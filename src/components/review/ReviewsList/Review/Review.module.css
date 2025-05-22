@@ -21,25 +21,3 @@
 	font-weight: 400;
 	text-wrap: wrap;
 }
-
-/* @media (max-width: 600px) {
-	.review {
-		max-width: 320px;
-		min-width: 320px;
-	}
-} */
-/* 
-@media (max-width: 470px) {
-	.review {
-		max-width: 295px;
-		min-width: 295px;
-	}
-} */
-
-/* @media (max-width: 440px) {
-	.review {
-		max-width: 100%;
-		min-width: auto;
-		width: 100%;
-	}
-} */

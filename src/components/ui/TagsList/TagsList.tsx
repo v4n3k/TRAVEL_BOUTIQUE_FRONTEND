@@ -40,8 +40,6 @@ export const TagsList = ({
 			className={styles.tagsList}
 			style={{
 				maxHeight: tagHeight > 0 ? `${maxHeight}px` : 'none',
-				overflow: 'hidden',
-				cursor: onTagClick ? 'pointer' : 'default',
 			}}
 			ref={tagsListRef}
 		>
@@ -50,7 +48,7 @@ export const TagsList = ({
 					key={tag.id}
 					size={size}
 					children={tag.name}
-					onClick={() => onTagClick?.(tag.name)}
+					onClick={() => onTagClick(tag.name)}
 				/>
 			))}
 		</ul>

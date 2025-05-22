@@ -4,8 +4,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import { IconArrow } from '../../../icons/IconArrow';
-import { cn } from '../../../utils/cn';
 import { SliderArrowProps } from '../../../types/props';
+import { cn } from '../../../utils/cn';
 import { Expandable } from '../../ui/Expandable/Expandable';
 import { Review } from './Review/Review';
 import styles from './ReviewsList.module.css';
@@ -115,6 +115,7 @@ export const ReviewsList = () => {
 	};
 
 	const containerStyle = { '--min-height': minHeight } as React.CSSProperties;
+
 	return (
 		<>
 			{isSlider ? (

@@ -9,13 +9,13 @@ import { Main } from './Main/Main';
 export const Layout = ({ children }: LayoutProps) => {
 	const { pathname } = useLocation();
 
-	const isAuthPage = pathname.includes(RouteName.SIGN_IN);
+	const isSignInPage = pathname.includes(RouteName.SIGN_IN);
 
 	return (
 		<div className={styles.layout}>
-			{!isAuthPage && <Header />}
+			{!isSignInPage && <Header />}
 			<Main>{children}</Main>
-			{!isAuthPage && <Footer />}
+			{!isSignInPage && <Footer />}
 		</div>
 	);
 };

@@ -131,7 +131,7 @@ export interface ExcursionEventsInputsListProps
 	) => void;
 }
 
-export interface ExcursionEventInputsListProps extends ExcursionEventEntity {
+export interface ExcursionEventInputsProps extends ExcursionEventEntity {
 	setExcursion: (
 		updater:
 			| ExcursionWithImage
@@ -148,7 +148,7 @@ export interface ManagerButtonProps extends ButtonProps {}
 export interface TagsListProps {
 	tags: TagEntity[] | undefined;
 	rowsAmount?: number;
-	onTagClick?: (city: string) => void;
+	onTagClick: (city: string) => void;
 	size?: 's' | 'm';
 }
 

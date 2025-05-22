@@ -1,17 +1,17 @@
 import React, { useRef } from 'react';
 import { ExcursionEventEntity } from '../../../../types/entities';
-import { ExcursionEventInputsListProps } from '../../../../types/props';
+import { ExcursionEventInputsProps } from '../../../../types/props';
 import { Button } from '../../../ui/Button/Button';
 import { TextInput } from '../../../ui/TextInput/TextInput';
 import { TextArea } from '../../ui/TextArea/TextArea';
 import styles from './ExcursionEvent.module.css';
 
-export const ExcursionEvent = ({
+export const ExcursionEventInputs = ({
 	id,
 	time,
 	name,
 	setExcursion,
-}: ExcursionEventInputsListProps) => {
+}: ExcursionEventInputsProps) => {
 	const timeInputRef = useRef<HTMLInputElement>(null);
 
 	const setExcursionEvents = (

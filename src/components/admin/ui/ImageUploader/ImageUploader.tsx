@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { IconImage } from '../../../../icons/IconImage';
 import { ImageUploaderProps } from '../../../../types/props';
 import styles from './ImageUploader.module.css';
@@ -13,9 +13,7 @@ export const ImageUploader = ({
 		initialPreviewUrl || null
 	);
 
-	const [inputId] = useState(
-		`image-upload-${Math.random().toString(36).substring(2, 9)}`
-	);
+	const inputId = useId();
 
 	const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0] || null;
@@ -45,7 +43,7 @@ export const ImageUploader = ({
 				reader.readAsDataURL(selectedImage);
 			}
 		} else if (!selectedImage) {
-			setPreviewUrl(initialPreviewUrl || initialPreviewUrl || null);
+			setPreviewUrl(initialPreviewUrl || null);
 		}
 	}, [selectedImage, initialPreviewUrl, initialPreviewUrl]);
 

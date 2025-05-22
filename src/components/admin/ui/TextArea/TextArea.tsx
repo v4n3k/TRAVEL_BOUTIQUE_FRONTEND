@@ -36,7 +36,7 @@ export const TextArea = ({
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		onChange && onChange(e);
+		onChange?.(e);
 		adjustHeight();
 	};
 

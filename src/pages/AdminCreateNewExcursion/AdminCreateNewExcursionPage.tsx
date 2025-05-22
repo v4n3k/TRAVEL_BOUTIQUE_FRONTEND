@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { ExcursionEventsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
+import { ExcursionEventInputsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
 import { InputWrapper } from '../../components/admin/ui/InputWrapper/InputWrapper';
@@ -231,7 +231,7 @@ const AdminCreateNewExcursionPage = () => {
 							</InputWrapper>
 
 							<div className={styles.eventsContainer}>
-								<ExcursionEventsList
+								<ExcursionEventInputsList
 									setExcursion={setNewExcursion}
 									excursionEvents={excursionEvents}
 								/>

@@ -235,7 +235,7 @@ export const Header = () => {
 				</nav>
 			</div>
 
-			<div className={styles.searchWrapper} style={{ position: 'relative' }}>
+			<div className={styles.searchWrapper}>
 				<div className={styles.search}>
 					<IconSearch />
 
