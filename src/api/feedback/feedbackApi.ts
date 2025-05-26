@@ -4,7 +4,7 @@ import { api } from '../api';
 
 export const feedbackApi: FeedbackApi = {
 	async sendToTelegramBot(message) {
-		await handleApiResponse(
+		return await handleApiResponse(
 			api.post('/feedback', message),
 			'Failed to send feedback'
 		);

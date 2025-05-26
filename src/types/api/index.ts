@@ -62,3 +62,17 @@ export interface signInResponse {
 	error: string;
 	errorRu: string;
 }
+
+export interface PaymentApi {
+	create: (paymentData: PaymentData) => Promise<CreatePaymentResponse>;
+}
+
+interface PaymentData {
+	amount: number;
+	excursionId: number;
+	excursionKey: string;
+}
+
+interface CreatePaymentResponse {
+	confirmationUrl: string;
+}

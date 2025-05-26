@@ -1,6 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
+import { paymentApi } from '../../api/payment/paymentApi';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
 import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
@@ -20,13 +21,28 @@ import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 const ExcursionPage = () => {
-	const { id } = useParams();
+	const id = Number(useParams().id);
 	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
-		queryFn: () => excursionApi.getById(Number(id)),
+		queryFn: () => excursionApi.getById(id),
+	});
+
+	const mutation = useMutation({
+		mutationFn: () =>
+			paymentApi.create({
+				amount: price,
+				excursionId: id,
+				excursionKey: key,
+			}),
+
+		onSuccess: data => {
+			if (data.confirmationUrl) {
+				window.open(data.confirmationUrl);
+			}
+		},
 	});
 
 	if (isLoading || !excursion) return <></>;
@@ -41,6 +57,7 @@ const ExcursionPage = () => {
 	}
 
 	const {
+		key,
 		imgSrc,
 		name,
 		personsAmount,
@@ -53,6 +70,7 @@ const ExcursionPage = () => {
 	const formattedPrice = formatNumber(price);
 
 	const handlePay = () => {
+		mutation.mutate();
 		closeModal();
 	};
 

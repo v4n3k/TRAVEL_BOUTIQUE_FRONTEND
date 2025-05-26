@@ -3,19 +3,6 @@
 	flex-direction: column;
 	gap: 16px;
 	padding: 16px;
-	margin-top: 24px;
 	border-radius: 20px;
 	background-color: var(--white-50);
-}
-
-@media (max-width: 1480px) {
-	.excursionEventsList {
-		margin-top: 32px;
-	}
-}
-
-@media (max-width: 440px) {
-	.excursionEventsList {
-		margin-top: 16px;
-	}
 }
