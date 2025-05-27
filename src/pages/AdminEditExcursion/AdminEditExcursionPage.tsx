@@ -20,7 +20,6 @@ import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
-import { useNavHistory } from '../../hooks/useNavHistory';
 import { IconCopy } from '../../icons/IconCopy';
 import { IconKey } from '../../icons/IconKey';
 import { useAdminStore } from '../../stores/useAdminSrore';
@@ -37,7 +36,6 @@ const AdminEditExcursionPage = () => {
 
 	const queryClient = useQueryClient();
 	const id = Number(useParams().id);
-	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
 	const { copy } = useCopyToClipboard();
@@ -204,7 +202,7 @@ const AdminEditExcursionPage = () => {
 
 	return (
 		<Page>
-			<BreadcrumbsWithNavButton crumbs={navHistory} />
+			<BreadcrumbsWithNavButton />
 			<Section className={styles.createContainer}>
 				<Form className={styles.form}>
 					<div className={styles.imageUploaderAndButton}>

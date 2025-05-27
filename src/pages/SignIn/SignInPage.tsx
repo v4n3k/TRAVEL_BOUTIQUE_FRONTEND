@@ -5,16 +5,14 @@ import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useSignIn } from '../../hooks/api/useSignIn';
-import { useFormButtonDisabled } from '../../hooks/useFormButtonDisabled';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconRotatedLogo } from '../../icons/IconRotatedLogo';
 import styles from './SignInPage.module.css';
 
 const SignInPage = () => {
 	const [credentials, setCredentials] = useState({ login: '', password: '' });
-	const { signIn, isError, errorMessage } = useSignIn();
-	const disabled = useFormButtonDisabled(credentials);
 	const isLargeScreen = useMediaQuery('(min-width: 1481px)');
+	const { signIn, isPending, isError, errorMessage } = useSignIn();
 
 	const { login, password } = credentials;
 
@@ -64,7 +62,7 @@ const SignInPage = () => {
 								rootClassName={styles.buttonRoot}
 								backgroundColor='blue-500'
 								onClick={handleSignIn}
-								disabled={disabled}
+								disabled={isPending}
 							>
 								Войти
 							</Button>

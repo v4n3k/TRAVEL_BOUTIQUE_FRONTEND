@@ -7,7 +7,6 @@ import {
 	SVGProps,
 } from 'react';
 import {
-	BreadcrumbEntity,
 	CategoryEntity,
 	ExcursionEntity,
 	ExcursionEventEntity,
@@ -191,13 +190,9 @@ export interface TitledModalProps extends ModalProps {
 
 export interface ModalButtonProps extends ButtonProps {}
 
-export interface BreadcrumbsProps extends ComponentProps<'ul'> {
-	crumbs: BreadcrumbEntity[];
-}
+export interface BreadcrumbsProps extends ComponentProps<'ul'> {}
 
-export interface BreadcrumbsWithNavButtonProps extends ComponentProps<'div'> {
-	crumbs: BreadcrumbEntity[];
-}
+export interface BreadcrumbsWithNavButtonProps extends ComponentProps<'div'> {}
 
 export interface TitleProps extends ComponentProps<'h2'> {
 	as?: 'h1' | 'h2' | 'h3';

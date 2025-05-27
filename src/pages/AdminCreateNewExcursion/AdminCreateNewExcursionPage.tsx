@@ -18,7 +18,6 @@ import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useModal } from '../../hooks/useModal';
-import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import {
 	ExcursionBaseWithImage,
@@ -30,7 +29,6 @@ import styles from './AdminCreateNewExcursionPage.module.css';
 
 const AdminCreateNewExcursionPage = () => {
 	const navigate = useNavigate();
-	const navHistory = useNavHistory();
 
 	const newExcursion = useAdminStore(state => state.newExcursion);
 	const setNewExcursion = useAdminStore(state => state.setNewExcursion);
@@ -145,7 +143,7 @@ const AdminCreateNewExcursionPage = () => {
 
 	return (
 		<Page>
-			<BreadcrumbsWithNavButton crumbs={navHistory} />
+			<BreadcrumbsWithNavButton />
 			<Section className={styles.createContainer}>
 				<Form className={styles.form}>
 					<div className={styles.imageUploaderAndButton}>

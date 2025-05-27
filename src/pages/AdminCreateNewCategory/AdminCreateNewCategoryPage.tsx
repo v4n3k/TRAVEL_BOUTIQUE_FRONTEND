@@ -11,7 +11,6 @@ import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useModal } from '../../hooks/useModal';
-import { useNavHistory } from '../../hooks/useNavHistory';
 import { useAdminStore } from '../../stores/useAdminSrore';
 import { CategoryType, ImageEntity } from '../../types/entities';
 import { RouteName } from '../../types/routes';
@@ -19,7 +18,6 @@ import styles from './AdminCreateNewCategory.module.css';
 
 const AdminCreateNewCategoryPage = () => {
 	const navigate = useNavigate();
-	const navHistory = useNavHistory();
 
 	const newCategory = useAdminStore(state => state.newCategory);
 	const setNewCategory = useAdminStore(state => state.setNewCategory);
@@ -68,7 +66,7 @@ const AdminCreateNewCategoryPage = () => {
 
 	return (
 		<Page>
-			<BreadcrumbsWithNavButton crumbs={navHistory} />
+			<BreadcrumbsWithNavButton />
 			<Section className={styles.section}>
 				<Form className={styles.form}>
 					<div className={styles.imageUploaderWrapper}>

@@ -16,13 +16,11 @@ import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useModal } from '../../hooks/useModal';
-import { useNavHistory } from '../../hooks/useNavHistory';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 const ExcursionPage = () => {
 	const id = Number(useParams().id);
-	const navHistory = useNavHistory();
 	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const { data: excursion, isLoading, isError, error } = useQuery({
@@ -76,10 +74,7 @@ const ExcursionPage = () => {
 
 	return (
 		<Page className={styles.excursionPage}>
-			<BreadcrumbsWithNavButton
-				className={styles.breadcrumbs}
-				crumbs={navHistory}
-			/>
+			<BreadcrumbsWithNavButton className={styles.breadcrumbs} />
 			<Section className={styles.excursion}>
 				<div className={styles.imageContainer}>
 					<Image src={imgSrc} />
