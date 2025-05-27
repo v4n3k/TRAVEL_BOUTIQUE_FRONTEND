@@ -325,3 +325,7 @@ export interface LoadingBoundaryProps extends React.ComponentProps<'div'> {}
 export interface IconSearchProps {
 	resizable?: boolean;
 }
+
+export interface SearchQueryProviderProps {
+	children: ReactNode;
+}
