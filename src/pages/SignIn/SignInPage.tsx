@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../../components/ui/Button/Button';
 import { Form } from '../../components/ui/Form/Form';
 import { Page } from '../../components/ui/Page/Page';
@@ -27,10 +27,6 @@ const SignInPage = () => {
 	const handleSignIn = () => {
 		signIn(credentials);
 	};
-
-	useEffect(() => {
-		console.log(isError, errorMessage);
-	}, [isError, errorMessage]);
 
 	return (
 		<Page className={styles.signInPage}>

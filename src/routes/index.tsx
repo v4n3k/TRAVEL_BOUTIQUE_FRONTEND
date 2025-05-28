@@ -1,3 +1,4 @@
+import { privateRoute } from '../hocs/privateRoute';
 import { withLazy } from '../hocs/withLazy';
 import { BlogPage } from '../pages/Blog/BlogPage';
 import HomePage from '../pages/Home/HomePage';
@@ -9,71 +10,65 @@ export const publicRoutes: RouteEntity[] = [
 	{
 		path: RouteName.HOME,
 		Component: HomePage,
-		isPrivate: false,
 	},
 	{
 		path: RouteName.CATEGORIES,
 		Component: withLazy('../pages/Categories/CategoriesPage'),
-		isPrivate: false,
 	},
 	{
 		path: RouteName.CATEGORY,
 		Component: withLazy('../pages/Category/CategoryPage'),
-		isPrivate: false,
 	},
 	{
 		path: RouteName.ABOUT,
 		Component: withLazy('../pages/About/AboutPage'),
-		isPrivate: false,
 	},
 	{
 		path: RouteName.EXCURSION,
 		Component: withLazy('../pages/Excursion/ExcursionPage'),
-		isPrivate: false,
 	},
 	{
 		path: RouteName.SEARCHED_EXCURSIONS,
 		Component: withLazy('../pages/SearchedExcursions/SearchedExcursionsPage'),
-		isPrivate: false,
 	},
 	{
 		path: RouteName.SIGN_IN,
 		Component: withLazy('../pages/SignIn/SignInPage'),
-		isPrivate: false,
 	},
-	{ path: RouteName.BLOG, Component: BlogPage, isPrivate: false },
-	{ path: RouteName.INFO, Component: InfoPage, isPrivate: false },
-	{ path: RouteName.SERVICE, Component: ServicePage, isPrivate: false },
+	{ path: RouteName.BLOG, Component: BlogPage },
+	{ path: RouteName.INFO, Component: InfoPage },
+	{ path: RouteName.SERVICE, Component: ServicePage },
 ];
 
 export const privateRoutes: RouteEntity[] = [
 	{
 		path: RouteName.ADMIN,
-		Component: withLazy('../pages/Admin/AdminPage'),
-		isPrivate: true,
+		Component: privateRoute(withLazy('../pages/Admin/AdminPage')),
 	},
 	{
 		path: RouteName.ADMIN_CATEGORY,
-		Component: withLazy('../pages/AdminCategory/AdminCategoryPage'),
-		isPrivate: true,
+		Component: privateRoute(
+			withLazy('../pages/AdminCategory/AdminCategoryPage')
+		),
 	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_EXCURSION,
-		Component: withLazy(
-			'../pages/AdminCreateNewExcursion/AdminCreateNewExcursionPage'
+		Component: privateRoute(
+			withLazy('../pages/AdminCreateNewExcursion/AdminCreateNewExcursionPage')
 		),
-		isPrivate: true,
 	},
 	{
 		path: RouteName.ADMIN_EDIT_EXCURSION,
-		Component: withLazy('../pages/AdminEditExcursion/AdminEditExcursionPage'),
-		isPrivate: true,
+		Component: privateRoute(
+			withLazy('../pages/AdminEditExcursion/AdminEditExcursionPage')
+		),
 	},
 	{
 		path: RouteName.ADMIN_CREATE_NEW_CATEGORY,
-		Component: withLazy(
-			'../pages/AdminCreateNewCategory/AdminCreateNewCategoryPage'
+		Component: privateRoute(
+			withLazy('../pages/AdminCreateNewCategory/AdminCreateNewCategoryPage')
 		),
-		isPrivate: true,
 	},
 ];
+
+export const allRoutes = [...publicRoutes, ...privateRoutes];

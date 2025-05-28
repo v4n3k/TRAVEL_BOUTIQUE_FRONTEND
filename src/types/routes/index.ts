@@ -1,7 +1,6 @@
 export interface RouteEntity {
 	path: string;
 	Component: React.ComponentType;
-	isPrivate?: boolean;
 }
 
 export enum RouteBase {

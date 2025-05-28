@@ -44,7 +44,12 @@ export interface CategoryApi {
 export interface AuthApi {
 	signIn: (credentials: SignInCredentials) => OptionalPromise<signInResponse>;
 	signOut: () => Promise<void>;
-	checkIsAuth: () => OptionalPromise<boolean>;
+	checkIsAuth: () => OptionalPromise<CheckIsAuthResponse>;
+}
+
+interface CheckIsAuthResponse {
+	isAuth: boolean;
+	error: string;
 }
 
 export interface FeedbackApi {

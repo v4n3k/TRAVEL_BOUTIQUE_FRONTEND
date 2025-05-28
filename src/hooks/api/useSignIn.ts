@@ -3,14 +3,12 @@ import { AxiosError } from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../../api/auth/authApi';
-import { useAuthStore } from '../../stores/useAuthStore';
 import { SignInCredentials, signInResponse } from '../../types/api';
 import { RouteName } from '../../types/routes';
 
 export const useSignIn = () => {
 	const navigate = useNavigate();
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
-	const setIsAuth = useAuthStore(state => state.setIsAuth);
 
 	const signInMutation = useMutation({
 		mutationFn: (credentials: SignInCredentials) => authApi.signIn(credentials),
@@ -18,7 +16,6 @@ export const useSignIn = () => {
 		onSuccess: data => {
 			try {
 				if (data?.login) {
-					setIsAuth(true);
 					setErrorMessage(null);
 					localStorage.setItem('login', String(data?.login));
 					navigate(RouteName.ADMIN);
@@ -36,7 +33,6 @@ export const useSignIn = () => {
 
 	return {
 		signIn: signInMutation.mutate,
-
 		isPending: signInMutation.isPending,
 		isError: signInMutation.isError,
 		errorMessage,

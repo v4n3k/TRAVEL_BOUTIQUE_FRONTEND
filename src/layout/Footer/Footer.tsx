@@ -1,14 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useCheckIsAuth } from '../../hooks/api/useCheckIsAuth';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconTelegram } from '../../icons/IconTelegram';
 import { IconWhatsApp } from '../../icons/IconWhatsApp';
-import { useAuthStore } from '../../stores/useAuthStore';
 import { RouteName } from '../../types/routes';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
 	const { pathname } = useLocation();
-	const isAuth = useAuthStore(state => state.isAuth);
+	const { isAuth } = useCheckIsAuth();
 	const isMobile = useMediaQuery('(max-width: 800px)');
 	const isAdminPage = pathname.includes('admin');
 

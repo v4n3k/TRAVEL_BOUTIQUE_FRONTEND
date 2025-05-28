@@ -1,10 +1,5 @@
 import { CategoryBaseWithImage, ExcursionWithImage } from '../entities';
 
-export interface UseAuthStore {
-	isAuth: boolean;
-	setIsAuth: (isAuth: boolean) => void;
-}
-
 export interface UseAdminStore {
 	newExcursion: ExcursionWithImage;
 	setNewExcursion: (
