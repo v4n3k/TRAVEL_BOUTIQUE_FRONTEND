@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import { paymentApi } from '../../api/payment/paymentApi';
@@ -20,6 +21,7 @@ import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 const ExcursionPage = () => {
+	const [excursionKey, setExcursionKey] = useState('');
 	const id = Number(useParams().id);
 	const { isModalOpen, openModal, closeModal } = useModal();
 
@@ -33,7 +35,7 @@ const ExcursionPage = () => {
 			paymentApi.create({
 				amount: price,
 				excursionId: id,
-				excursionKey: key,
+				excursionKey,
 			}),
 
 		onSuccess: data => {
@@ -55,7 +57,6 @@ const ExcursionPage = () => {
 	}
 
 	const {
-		key,
 		imgSrc,
 		name,
 		personsAmount,
@@ -68,8 +69,14 @@ const ExcursionPage = () => {
 	const formattedPrice = formatNumber(price);
 
 	const handlePay = () => {
+		if (!excursionKey) return;
+
 		mutation.mutate();
 		closeModal();
+	};
+
+	const handleKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setExcursionKey(e.target.value);
 	};
 
 	return (
@@ -145,6 +152,8 @@ const ExcursionPage = () => {
 							<TextInput
 								className={styles.modalInput}
 								placeholder='Поле для ввода ключа'
+								value={excursionKey}
+								onChange={handleKeyChange}
 							/>
 							<Price className={styles.modalPrice} price={formattedPrice} />
 						</div>
