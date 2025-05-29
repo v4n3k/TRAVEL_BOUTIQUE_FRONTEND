@@ -97,6 +97,12 @@
 	gap: 28px;
 }
 
+.error {
+	font-size: 20px;
+	line-height: 27px;
+	color: var(--red-300);
+}
+
 .modalForm {
 	width: 100%;
 }

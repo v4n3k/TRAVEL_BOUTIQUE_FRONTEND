@@ -72,7 +72,7 @@ export interface PaymentApi {
 	create: (paymentData: PaymentData) => Promise<CreatePaymentResponse>;
 }
 
-interface PaymentData {
+export interface PaymentData {
 	amount: number;
 	excursionId: number;
 	excursionKey: string;

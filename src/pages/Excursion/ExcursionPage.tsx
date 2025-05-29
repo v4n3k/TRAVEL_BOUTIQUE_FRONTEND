@@ -1,8 +1,7 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
-import { paymentApi } from '../../api/payment/paymentApi';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
 import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
@@ -16,6 +15,7 @@ import { Image } from '../../components/ui/Image/Image';
 import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
+import { useCreatePayment } from '../../hooks/api/useCreatePayment';
 import { useModal } from '../../hooks/useModal';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
@@ -25,25 +25,19 @@ const ExcursionPage = () => {
 	const id = Number(useParams().id);
 	const { isModalOpen, openModal, closeModal } = useModal();
 
+	const { createPayment, isSuccess, errorMessage } = useCreatePayment();
+
 	const { data: excursion, isLoading, isError, error } = useQuery({
 		queryKey: ['excursion', id],
 		queryFn: () => excursionApi.getById(id),
 	});
 
-	const mutation = useMutation({
-		mutationFn: () =>
-			paymentApi.create({
-				amount: price,
-				excursionId: id,
-				excursionKey,
-			}),
-
-		onSuccess: data => {
-			if (data.confirmationUrl) {
-				window.open(data.confirmationUrl);
-			}
-		},
-	});
+	useEffect(() => {
+		if (isSuccess) {
+			closeModal();
+			setExcursionKey('');
+		}
+	}, [isSuccess]);
 
 	if (isLoading || !excursion) return <></>;
 
@@ -71,8 +65,11 @@ const ExcursionPage = () => {
 	const handlePay = () => {
 		if (!excursionKey) return;
 
-		mutation.mutate();
-		closeModal();
+		createPayment({
+			amount: price,
+			excursionId: excursion.id,
+			excursionKey,
+		});
 	};
 
 	const handleKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -148,6 +145,9 @@ const ExcursionPage = () => {
 					title='Введите ключ'
 				>
 					<Form className={styles.modalForm}>
+						{errorMessage && (
+							<p className={styles.error}>Ошибка: {errorMessage}</p>
+						)}
 						<div className={styles.formContainer}>
 							<TextInput
 								className={styles.modalInput}
