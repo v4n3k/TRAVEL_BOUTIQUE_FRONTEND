@@ -1,4 +1,4 @@
-import { GridListProps } from '../../../../types';
+import { GridListProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
 import styles from './GridList.module.css';
 

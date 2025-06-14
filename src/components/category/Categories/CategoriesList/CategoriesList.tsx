@@ -1,4 +1,4 @@
-import { CategoriesListProps } from '../../../../types';
+import { CategoriesListProps } from '../../../../types/props';
 import { GridList } from '../../ui/GridList/GridList';
 import { CategoryCard } from './CategoryCard/CategoryCard';
 

@@ -1,4 +1,4 @@
-import { AdvantageEntity } from '../../../../types';
+import { AdvantageEntity } from '../../../../types/entities';
 import styles from './Advantage.module.css';
 
 export const Advantage = ({ text, Icon }: AdvantageEntity) => {

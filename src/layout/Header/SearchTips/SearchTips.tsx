@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchStore } from '../../../stores/useSearchStore';
-import { SearchTipsProps } from '../../../types';
+import { SearchTipsProps } from '../../../types/props';
 import styles from './SearchTips.module.css';
 
 export const SearchTips = ({
