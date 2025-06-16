@@ -1,9 +1,11 @@
 import { ComponentType, lazy } from 'react';
 import { LoadingBoundary } from '../components/ui/LoadingBoundary/LoadingBoundary';
 
-export const withLazy = (componentPath: string): ComponentType => {
+export const withLazy = (
+	importComponent: () => Promise<{ default: ComponentType }>
+): ComponentType => {
 	const LazyComponent = () => {
-		const Component = lazy(() => import(componentPath));
+		const Component = lazy(importComponent);
 
 		return (
 			<LoadingBoundary>

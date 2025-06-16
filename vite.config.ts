@@ -12,7 +12,13 @@ export default defineConfig({
 			'www.xn----9sbelapeid5cyafedff1g.xn--p1ai',
 			'localhost',
 			'127.0.0.1',
-			'243.252.88.103',
 		],
+	},
+	base: '/',
+	build: {
+		outDir: 'dist',
+		rollupOptions: {
+			output: {},
+		},
 	},
 });
