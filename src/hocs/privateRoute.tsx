@@ -6,13 +6,13 @@ import { RouteName } from '../types/routes';
 export const privateRoute = (Component: ComponentType): ComponentType => {
 	const PrivateRouteComponent = () => {
 		const navigate = useNavigate();
-		const { isAuth } = useCheckIsAuth();
+		const { isAuth, isLoading } = useCheckIsAuth();
 
 		useEffect(() => {
-			if (!isAuth) {
+			if (!isAuth && !isLoading) {
 				navigate(RouteName.SIGN_IN);
 			}
-		}, [isAuth]);
+		}, [isAuth, isLoading]);
 
 		return <Component />;
 	};
