@@ -10,12 +10,17 @@ export const Layout = ({ children }: LayoutProps) => {
 	const { pathname } = useLocation();
 
 	const isSignInPage = pathname.includes(RouteName.SIGN_IN);
+	const isInternationalTravelsPage = pathname.includes(
+		RouteName.INTERNATIONAL_TRAVELS
+	);
+
+	const showGlobalLayout = !isSignInPage && !isInternationalTravelsPage;
 
 	return (
 		<div className={styles.layout}>
-			{!isSignInPage && <Header />}
+			{showGlobalLayout && <Header />}
 			<Main>{children}</Main>
-			{!isSignInPage && <Footer />}
+			{showGlobalLayout && <Footer />}
 		</div>
 	);
 };

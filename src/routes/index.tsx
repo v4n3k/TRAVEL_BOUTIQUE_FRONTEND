@@ -34,12 +34,18 @@ export const publicRoutes: RouteEntity[] = [
 		),
 	},
 	{
+		path: RouteName.INTERNATIONAL_TRAVELS,
+		Component: withLazy(() =>
+			import('../pages/InternationalTravels/InternationalTravelsPage')
+		),
+	},
+	{
 		path: RouteName.SIGN_IN,
 		Component: withLazy(() => import('../pages/SignIn/SignInPage')),
 	},
-	{ path: RouteName.BLOG, Component: BlogPage }, // Этот компонент не lazy
-	{ path: RouteName.INFO, Component: InfoPage }, // Этот компонент не lazy
-	{ path: RouteName.SERVICE, Component: ServicePage }, // Этот компонент не lazy
+	{ path: RouteName.BLOG, Component: BlogPage },
+	{ path: RouteName.INFO, Component: InfoPage },
+	{ path: RouteName.SERVICE, Component: ServicePage },
 ];
 
 export const privateRoutes: RouteEntity[] = [
