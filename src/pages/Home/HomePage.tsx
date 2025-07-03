@@ -22,8 +22,12 @@ const HomePage = () => {
 	const isIconHidden = useMediaQuery('(max-width: 560px)');
 	const navigate = useNavigate();
 
-	const handleClick = () => {
+	const handleExcursionClick = () => {
 		navigate(RouteName.CATEGORIES);
+	};
+
+	const handleTravelClick = () => {
+		navigate(RouteName.INTERNATIONAL_TRAVELS);
 	};
 
 	const handleOpenWhatsApp = () => {
@@ -40,14 +44,22 @@ const HomePage = () => {
 				<ChildrenAmount />
 				<PaymentMethod />
 				<Reviews />
-				<div className={styles.chooseButtonWrapper}>
+				<div className={styles.navigateButtonsWrapper}>
 					<Button
-						className={styles.chooseButton}
+						className={styles.navigateButton}
 						backgroundColor='blue-500'
 						cornerIcon={!isIconHidden && <IconArrowTopRight fill='#BDD4E2' />}
-						onClick={handleClick}
+						onClick={handleExcursionClick}
 					>
 						Выбрать экскурсию
+					</Button>
+					<Button
+						className={styles.navigateButton}
+						backgroundColor='blue-500'
+						cornerIcon={!isIconHidden && <IconArrowTopRight fill='#BDD4E2' />}
+						onClick={handleTravelClick}
+					>
+						Международные поездки
 					</Button>
 				</div>
 				<div className={styles.iconPhoneWrapper}>
