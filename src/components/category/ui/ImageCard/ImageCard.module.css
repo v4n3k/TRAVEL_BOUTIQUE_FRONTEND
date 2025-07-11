@@ -78,6 +78,10 @@
 	line-height: 22px;
 }
 
+.image {
+	width: 100%;
+}
+
 .image.l {
 	aspect-ratio: 440 / 240;
 	border-radius: 40px;
