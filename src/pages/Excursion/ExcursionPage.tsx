@@ -17,10 +17,12 @@ import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useCreatePayment } from '../../hooks/api/useCreatePayment';
 import { useModal } from '../../hooks/useModal';
+import { cn } from '../../utils/cn';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
 const ExcursionPage = () => {
+	const [phone, setPhone] = useState('');
 	const [excursionKey, setExcursionKey] = useState('');
 	const id = Number(useParams().id);
 	const { isModalOpen, openModal, closeModal } = useModal();
@@ -67,6 +69,7 @@ const ExcursionPage = () => {
 
 		createPayment({
 			amount: price,
+			phone,
 			excursionId: excursion.id,
 			excursionKey,
 		});
@@ -150,12 +153,21 @@ const ExcursionPage = () => {
 						)}
 						<div className={styles.formContainer}>
 							<TextInput
-								className={styles.modalInput}
-								placeholder='Поле для ввода ключа'
-								value={excursionKey}
-								onChange={handleKeyChange}
+								className={cn(styles.modalInput, styles.phoneInput)}
+								type='tel'
+								placeholder='+7 (900) 000 00 00'
+								value={phone}
+								onChange={e => setPhone(e.target.value)}
 							/>
-							<Price className={styles.modalPrice} price={formattedPrice} />
+							<div className={styles.keyAndPrice}>
+								<TextInput
+									className={cn(styles.modalInput, styles.keyInput)}
+									placeholder='Поле для ввода ключа'
+									value={excursionKey}
+									onChange={handleKeyChange}
+								/>
+								<Price className={styles.modalPrice} price={formattedPrice} />
+							</div>
 						</div>
 						<ModalButton backgroundColor='blue-500' onClick={handlePay}>
 							Оплатить

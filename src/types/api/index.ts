@@ -74,6 +74,7 @@ export interface PaymentApi {
 
 export interface PaymentData {
 	amount: number;
+	phone: string;
 	excursionId: number;
 	excursionKey: string;
 }

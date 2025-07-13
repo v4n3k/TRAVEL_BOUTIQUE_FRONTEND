@@ -109,17 +109,30 @@
 
 .formContainer {
 	display: flex;
+	flex-direction: column;
 	gap: 28px;
 	width: 100%;
 }
 
+.keyAndPrice {
+	display: flex;
+	gap: inherit;
+}
+
 .modalInput {
-	width: 394px;
 	padding: 8px 20px;
 	border: 0.2px solid var(--blue-300);
 	background-color: var(--white-50);
 	font-size: 24px !important;
 	line-height: 33px;
+}
+
+.keyInput {
+	width: 394px;
+}
+
+.phoneInput {
+	width: 100%;
 }
 
 .modalInput::placeholder {
@@ -239,17 +252,17 @@
 		width: 60%;
 	}
 
-	.modalInput {
+	.keyInput {
 		width: 327px;
 	}
 }
 
 @media (max-width: 750px) {
-	.formContainer {
+	.keyAndPrice {
 		flex-direction: column;
 	}
 
-	.modalInput {
+	.keyInput {
 		width: 100%;
 	}
 
