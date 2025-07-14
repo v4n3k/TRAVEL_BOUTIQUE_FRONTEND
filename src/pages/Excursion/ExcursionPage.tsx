@@ -17,7 +17,6 @@ import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
 import { useCreatePayment } from '../../hooks/api/useCreatePayment';
 import { useModal } from '../../hooks/useModal';
-import { cn } from '../../utils/cn';
 import { formatNumber } from '../../utils/format';
 import styles from './ExcursionPage.module.css';
 
@@ -65,7 +64,7 @@ const ExcursionPage = () => {
 	const formattedPrice = formatNumber(price);
 
 	const handlePay = () => {
-		if (!excursionKey) return;
+		if (!excursionKey || !phone) return;
 
 		createPayment({
 			amount: price,
@@ -153,7 +152,7 @@ const ExcursionPage = () => {
 						)}
 						<div className={styles.formContainer}>
 							<TextInput
-								className={cn(styles.modalInput, styles.phoneInput)}
+								className={styles.modalInput}
 								type='tel'
 								placeholder='+7 (900) 000 00 00'
 								value={phone}
@@ -161,7 +160,7 @@ const ExcursionPage = () => {
 							/>
 							<div className={styles.keyAndPrice}>
 								<TextInput
-									className={cn(styles.modalInput, styles.keyInput)}
+									className={styles.modalInput}
 									placeholder='Поле для ввода ключа'
 									value={excursionKey}
 									onChange={handleKeyChange}
@@ -169,7 +168,11 @@ const ExcursionPage = () => {
 								<Price className={styles.modalPrice} price={formattedPrice} />
 							</div>
 						</div>
-						<ModalButton backgroundColor='blue-500' onClick={handlePay}>
+						<ModalButton
+							backgroundColor='blue-500'
+							onClick={handlePay}
+							disabled={!excursionKey || !phone}
+						>
 							Оплатить
 						</ModalButton>
 					</Form>

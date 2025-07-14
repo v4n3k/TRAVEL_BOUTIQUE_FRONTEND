@@ -1,6 +1,7 @@
 .price {
 	display: flex;
 	align-items: center;
+	flex-shrink: 0;
 	gap: 8px;
 	padding: 6px 16px;
 	border-radius: 12px;

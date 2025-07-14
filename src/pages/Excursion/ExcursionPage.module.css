@@ -98,6 +98,8 @@
 }
 
 .error {
+	display: block;
+	width: 100%;
 	font-size: 20px;
 	line-height: 27px;
 	color: var(--red-300);
@@ -105,6 +107,7 @@
 
 .modalForm {
 	width: 100%;
+	max-width: 1012px;
 }
 
 .formContainer {
@@ -125,14 +128,6 @@
 	background-color: var(--white-50);
 	font-size: 24px !important;
 	line-height: 33px;
-}
-
-.keyInput {
-	width: 394px;
-}
-
-.phoneInput {
-	width: 100%;
 }
 
 .modalInput::placeholder {
@@ -251,19 +246,11 @@
 		justify-content: center;
 		width: 60%;
 	}
-
-	.keyInput {
-		width: 327px;
-	}
 }
 
 @media (max-width: 750px) {
 	.keyAndPrice {
 		flex-direction: column;
-	}
-
-	.keyInput {
-		width: 100%;
 	}
 
 	.modalPrice {
@@ -356,5 +343,10 @@
 	.descriptionContainer p {
 		font-size: 14px;
 		line-height: 19px;
+	}
+
+	.error {
+		font-size: 16px;
+		line-height: 21px;
 	}
 }
