@@ -18,7 +18,7 @@ export const useCreatePayment = () => {
 
 		onSuccess: data => {
 			if (data.confirmationUrl) {
-				window.open(data.confirmationUrl);
+				window.location.href = data.confirmationUrl;
 			}
 		},
 

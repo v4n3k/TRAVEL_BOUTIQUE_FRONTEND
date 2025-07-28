@@ -5,7 +5,7 @@ export const useCheckIsAuth = () => {
 	const { data, ...query } = useQuery({
 		queryKey: ['isAuth'],
 		queryFn: () => authApi.checkIsAuth(),
-		retry: false,
+		retry: true,
 	});
 
 	return { isAuth: data?.isAuth, ...query };

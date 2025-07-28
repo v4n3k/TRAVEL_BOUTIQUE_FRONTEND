@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Button } from '../../components/ui/Button/Button';
-import { Form } from '../../components/ui/Form/Form';
 import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
@@ -24,7 +23,8 @@ const SignInPage = () => {
 		setCredentials(prev => ({ ...prev, password: e.target.value }));
 	};
 
-	const handleSignIn = () => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
 		signIn(credentials);
 	};
 
@@ -34,7 +34,7 @@ const SignInPage = () => {
 				<div className={styles.formBackground}>
 					<div className={styles.formWrapper}>
 						<h2 className={styles.title}>Вход</h2>
-						<Form className={styles.form}>
+						<form className={styles.form} onSubmit={e => handleSubmit(e)}>
 							{isError && (
 								<p className={styles.error}>Ошибка: {errorMessage}</p>
 							)}
@@ -57,12 +57,12 @@ const SignInPage = () => {
 								className={styles.button}
 								rootClassName={styles.buttonRoot}
 								backgroundColor='blue-500'
-								onClick={handleSignIn}
+								type='submit'
 								disabled={isPending}
 							>
 								Войти
 							</Button>
-						</Form>
+						</form>
 					</div>
 				</div>
 				<div className={styles.icons}>
