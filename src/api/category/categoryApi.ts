@@ -45,4 +45,11 @@ export const categoryApi: CategoryApi = {
 			'Failed to update category'
 		);
 	},
+
+	async delete(id) {
+		return await handleApiResponse(
+			api.delete(`/category/${id}`),
+			'Failed to delete category'
+		);
+	},
 };

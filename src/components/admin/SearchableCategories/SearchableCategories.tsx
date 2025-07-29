@@ -1,6 +1,7 @@
+import { useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchableCategoriesProps } from '../../../types/props';
-import { RouteName } from '../../../types/routes';
+import { RouteBase, RouteName } from '../../../types/routes';
 import { CategoryCard } from '../../category/Categories/CategoriesList/CategoryCard/CategoryCard';
 import { GridList } from '../../category/ui/GridList/GridList';
 import { Expandable } from '../../ui/Expandable/Expandable';
@@ -20,10 +21,39 @@ export const SearchableCategories = <T extends Function>({
 }: SearchableCategoriesProps<T>) => {
 	const navigate = useNavigate();
 
-	const handleCardClick = (categoryName: string) => {
-		navigate(RouteName.ADMIN_CATEGORY);
+	const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+	const saveCategoryName = (categoryName: string) => {
 		localStorage.setItem('categoryName', categoryName);
 	};
+
+	const handleCardClick = useCallback(
+		(categoryName: string) => {
+			if (clickTimeoutRef.current) {
+				clearTimeout(clickTimeoutRef.current);
+			}
+
+			clickTimeoutRef.current = setTimeout(() => {
+				saveCategoryName(categoryName);
+				navigate(RouteName.ADMIN_CATEGORY);
+				clickTimeoutRef.current = null;
+			}, 200);
+		},
+		[navigate]
+	);
+
+	const handleCardDoubleClick = useCallback(
+		(id: number, categoryName: string) => {
+			if (clickTimeoutRef.current) {
+				clearTimeout(clickTimeoutRef.current);
+				clickTimeoutRef.current = null;
+			}
+
+			saveCategoryName(categoryName);
+			navigate(`${RouteBase.ADMIN_EDIT_CATEGORY}/${id}`);
+		},
+		[navigate]
+	);
 
 	const searchableList = (
 		<SearchableList
@@ -43,6 +73,9 @@ export const SearchableCategories = <T extends Function>({
 						nameSize={nameSize}
 						radiusSize='m'
 						onClick={() => handleCardClick(category.name)}
+						onDoubleClick={() =>
+							handleCardDoubleClick(category.id, category.name)
+						}
 					/>
 				))}
 			</GridList>

@@ -1,21 +1,26 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { categoryApi } from '../../api/category/categoryApi';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
 import { ImageUploader } from '../../components/admin/ui/ImageUploader/ImageUploader';
+import { ModalButton } from '../../components/admin/ui/ModalButton/ModalButton';
+import { TitledModal } from '../../components/admin/ui/TitledModal/TitledModal';
 import { Button } from '../../components/ui/Button/Button';
 import { Form } from '../../components/ui/Form/Form';
 import { Page } from '../../components/ui/Page/Page';
 import { Section } from '../../components/ui/Section/Section';
 import { TextInput } from '../../components/ui/TextInput/TextInput';
+import { useModal } from '../../hooks/useModal';
 import { CategoryWithImage, ImageEntity } from '../../types/entities';
+import { RouteName } from '../../types/routes';
 import styles from './AdminEditCategory.module.css';
 
 const AdminEditCategoryPage = () => {
 	const id = Number(useParams().id);
+	const navigate = useNavigate();
 	const queryClient = useQueryClient();
-	// const { isModalOpen, openModal, closeModal } = useModal();
+	const { isModalOpen, openModal, closeModal } = useModal();
 
 	const [editedCategory, setEditedCategory] = useState<CategoryWithImage>(
 		{} as CategoryWithImage
@@ -25,7 +30,7 @@ const AdminEditCategoryPage = () => {
 		null
 	);
 
-	const { data: category, isError: isGetError } = useQuery({
+	const { data: category, isError: isGetError, error: getError } = useQuery({
 		queryKey: ['category'],
 		queryFn: () => categoryApi.getById(id),
 	});
@@ -54,6 +59,18 @@ const AdminEditCategoryPage = () => {
 
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ['category', id] });
+
+			navigate(RouteName.ADMIN);
+		},
+	});
+
+	const deleteMutation = useMutation({
+		mutationFn: () => categoryApi.delete(id),
+
+		onSuccess: () => {
+			navigate(RouteName.ADMIN);
+
+			queryClient.invalidateQueries({ queryKey: ['categories'] });
 		},
 	});
 
@@ -75,6 +92,21 @@ const AdminEditCategoryPage = () => {
 		editMutation.mutate(editedCategory);
 	};
 
+	const handleDeleteCategory = () => {
+		deleteMutation.mutate();
+	};
+
+	if (isGetError || editMutation.isError || deleteMutation.isError) {
+		return (
+			<div>
+				<p>error!</p>
+				<p>{getError?.message}</p>
+				<p>{editMutation.error?.message}</p>
+				<p>{deleteMutation.error?.message}</p>
+			</div>
+		);
+	}
+
 	return (
 		<Page>
 			<BreadcrumbsWithNavButton />
@@ -95,13 +127,13 @@ const AdminEditCategoryPage = () => {
 							placeholder='Название категории'
 						/>
 						<div className={styles.buttonsContainer}>
-							{/* <Button
+							<Button
 								className={styles.triggerModalButton}
 								backgroundColor='red-300'
 								onClick={openModal}
 							>
 								Удалить категорию
-							</Button> */}
+							</Button>
 							<Button
 								className={styles.createButton}
 								rootClassName={styles.createButtonRoot}
@@ -115,7 +147,7 @@ const AdminEditCategoryPage = () => {
 				</Form>
 			</Section>
 
-			{/* <TitledModal
+			<TitledModal
 				isOpen={isModalOpen}
 				onClose={closeModal}
 				title='Удаление карточки категории'
@@ -129,9 +161,7 @@ const AdminEditCategoryPage = () => {
 				>
 					Удалить
 				</ModalButton>
-			</TitledModal> */}
-
-			{isGetError && <p>error!</p>}
+			</TitledModal>
 		</Page>
 	);
 };

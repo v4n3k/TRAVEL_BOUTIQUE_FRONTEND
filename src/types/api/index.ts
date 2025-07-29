@@ -44,6 +44,7 @@ export interface CategoryApi {
 		id: number,
 		updatedFields: FormData
 	) => OptionalPromise<CategoryEntity>;
+	delete: (id: number) => OptionalPromise<CategoryEntity>;
 }
 
 export interface AuthApi {

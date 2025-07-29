@@ -13,9 +13,14 @@ export const ImageCard = ({
 	nameSize = 'l',
 	radiusSize = 'l',
 	onClick,
+	onDoubleClick,
 }: ImageCardProps) => {
 	return (
-		<li className={styles.imageCard} onClick={onClick}>
+		<li
+			className={styles.imageCard}
+			onClick={onClick}
+			onDoubleClick={onDoubleClick}
+		>
 			<figure
 				className={cn(
 					styles.figure,

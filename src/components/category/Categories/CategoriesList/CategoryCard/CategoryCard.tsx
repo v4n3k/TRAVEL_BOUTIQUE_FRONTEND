@@ -13,12 +13,13 @@ export const CategoryCard = ({
 	nameSize,
 	radiusSize,
 	onClick,
+	onDoubleClick,
 }: CategoryCardProps) => {
 	const navigate = useNavigate();
 
 	const handleClick = () => {
-		navigate(RouteName.CATEGORY);
 		localStorage.setItem('categoryName', name);
+		navigate(RouteName.CATEGORY);
 	};
 
 	return (
@@ -31,6 +32,7 @@ export const CategoryCard = ({
 			nameSize={nameSize}
 			radiusSize={radiusSize}
 			onClick={onClick || handleClick}
+			onDoubleClick={onDoubleClick}
 		/>
 	);
 };
