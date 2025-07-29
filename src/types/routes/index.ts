@@ -20,6 +20,7 @@ export enum RouteBase {
 	ADMIN_CREATE_NEW_EXCURSION = '/admin/create_new_excursion',
 	ADMIN_EDIT_EXCURSION = '/admin/edit_excursion',
 	ADMIN_CREATE_NEW_CATEGORY = '/admin/create_new_category',
+	ADMIN_EDIT_CATEGORY = '/admin/edit_category',
 }
 
 const idParam = '/:id';
@@ -41,4 +42,5 @@ export enum RouteName {
 	ADMIN_CREATE_NEW_EXCURSION = RouteBase.ADMIN_CREATE_NEW_EXCURSION,
 	ADMIN_EDIT_EXCURSION = RouteBase.ADMIN_EDIT_EXCURSION + idParam,
 	ADMIN_CREATE_NEW_CATEGORY = RouteBase.ADMIN_CREATE_NEW_CATEGORY,
+	ADMIN_EDIT_CATEGORY = RouteBase.ADMIN_EDIT_CATEGORY + idParam,
 }

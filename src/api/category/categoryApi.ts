@@ -17,6 +17,13 @@ export const categoryApi: CategoryApi = {
 		);
 	},
 
+	async getById(id) {
+		return await handleApiResponse(
+			api.get(`/category/${id}`),
+			`Failed to get category with id ${id}`
+		);
+	},
+
 	async create(newCategory) {
 		return await handleApiResponse(
 			api.post('/category', newCategory, {
@@ -25,6 +32,17 @@ export const categoryApi: CategoryApi = {
 				},
 			}),
 			'Failed to create category'
+		);
+	},
+
+	async update(id, updatedFields) {
+		return await handleApiResponse(
+			api.patch(`/category/${id}`, updatedFields, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			}),
+			'Failed to update category'
 		);
 	},
 };

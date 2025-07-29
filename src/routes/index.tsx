@@ -83,6 +83,12 @@ export const privateRoutes: RouteEntity[] = [
 			)
 		),
 	},
+	{
+		path: RouteName.ADMIN_EDIT_CATEGORY,
+		Component: privateRoute(
+			withLazy(() => import('../pages/AdminEditCategory/AdminEditCategoryPage'))
+		),
+	},
 ];
 
 export const allRoutes = [...publicRoutes, ...privateRoutes];

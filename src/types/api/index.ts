@@ -38,7 +38,12 @@ export interface CategoryApi {
 		categoryType: CategoryType,
 		searchQuery: string
 	) => OptionalPromise<CategoryEntity[]>;
+	getById: (id: number) => OptionalPromise<CategoryEntity>;
 	create: (newCategory: FormData) => OptionalPromise<CategoryEntity>;
+	update: (
+		id: number,
+		updatedFields: FormData
+	) => OptionalPromise<CategoryEntity>;
 }
 
 export interface AuthApi {

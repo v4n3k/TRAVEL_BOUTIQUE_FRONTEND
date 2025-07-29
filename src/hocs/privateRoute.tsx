@@ -12,7 +12,15 @@ export const privateRoute = (Component: ComponentType): ComponentType => {
 			if (!isAuth && !isLoading) {
 				navigate(RouteName.SIGN_IN);
 			}
-		}, [isAuth, isLoading]);
+		}, [isAuth, isLoading, navigate]);
+
+		if (isLoading) {
+			return null;
+		}
+
+		if (!isAuth) {
+			return null;
+		}
 
 		return <Component />;
 	};

@@ -1,0 +1,129 @@
+.form {
+	display: flex;
+	gap: 52px;
+	max-width: 1082px;
+}
+
+.imageUploaderWrapper {
+	display: flex;
+	max-width: 637px;
+	width: 100%;
+}
+
+.inputAndButton {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.input {
+	padding: 8px 16px;
+	border: 0.2px solid var(--blue-300);
+	background-color: var(--white-50);
+	font-size: 36px;
+	line-height: 49px;
+}
+
+.buttonsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	width: fit-content;
+}
+
+.triggerModalButton {
+	font-size: 24px;
+	line-height: 33px;
+	padding: 12px 20px;
+	border-radius: 12px;
+}
+
+.createButton {
+	border-radius: 12px;
+}
+
+.createButtonRoot {
+	width: 100% !important;
+}
+
+.deleteButton {
+	justify-content: center;
+	width: 100%;
+	border-radius: 12px;
+}
+
+.deleteButtonRoot {
+	width: 100% !important;
+}
+
+@media (max-width: 1480px) {
+	.form {
+		gap: 32px;
+		max-width: 743px;
+	}
+
+	.imageUploaderWrapper {
+		max-width: 378px;
+	}
+
+	.inputAndButton {
+		gap: 24px;
+	}
+
+	.input {
+		font-size: 30px;
+		line-height: 41px;
+	}
+
+	.triggerModalButton {
+		padding: 8px 22px;
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	.createButton {
+		justify-content: center;
+		width: 100%;
+
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 1050px) {
+	.form {
+		flex-direction: column;
+		gap: 36px;
+		max-width: 100%;
+	}
+
+	.imageUploaderWrapper,
+	.inputAndButton {
+		max-width: 100%;
+	}
+
+	.inputAndButton {
+		gap: 40px;
+	}
+
+	.triggerModalButton {
+		padding: 10px 28px;
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
+
+@media (max-width: 800px) {
+	.input {
+		font-size: 24px;
+		line-height: 33px;
+	}
+}
+
+@media (max-width: 440px) {
+	.input {
+		font-size: 20px;
+		line-height: 27px;
+	}
+}
