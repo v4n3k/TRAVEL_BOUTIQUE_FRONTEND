@@ -1,6 +1,7 @@
 import img from '../../../../assets/images/WhatsApp Image 2024-11-21 at 22.58.05 (1) 3.png';
 import { Box } from '../../../components/ui/Box/Box';
 import { Image } from '../../../components/ui/Image/Image';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 import { Section } from '../../../components/ui/Section/Section';
 import { Title } from '../../../components/ui/Title/Title';
 import { IconAvia } from '../../../icons/IconAvia';
@@ -119,7 +120,7 @@ export const TransportRules = () => {
 					Все сопроводительные документы по экскурсии оформляют наши менеджеры,
 					заверяют и отправляют по всем ведомствам.
 				</WrappedText>
-				<Image className={styles.image} src={img} />
+				<ImageLink className={styles.imageLink} src={img} />
 			</Box>
 		</Section>
 	);

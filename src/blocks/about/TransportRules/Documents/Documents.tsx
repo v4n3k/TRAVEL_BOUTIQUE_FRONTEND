@@ -1,6 +1,7 @@
 import img from '../../../../../assets/images/WhatsApp Image 2024-11-21 at 22.58.05 (1) 4.png';
 import { Box } from '../../../../components/ui/Box/Box';
 import { Image } from '../../../../components/ui/Image/Image';
+import { ImageLink } from '../../../../components/ui/ImageLink/ImageLink';
 import { TextItem } from '../TextItem/TextItem';
 import styles from './Documents.module.css';
 
@@ -30,7 +31,7 @@ export const Documents = () => {
 					сопровождающего лица на 12 детей и (или) школьников.
 				</TextItem>
 			</ul>
-			<Image className={styles.image} src={img} />
+			<ImageLink className={styles.imageLink} src={img} />
 		</Box>
 	);
 };

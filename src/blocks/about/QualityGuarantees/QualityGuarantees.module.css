@@ -9,7 +9,7 @@
 	color: var(--black-900);
 }
 
-.image {
+.imageLink {
 	display: none;
 	border-radius: 20px;
 	margin-top: 12px;
@@ -35,7 +35,7 @@
 		line-height: 25px;
 	}
 
-	.image {
+	.imageLink {
 		display: block;
 	}
 }

@@ -16,7 +16,7 @@
 	width: 830px;
 }
 
-.image {
+.imageLink {
 	display: none;
 	border-radius: 20px;
 }
@@ -34,7 +34,7 @@
 }
 
 @media (max-width: 440px) {
-	.image {
+	.imageLink {
 		display: block;
 	}
 }

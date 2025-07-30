@@ -1,5 +1,5 @@
 import img from '../../../../assets/images/WhatsApp Image 2024-11-21 at 22.58.05 (1) 2.png';
-import { Image } from '../../../components/ui/Image/Image';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 import { Section } from '../../../components/ui/Section/Section';
 import { TextContainer } from '../../../components/ui/TextContainer/TextContainer';
 import { Title } from '../../../components/ui/Title/Title';
@@ -21,7 +21,7 @@ export const QualityGuarantees = () => {
 					партнёрами.
 				</p>
 			</TextContainer>
-			<Image className={styles.image} src={img} />
+			<ImageLink className={styles.imageLink} src={img} />
 		</Section>
 	);
 };
