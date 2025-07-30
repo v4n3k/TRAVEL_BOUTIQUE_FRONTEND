@@ -32,6 +32,7 @@ const CategoryPage = () => {
 				<GridList>
 					{excursions?.map(excursion => (
 						<ImageCard
+							id={excursion.id}
 							key={excursion.id}
 							imgSrc={excursion.imgSrc}
 							name={excursion.name}
