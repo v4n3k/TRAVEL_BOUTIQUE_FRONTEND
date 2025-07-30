@@ -2,10 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconArrowShort } from '../../../../icons/IconArrowShort';
 import { IconSearch } from '../../../../icons/IconSearch';
-
-import { cn } from '../../../../utils/cn';
-
 import { SearchableListProps } from '../../../../types/props';
+import { cn } from '../../../../utils/cn';
 import { Button } from '../../../ui/Button/Button';
 import { Section } from '../../../ui/Section/Section';
 import styles from './SearchableList.module.css';
@@ -21,9 +19,11 @@ export const SearchableList = <T extends Function>({
 	onAdd,
 }: SearchableListProps<T>) => {
 	const navigate = useNavigate();
+	const [isWrapped, setIsWrapped] = useState(false);
+
 	const headerContainerRef = useRef<HTMLDivElement>(null);
 	const searchRef = useRef<HTMLDivElement>(null);
-	const [isWrapped, setIsWrapped] = useState(false);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleGoBack = () => {
 		navigate(-1);
@@ -54,10 +54,24 @@ export const SearchableList = <T extends Function>({
 		};
 
 		window.addEventListener('resize', handleResize);
+
 		return () => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
+
+	useEffect(() => {
+		if (searchQuery && inputRef.current) {
+			if (document.activeElement !== inputRef.current) {
+				inputRef.current.focus();
+
+				inputRef.current.setSelectionRange(
+					searchQuery.length,
+					searchQuery.length
+				);
+			}
+		}
+	}, [searchQuery]);
 
 	return (
 		<Section className={cn(styles.searchableList, className)}>
@@ -93,6 +107,7 @@ export const SearchableList = <T extends Function>({
 						<input
 							className={styles.input}
 							type='search'
+							ref={inputRef}
 							placeholder='Поиск по карточкам'
 							value={searchQuery}
 							onChange={handleSearchQueryChange}

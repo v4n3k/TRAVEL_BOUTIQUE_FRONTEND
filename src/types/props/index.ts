@@ -268,6 +268,7 @@ export interface CategoriesProps {
 	expandable?: boolean;
 	withName?: boolean;
 	withIcon?: boolean;
+	withEditButton?: boolean;
 	textUnderImage?: boolean;
 	canAutoScroll?: boolean;
 }
@@ -280,21 +281,23 @@ export interface CategoriesListProps
 
 export interface CategoryCardProps
 	extends Pick<CategoryEntity, 'id' | 'name' | 'imgSrc'>,
-		Pick<CategoriesProps, 'withName' | 'withIcon' | 'textUnderImage'>,
 		Pick<
-			ImageCardProps,
-			'nameSize' | 'radiusSize' | 'onClick' | 'onDoubleClick'
-		> {}
+			CategoriesProps,
+			'withName' | 'withIcon' | 'withEditButton' | 'textUnderImage'
+		>,
+		Pick<ImageCardProps, 'nameSize' | 'radiusSize' | 'onClick'> {}
 
 export interface GridListProps extends ComponentProps<'ul'> {
 	gapSize?: 'm' | 'l';
 }
 
 export interface ImageCardProps {
+	id: number;
 	imgSrc: string;
 	name: string;
 	withIcon?: boolean;
 	withName?: boolean;
+	withEditButton?: boolean;
 	textUnderImage?: boolean;
 	nameSize?: 's' | 'm' | 'l';
 	radiusSize?: 'm' | 'l';
