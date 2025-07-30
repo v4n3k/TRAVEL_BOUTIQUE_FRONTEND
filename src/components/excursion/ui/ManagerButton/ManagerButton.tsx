@@ -1,6 +1,7 @@
 import { IconConnect } from '../../../../icons/IconConnect';
 import { ManagerButtonProps } from '../../../../types/props';
 import { cn } from '../../../../utils/cn';
+import { openTelegram } from '../../../../utils/redirect';
 import { Button } from '../../../ui/Button/Button';
 import styles from './ManagerButton.module.css';
 
@@ -9,10 +10,6 @@ export const ManagerButton = ({
 	rootClassName,
 	...props
 }: ManagerButtonProps) => {
-	const handleClick = () => {
-		window.open('https://whatsapp.com', '_blank');
-	};
-
 	return (
 		<Button
 			className={cn(styles.managerButton, className)}
@@ -20,7 +17,7 @@ export const ManagerButton = ({
 			leftIcon={<IconConnect />}
 			backgroundColor='white-50'
 			color='blue-500'
-			onClick={handleClick}
+			onClick={openTelegram}
 			{...props}
 		>
 			Связаться с менеджером

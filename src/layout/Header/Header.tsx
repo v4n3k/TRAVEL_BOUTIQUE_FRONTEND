@@ -272,12 +272,12 @@ export const Header = () => {
 				mountOnEnter
 			>
 				<div ref={phoneRef} className={styles.phoneOnSmallScreen}>
-					<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
+					<Link to='tel:+79993591601'>+7 999 359 16 01</Link>
 				</div>
 			</CSSTransition>
 
 			<div className={styles.phone}>
-				<Link to='tel:+79889994653'>+ 7 988 999 46 53</Link>
+				<Link to='tel:+79993591601'>+7 999 359 16 01</Link>
 			</div>
 
 			<div className={styles.hideableSearchWrapper}>

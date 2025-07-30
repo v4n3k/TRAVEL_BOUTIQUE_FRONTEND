@@ -16,7 +16,7 @@
 	color: var(--black-900);
 }
 
-.image {
+.imageLink {
 	height: 100%;
 	min-width: 492px;
 	width: 100%;
@@ -28,7 +28,7 @@
 		line-height: 27px;
 	}
 
-	.image {
+	.imageLink {
 		min-width: 367px;
 	}
 }
@@ -43,7 +43,7 @@
 		line-height: 33px;
 	}
 
-	.image {
+	.imageLink {
 		min-width: auto;
 		border-radius: 32px;
 	}
@@ -66,7 +66,7 @@
 		line-height: 25px;
 	}
 
-	.image {
+	.imageLink {
 		border-radius: 20px;
 	}
 }

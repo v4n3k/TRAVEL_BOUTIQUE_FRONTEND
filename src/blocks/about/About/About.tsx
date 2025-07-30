@@ -1,5 +1,5 @@
 import img from '../../../../assets/images/WhatsAppImage.png';
-import { Image } from '../../../components/ui/Image/Image';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 import { Section } from '../../../components/ui/Section/Section';
 import { TextContainer } from '../../../components/ui/TextContainer/TextContainer';
 import { Title } from '../../../components/ui/Title/Title';
@@ -31,7 +31,7 @@ export const About = () => {
 					</TextContainer>
 				</div>
 				<div>
-					<Image className={styles.image} src={img} />
+					<ImageLink className={styles.imageLink} src={img} />
 				</div>
 			</div>
 		</Section>

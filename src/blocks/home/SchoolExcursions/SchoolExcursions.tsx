@@ -5,7 +5,7 @@ import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { IconButton } from '../../../components/ui/IconButton/IconButton';
-import { Image } from '../../../components/ui/Image/Image';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 import { Section } from '../../../components/ui/Section/Section';
 import { TagsList } from '../../../components/ui/TagsList/TagsList';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -66,8 +66,8 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 
 			<div className={styles.wrapper}>
 				<div className={styles.imagesContainer}>
-					<Image className={styles.mainImage} src={mainImage} />
-					<Image
+					<ImageLink className={styles.mainImage} src={mainImage} />
+					<ImageLink
 						className={styles.kremlinImageOnMediumScreen}
 						src={kremlinImage}
 					/>
@@ -90,7 +90,7 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 								проконсультируем вас детально!
 							</p>
 						</div>
-						<Image className={styles.kremlinImage} src={kremlinImage} />
+						<ImageLink className={styles.kremlinImage} src={kremlinImage} />
 					</div>
 
 					<div className={styles.rowContainer}>
@@ -103,11 +103,14 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 						</div>
 
 						<div className={styles.bottomImagesContainer}>
-							<Image
+							<ImageLink
 								className={styles.kremlinImageOnSmallScreen}
 								src={kremlinImage}
 							/>
-							<Image className={styles.purpleHouseImage} src={purpleHouse} />
+							<ImageLink
+								className={styles.purpleHouseImage}
+								src={purpleHouse}
+							/>
 						</div>
 					</div>
 				</div>

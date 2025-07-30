@@ -75,6 +75,20 @@
 	max-width: fit-content;
 }
 
+.partnership > button {
+	display: flex;
+	justify-content: flex-start;
+	color: var(--white-50);
+	background-color: transparent;
+	border: none;
+	width: 100%;
+	transition: 0.2s ease-in-out;
+}
+
+.partnership > button:hover {
+	opacity: 0.8;
+}
+
 .contacts h2 {
 	font-size: 22px;
 	line-height: 29px;

@@ -5,6 +5,7 @@
 .container {
 	display: flex;
 	flex-direction: column;
+	flex: 1;
 	gap: 32px;
 	max-height: 613px;
 	height: 100%;

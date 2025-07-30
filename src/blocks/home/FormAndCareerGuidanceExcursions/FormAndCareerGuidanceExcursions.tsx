@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import img from '../../../../assets/images/Rectangle 33.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
 import { IconButton } from '../../../components/ui/IconButton/IconButton';
-import { Image } from '../../../components/ui/Image/Image';
 import { TagsList } from '../../../components/ui/TagsList/TagsList';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
@@ -11,6 +10,7 @@ import { FormAndCareerGuidanceExcursionsProps } from '../../../types/props';
 import { RouteName } from '../../../types/routes';
 import { FeedbackForm } from './FeedbackForm/FeedbackForm';
 import styles from './FormAndCareerGuidanceExcursions.module.css';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 
 export const FormAndCareerGuidanceExcursions = ({
 	ref,
@@ -77,7 +77,7 @@ export const FormAndCareerGuidanceExcursions = ({
 						onTagClick={handleTagClick}
 					/>
 				</div>
-				<Image className={styles.img} src={img} />
+				<ImageLink className={styles.img} src={img} />
 			</div>
 		</section>
 	);

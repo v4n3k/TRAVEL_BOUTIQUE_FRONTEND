@@ -16,6 +16,7 @@ import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
 import { IconPhone } from '../../icons/IconPhone';
 import { RouteName } from '../../types/routes';
 import styles from './HomePage.module.css';
+import { openWhatsApp } from '../../utils/redirect';
 
 const HomePage = () => {
 	const feedbackFormRef = useRef<HTMLDivElement>(null);
@@ -28,10 +29,6 @@ const HomePage = () => {
 
 	const handleTravelClick = () => {
 		navigate(RouteName.INTERNATIONAL_TRAVELS);
-	};
-
-	const handleOpenWhatsApp = () => {
-		window.open('https://whatsApp.com');
 	};
 
 	return (
@@ -66,7 +63,7 @@ const HomePage = () => {
 					<IconButton
 						className={styles.iconButton}
 						Icon={<IconPhone />}
-						onClick={handleOpenWhatsApp}
+						onClick={openWhatsApp}
 					/>
 				</div>
 			</Page>

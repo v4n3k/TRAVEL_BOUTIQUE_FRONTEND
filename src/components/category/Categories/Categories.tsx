@@ -32,6 +32,8 @@ export const Categories = ({
 		}
 	}, [location.state?.scrollToCareerGuidance, ref.current, canAutoScroll]);
 
+	if (!categories?.length) return;
+
 	return (
 		<Section ref={ref}>
 			<Title className={styles.title}>{renderTitle()}</Title>

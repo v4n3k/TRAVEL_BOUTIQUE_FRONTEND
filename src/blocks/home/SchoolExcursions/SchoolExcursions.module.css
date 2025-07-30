@@ -68,6 +68,11 @@
 	font-weight: 400;
 }
 
+.kremlinImage {
+	width: 212px;
+	min-width: 212px;
+}
+
 .cities {
 	display: flex;
 	max-width: 405px;
@@ -106,11 +111,15 @@
 
 	.kremlinImage {
 		width: 139px;
+		min-width: 139px;
 	}
 
 	.purpleHouseImage {
 		height: 188px;
-		width: 300px;
+		max-width: 300px;
+		width: 100%;
+		display: flex;
+		flex: 1;
 	}
 
 	.helpInChoosing .titleContainer {
@@ -131,6 +140,10 @@
 		max-width: 346px;
 		min-width: 346px;
 		padding: 27px 28px 26px;
+	}
+
+	.bottomImagesContainer {
+		width: 100%;
 	}
 }
 
@@ -188,6 +201,7 @@
 
 	.purpleHouseImage {
 		height: 300px;
+		max-width: none;
 		width: 100%;
 	}
 }

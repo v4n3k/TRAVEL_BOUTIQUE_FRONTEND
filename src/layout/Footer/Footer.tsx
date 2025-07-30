@@ -4,6 +4,11 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconTelegram } from '../../icons/IconTelegram';
 import { IconWhatsApp } from '../../icons/IconWhatsApp';
 import { RouteName } from '../../types/routes';
+import {
+	openWhatsApp,
+	TELEGRAM_URL,
+	WHATS_APP_URL,
+} from '../../utils/redirect';
 import styles from './Footer.module.css';
 
 export const Footer = () => {
@@ -75,7 +80,7 @@ export const Footer = () => {
 							<div className={styles.inner}>
 								<p>
 									<span>РТО</span>
-									<span>025745</span>
+									<span>В031-00161-77/02341956</span>
 								</p>
 								<p>
 									<span>ОГРН</span>
@@ -97,8 +102,8 @@ export const Footer = () => {
 						</div>
 
 						<div className={styles.partnership}>
-							<p>Стать нашим партнёром</p>
-							<p>Стать частью нашей команды</p>
+							<button onClick={openWhatsApp}>Стать нашим партнёром</button>
+							<button onClick={openWhatsApp}>Стать частью нашей команды</button>
 						</div>
 
 						<div className={styles.contacts}>
@@ -110,14 +115,14 @@ export const Footer = () => {
 							<p className={styles.email}>butik20@inbox.ru</p>
 							<div className={styles.icons}>
 								<a
-									href='https://web.telegram.org'
+									href={TELEGRAM_URL}
 									target='_blank'
 									rel='noopener noreferrer'
 								>
 									<IconTelegram />
 								</a>
 								<a
-									href='https://whatsapp.com'
+									href={WHATS_APP_URL}
 									target='_blank'
 									rel='noopener noreferrer'
 								>

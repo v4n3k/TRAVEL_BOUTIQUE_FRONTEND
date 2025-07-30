@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import imgChildren from '../../../../assets/images/Rectangle 25.png';
 import imgGrandParents from '../../../../assets/images/Rectangle 27.png';
 import { IconButton } from '../../../components/ui/IconButton/IconButton';
-import { Image } from '../../../components/ui/Image/Image';
+import { ImageLink } from '../../../components/ui/ImageLink/ImageLink';
 import { Section } from '../../../components/ui/Section/Section';
 import { IconArrowTopRight } from '../../../icons/IconArrowTopRight';
 import { RouteName } from '../../../types/routes';
@@ -39,8 +39,8 @@ export const PaymentMethod = () => {
 				</ul>
 			</div>
 			<div className={styles.imagesContainer}>
-				<Image className={styles.imgChildren} src={imgChildren} />
-				<Image className={styles.imgGrandParents} src={imgGrandParents} />
+				<ImageLink className={styles.imgChildren} src={imgChildren} />
+				<ImageLink className={styles.imgGrandParents} src={imgGrandParents} />
 			</div>
 		</Section>
 	);

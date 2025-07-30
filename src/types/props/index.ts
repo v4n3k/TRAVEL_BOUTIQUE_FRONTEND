@@ -33,6 +33,11 @@ export interface BoxProps extends ComponentProps<'div'> {}
 
 export interface ImageProps extends ComponentProps<'img'> {}
 
+export interface ImageLinkProps extends ComponentProps<'img'> {
+	imageClassName?: string;
+	to?: string;
+}
+
 export interface TagProps extends ComponentProps<'li'> {
 	size?: 's' | 'm';
 }
