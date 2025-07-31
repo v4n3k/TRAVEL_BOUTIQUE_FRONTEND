@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 import { categoryApi } from '../../api/category/categoryApi';
 import { Categories } from '../../components/category/Categories/Categories';
 import { Page } from '../../components/ui/Page/Page';
@@ -13,6 +14,22 @@ const CategoriesPage = () => {
 
 	return (
 		<Page>
+			<Helmet>
+				<title>Категории экскурсий | Выберите свою идеальную экскурсию</title>
+				<meta
+					name='description'
+					content='Обзор всех категорий экскурсий: города, профориентационные экскурсии, туры выходного дня. Найдите идеальную экскурсию для себя и своих близких!'
+				/>
+				<meta
+					name='keywords'
+					content='категории экскурсий, города, профориентационные экскурсии, туры выходного дня, выбор экскурсий'
+				/>
+				<link
+					rel='canonical'
+					href='https://xn----9sbelapeid5cyafedff1g.xn--p1ai/categories'
+				/>
+			</Helmet>
+
 			<Categories
 				renderTitle={() => <>Города</>}
 				categories={categories?.cities}

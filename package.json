@@ -13,8 +13,9 @@
 	"dependencies": {
 		"@tanstack/react-query": "^5.66.11",
 		"axios": "^1.8.1",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-helmet-async": "^2.0.5",
 		"react-router-dom": "^7.1.5",
 		"react-slick": "^0.30.3",
 		"react-transition-group": "^4.4.5",

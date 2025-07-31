@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Advantages } from '../../blocks/home/Advantages/Advantages';
 import { ChildrenAmount } from '../../blocks/home/ChildrenAmount/ChildrenAmount';
@@ -15,8 +16,8 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { IconArrowTopRight } from '../../icons/IconArrowTopRight';
 import { IconPhone } from '../../icons/IconPhone';
 import { RouteName } from '../../types/routes';
-import styles from './HomePage.module.css';
 import { openWhatsApp } from '../../utils/redirect';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
 	const feedbackFormRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,22 @@ const HomePage = () => {
 	return (
 		<LoadingBoundary>
 			<Page className={styles.homePage}>
+				<Helmet>
+					<title>Экскурсии для школьников и взрослых | Лучшие цены</title>
+					<meta
+						name='description'
+						content='Широкий выбор экскурсий для школьников и взрослых по лучшим ценам.  Интересные маршруты, опытные гиды, удобное бронирование. Закажите экскурсию прямо сейчас!'
+					/>
+					<meta
+						name='keywords'
+						content='экскурсии, школьники, взрослые, гиды, туры, путешествия, достопримечательности, билеты, заказать экскурсию'
+					/>
+					<link
+						rel='canonical'
+						href='https://xn----9sbelapeid5cyafedff1g.xn--p1ai/'
+					/>
+				</Helmet>
+
 				<SchoolExcursions ref={feedbackFormRef} />
 				<Excursions />
 				<FormAndCareerGuidanceExcursions ref={feedbackFormRef} />
