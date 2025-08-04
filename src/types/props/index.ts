@@ -36,6 +36,7 @@ export interface ImageProps extends ComponentProps<'img'> {}
 export interface ImageLinkProps extends ComponentProps<'img'> {
 	imageClassName?: string;
 	to?: string;
+	overlaySrc?: string;
 }
 
 export interface TagProps extends ComponentProps<'li'> {

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import mainImage from '../../../../assets/images/Frame 168@2x.png';
+import mainImage from '../../../../assets/images/Frame 168.png';
+import overlayImage from '../../../../assets/images/Frame 180.png';
 import purpleHouse from '../../../../assets/images/Rectangle 28.png';
 import kremlinImage from '../../../../assets/images/Rectangle 5.png';
 import { excursionApi } from '../../../api/excursion/excursionApi';
@@ -66,7 +67,13 @@ export const SchoolExcursions = ({ ref }: SchoolExcursionsProps) => {
 
 			<div className={styles.wrapper}>
 				<div className={styles.imagesContainer}>
-					<ImageLink className={styles.mainImage} src={mainImage} />
+					<div className={styles.mainImageContainer}>
+						<ImageLink
+							className={styles.mainImage}
+							src={mainImage}
+							overlaySrc={overlayImage}
+						/>
+					</div>
 					<ImageLink
 						className={styles.kremlinImageOnMediumScreen}
 						src={kremlinImage}

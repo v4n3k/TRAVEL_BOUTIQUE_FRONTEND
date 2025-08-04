@@ -12,6 +12,7 @@ export const ImageLink = ({
 	alt,
 	loading = 'lazy',
 	to = WHATS_APP_URL,
+	overlaySrc = '',
 	...props
 }: ImageLinkProps) => {
 	return (
@@ -23,6 +24,13 @@ export const ImageLink = ({
 				loading={loading}
 				{...props}
 			/>
+			{!!overlaySrc && (
+				<Image
+					className={styles.overlayImage}
+					src={overlaySrc}
+					alt={'overlay'}
+				/>
+			)}
 		</Link>
 	);
 };

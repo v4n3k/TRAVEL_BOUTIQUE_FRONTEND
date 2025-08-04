@@ -22,6 +22,12 @@
 	min-width: 700px;
 }
 
+.mainImageContainer {
+	position: relative;
+	display: flex;
+	flex: 1;
+}
+
 .kremlinImageOnMediumScreen {
 	display: none;
 }
@@ -160,9 +166,7 @@
 		width: 440px;
 		height: auto;
 	}
-}
 
-@media (max-width: 1370px) {
 	.kremlinImage {
 		min-width: 120px;
 	}
@@ -191,8 +195,13 @@
 		width: auto;
 	}
 
+	.mainImageContainer {
+		max-width: max(700px, 60vw);
+		width: 100%;
+	}
+
 	.mainImage {
-		width: 738px;
+		width: 100%;
 	}
 
 	.bottomImagesContainer {
@@ -231,7 +240,7 @@
 	}
 
 	.kremlinImageOnMediumScreen {
-		width: 200px;
+		width: 150px;
 	}
 
 	.mainImage {
