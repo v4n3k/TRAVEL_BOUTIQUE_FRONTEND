@@ -133,3 +133,7 @@ button {
 	cursor: pointer;
 	overflow: visible;
 }
+
+svg {
+	flex-shrink: 0;
+}
