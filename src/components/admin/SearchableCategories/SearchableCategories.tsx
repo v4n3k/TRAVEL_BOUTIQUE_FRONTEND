@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { SearchableCategoriesProps } from '../../../types/props';
+import { RouteName } from '../../../types/routes';
 import { CategoryCard } from '../../category/Categories/CategoriesList/CategoryCard/CategoryCard';
 import { GridList } from '../../category/ui/GridList/GridList';
 import { Expandable } from '../../ui/Expandable/Expandable';
@@ -16,6 +18,13 @@ export const SearchableCategories = <T extends Function>({
 	expandable = false,
 	collapsedHeight,
 }: SearchableCategoriesProps<T>) => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		localStorage.setItem('categoryName', title);
+		navigate(RouteName.ADMIN_CATEGORY);
+	};
+
 	const searchableList = (
 		<SearchableList
 			title={title}
@@ -35,6 +44,7 @@ export const SearchableCategories = <T extends Function>({
 							withEditButton
 							nameSize={nameSize}
 							radiusSize='m'
+							onClick={handleClick}
 						/>
 					))
 				) : (

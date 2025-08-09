@@ -167,6 +167,13 @@ const ExcursionPage = () => {
 								/>
 								<Price className={styles.modalPrice} price={formattedPrice} />
 							</div>
+							<a
+								className={styles.offerAgreement}
+								href='../../../assets/offerAgreementForSchoolchildren.pdf'
+								target='_blank'
+							>
+								Договор оферты для школьников
+							</a>
 						</div>
 						<ModalButton
 							backgroundColor='blue-500'
