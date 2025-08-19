@@ -195,6 +195,7 @@ const AdminCreateNewExcursionPage = () => {
 											className={styles.amountInput}
 											value={accompanistsAmount || ''}
 											onChange={handleAccompanistsAmountChange}
+											maxWidth={62}
 										/>
 									)}
 								/>
@@ -205,6 +206,7 @@ const AdminCreateNewExcursionPage = () => {
 											className={styles.amountInput}
 											value={personsAmount || ''}
 											onChange={handlePersonsAmountChange}
+											maxWidth={62}
 										/>
 									)}
 								/>

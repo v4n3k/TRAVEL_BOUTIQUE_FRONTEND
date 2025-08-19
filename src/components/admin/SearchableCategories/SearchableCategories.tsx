@@ -20,8 +20,8 @@ export const SearchableCategories = <T extends Function>({
 }: SearchableCategoriesProps<T>) => {
 	const navigate = useNavigate();
 
-	const handleClick = () => {
-		localStorage.setItem('categoryName', title);
+	const handleClick = (name: string) => {
+		localStorage.setItem('categoryName', name);
 		navigate(RouteName.ADMIN_CATEGORY);
 	};
 
@@ -44,7 +44,7 @@ export const SearchableCategories = <T extends Function>({
 							withEditButton
 							nameSize={nameSize}
 							radiusSize='m'
-							onClick={handleClick}
+							onClick={() => handleClick(category.name)}
 						/>
 					))
 				) : (

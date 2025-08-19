@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-import { cn } from '../../../../utils/cn';
-
 import { NumberInputProps } from '../../../../types/props';
+import { cn } from '../../../../utils/cn';
 import { TextInput } from '../../../ui/TextInput/TextInput';
 import styles from './NumberInput.module.css';
 
@@ -25,9 +23,7 @@ export const NumberInput = ({
 	useEffect(() => {
 		const inputElement = inputRef.current;
 
-		if (!inputElement) {
-			return;
-		}
+		if (!inputElement) return;
 
 		const tempElement = document.createElement('span');
 		tempElement.style.fontSize = getComputedStyle(inputElement).fontSize;
@@ -46,6 +42,7 @@ export const NumberInput = ({
 		document.body.removeChild(tempElement);
 
 		setWidth(Math.min(maxWidth, newWidth));
+		console.log(Math.min(maxWidth, newWidth));
 	}, [inputValue, minWidth, maxWidth]);
 
 	const isNumber = (value: string) => {
