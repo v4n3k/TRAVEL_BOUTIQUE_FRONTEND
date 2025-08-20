@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
 import { ExcursionEventInputsList } from '../../components/admin/ExcursionEventsList/ExcursionEventsList';
 import { BreadcrumbsWithNavButton } from '../../components/admin/ui/BreadcrumbsWithNavButton/BreadcrumbsWithNavButton';
@@ -28,12 +28,14 @@ import {
 	ExcursionWithImage,
 	ImageEntity,
 } from '../../types/entities';
+import { RouteName } from '../../types/routes';
 import styles from './AdminEditExcursion.module.css';
 
 const AdminEditExcursionPage = () => {
 	const editedExcursion = useAdminStore(state => state.editedExcursion);
 	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
+	const navigate = useNavigate();
 	const queryClient = useQueryClient();
 	const id = Number(useParams().id);
 	const { isModalOpen, openModal, closeModal } = useModal();
@@ -67,7 +69,9 @@ const AdminEditExcursionPage = () => {
 	const editMutation = useMutation({
 		mutationFn: (formData: FormData) => excursionApi.edit(id, formData),
 
-		onSuccess: () => handleClearExcursion(),
+		onSuccess: () => {
+			navigate(RouteName.ADMIN_CATEGORY);
+		},
 
 		onError: (error: unknown) => {
 			console.error('Error editing Excursion: ', error);
@@ -76,6 +80,10 @@ const AdminEditExcursionPage = () => {
 
 	const deleteMutaton = useMutation({
 		mutationFn: (id: number) => excursionApi.delete(id),
+
+		onSuccess: () => {
+			navigate(RouteName.ADMIN_CATEGORY);
+		},
 
 		onError: (error: unknown) => {
 			console.error('Error deleting Excursion: ', error);
