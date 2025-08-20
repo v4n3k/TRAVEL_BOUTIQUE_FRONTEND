@@ -1,101 +1,107 @@
-import React, { useImperativeHandle, useRef } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { ButtonProps } from '../../../types/props';
 import { cn } from '../../../utils/cn';
 import styles from './Button.module.css';
 
-export const Button = ({
-	className,
-	rootClassName,
-	backgroundColor = 'blue-300',
-	color = 'white-50',
-	withBorder = false,
-	fullWidth = false,
-	children,
-	leftIcon,
-	rightIcon,
-	cornerIcon,
-	gap = 20,
-	disabled,
-	ref,
-	...props
-}: ButtonProps) => {
-	const buttonRef = useRef<HTMLButtonElement>(null);
-
-	useImperativeHandle(
-		ref,
-		() => {
-			return buttonRef.current as HTMLButtonElement;
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+	(
+		{
+			className,
+			rootClassName,
+			backgroundColor = 'blue-300',
+			color = 'white-50',
+			withBorder = false,
+			fullWidth = false,
+			children,
+			leftIcon,
+			rightIcon,
+			cornerIcon,
+			gap = 20,
+			disabled,
+			...props
 		},
-		[buttonRef]
-	);
+		ref
+	) => {
+		const buttonRef = useRef<HTMLButtonElement>(null);
 
-	const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
-		const button = buttonRef.current;
-		if (!button) return;
+		useImperativeHandle(
+			ref,
+			() => {
+				return buttonRef.current as HTMLButtonElement;
+			},
+			[buttonRef]
+		);
 
-		const ripple = document.createElement('span');
-		ripple.className = styles.ripple;
+		const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
+			const button = buttonRef.current;
+			if (!button) return;
 
-		const rect = button.getBoundingClientRect();
-		const x = event.clientX - rect.left;
-		const y = event.clientY - rect.top;
+			const ripple = document.createElement('span');
+			ripple.className = styles.ripple;
 
-		ripple.style.left = `${x}px`;
-		ripple.style.top = `${y}px`;
+			const rect = button.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
 
-		const rippleContainer = button.querySelector(`.${styles.rippleContainer}`);
-		if (rippleContainer) {
-			rippleContainer.appendChild(ripple);
-		}
+			ripple.style.left = `${x}px`;
+			ripple.style.top = `${y}px`;
 
-		requestAnimationFrame(() => {
-			ripple.classList.add(styles.rippleAnimate);
-		});
+			const rippleContainer = button.querySelector(
+				`.${styles.rippleContainer}`
+			);
+			if (rippleContainer) {
+				rippleContainer.appendChild(ripple);
+			}
 
-		ripple.addEventListener('transitionend', () => {
-			ripple.remove();
-		});
-	};
+			requestAnimationFrame(() => {
+				ripple.classList.add(styles.rippleAnimate);
+			});
 
-	const iconGap = {
-		'--icon-gap': `${gap}px`,
-	} as React.CSSProperties;
+			ripple.addEventListener('transitionend', () => {
+				ripple.remove();
+			});
+		};
 
-	return (
-		<div
-			className={cn(
-				styles.buttonWrapper,
-				rootClassName,
-				disabled ? styles.disabled : ''
-			)}
-			style={{
-				width: fullWidth ? '100%' : 'fit-content',
-				...iconGap,
-			}}
-		>
-			<button
+		const iconGap = {
+			'--icon-gap': `${gap}px`,
+		} as React.CSSProperties;
+
+		return (
+			<div
 				className={cn(
-					styles.button,
-					className,
+					styles.buttonWrapper,
+					rootClassName,
 					disabled ? styles.disabled : ''
 				)}
 				style={{
-					backgroundColor: `var(--${backgroundColor})`,
-					color: `var(--${color})`,
-					border: withBorder ? '0.2px solid var(--blue-500)' : 'none',
-					cursor: disabled ? 'not-allowed' : 'pointer',
+					width: fullWidth ? '100%' : 'fit-content',
+					...iconGap,
 				}}
-				ref={buttonRef}
-				onMouseDown={handleMouseDown}
-				disabled={disabled}
-				{...props}
 			>
-				<div className={styles.rippleContainer} />
-				{leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
-				{children}
-				{rightIcon && <div className={styles.rightIcon}>{rightIcon}</div>}
-			</button>
-			{cornerIcon && <div className={styles.cornerIcon}>{cornerIcon}</div>}
-		</div>
-	);
-};
+				<button
+					className={cn(
+						styles.button,
+						className,
+						disabled ? styles.disabled : ''
+					)}
+					style={{
+						backgroundColor: `var(--${backgroundColor})`,
+						color: `var(--${color})`,
+						border: withBorder ? '0.2px solid var(--blue-500)' : 'none',
+						cursor: disabled ? 'not-allowed' : 'pointer',
+					}}
+					ref={buttonRef}
+					onMouseDown={handleMouseDown}
+					disabled={disabled}
+					{...props}
+				>
+					<div className={styles.rippleContainer} />
+					{leftIcon && <div className={styles.leftIcon}>{leftIcon}</div>}
+					{children}
+					{rightIcon && <div className={styles.rightIcon}>{rightIcon}</div>}
+				</button>
+				{cornerIcon && <div className={styles.cornerIcon}>{cornerIcon}</div>}
+			</div>
+		);
+	}
+);

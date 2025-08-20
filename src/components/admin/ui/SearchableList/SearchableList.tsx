@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { IconArrowShort } from '../../../../icons/IconArrowShort';
 import { IconSearch } from '../../../../icons/IconSearch';
 import { SearchableListProps } from '../../../../types/props';
+import { RouteName } from '../../../../types/routes';
 import { cn } from '../../../../utils/cn';
 import { Button } from '../../../ui/Button/Button';
 import { Section } from '../../../ui/Section/Section';
@@ -26,7 +27,7 @@ export const SearchableList = <T extends Function>({
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const handleGoBack = () => {
-		navigate(-1);
+		navigate(RouteName.ADMIN);
 	};
 
 	const handleSearchQueryChange = (
