@@ -36,7 +36,7 @@ export const useNavHistory = () => {
 			},
 			{
 				condition: category,
-				link: { label: String(category), to: RouteName.CATEGORY },
+				link: { label: String(category), to: RouteName.ADMIN_CATEGORY },
 			},
 			{
 				condition: pathname.includes(RouteName.ADMIN_CREATE_NEW_CATEGORY),
