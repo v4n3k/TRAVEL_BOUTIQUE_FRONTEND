@@ -16,3 +16,13 @@ export const formatNumber = (num: number) => {
 
 	return parts.join('');
 };
+
+export const truncateText = (text: string, maxLength: number = 150) => {
+	if (text.length <= maxLength) return text;
+
+	const truncated = text.slice(0, maxLength);
+	const lastSpaceIndex = truncated.lastIndexOf(' ');
+	const safeLength = lastSpaceIndex > 0 ? lastSpaceIndex : maxLength;
+
+	return text.slice(0, safeLength) + '...';
+};
