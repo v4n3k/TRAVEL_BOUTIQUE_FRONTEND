@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { excursionApi } from '../../api/excursion/excursionApi';
@@ -36,7 +36,6 @@ const AdminEditExcursionPage = () => {
 	const setEditedExcursion = useAdminStore(state => state.setEditedExcursion);
 
 	const navigate = useNavigate();
-	const queryClient = useQueryClient();
 	const id = Number(useParams().id);
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const isSmallScreen = useMediaQuery('(max-width: 550px)');
@@ -53,6 +52,8 @@ const AdminEditExcursionPage = () => {
 	);
 
 	useEffect(() => {
+		if (editedExcursion.name || editedExcursion.id) return;
+
 		if (excursion) {
 			const { imgSrc, ...rest } = excursion;
 
@@ -93,8 +94,11 @@ const AdminEditExcursionPage = () => {
 	const generateMutation = useMutation({
 		mutationFn: (id: number) => excursionApi.generateKey(id),
 
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ['excursion', id] });
+		onSuccess: generatedKey => {
+			setEditedExcursion(prev => ({
+				...prev,
+				key: String(generatedKey),
+			}));
 		},
 
 		onError: (error: unknown) => {
