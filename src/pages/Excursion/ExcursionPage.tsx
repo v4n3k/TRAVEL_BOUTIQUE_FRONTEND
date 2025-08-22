@@ -209,7 +209,7 @@ const ExcursionPage = () => {
 								</div>
 								<a
 									className={styles.offerAgreement}
-									href={`${BASE_URL}/assets/offerAgreementForSchoolchildren.pdf`}
+									href={'../../../assets/offerAgreementForSchoolchildren.pdf'}
 									target='_blank'
 									rel='noopener noreferrer'
 								>
